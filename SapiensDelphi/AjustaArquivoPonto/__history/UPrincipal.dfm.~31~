@@ -1,0 +1,153 @@
+object FPrincipal: TFPrincipal
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Ajustar'
+  ClientHeight = 157
+  ClientWidth = 651
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 19
+    Top = 11
+    Width = 37
+    Height = 13
+    Caption = 'Arquivo'
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 86
+    Width = 48
+    Height = 13
+    Caption = 'N'#186' Cart'#227'o'
+  end
+  object btn1: TSpeedButton
+    Left = 507
+    Top = 8
+    Width = 23
+    Height = 22
+    OnClick = btn1Click
+  end
+  object Label3: TLabel
+    Left = 33
+    Top = 48
+    Width = 23
+    Height = 13
+    Caption = 'Data'
+  end
+  object edtArquivo: TEdit
+    Left = 62
+    Top = 8
+    Width = 446
+    Height = 21
+    TabOrder = 0
+    Text = 'C:\CworkPontoMT\TXT\bilhetes.txt'
+  end
+  object edtCartao: TEdit
+    Left = 62
+    Top = 83
+    Width = 91
+    Height = 21
+    TabOrder = 2
+  end
+  object chk7: TCheckBox
+    Left = 196
+    Top = 59
+    Width = 60
+    Height = 17
+    Caption = '7:00'
+    TabOrder = 3
+  end
+  object chk11: TCheckBox
+    Left = 261
+    Top = 75
+    Width = 60
+    Height = 17
+    Caption = '11:30'
+    TabOrder = 5
+  end
+  object chk13: TCheckBox
+    Left = 327
+    Top = 75
+    Width = 60
+    Height = 17
+    Caption = '13:00'
+    TabOrder = 6
+  end
+  object chk17: TCheckBox
+    Left = 392
+    Top = 59
+    Width = 60
+    Height = 17
+    Caption = '17:18'
+    TabOrder = 7
+  end
+  object chk18: TCheckBox
+    Left = 391
+    Top = 87
+    Width = 60
+    Height = 17
+    Caption = '18:00'
+    TabOrder = 8
+  end
+  object btnProcessar: TBitBtn
+    Left = 571
+    Top = 128
+    Width = 75
+    Height = 25
+    Caption = 'Processar'
+    DoubleBuffered = True
+    ParentDoubleBuffered = False
+    TabOrder = 9
+    OnClick = btnProcessarClick
+  end
+  object edtData: TDateEdit
+    Left = 62
+    Top = 45
+    Width = 102
+    Height = 21
+    NumGlyphs = 2
+    TabOrder = 1
+  end
+  object chk8: TCheckBox
+    Left = 196
+    Top = 87
+    Width = 41
+    Height = 17
+    Caption = '8:00'
+    TabOrder = 4
+  end
+  object chk9: TCheckBox
+    Left = 196
+    Top = 132
+    Width = 50
+    Height = 17
+    TabStop = False
+    Caption = '09:30'
+    TabOrder = 10
+  end
+  object chk12: TCheckBox
+    Left = 261
+    Top = 132
+    Width = 60
+    Height = 17
+    TabStop = False
+    Caption = '12:00'
+    TabOrder = 11
+  end
+  object dlgOpen: TOpenDialog
+    Left = 560
+  end
+end

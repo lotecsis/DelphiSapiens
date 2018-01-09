@@ -1493,7 +1493,7 @@ procedure TFPrincipal.btn9Click(Sender: TObject);
 begin
   FIntegracaoSerasa := TFIntegracaoSerasa.Create(Self);
   FIntegracaoSerasa.ShowModal;
-  FreeAndNil(FIntegracaoSerasa);
+  FreeAndNil(FIntegracaoSerasa);   //
 end;
 
 procedure TFPrincipal.btnImpressorasClick(Sender: TObject);

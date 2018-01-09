@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2014/02/11 17:14:14.509.pas,D:\Meus Documentos\Documents\RAD Studio\Projects\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\UPrincipal.pas</Transaction>
+    <Transaction>2014/02/11 17:14:14.509.dfm,D:\Meus Documentos\Documents\RAD Studio\Projects\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\UPrincipal.dfm</Transaction>
+    <Transaction>2014/02/11 17:14:30.103.dproj,D:\Meus Documentos\Documents\RAD Studio\Projects\Project1.dproj=C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\PServerEmail.dproj</Transaction>
+    <Transaction>2014/02/11 17:14:55.356.pas,C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\UDmOra.pas</Transaction>
+    <Transaction>2014/02/11 17:14:55.356.dfm,C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\UDmOra.dfm</Transaction>
+    <Transaction>2014/02/18 16:31:20.571.pas,C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\UDmFire.pas</Transaction>
+    <Transaction>2014/02/18 16:31:20.571.dfm,C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\ServerEmail\Fonte\UDmFire.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

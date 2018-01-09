@@ -1,0 +1,198 @@
+unit UDm;
+
+interface
+
+uses
+  SysUtils, Classes, DB, ADODB, DBClient, Provider;
+
+type
+  TDm = class(TDataModule)
+    ADOBanco: TADOConnection;
+    CadFormulario: TADOQuery;
+    CadFormularioUSU_CODFOR: TIntegerField;
+    CadFormularioUSU_NOMFOR: TStringField;
+    CadFormularioUSU_DESFOR: TStringField;
+    ConsFormulario: TADOQuery;
+    ConsFormularioUSU_CODFOR: TIntegerField;
+    ConsFormularioUSU_NOMFOR: TStringField;
+    ConsFormularioUSU_DESFOR: TStringField;
+    ConsUltimoFormulario: TADOQuery;
+    ConsUltimoFormularioULTIMO: TBCDField;
+    CadUsu_TNivAce: TADOQuery;
+    CadUsu_TNivAceUSU_CODNIV: TIntegerField;
+    CadUsu_TNivAceUSU_DESNIV: TStringField;
+    ConsUltimoNivAce: TADOQuery;
+    ConsUltimoNivAceULTIMO: TBCDField;
+    ConsUsu_TNivAce: TADOQuery;
+    ConsUsu_TNivAceUSU_CODNIV: TIntegerField;
+    ConsUsu_TNivAceUSU_DESNIV: TStringField;
+    CadUsu_ForNiv: TADOQuery;
+    CadUsu_ForNivUSU_CODCOM: TIntegerField;
+    CadUsu_ForNivUSU_CODNIV: TIntegerField;
+    CadUsu_ForNivUSU_CODFOR: TIntegerField;
+    CadUsu_ForNivUSU_FORLIB: TStringField;
+    ConsUltimoForNiv: TADOQuery;
+    ConsUltimoForNivULTIMO: TBCDField;
+    ApagaUsu_TForNiv: TADOQuery;
+    ApagaUsu_TForNivUSU_CODCOM: TIntegerField;
+    ApagaUsu_TForNivUSU_CODNIV: TIntegerField;
+    ApagaUsu_TForNivUSU_CODFOR: TIntegerField;
+    ApagaUsu_TForNivUSU_FORLIB: TStringField;
+    CadUsu_TR999Usu: TADOQuery;
+    CadUsu_TR999UsuUSU_CODUSU: TIntegerField;
+    CadUsu_TR999UsuUSU_NOMUSU: TStringField;
+    CadUsu_TR999UsuUSU_SENUSU: TStringField;
+    CadUsu_TR999UsuUSU_SITUSU: TStringField;
+    CadUsu_TR999UsuUSU_LOGUSU: TStringField;
+    CadUsu_TR999UsuUSU_CODNIV: TIntegerField;
+    ConsR999Usu: TADOQuery;
+    ConsR999UsuCODUSU: TBCDField;
+    ConsR999UsuNOMUSU: TStringField;
+    ConsR999UsuTIPCOL: TStringField;
+    ConsR999UsuNUMEMP: TStringField;
+    ConsR999UsuCODFIL: TStringField;
+    ConsR999UsuCODLOC: TStringField;
+    ConsR999UsuNUMCAD: TStringField;
+    ConsUsu_TR999Usu: TADOQuery;
+    Provider_R999Usu: TDataSetProvider;
+    Client_R999Usu: TClientDataSet;
+    Client_R999UsuCODUSU: TBCDField;
+    Client_R999UsuNOMUSU: TStringField;
+    Client_R999UsuTIPCOL: TStringField;
+    Client_R999UsuNUMEMP: TStringField;
+    Client_R999UsuCODFIL: TStringField;
+    Client_R999UsuCODLOC: TStringField;
+    Client_R999UsuNUMCAD: TStringField;
+    ConsUsu_TNivAce2: TADOQuery;
+    ConsUsu_TNivAce2USU_CODNIV: TIntegerField;
+    ConsUsu_TNivAce2USU_DESNIV: TStringField;
+    ConsUsu_TForNiv: TADOQuery;
+    ConsUsu_TForNivUSU_CODCOM: TIntegerField;
+    ConsUsu_TForNivUSU_CODNIV: TIntegerField;
+    ConsUsu_TForNivUSU_CODFOR: TIntegerField;
+    ConsUsu_TForNivUSU_FORLIB: TStringField;
+    ConsUsu_TForNivUSU_CODFOR_1: TIntegerField;
+    ConsUsu_TForNivUSU_NOMFOR: TStringField;
+    ConsUsu_TForNivUSU_DESFOR: TStringField;
+    ConsUsu_TForNiv2: TADOQuery;
+    ProviderUsu_TForNiv2: TDataSetProvider;
+    ClientUsu_TForNiv2: TClientDataSet;
+    ConsUsu_TForNiv2USU_CODCOM: TIntegerField;
+    ConsUsu_TForNiv2USU_CODNIV: TIntegerField;
+    ConsUsu_TForNiv2USU_CODFOR: TIntegerField;
+    ConsUsu_TForNiv2USU_FORLIB: TStringField;
+    ConsUsu_TForNiv2USU_CODFOR_1: TIntegerField;
+    ConsUsu_TForNiv2USU_NOMFOR: TStringField;
+    ConsUsu_TForNiv2USU_DESFOR: TStringField;
+    ClientUsu_TForNiv2USU_CODCOM: TIntegerField;
+    ClientUsu_TForNiv2USU_CODNIV: TIntegerField;
+    ClientUsu_TForNiv2USU_CODFOR: TIntegerField;
+    ClientUsu_TForNiv2USU_FORLIB: TStringField;
+    ClientUsu_TForNiv2USU_CODFOR_1: TIntegerField;
+    ClientUsu_TForNiv2USU_NOMFOR: TStringField;
+    ClientUsu_TForNiv2USU_DESFOR: TStringField;
+    ConsUsu_TR999usuNiv: TADOQuery;
+    ConsUsu_TR999usuNivUSU_CODUSU: TIntegerField;
+    ConsUsu_TR999usuNivUSU_NOMUSU: TStringField;
+    ConsUsu_TR999usuNivUSU_SENUSU: TStringField;
+    ConsUsu_TR999usuNivUSU_SITUSU: TStringField;
+    ConsUsu_TR999usuNivUSU_LOGUSU: TStringField;
+    ConsUsu_TR999usuNivUSU_CODNIV: TIntegerField;
+    ProviderUsu_TR999Usu: TDataSetProvider;
+    ClientConsUsu_TR999Usu: TClientDataSet;
+    ConsUsu_TR999UsuUSU_CODUSU: TIntegerField;
+    ConsUsu_TR999UsuUSU_NOMUSU: TStringField;
+    ConsUsu_TR999UsuUSU_SENUSU: TStringField;
+    ConsUsu_TR999UsuUSU_SITUSU: TStringField;
+    ConsUsu_TR999UsuUSU_LOGUSU: TStringField;
+    ConsUsu_TR999UsuUSU_CODNIV: TIntegerField;
+    ClientConsUsu_TR999UsuUSU_CODUSU: TIntegerField;
+    ClientConsUsu_TR999UsuUSU_NOMUSU: TStringField;
+    ClientConsUsu_TR999UsuUSU_SENUSU: TStringField;
+    ClientConsUsu_TR999UsuUSU_SITUSU: TStringField;
+    ClientConsUsu_TR999UsuUSU_LOGUSU: TStringField;
+    ClientConsUsu_TR999UsuUSU_CODNIV: TIntegerField;
+    ConsUsuarioLogin: TADOQuery;
+    ConsUsuarioLoginUSU_CODUSU: TIntegerField;
+    ConsUsuarioLoginUSU_NOMUSU: TStringField;
+    ConsUsuarioLoginUSU_SENUSU: TStringField;
+    ConsUsuarioLoginUSU_SITUSU: TStringField;
+    ConsUsuarioLoginUSU_LOGUSU: TStringField;
+    ConsUsuarioLoginUSU_CODNIV: TIntegerField;
+    ConsValidaMenu: TADOQuery;
+    ConsValidaMenuUSU_FORLIB: TStringField;
+    procedure CadFormularioBeforePost(DataSet: TDataSet);
+    procedure CadUsu_TNivAceBeforePost(DataSet: TDataSet);
+    procedure CadUsu_ForNivBeforePost(DataSet: TDataSet);
+    procedure ConsUsu_TNivAce2AfterScroll(DataSet: TDataSet);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Dm: TDm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TDm.CadFormularioBeforePost(DataSet: TDataSet);
+begin
+if Dm.CadFormulario.State in [dsinsert] then
+  begin
+     dm.ConsUltimoFormulario.Close;
+     dm.ConsUltimoFormulario.Open;
+     if dm.ConsUltimoFormularioULTIMO.Value = 0 then
+      CadFormularioUSU_CODFOR.Value := 1
+     else
+      dm.CadFormularioUSU_CODFOR.Value := dm.ConsUltimoFormularioULTIMO.AsInteger;
+
+  end
+
+end;
+
+procedure TDm.CadUsu_TNivAceBeforePost(DataSet: TDataSet);
+begin
+  if CadUsu_TNivAce.State in [dsinsert] then
+    begin
+      ConsUltimoNivAce.Close;
+      ConsUltimoNivAce.Open;
+      if ConsUltimoNivAceULTIMO.Value = 0 then
+        CadUsu_TNivAceUSU_CODNIV.Value := 1
+      else
+        CadUsu_TNivAceUSU_CODNIV.Value := ConsUltimoNivAceULTIMO.AsInteger;
+    end;
+end;
+
+procedure TDm.CadUsu_ForNivBeforePost(DataSet: TDataSet);
+begin
+  if CadUsu_ForNiv.State in [dsinsert] then
+    begin
+      ConsUltimoForNiv.Close;
+      ConsUltimoForNiv.Open;
+      if ConsUltimoForNivULTIMO.Value = 0 then
+          CadUsu_ForNivUSU_CODCOM.Value := 1
+      else
+          CadUsu_ForNivUSU_CODCOM.Value := ConsUltimoForNivULTIMO.AsInteger;
+    end;
+end;
+
+procedure TDm.ConsUsu_TNivAce2AfterScroll(DataSet: TDataSet);
+begin
+    ConsUsu_TForNiv.Close;
+    ConsUsu_TForNiv.Parameters.ParamByName('codniv').Value :=
+    ConsUsu_TNivAce2USU_CODNIV.Value;
+    ConsUsu_TForNiv.Open;
+
+    ConsUsu_TR999usuNiv.Close;
+    ConsUsu_TR999usuNiv.Parameters.ParamByName('codniv').Value :=
+    ConsUsu_TNivAce2USU_CODNIV.Value;
+    ConsUsu_TR999usuNiv.Open;
+
+
+end;
+
+end.
+

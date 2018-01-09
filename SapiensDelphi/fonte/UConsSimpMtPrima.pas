@@ -1,0 +1,269 @@
+unit UConsSimpMtPrima;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, RXDBCtrl, DB, StdCtrls, Buttons, RbDrawCore,
+  RbButton;
+
+type
+  TFConsSimpMtPrima = class(TForm)
+    BPesquisa: TSpeedButton;
+    LDescricaoPesquisa: TLabel;
+    FiltroPesquisa: TListBox;
+    EdPesquisa: TEdit;
+    DSBrig: TDataSource;
+    DBEGrig: TRxDBGrid;
+    BSeleciona: TRbButton;
+    BCancelar: TRbButton;
+    procedure FiltroPesquisaClick(Sender: TObject);
+    procedure EdPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure EdPesquisaExit(Sender: TObject);
+    procedure BPesquisaClick(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure BCancelarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FConsSimpMtPrima: TFConsSimpMtPrima;
+
+implementation
+
+uses UDataModule1, UConsSimpClasse, UConsSimpSetor;
+
+{$R *.dfm}
+
+procedure TFConsSimpMtPrima.FiltroPesquisaClick(Sender: TObject);
+begin
+EdPesquisa.Clear;
+DataModule1.IBQConsClasse.Close;
+
+if FiltroPesquisa.ItemIndex = 0 then
+  begin
+      LDescricaoPesquisa.Caption := 'Geral';
+      EdPesquisa.ReadOnly := true;
+      BPesquisa.Click;
+  end
+else
+  if FiltroPesquisa.ItemIndex = 1 then
+    begin
+      LDescricaoPesquisa.Caption := 'Código';
+      EdPesquisa.ReadOnly := false;
+      EdPesquisa.MaxLength := 6;
+    end
+  else
+    if FiltroPesquisa.ItemIndex = 2 then
+      begin
+         LDescricaoPesquisa.Caption := 'Descrição';
+         EdPesquisa.ReadOnly := false;
+         EdPesquisa.MaxLength := 100;
+      end
+    else
+    if FiltroPesquisa.ItemIndex = 3 then
+      begin
+         LDescricaoPesquisa.Caption := 'Classe';
+         EdPesquisa.ReadOnly := false;
+         EdPesquisa.MaxLength := 6;
+
+         Application.CreateForm(TFConsSimpClasse, FConsSimpClasse);
+         if FConsSimpClasse.ShowModal = mrOk then
+          begin
+
+            EdPesquisa.Text := IntToStr(DataModule1.IBQConsClasseCD_CLASSE.AsInteger);
+            BPesquisa.Click;
+
+          end;
+      end
+    else
+    if FiltroPesquisa.ItemIndex = 4 then
+      begin
+         LDescricaoPesquisa.Caption := 'Setor';
+         EdPesquisa.ReadOnly := false;
+         EdPesquisa.MaxLength := 6;
+
+      Application.CreateForm(TFConsSimpSetor, FConsSimpSetor);
+      if FConsSimpSetor.ShowModal = mrOk then
+        begin
+
+          EdPesquisa.Text := IntToStr(DataModule1.IBQConsSetorCD_SETOR.AsInteger);
+          BPesquisa.Click;
+        end;
+      end;
+end;
+
+procedure TFConsSimpMtPrima.EdPesquisaKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+if (FiltroPesquisa.ItemIndex = 1) or (FiltroPesquisa.ItemIndex = 3)
+or (FiltroPesquisa.ItemIndex = 4) then
+  begin
+    if not (key in [#48..#57]) and not (key in [#8])
+      and not (key in [#240]) then
+      key := #0;
+  end;
+end;
+
+procedure TFConsSimpMtPrima.EdPesquisaExit(Sender: TObject);
+begin
+BPesquisa.Click;
+end;
+
+procedure TFConsSimpMtPrima.BPesquisaClick(Sender: TObject);
+begin
+if FiltroPesquisa.ItemIndex = 0 then
+  begin
+    DataModule1.IBQConsMatPrima.Close;
+    DataModule1.IBQConsMatPrima.SQL.Clear;
+    DataModule1.IBQConsMatPrima.SQL.Add('select mt.*, st.ds_setor, un.ds_unidade,');
+    DataModule1.IBQConsMatPrima.SQL.Add('un.sigla_unidade, cl.ds_classe');
+    DataModule1.IBQConsMatPrima.SQL.Add('from MATERIA_PRIMA mt, SETOR st,');
+    DataModule1.IBQConsMatPrima.SQL.Add('UNIDADE_MEDIDA un, CLASSE_MAT_PRIMA cl');
+    DataModule1.IBQConsMatPrima.SQL.Add('where');
+    DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_setor = st.cd_setor and');
+    DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_classe = cl.cd_classe and');
+    DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_un_medida = un.cd_unidade order by cd_mat_prima asc');
+    DataModule1.IBQConsMatPrima.Open;
+    if DataModule1.IBQConsMatPrima.IsEmpty then
+    begin
+      ShowMessage('Não existe Matéria Prima Cadastrada');
+    end;
+  end
+  else
+    if  FiltroPesquisa.ItemIndex = 1 then
+      begin
+        if EdPesquisa.Text <> '' then
+          begin
+            DataModule1.IBQConsMatPrima.Close;
+            DataModule1.IBQConsMatPrima.SQL.Clear;
+            DataModule1.IBQConsMatPrima.SQL.Add('select mt.*, st.ds_setor, un.ds_unidade,');
+            DataModule1.IBQConsMatPrima.SQL.Add('un.sigla_unidade, cl.ds_classe');
+            DataModule1.IBQConsMatPrima.SQL.Add('from MATERIA_PRIMA mt, SETOR st,');
+            DataModule1.IBQConsMatPrima.SQL.Add('UNIDADE_MEDIDA un, CLASSE_MAT_PRIMA cl');
+            DataModule1.IBQConsMatPrima.SQL.Add('where');
+            DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_setor = st.cd_setor and');
+            DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_classe = cl.cd_classe and');
+            DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_un_medida = un.cd_unidade and');
+            DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima = :pmateria');
+            DataModule1.IBQConsMatPrima.ParamByName('pmateria').AsInteger := StrToInt(EdPesquisa.Text);
+            DataModule1.IBQConsMatPrima.Open;
+            if DataModule1.IBQConsMatPrima.IsEmpty then
+              begin
+                ShowMessage('Não existe Matéria Prima Cadastrada');
+                EdPesquisa.Clear;
+                EdPesquisa.SetFocus;
+              end;
+          end;
+      end
+      else
+      if (FiltroPesquisa.ItemIndex = 2) and (EdPesquisa.Text <> '') then
+        begin
+          if EdPesquisa.Text <> '' then
+            begin
+              DataModule1.IBQConsMatPrima.Close;
+              DataModule1.IBQConsMatPrima.SQL.Clear;
+              DataModule1.IBQConsMatPrima.SQL.Add('select mt.*, st.ds_setor, un.ds_unidade,');
+              DataModule1.IBQConsMatPrima.SQL.Add('un.sigla_unidade, cl.ds_classe');
+              DataModule1.IBQConsMatPrima.SQL.Add('from MATERIA_PRIMA mt, SETOR st,');
+              DataModule1.IBQConsMatPrima.SQL.Add('UNIDADE_MEDIDA un, CLASSE_MAT_PRIMA cl');
+              DataModule1.IBQConsMatPrima.SQL.Add('where');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_setor = st.cd_setor and');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_classe = cl.cd_classe and');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_un_medida = un.cd_unidade and');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.ds_mat_prima LIKE'
+                                          +QuotedStr('%'+EdPesquisa.Text+'%'));
+              DataModule1.IBQConsMatPrima.Open;
+              if DataModule1.IBQConsMatPrima.IsEmpty then
+              begin
+                ShowMessage('Não existe Matéria Prima cadastrada');
+                EdPesquisa.Clear;
+                EdPesquisa.SetFocus;
+              end;
+        end;
+      end
+      else
+      if (FiltroPesquisa.ItemIndex = 3) and (EdPesquisa.Text <> '') then
+        begin
+          if EdPesquisa.Text <> '' then
+            begin
+              DataModule1.IBQConsMatPrima.Close;
+              DataModule1.IBQConsMatPrima.SQL.Clear;
+              DataModule1.IBQConsMatPrima.SQL.Add('select mt.*, st.ds_setor, un.ds_unidade,');
+              DataModule1.IBQConsMatPrima.SQL.Add('un.sigla_unidade, cl.ds_classe');
+              DataModule1.IBQConsMatPrima.SQL.Add('from MATERIA_PRIMA mt, SETOR st,');
+              DataModule1.IBQConsMatPrima.SQL.Add('UNIDADE_MEDIDA un, CLASSE_MAT_PRIMA cl');
+              DataModule1.IBQConsMatPrima.SQL.Add('where');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_setor = st.cd_setor and');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_classe = cl.cd_classe and');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_un_medida = un.cd_unidade and');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_classe = :pclasse');
+              DataModule1.IBQConsMatPrima.ParamByName('pclasse').AsInteger := StrToInt(EdPesquisa.Text);
+              DataModule1.IBQConsMatPrima.Open;
+              if DataModule1.IBQConsMatPrima.IsEmpty then
+              begin
+                ShowMessage('Não existe Matéria Prima cadastrada');
+                EdPesquisa.Clear;
+                EdPesquisa.SetFocus;
+              end;
+        end;
+      end
+      else
+      if (FiltroPesquisa.ItemIndex = 4) and (EdPesquisa.Text <> '') then
+        begin
+          if EdPesquisa.Text <> '' then
+            begin
+              DataModule1.IBQConsMatPrima.Close;
+              DataModule1.IBQConsMatPrima.SQL.Clear;
+              DataModule1.IBQConsMatPrima.SQL.Add('select mt.*, st.ds_setor, un.ds_unidade,');
+              DataModule1.IBQConsMatPrima.SQL.Add('un.sigla_unidade, cl.ds_classe');
+              DataModule1.IBQConsMatPrima.SQL.Add('from MATERIA_PRIMA mt, SETOR st,');
+              DataModule1.IBQConsMatPrima.SQL.Add('UNIDADE_MEDIDA un, CLASSE_MAT_PRIMA cl');
+              DataModule1.IBQConsMatPrima.SQL.Add('where');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_setor = st.cd_setor and');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_classe = cl.cd_classe and');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_un_medida = un.cd_unidade and');
+              DataModule1.IBQConsMatPrima.SQL.Add('mt.cd_setor = :psetor');
+              DataModule1.IBQConsMatPrima.ParamByName('psetor').AsInteger := StrToInt(EdPesquisa.Text);
+              DataModule1.IBQConsMatPrima.Open;
+              if DataModule1.IBQConsMatPrima.IsEmpty then
+              begin
+                ShowMessage('Não existe Matéria Prima cadastrada');
+                EdPesquisa.Clear;
+                EdPesquisa.SetFocus;
+              end;
+        end;
+      end;
+
+end;
+
+procedure TFConsSimpMtPrima.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+    begin
+      key := #0;
+      Perform (Wm_NextDlgCtl,0,0);
+    end;
+if key = #27 then
+  begin
+     BCancelar.Click;
+  end;
+end;
+
+procedure TFConsSimpMtPrima.BCancelarClick(Sender: TObject);
+begin
+Close;
+end;
+
+procedure TFConsSimpMtPrima.FormShow(Sender: TObject);
+begin
+  FiltroPesquisa.ItemIndex := 2;
+FiltroPesquisaClick(sender);
+EdPesquisa.SetFocus;
+end;
+
+end.

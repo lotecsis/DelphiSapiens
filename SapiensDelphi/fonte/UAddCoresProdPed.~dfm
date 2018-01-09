@@ -1,0 +1,556 @@
+object FAddCoresProdPed: TFAddCoresProdPed
+  Left = 398
+  Top = 216
+  Width = 410
+  Height = 333
+  Caption = 'Cores'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 65
+    Top = 124
+    Width = 30
+    Height = 13
+    Caption = 'Tipo:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 53
+    Top = 154
+    Width = 42
+    Height = 13
+    Caption = 'Cor 01:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 53
+    Top = 182
+    Width = 42
+    Height = 13
+    Caption = 'Cor 02:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 27
+    Top = 95
+    Width = 68
+    Height = 13
+    Caption = 'Qtd.Pedida:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 6
+    Top = 211
+    Width = 89
+    Height = 13
+    Caption = 'Qtd.Cancelada:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 29
+    Top = 239
+    Width = 66
+    Height = 13
+    Caption = 'Qtd.Aberto:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object BPesCor01: TSpeedButton
+    Left = 200
+    Top = 148
+    Width = 23
+    Height = 20
+    Glyph.Data = {
+      3E020000424D3E0200000000000036000000280000000D0000000D0000000100
+      18000000000008020000120B0000120B00000000000000000000EEEAECEDEAEC
+      EDEAECE4DFE1EDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEEEA
+      EC00EDEAEBEDE9EBEDE9EB9E806FD3CFD0EBE7E9EDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBEDEAEB00EDEAECEDE9EBEDE9EB9556289F7C63DCD7D8ECE8EAED
+      E9EBEDE9EBEDE9EBEDE9EBEDE9EBEDEAEC00EDEAECEDE9EBEDE9EB975E33AC69
+      37A57F67DFDADBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDEAEC00EDEAECEDE9EB
+      EDE9EB9E6438A96B3AA96939A77F63DFD6D5EDE9EBEDE9EBEDE9EBEDE9EBEDEA
+      EC00EDEAECEDE9EBEDE9EBA56737A36332A76837A86C3CAF7D62E1D7CFEDE9EB
+      EDE9EBEDE9EBEDEAEC00EDEAECEDE9EBEDE9EBA86A39A86B3AA86A38AE7241AB
+      7048A87F5BD1C4B3EDE9EBEDE9EBEDEAEC00EDEAECEDE9EBEDE9EBB47A4AB278
+      47B57C4BB57F53A26D47C1A494E2D8D6EDE9EBEDE9EBEDEAEC00EDEAECEDE9EB
+      EDE9EBB47F52B88050B68256A3704BCAB2A6EDE9EBEDE9EBEDE9EBEDE9EBEDEA
+      EC00EDEAECEDE9EBEDE9EBA9754EBD8B62A3714ECFBCB1EDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBEDEAEC00EDEAECEDE9EBEDE9EB9D673EAA7B5AD6C5BEEDE9EBED
+      E9EBEDE9EBEDE9EBEDE9EBEDE9EBEDEAEC00EDEAEBEDE9EBEDE9EBA67B5FDBCD
+      CAEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDEAEB00EEEAECEDEAEC
+      EDEAECD0BBB3EDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEEEA
+      EC00}
+    OnClick = BPesCor01Click
+  end
+  object BPesCor02: TSpeedButton
+    Left = 201
+    Top = 175
+    Width = 23
+    Height = 20
+    Glyph.Data = {
+      3E020000424D3E0200000000000036000000280000000D0000000D0000000100
+      18000000000008020000120B0000120B00000000000000000000EEEAECEDEAEC
+      EDEAECE4DFE1EDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEEEA
+      EC00EDEAEBEDE9EBEDE9EB9E806FD3CFD0EBE7E9EDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBEDEAEB00EDEAECEDE9EBEDE9EB9556289F7C63DCD7D8ECE8EAED
+      E9EBEDE9EBEDE9EBEDE9EBEDE9EBEDEAEC00EDEAECEDE9EBEDE9EB975E33AC69
+      37A57F67DFDADBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDEAEC00EDEAECEDE9EB
+      EDE9EB9E6438A96B3AA96939A77F63DFD6D5EDE9EBEDE9EBEDE9EBEDE9EBEDEA
+      EC00EDEAECEDE9EBEDE9EBA56737A36332A76837A86C3CAF7D62E1D7CFEDE9EB
+      EDE9EBEDE9EBEDEAEC00EDEAECEDE9EBEDE9EBA86A39A86B3AA86A38AE7241AB
+      7048A87F5BD1C4B3EDE9EBEDE9EBEDEAEC00EDEAECEDE9EBEDE9EBB47A4AB278
+      47B57C4BB57F53A26D47C1A494E2D8D6EDE9EBEDE9EBEDEAEC00EDEAECEDE9EB
+      EDE9EBB47F52B88050B68256A3704BCAB2A6EDE9EBEDE9EBEDE9EBEDE9EBEDEA
+      EC00EDEAECEDE9EBEDE9EBA9754EBD8B62A3714ECFBCB1EDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBEDEAEC00EDEAECEDE9EBEDE9EB9D673EAA7B5AD6C5BEEDE9EBED
+      E9EBEDE9EBEDE9EBEDE9EBEDE9EBEDEAEC00EDEAEBEDE9EBEDE9EBA67B5FDBCD
+      CAEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDEAEB00EEEAECEDEAEC
+      EDEAECD0BBB3EDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEDEAECEEEA
+      EC00}
+    OnClick = BPesCor02Click
+  end
+  object LDsTipCmb: TLabel
+    Left = 211
+    Top = 123
+    Width = 3
+    Height = 13
+  end
+  object EdTipCmb: TCurrencyEdit
+    Left = 102
+    Top = 117
+    Width = 99
+    Height = 21
+    Alignment = taLeftJustify
+    AutoSize = False
+    DisplayFormat = '0'
+    TabOrder = 1
+    OnExit = EdTipCmbExit
+  end
+  object EdCor001: TCurrencyEdit
+    Left = 102
+    Top = 147
+    Width = 100
+    Height = 21
+    Alignment = taLeftJustify
+    AutoSize = False
+    DisplayFormat = '0'
+    TabOrder = 2
+    OnExit = EdCor001Exit
+    OnKeyDown = EdCor001KeyDown
+  end
+  object EdCor002: TCurrencyEdit
+    Left = 102
+    Top = 175
+    Width = 100
+    Height = 21
+    Alignment = taLeftJustify
+    AutoSize = False
+    DisplayFormat = '0'
+    TabOrder = 3
+    OnExit = EdCor002Exit
+    OnKeyDown = EdCor002KeyDown
+  end
+  object EdQtdPed: TCurrencyEdit
+    Left = 102
+    Top = 88
+    Width = 100
+    Height = 21
+    Alignment = taLeftJustify
+    AutoSize = False
+    DisplayFormat = '0'
+    TabOrder = 0
+    OnExit = EdQtdPedExit
+  end
+  object EdQtdCan: TCurrencyEdit
+    Left = 102
+    Top = 204
+    Width = 100
+    Height = 21
+    Alignment = taLeftJustify
+    AutoSize = False
+    DisplayFormat = '0'
+    TabOrder = 4
+    OnExit = EdQtdCanExit
+  end
+  object EdQtdAbe: TCurrencyEdit
+    Left = 102
+    Top = 232
+    Width = 100
+    Height = 21
+    TabStop = False
+    Alignment = taLeftJustify
+    AutoSize = False
+    DisplayFormat = '0'
+    ReadOnly = True
+    TabOrder = 5
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 399
+    Height = 77
+    BevelOuter = bvLowered
+    TabOrder = 6
+    object Label7: TLabel
+      Left = 28
+      Top = 8
+      Width = 44
+      Height = 13
+      Caption = 'Pedido:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 24
+      Top = 29
+      Width = 49
+      Height = 13
+      Caption = 'Produto:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 6
+      Top = 52
+      Width = 68
+      Height = 13
+      Caption = 'Qtd.Pedido:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label11: TLabel
+      Left = 139
+      Top = 53
+      Width = 66
+      Height = 13
+      Caption = 'Qtd.Aberto:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LNumPed: TLabel
+      Left = 79
+      Top = 8
+      Width = 5
+      Height = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LCodPro: TLabel
+      Left = 79
+      Top = 29
+      Width = 5
+      Height = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LQtdPed: TLabel
+      Left = 79
+      Top = 53
+      Width = 5
+      Height = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object LQtdAbe: TLabel
+      Left = 211
+      Top = 53
+      Width = 5
+      Height = 13
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+  object BProcessa: TBitBtn
+    Left = 185
+    Top = 268
+    Width = 100
+    Height = 25
+    Caption = 'Processar'
+    TabOrder = 7
+    OnClick = BProcessaClick
+    Glyph.Data = {
+      E6040000424DE604000000000000360000002800000014000000140000000100
+      180000000000B0040000120B0000120B00000000000000000000EDE9EBEDE9EB
+      EDE9EBE9E5E7E6E3E5E3DFE1E0DCDEDCD9DAE3DFE1E3DFE1DAD7D9DEDADCE1DD
+      DFE4E0E2E8E4E6EBE7E9ECE8EAEDE9EBEDE9EBEDE9EBEAE6E8E9E5E7E3DFE1D9
+      D6D8CFCCCEC5C2C3BBB8B9B5B2B47D8995999CA2B8B5B6B4B1B3BFBBBDC7C4C5
+      D2CFD0DCD9DAE6E2E4EBE7E9EDE9EBEDE9EBEBE7E9EBE7E9E8E4E6E4E0E2DFDB
+      DDD9D5D7D3CFD1D9D5D7718EA5518DB5CCC9CBD6D2D4D4D0D2DAD7D9E0DCDEE6
+      E2E4E8E4E6ECE8EAEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBC3CCD83BA9EDA1B6CCEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+      EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+      E9EBDADCE454A8E348A6E9D0D8E4EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBE6E5
+      EA6FABDC39A2F473ADDDECE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+      E9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB98BDE0
+      2F96F53BA4F5A5C3E1EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+      EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBBED0E543A3F32B
+      95FD5AB1EECFDAE8EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBDBE0EA67B4ED2D97FA38A1
+      FA7CB8E8EBE8EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+      E9EBEDE9EBE5E5EBACCBEA9FC7EBA8CBEBA6C9EB6DBCEF369FFA2B97FB4DB0F6
+      ACCCEBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+      EBE4E5EB78BFF14CB3F941A8F944ABF943AAF8329DF92998F937A3FA66B8F3D6
+      DEEBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      90C3F141A8F92A98FA2C9AFA2C9BF937A2FA3FA9FA3CA7FA5ABCFA87C1F1EBE8
+      EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBB2CFEF52
+      B2F8319FF934A2FA30A0FA4EB3FA75C1F887C0F38EC6F483BEF4D5DEEDEDE9EB
+      EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBDFE3EC76C4F840B4
+      FB41B5FB42B7FC46BBFC76C7F9CAD9EEEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+      E9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB8CC9F55BCCFD4AC4FD
+      4FC7FD4CC9FD64D3FD92C8F5EBE8EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+      EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB99C7F269D2FC4BCBFD53CFFE52
+      D0FE58D6FE83D8FCBDD4EEEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBC3D7EE75D3FC52D4FE59D4FE5AD5FD57D4
+      FD72DEFD93CBF6E3E4ECEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+      E9EBEDE9EBEDE9EBEDE9EBE6E6EB92D4F95DD8FD56D3FD5BD4FD5BD4FC5DD7FB
+      86DCFCB5D2F0EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+      EBEDE9EBEDE9EBEBE8EB97CDF692E9FC78DEFC80E1FC82E1FC7DDFFC92E9FC9F
+      D5F7E2E4ECEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBABCFF08FCCF892CEF795CEF895CEF894CDF893CEF78BCAF7B5D3
+      EFEDE9EBEDE9EBEDE9EB}
+  end
+  object BCancela: TBitBtn
+    Left = 293
+    Top = 268
+    Width = 100
+    Height = 25
+    Caption = 'Cancelar'
+    TabOrder = 8
+    TabStop = False
+    OnClick = BCancelaClick
+    Glyph.Data = {
+      26040000424D2604000000000000360000002800000012000000120000000100
+      180000000000F0030000120B0000120B00000000000000000000FFFFFFFFFFFF
+      FFFFFFFFFFFFF6F3F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFF6F3F0FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFDBD1C5D6C9
+      B9E6DFD7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE4DCD3CBBBA8DCD2C7FF
+      FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFD5CABFA89074CAB9A5B49F86E5DED6FF
+      FFFFFFFFFFFFFFFFFFFFFFE4DCD4AF997FBAA48CA68E72D8CEC3FFFFFFFFFFFF
+      0000FFFFFFD6CCC19A8064A2886A9E8363B0987DAF997FE6DFD8FFFFFFFFFFFF
+      E4DDD5AE977CB1997E9F8364A48A6D9B8064D6CCC1FFFFFF0000F0ECE7C3B09C
+      9B8063907354997D5E9E8264AF967BAE967CE8E2DBE7E1D9AD957CAF977C9D82
+      62987C5D9073539A7E60B19B82EDE9E50000FBFAF9BEAF9F9A7F628C6E4F9072
+      53957859987C5DA99073B8A38AB6A188A99074987B5C9477588E71528E705198
+      7C5FBCAB9BFBFAF90000FFFFFFFFFFFFB09D8B967B5D896B4C8A6D4E8E71528F
+      7252AF977DAE977D8F71528E7152896C4C8B6D4E95795CB3A291FFFFFFFFFFFF
+      0000FFFFFFFFFFFFFFFFFFAF9D8A94785B826444816343866849866748866848
+      86684881634486684992775AB2A190FFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+      FFFFFFFFFFFFAE9D8D987D61856749795A3B7B5C3D7B5C3D78593A816345957A
+      5DB1A091FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFD3CB
+      C4AC9780A78F75795A3A7D5E3F7D5E3F7A5B3C987C5F957B61D7CFCAFFFFFFFF
+      FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFC7C0BC71574191755882634482
+      64458163448263448364458364458A6C4E6A513BCAC3BFFFFFFFFFFFFFFFFFFF
+      0000FFFFFFFFFFFFBCBCBC5742349B80648D6F508B6E4F8B6D4E94785A927556
+      8B6D4E8C6E4F8E705193775A503D2FC0C0C0FFFFFFFFFFFF0000FFFFFFBEBEBE
+      3A3633A79076A4896AA18668A18567A48A6CCAB9A5BEAA93A3886AA18567A186
+      68A58A6A9D866D383531C1C1C1FFFFFF0000DBDAD98B7A6BC5B5A2BCA588B8A2
+      87B8A287C0AB92B09980C1B1A2BCAB9BB29C83BEA990B8A287B8A287BEA78BB4
+      A18B716052E1E1E00000EFEFEF7A736DACA093DAC9B5CFBEA9D8CAB8BEAC97BE
+      AD9DFFFFFFFFFFFFB9A896C4B39ED7C7B5CFBEAADBCBB79D9184736C67F3F3F3
+      0000FFFFFFF7F7F7665A54C5B7A9F2ECE4CABBAABDAD9BFFFFFFFFFFFFFFFFFF
+      FFFFFFBAA996D2C5B6F2EBE1BEAFA169605CFAFAFAFFFFFF0000FFFFFFFFFFFF
+      F8F7F7A18E7CEBE4DCBFAF9EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBDAC
+      9AE1D8CD9A8775FBFBFBFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFF8F6F5D5CB
+      C1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD4CABFFBFAF9FF
+      FFFFFFFFFFFFFFFF0000}
+  end
+  object UltimoSeqIte: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'codemp'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codfil'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'numped'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'seqipd'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select usu_seqite from usu_t120ipd where'
+      '                          usu_codemp = :codemp and'
+      '                          usu_codfil = :codfil and'
+      '                          usu_numped = :numped and'
+      '                          usu_seqipd = :seqipd'
+      '                          order by usu_seqite desc')
+    Left = 344
+    Top = 96
+    object UltimoSeqIteUSU_SEQITE: TIntegerField
+      FieldName = 'USU_SEQITE'
+    end
+  end
+  object ValidaCor: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'codemp'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codpro'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codder'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codtec'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tdercor where'
+      '                          usu_codemp = :codemp and'
+      '                          usu_codpro = :codpro and'
+      '                          usu_codder = :codder and'
+      '                          usu_codtec = :codtec and'
+      '                          usu_sittec = '#39'A'#39)
+    Left = 336
+    Top = 216
+    object ValidaCorUSU_CODEMP: TIntegerField
+      FieldName = 'USU_CODEMP'
+    end
+    object ValidaCorUSU_CODPRO: TStringField
+      FieldName = 'USU_CODPRO'
+      Size = 14
+    end
+    object ValidaCorUSU_CODDER: TStringField
+      FieldName = 'USU_CODDER'
+      Size = 7
+    end
+    object ValidaCorUSU_CODTEC: TStringField
+      FieldName = 'USU_CODTEC'
+      Size = 14
+    end
+    object ValidaCorUSU_SITTEC: TStringField
+      FieldName = 'USU_SITTEC'
+      Size = 1
+    end
+    object ValidaCorUSU_DESTEC: TStringField
+      FieldName = 'USU_DESTEC'
+      Size = 50
+    end
+  end
+  object ValidaTipCmb: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'codtip'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_ttipcmb where usu_codtip = :codtip')
+    Left = 344
+    Top = 152
+    object ValidaTipCmbUSU_CODTIP: TIntegerField
+      FieldName = 'USU_CODTIP'
+    end
+    object ValidaTipCmbUSU_DESTIP: TStringField
+      FieldName = 'USU_DESTIP'
+      Size = 100
+    end
+    object ValidaTipCmbUSU_ABRTIP: TStringField
+      FieldName = 'USU_ABRTIP'
+      Size = 15
+    end
+  end
+end

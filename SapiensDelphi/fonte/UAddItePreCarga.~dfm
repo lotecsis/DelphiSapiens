@@ -1,0 +1,1397 @@
+object FAddItePreCarga: TFAddItePreCarga
+  Left = 217
+  Top = 194
+  Width = 583
+  Height = 186
+  Caption = 'Adiciona Pedidos em Pr'#233'-Carga '
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 33
+    Top = 16
+    Width = 61
+    Height = 13
+    Caption = 'Pr'#233'-Carga:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 63
+    Top = 42
+    Width = 31
+    Height = 13
+    Caption = 'Filial:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 50
+    Top = 69
+    Width = 44
+    Height = 13
+    Caption = 'Pedido:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 6
+    Top = 96
+    Width = 88
+    Height = 13
+    Caption = 'Representante:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object LDscliente: TLabel
+    Left = 225
+    Top = 69
+    Width = 5
+    Height = 13
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object LDsRepresentante: TLabel
+    Left = 224
+    Top = 96
+    Width = 5
+    Height = 13
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object EdPreCar: TEdit
+    Left = 97
+    Top = 8
+    Width = 121
+    Height = 21
+    TabStop = False
+    ReadOnly = True
+    TabOrder = 0
+  end
+  object EdFilial: TEdit
+    Left = 97
+    Top = 35
+    Width = 121
+    Height = 21
+    TabOrder = 1
+    OnExit = EdFilialExit
+  end
+  object EdPedido: TEdit
+    Left = 97
+    Top = 62
+    Width = 121
+    Height = 21
+    TabOrder = 2
+    OnExit = EdPedidoExit
+  end
+  object EdCodRep: TEdit
+    Left = 97
+    Top = 90
+    Width = 121
+    Height = 21
+    TabStop = False
+    ReadOnly = True
+    TabOrder = 3
+  end
+  object BProcessa: TBitBtn
+    Left = 384
+    Top = 123
+    Width = 85
+    Height = 25
+    Caption = 'Processar'
+    TabOrder = 4
+    OnClick = BProcessaClick
+    Glyph.Data = {
+      E6040000424DE604000000000000360000002800000014000000140000000100
+      180000000000B0040000120B0000120B00000000000000000000EDE9EBEDE9EB
+      EDE9EBE9E5E7E6E3E5E3DFE1E0DCDEDCD9DAE3DFE1E3DFE1DAD7D9DEDADCE1DD
+      DFE4E0E2E8E4E6EBE7E9ECE8EAEDE9EBEDE9EBEDE9EBEAE6E8E9E5E7E3DFE1D9
+      D6D8CFCCCEC5C2C3BBB8B9B5B2B47D8995999CA2B8B5B6B4B1B3BFBBBDC7C4C5
+      D2CFD0DCD9DAE6E2E4EBE7E9EDE9EBEDE9EBEBE7E9EBE7E9E8E4E6E4E0E2DFDB
+      DDD9D5D7D3CFD1D9D5D7718EA5518DB5CCC9CBD6D2D4D4D0D2DAD7D9E0DCDEE6
+      E2E4E8E4E6ECE8EAEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBC3CCD83BA9EDA1B6CCEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+      EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+      E9EBDADCE454A8E348A6E9D0D8E4EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBE6E5
+      EA6FABDC39A2F473ADDDECE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+      E9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB98BDE0
+      2F96F53BA4F5A5C3E1EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+      EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBBED0E543A3F32B
+      95FD5AB1EECFDAE8EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBDBE0EA67B4ED2D97FA38A1
+      FA7CB8E8EBE8EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+      E9EBEDE9EBE5E5EBACCBEA9FC7EBA8CBEBA6C9EB6DBCEF369FFA2B97FB4DB0F6
+      ACCCEBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+      EBE4E5EB78BFF14CB3F941A8F944ABF943AAF8329DF92998F937A3FA66B8F3D6
+      DEEBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      90C3F141A8F92A98FA2C9AFA2C9BF937A2FA3FA9FA3CA7FA5ABCFA87C1F1EBE8
+      EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBB2CFEF52
+      B2F8319FF934A2FA30A0FA4EB3FA75C1F887C0F38EC6F483BEF4D5DEEDEDE9EB
+      EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBDFE3EC76C4F840B4
+      FB41B5FB42B7FC46BBFC76C7F9CAD9EEEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+      E9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB8CC9F55BCCFD4AC4FD
+      4FC7FD4CC9FD64D3FD92C8F5EBE8EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+      EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB99C7F269D2FC4BCBFD53CFFE52
+      D0FE58D6FE83D8FCBDD4EEEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBC3D7EE75D3FC52D4FE59D4FE5AD5FD57D4
+      FD72DEFD93CBF6E3E4ECEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+      E9EBEDE9EBEDE9EBEDE9EBE6E6EB92D4F95DD8FD56D3FD5BD4FD5BD4FC5DD7FB
+      86DCFCB5D2F0EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+      EBEDE9EBEDE9EBEBE8EB97CDF692E9FC78DEFC80E1FC82E1FC7DDFFC92E9FC9F
+      D5F7E2E4ECEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+      EDE9EBEDE9EBABCFF08FCCF892CEF795CEF895CEF894CDF893CEF78BCAF7B5D3
+      EFEDE9EBEDE9EBEDE9EB}
+  end
+  object BCancela: TBitBtn
+    Left = 483
+    Top = 123
+    Width = 85
+    Height = 25
+    Caption = 'Cancelar'
+    TabOrder = 5
+    TabStop = False
+    OnClick = BCancelaClick
+    Glyph.Data = {
+      26040000424D2604000000000000360000002800000012000000120000000100
+      180000000000F0030000120B0000120B00000000000000000000FFFFFFFFFFFF
+      FFFFFFFFFFFFF6F3F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFF6F3F0FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFDBD1C5D6C9
+      B9E6DFD7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE4DCD3CBBBA8DCD2C7FF
+      FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFD5CABFA89074CAB9A5B49F86E5DED6FF
+      FFFFFFFFFFFFFFFFFFFFFFE4DCD4AF997FBAA48CA68E72D8CEC3FFFFFFFFFFFF
+      0000FFFFFFD6CCC19A8064A2886A9E8363B0987DAF997FE6DFD8FFFFFFFFFFFF
+      E4DDD5AE977CB1997E9F8364A48A6D9B8064D6CCC1FFFFFF0000F0ECE7C3B09C
+      9B8063907354997D5E9E8264AF967BAE967CE8E2DBE7E1D9AD957CAF977C9D82
+      62987C5D9073539A7E60B19B82EDE9E50000FBFAF9BEAF9F9A7F628C6E4F9072
+      53957859987C5DA99073B8A38AB6A188A99074987B5C9477588E71528E705198
+      7C5FBCAB9BFBFAF90000FFFFFFFFFFFFB09D8B967B5D896B4C8A6D4E8E71528F
+      7252AF977DAE977D8F71528E7152896C4C8B6D4E95795CB3A291FFFFFFFFFFFF
+      0000FFFFFFFFFFFFFFFFFFAF9D8A94785B826444816343866849866748866848
+      86684881634486684992775AB2A190FFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+      FFFFFFFFFFFFAE9D8D987D61856749795A3B7B5C3D7B5C3D78593A816345957A
+      5DB1A091FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFD3CB
+      C4AC9780A78F75795A3A7D5E3F7D5E3F7A5B3C987C5F957B61D7CFCAFFFFFFFF
+      FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFC7C0BC71574191755882634482
+      64458163448263448364458364458A6C4E6A513BCAC3BFFFFFFFFFFFFFFFFFFF
+      0000FFFFFFFFFFFFBCBCBC5742349B80648D6F508B6E4F8B6D4E94785A927556
+      8B6D4E8C6E4F8E705193775A503D2FC0C0C0FFFFFFFFFFFF0000FFFFFFBEBEBE
+      3A3633A79076A4896AA18668A18567A48A6CCAB9A5BEAA93A3886AA18567A186
+      68A58A6A9D866D383531C1C1C1FFFFFF0000DBDAD98B7A6BC5B5A2BCA588B8A2
+      87B8A287C0AB92B09980C1B1A2BCAB9BB29C83BEA990B8A287B8A287BEA78BB4
+      A18B716052E1E1E00000EFEFEF7A736DACA093DAC9B5CFBEA9D8CAB8BEAC97BE
+      AD9DFFFFFFFFFFFFB9A896C4B39ED7C7B5CFBEAADBCBB79D9184736C67F3F3F3
+      0000FFFFFFF7F7F7665A54C5B7A9F2ECE4CABBAABDAD9BFFFFFFFFFFFFFFFFFF
+      FFFFFFBAA996D2C5B6F2EBE1BEAFA169605CFAFAFAFFFFFF0000FFFFFFFFFFFF
+      F8F7F7A18E7CEBE4DCBFAF9EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBDAC
+      9AE1D8CD9A8775FBFBFBFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFF8F6F5D5CB
+      C1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD4CABFFBFAF9FF
+      FFFFFFFFFFFFFFFF0000}
+  end
+  object ValidaFilial: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'codemp'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codfil'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from e070fil where codemp = :codemp and'
+      '                            codfil = :codfil')
+    Left = 512
+    object ValidaFilialCODEMP: TIntegerField
+      FieldName = 'CODEMP'
+    end
+    object ValidaFilialCODFIL: TIntegerField
+      FieldName = 'CODFIL'
+    end
+    object ValidaFilialNOMFIL: TStringField
+      FieldName = 'NOMFIL'
+      Size = 100
+    end
+    object ValidaFilialSIGFIL: TStringField
+      FieldName = 'SIGFIL'
+      Size = 30
+    end
+    object ValidaFilialINSEST: TStringField
+      FieldName = 'INSEST'
+      Size = 25
+    end
+    object ValidaFilialINSMUN: TStringField
+      FieldName = 'INSMUN'
+      Size = 16
+    end
+    object ValidaFilialNUMCGC: TBCDField
+      FieldName = 'NUMCGC'
+      Precision = 15
+      Size = 0
+    end
+    object ValidaFilialENDFIL: TStringField
+      FieldName = 'ENDFIL'
+      Size = 100
+    end
+    object ValidaFilialNUMEND: TIntegerField
+      FieldName = 'NUMEND'
+    end
+    object ValidaFilialCPLEND: TStringField
+      FieldName = 'CPLEND'
+    end
+    object ValidaFilialCEPFIL: TIntegerField
+      FieldName = 'CEPFIL'
+    end
+    object ValidaFilialCEPINI: TIntegerField
+      FieldName = 'CEPINI'
+    end
+    object ValidaFilialCODRAI: TIntegerField
+      FieldName = 'CODRAI'
+    end
+    object ValidaFilialBAIFIL: TStringField
+      FieldName = 'BAIFIL'
+      Size = 75
+    end
+    object ValidaFilialCIDFIL: TStringField
+      FieldName = 'CIDFIL'
+      Size = 60
+    end
+    object ValidaFilialSIGUFS: TStringField
+      FieldName = 'SIGUFS'
+      Size = 2
+    end
+    object ValidaFilialENDENT: TStringField
+      FieldName = 'ENDENT'
+      Size = 100
+    end
+    object ValidaFilialCPLENT: TStringField
+      FieldName = 'CPLENT'
+    end
+    object ValidaFilialCEPENT: TIntegerField
+      FieldName = 'CEPENT'
+    end
+    object ValidaFilialCIDENT: TStringField
+      FieldName = 'CIDENT'
+      Size = 60
+    end
+    object ValidaFilialESTENT: TStringField
+      FieldName = 'ESTENT'
+      Size = 2
+    end
+    object ValidaFilialENDCOB: TStringField
+      FieldName = 'ENDCOB'
+      Size = 100
+    end
+    object ValidaFilialCPLCOB: TStringField
+      FieldName = 'CPLCOB'
+    end
+    object ValidaFilialCEPCOB: TIntegerField
+      FieldName = 'CEPCOB'
+    end
+    object ValidaFilialCIDCOB: TStringField
+      FieldName = 'CIDCOB'
+      Size = 60
+    end
+    object ValidaFilialESTCOB: TStringField
+      FieldName = 'ESTCOB'
+      Size = 2
+    end
+    object ValidaFilialNUMFON: TStringField
+      FieldName = 'NUMFON'
+      Size = 14
+    end
+    object ValidaFilialNUMFAX: TStringField
+      FieldName = 'NUMFAX'
+      Size = 14
+    end
+    object ValidaFilialCXAPST: TIntegerField
+      FieldName = 'CXAPST'
+    end
+    object ValidaFilialINTNET: TStringField
+      FieldName = 'INTNET'
+      Size = 100
+    end
+    object ValidaFilialTIPEMP: TIntegerField
+      FieldName = 'TIPEMP'
+    end
+    object ValidaFilialFILCLI: TIntegerField
+      FieldName = 'FILCLI'
+    end
+    object ValidaFilialFILFOR: TIntegerField
+      FieldName = 'FILFOR'
+    end
+    object ValidaFilialPEDINI: TIntegerField
+      FieldName = 'PEDINI'
+    end
+    object ValidaFilialZONFRA: TIntegerField
+      FieldName = 'ZONFRA'
+    end
+    object ValidaFilialCODSUF: TStringField
+      FieldName = 'CODSUF'
+      Size = 10
+    end
+    object ValidaFilialDIFALI: TStringField
+      FieldName = 'DIFALI'
+      Size = 1
+    end
+    object ValidaFilialCRIFED: TIntegerField
+      FieldName = 'CRIFED'
+    end
+    object ValidaFilialQTDDLB: TIntegerField
+      FieldName = 'QTDDLB'
+    end
+    object ValidaFilialVENPDI: TDateTimeField
+      FieldName = 'VENPDI'
+    end
+    object ValidaFilialVENPDF: TDateTimeField
+      FieldName = 'VENPDF'
+    end
+    object ValidaFilialVENCAE: TIntegerField
+      FieldName = 'VENCAE'
+    end
+    object ValidaFilialVENQDF: TIntegerField
+      FieldName = 'VENQDF'
+    end
+    object ValidaFilialVENTCC: TStringField
+      FieldName = 'VENTCC'
+      Size = 5
+    end
+    object ValidaFilialVENTPP: TStringField
+      FieldName = 'VENTPP'
+      Size = 5
+    end
+    object ValidaFilialVENTPS: TStringField
+      FieldName = 'VENTPS'
+      Size = 5
+    end
+    object ValidaFilialVENDSU: TBCDField
+      FieldName = 'VENDSU'
+      Precision = 5
+      Size = 2
+    end
+    object ValidaFilialVENVMP: TBCDField
+      FieldName = 'VENVMP'
+      Precision = 15
+      Size = 2
+    end
+    object ValidaFilialVENLEP: TIntegerField
+      FieldName = 'VENLEP'
+    end
+    object ValidaFilialVENTCV: TStringField
+      FieldName = 'VENTCV'
+      Size = 2
+    end
+    object ValidaFilialVENCEP: TStringField
+      FieldName = 'VENCEP'
+      Size = 1
+    end
+    object ValidaFilialVENPVP: TStringField
+      FieldName = 'VENPVP'
+      Size = 1
+    end
+    object ValidaFilialVENNPA: TStringField
+      FieldName = 'VENNPA'
+      Size = 1
+    end
+    object ValidaFilialVENCFI: TStringField
+      FieldName = 'VENCFI'
+      Size = 1
+    end
+    object ValidaFilialVENNTR: TStringField
+      FieldName = 'VENNTR'
+      Size = 1
+    end
+    object ValidaFilialVENSNR: TStringField
+      FieldName = 'VENSNR'
+      Size = 3
+    end
+    object ValidaFilialVENQIP: TIntegerField
+      FieldName = 'VENQIP'
+    end
+    object ValidaFilialVENSNP: TStringField
+      FieldName = 'VENSNP'
+      Size = 3
+    end
+    object ValidaFilialVENQDP: TIntegerField
+      FieldName = 'VENQDP'
+    end
+    object ValidaFilialVENRPD: TIntegerField
+      FieldName = 'VENRPD'
+    end
+    object ValidaFilialVENCCC: TStringField
+      FieldName = 'VENCCC'
+      Size = 1
+    end
+    object ValidaFilialVENCCR: TStringField
+      FieldName = 'VENCCR'
+      Size = 1
+    end
+    object ValidaFilialVENCRR: TStringField
+      FieldName = 'VENCRR'
+      Size = 1
+    end
+    object ValidaFilialVENPSE: TStringField
+      FieldName = 'VENPSE'
+      Size = 1
+    end
+    object ValidaFilialVENPAM: TIntegerField
+      FieldName = 'VENPAM'
+    end
+    object ValidaFilialVENPMA: TIntegerField
+      FieldName = 'VENPMA'
+    end
+    object ValidaFilialVENPPC: TIntegerField
+      FieldName = 'VENPPC'
+    end
+    object ValidaFilialVENPTA: TIntegerField
+      FieldName = 'VENPTA'
+    end
+    object ValidaFilialVENPDT: TIntegerField
+      FieldName = 'VENPDT'
+    end
+    object ValidaFilialVENPCS: TIntegerField
+      FieldName = 'VENPCS'
+    end
+    object ValidaFilialVENPLC: TStringField
+      FieldName = 'VENPLC'
+      Size = 1
+    end
+    object ValidaFilialVENFAM: TIntegerField
+      FieldName = 'VENFAM'
+    end
+    object ValidaFilialVENFMA: TIntegerField
+      FieldName = 'VENFMA'
+    end
+    object ValidaFilialVENFPC: TIntegerField
+      FieldName = 'VENFPC'
+    end
+    object ValidaFilialVENFTA: TIntegerField
+      FieldName = 'VENFTA'
+    end
+    object ValidaFilialVENFDT: TIntegerField
+      FieldName = 'VENFDT'
+    end
+    object ValidaFilialVENFCS: TIntegerField
+      FieldName = 'VENFCS'
+    end
+    object ValidaFilialVENFLC: TStringField
+      FieldName = 'VENFLC'
+      Size = 1
+    end
+    object ValidaFilialVENISS: TBCDField
+      FieldName = 'VENISS'
+      Precision = 5
+      Size = 2
+    end
+    object ValidaFilialVENIPD: TIntegerField
+      FieldName = 'VENIPD'
+    end
+    object ValidaFilialVENAPC: TIntegerField
+      FieldName = 'VENAPC'
+    end
+    object ValidaFilialVENLVP: TBCDField
+      FieldName = 'VENLVP'
+      Precision = 4
+      Size = 2
+    end
+    object ValidaFilialESTPDI: TDateTimeField
+      FieldName = 'ESTPDI'
+    end
+    object ValidaFilialESTPDF: TDateTimeField
+      FieldName = 'ESTPDF'
+    end
+    object ValidaFilialESTPAI: TDateTimeField
+      FieldName = 'ESTPAI'
+    end
+    object ValidaFilialESTPAF: TDateTimeField
+      FieldName = 'ESTPAF'
+    end
+    object ValidaFilialESTTEI: TStringField
+      FieldName = 'ESTTEI'
+      Size = 5
+    end
+    object ValidaFilialESTTSI: TStringField
+      FieldName = 'ESTTSI'
+      Size = 5
+    end
+    object ValidaFilialESTTPR: TStringField
+      FieldName = 'ESTTPR'
+      Size = 5
+    end
+    object ValidaFilialESTUNM: TStringField
+      FieldName = 'ESTUNM'
+      Size = 1
+    end
+    object ValidaFilialESTDPF: TStringField
+      FieldName = 'ESTDPF'
+      Size = 1
+    end
+    object ValidaFilialRECPDI: TDateTimeField
+      FieldName = 'RECPDI'
+    end
+    object ValidaFilialRECPDF: TDateTimeField
+      FieldName = 'RECPDF'
+    end
+    object ValidaFilialRECPOR: TStringField
+      FieldName = 'RECPOR'
+      Size = 4
+    end
+    object ValidaFilialRECCRT: TStringField
+      FieldName = 'RECCRT'
+      Size = 2
+    end
+    object ValidaFilialRECOCR: TStringField
+      FieldName = 'RECOCR'
+      Size = 3
+    end
+    object ValidaFilialRECINS: TStringField
+      FieldName = 'RECINS'
+      Size = 3
+    end
+    object ValidaFilialRECVMT: TBCDField
+      FieldName = 'RECVMT'
+      Precision = 15
+      Size = 2
+    end
+    object ValidaFilialRECDPR: TIntegerField
+      FieldName = 'RECDPR'
+    end
+    object ValidaFilialRECMOE: TStringField
+      FieldName = 'RECMOE'
+      Size = 3
+    end
+    object ValidaFilialRECJMM: TBCDField
+      FieldName = 'RECJMM'
+      Precision = 5
+      Size = 2
+    end
+    object ValidaFilialRECTJR: TStringField
+      FieldName = 'RECTJR'
+      Size = 1
+    end
+    object ValidaFilialRECDTJ: TIntegerField
+      FieldName = 'RECDTJ'
+    end
+    object ValidaFilialRECMUL: TBCDField
+      FieldName = 'RECMUL'
+      Precision = 5
+      Size = 2
+    end
+    object ValidaFilialRECDTM: TIntegerField
+      FieldName = 'RECDTM'
+    end
+    object ValidaFilialRECVJM: TBCDField
+      FieldName = 'RECVJM'
+      Precision = 9
+      Size = 2
+    end
+    object ValidaFilialRECVDM: TBCDField
+      FieldName = 'RECVDM'
+      Precision = 9
+      Size = 2
+    end
+    object ValidaFilialRECVMM: TBCDField
+      FieldName = 'RECVMM'
+      Precision = 9
+      Size = 2
+    end
+    object ValidaFilialRECAVS: TStringField
+      FieldName = 'RECAVS'
+      Size = 1
+    end
+    object ValidaFilialRECADC: TStringField
+      FieldName = 'RECADC'
+      Size = 1
+    end
+    object ValidaFilialRECAOC: TStringField
+      FieldName = 'RECAOC'
+      Size = 1
+    end
+    object ValidaFilialRECPCJ: TStringField
+      FieldName = 'RECPCJ'
+      Size = 1
+    end
+    object ValidaFilialRECPCM: TStringField
+      FieldName = 'RECPCM'
+      Size = 1
+    end
+    object ValidaFilialRECPCE: TStringField
+      FieldName = 'RECPCE'
+      Size = 1
+    end
+    object ValidaFilialRECPCC: TStringField
+      FieldName = 'RECPCC'
+      Size = 1
+    end
+    object ValidaFilialRECPCO: TStringField
+      FieldName = 'RECPCO'
+      Size = 1
+    end
+    object ValidaFilialRECTPM: TStringField
+      FieldName = 'RECTPM'
+      Size = 5
+    end
+    object ValidaFilialRECTAC: TStringField
+      FieldName = 'RECTAC'
+      Size = 5
+    end
+    object ValidaFilialRECTES: TStringField
+      FieldName = 'RECTES'
+      Size = 5
+    end
+    object ValidaFilialRECTBP: TStringField
+      FieldName = 'RECTBP'
+      Size = 5
+    end
+    object ValidaFilialRECTBA: TStringField
+      FieldName = 'RECTBA'
+      Size = 5
+    end
+    object ValidaFilialRECTBS: TStringField
+      FieldName = 'RECTBS'
+      Size = 5
+    end
+    object ValidaFilialRECTBC: TStringField
+      FieldName = 'RECTBC'
+      Size = 5
+    end
+    object ValidaFilialRECTPC: TStringField
+      FieldName = 'RECTPC'
+      Size = 5
+    end
+    object ValidaFilialRECTCC: TStringField
+      FieldName = 'RECTCC'
+      Size = 5
+    end
+    object ValidaFilialCPRPDI: TDateTimeField
+      FieldName = 'CPRPDI'
+    end
+    object ValidaFilialCPRPDF: TDateTimeField
+      FieldName = 'CPRPDF'
+    end
+    object ValidaFilialCPRQMC: TIntegerField
+      FieldName = 'CPRQMC'
+    end
+    object ValidaFilialCPRAVO: TStringField
+      FieldName = 'CPRAVO'
+      Size = 1
+    end
+    object ValidaFilialCPRDNF: TBCDField
+      FieldName = 'CPRDNF'
+      Precision = 8
+      Size = 2
+    end
+    object ValidaFilialCPRTOP: TStringField
+      FieldName = 'CPRTOP'
+      Size = 5
+    end
+    object ValidaFilialCPRTOM: TStringField
+      FieldName = 'CPRTOM'
+      Size = 5
+    end
+    object ValidaFilialCPRTOS: TStringField
+      FieldName = 'CPRTOS'
+      Size = 5
+    end
+    object ValidaFilialCPRTFP: TStringField
+      FieldName = 'CPRTFP'
+      Size = 5
+    end
+    object ValidaFilialCPRTFS: TStringField
+      FieldName = 'CPRTFS'
+      Size = 5
+    end
+    object ValidaFilialCPRTEA: TStringField
+      FieldName = 'CPRTEA'
+      Size = 5
+    end
+    object ValidaFilialCPRTSA: TStringField
+      FieldName = 'CPRTSA'
+      Size = 5
+    end
+    object ValidaFilialCPRSNP: TStringField
+      FieldName = 'CPRSNP'
+      Size = 3
+    end
+    object ValidaFilialCPRCCF: TStringField
+      FieldName = 'CPRCCF'
+      Size = 1
+    end
+    object ValidaFilialCPRCFR: TStringField
+      FieldName = 'CPRCFR'
+      Size = 1
+    end
+    object ValidaFilialCPRFSS: TIntegerField
+      FieldName = 'CPRFSS'
+    end
+    object ValidaFilialPAGPDI: TDateTimeField
+      FieldName = 'PAGPDI'
+    end
+    object ValidaFilialPAGPDF: TDateTimeField
+      FieldName = 'PAGPDF'
+    end
+    object ValidaFilialPAGAPR: TStringField
+      FieldName = 'PAGAPR'
+      Size = 1
+    end
+    object ValidaFilialPAGDPR: TIntegerField
+      FieldName = 'PAGDPR'
+    end
+    object ValidaFilialPAGMOE: TStringField
+      FieldName = 'PAGMOE'
+      Size = 3
+    end
+    object ValidaFilialPAGJMM: TBCDField
+      FieldName = 'PAGJMM'
+      Precision = 5
+      Size = 2
+    end
+    object ValidaFilialPAGTJR: TStringField
+      FieldName = 'PAGTJR'
+      Size = 1
+    end
+    object ValidaFilialPAGDTJ: TIntegerField
+      FieldName = 'PAGDTJ'
+    end
+    object ValidaFilialPAGMUL: TBCDField
+      FieldName = 'PAGMUL'
+      Precision = 5
+      Size = 2
+    end
+    object ValidaFilialPAGDTM: TIntegerField
+      FieldName = 'PAGDTM'
+    end
+    object ValidaFilialPAGTPM: TStringField
+      FieldName = 'PAGTPM'
+      Size = 5
+    end
+    object ValidaFilialPAGTPF: TStringField
+      FieldName = 'PAGTPF'
+      Size = 5
+    end
+    object ValidaFilialPAGTAF: TStringField
+      FieldName = 'PAGTAF'
+      Size = 5
+    end
+    object ValidaFilialPAGTBP: TStringField
+      FieldName = 'PAGTBP'
+      Size = 5
+    end
+    object ValidaFilialPAGTBC: TStringField
+      FieldName = 'PAGTBC'
+      Size = 5
+    end
+    object ValidaFilialPAGTBS: TStringField
+      FieldName = 'PAGTBS'
+      Size = 5
+    end
+    object ValidaFilialPAGTPC: TStringField
+      FieldName = 'PAGTPC'
+      Size = 5
+    end
+    object ValidaFilialPAGTCC: TStringField
+      FieldName = 'PAGTCC'
+      Size = 5
+    end
+    object ValidaFilialPAGVJM: TBCDField
+      FieldName = 'PAGVJM'
+      Precision = 9
+      Size = 2
+    end
+    object ValidaFilialPAGVDM: TBCDField
+      FieldName = 'PAGVDM'
+      Precision = 9
+      Size = 2
+    end
+    object ValidaFilialPAGVMM: TBCDField
+      FieldName = 'PAGVMM'
+      Precision = 9
+      Size = 2
+    end
+    object ValidaFilialPAGTCM: TStringField
+      FieldName = 'PAGTCM'
+      Size = 5
+    end
+    object ValidaFilialPAGTDC: TStringField
+      FieldName = 'PAGTDC'
+      Size = 5
+    end
+    object ValidaFilialPAGTDI: TStringField
+      FieldName = 'PAGTDI'
+      Size = 5
+    end
+    object ValidaFilialPAGLIR: TBCDField
+      FieldName = 'PAGLIR'
+      Precision = 8
+      Size = 2
+    end
+    object ValidaFilialPAGEEV: TIntegerField
+      FieldName = 'PAGEEV'
+    end
+    object ValidaFilialCXBPDI: TDateTimeField
+      FieldName = 'CXBPDI'
+    end
+    object ValidaFilialCXBPDF: TDateTimeField
+      FieldName = 'CXBPDF'
+    end
+    object ValidaFilialCXBTCA: TStringField
+      FieldName = 'CXBTCA'
+      Size = 5
+    end
+    object ValidaFilialCXBTDC: TStringField
+      FieldName = 'CXBTDC'
+      Size = 5
+    end
+    object ValidaFilialCXBTDE: TStringField
+      FieldName = 'CXBTDE'
+      Size = 5
+    end
+    object ValidaFilialCXBTDT: TStringField
+      FieldName = 'CXBTDT'
+      Size = 5
+    end
+    object ValidaFilialCXBDEC: TIntegerField
+      FieldName = 'CXBDEC'
+    end
+    object ValidaFilialCTBEXI: TDateTimeField
+      FieldName = 'CTBEXI'
+    end
+    object ValidaFilialCTBEXF: TDateTimeField
+      FieldName = 'CTBEXF'
+    end
+    object ValidaFilialCTBPEI: TDateTimeField
+      FieldName = 'CTBPEI'
+    end
+    object ValidaFilialCTBPEF: TDateTimeField
+      FieldName = 'CTBPEF'
+    end
+    object ValidaFilialCTBQDL: TIntegerField
+      FieldName = 'CTBQDL'
+    end
+    object ValidaFilialCTBMOE: TStringField
+      FieldName = 'CTBMOE'
+      Size = 3
+    end
+    object ValidaFilialCTBLOG: TStringField
+      FieldName = 'CTBLOG'
+      Size = 1
+    end
+    object ValidaFilialCTBALI: TStringField
+      FieldName = 'CTBALI'
+      Size = 1
+    end
+    object ValidaFilialCTBDIA: TDateTimeField
+      FieldName = 'CTBDIA'
+    end
+    object ValidaFilialCTBOBS: TStringField
+      FieldName = 'CTBOBS'
+      Size = 119
+    end
+    object ValidaFilialCTBNRJ: TStringField
+      FieldName = 'CTBNRJ'
+      Size = 15
+    end
+    object ValidaFilialCTBDRJ: TDateTimeField
+      FieldName = 'CTBDRJ'
+    end
+    object ValidaFilialCTBNSR: TStringField
+      FieldName = 'CTBNSR'
+      Size = 100
+    end
+    object ValidaFilialCTBFSR: TStringField
+      FieldName = 'CTBFSR'
+    end
+    object ValidaFilialCTBCSR: TBCDField
+      FieldName = 'CTBCSR'
+      Precision = 12
+      Size = 0
+    end
+    object ValidaFilialCTBNCR: TStringField
+      FieldName = 'CTBNCR'
+      Size = 30
+    end
+    object ValidaFilialCTBFCR: TStringField
+      FieldName = 'CTBFCR'
+      Size = 1
+    end
+    object ValidaFilialCTBCRC: TStringField
+      FieldName = 'CTBCRC'
+      Size = 15
+    end
+    object ValidaFilialCTBCCR: TBCDField
+      FieldName = 'CTBCCR'
+      Precision = 12
+      Size = 0
+    end
+    object ValidaFilialCTBCFM: TIntegerField
+      FieldName = 'CTBCFM'
+    end
+    object ValidaFilialCTBCAE: TStringField
+      FieldName = 'CTBCAE'
+      Size = 10
+    end
+    object ValidaFilialCTBCAF: TIntegerField
+      FieldName = 'CTBCAF'
+    end
+    object ValidaFilialCTBFEC: TStringField
+      FieldName = 'CTBFEC'
+      Size = 1
+    end
+    object ValidaFilialCTBSDT: TStringField
+      FieldName = 'CTBSDT'
+      Size = 1
+    end
+    object ValidaFilialCTBSDE: TStringField
+      FieldName = 'CTBSDE'
+      Size = 1
+    end
+    object ValidaFilialCTBSCR: TStringField
+      FieldName = 'CTBSCR'
+      Size = 1
+    end
+    object ValidaFilialCTBSVL: TStringField
+      FieldName = 'CTBSVL'
+      Size = 1
+    end
+    object ValidaFilialCTBSHP: TStringField
+      FieldName = 'CTBSHP'
+      Size = 1
+    end
+    object ValidaFilialCTBHAB: TStringField
+      FieldName = 'CTBHAB'
+      Size = 1
+    end
+    object ValidaFilialEFIPDI: TDateTimeField
+      FieldName = 'EFIPDI'
+    end
+    object ValidaFilialEFIPDF: TDateTimeField
+      FieldName = 'EFIPDF'
+    end
+    object ValidaFilialEFIFTR: TStringField
+      FieldName = 'EFIFTR'
+      Size = 1
+    end
+    object ValidaFilialEFIAPI: TBCDField
+      FieldName = 'EFIAPI'
+      Precision = 5
+      Size = 2
+    end
+    object ValidaFilialEFISTR: TStringField
+      FieldName = 'EFISTR'
+      Size = 1
+    end
+    object ValidaFilialEFIREG: TIntegerField
+      FieldName = 'EFIREG'
+    end
+    object ValidaFilialEFIQCI: TIntegerField
+      FieldName = 'EFIQCI'
+    end
+    object ValidaFilialPRDTEP: TStringField
+      FieldName = 'PRDTEP'
+      Size = 5
+    end
+    object ValidaFilialPRDTSP: TStringField
+      FieldName = 'PRDTSP'
+      Size = 5
+    end
+    object ValidaFilialPRDQDD: TIntegerField
+      FieldName = 'PRDQDD'
+    end
+    object ValidaFilialPRDTPP: TStringField
+      FieldName = 'PRDTPP'
+      Size = 5
+    end
+    object ValidaFilialPRDCPP: TIntegerField
+      FieldName = 'PRDCPP'
+    end
+    object ValidaFilialPRDRPP: TIntegerField
+      FieldName = 'PRDRPP'
+    end
+    object ValidaFilialPRDPPP: TStringField
+      FieldName = 'PRDPPP'
+      Size = 6
+    end
+    object ValidaFilialPRDTEE: TStringField
+      FieldName = 'PRDTEE'
+      Size = 5
+    end
+    object ValidaFilialPRDTNR: TStringField
+      FieldName = 'PRDTNR'
+      Size = 5
+    end
+    object ValidaFilialPRDEFI: TBCDField
+      FieldName = 'PRDEFI'
+      Precision = 5
+      Size = 2
+    end
+    object ValidaFilialPEDBLO: TStringField
+      FieldName = 'PEDBLO'
+      Size = 1
+    end
+    object ValidaFilialCOMPRZ: TStringField
+      FieldName = 'COMPRZ'
+      Size = 1
+    end
+    object ValidaFilialPERCOM: TBCDField
+      FieldName = 'PERCOM'
+      Precision = 4
+      Size = 2
+    end
+    object ValidaFilialTIPSEP: TStringField
+      FieldName = 'TIPSEP'
+      Size = 3
+    end
+    object ValidaFilialINDROE: TStringField
+      FieldName = 'INDROE'
+      Size = 1
+    end
+    object ValidaFilialCPRIEF: TStringField
+      FieldName = 'CPRIEF'
+      Size = 1
+    end
+    object ValidaFilialVENIEC: TStringField
+      FieldName = 'VENIEC'
+      Size = 1
+    end
+    object ValidaFilialRECTIA: TStringField
+      FieldName = 'RECTIA'
+      Size = 1
+    end
+    object ValidaFilialESTFPR: TStringField
+      FieldName = 'ESTFPR'
+      Size = 5
+    end
+    object ValidaFilialINDEXP: TIntegerField
+      FieldName = 'INDEXP'
+    end
+    object ValidaFilialDATPAL: TDateTimeField
+      FieldName = 'DATPAL'
+    end
+    object ValidaFilialHORPAL: TIntegerField
+      FieldName = 'HORPAL'
+    end
+    object ValidaFilialCODAFI: TIntegerField
+      FieldName = 'CODAFI'
+    end
+    object ValidaFilialEENFIL: TStringField
+      FieldName = 'EENFIL'
+      Size = 18
+    end
+    object ValidaFilialEENENT: TStringField
+      FieldName = 'EENENT'
+      Size = 18
+    end
+    object ValidaFilialEENCOB: TStringField
+      FieldName = 'EENCOB'
+      Size = 18
+    end
+    object ValidaFilialBAIENT: TStringField
+      FieldName = 'BAIENT'
+      Size = 75
+    end
+    object ValidaFilialBAICOB: TStringField
+      FieldName = 'BAICOB'
+      Size = 75
+    end
+    object ValidaFilialNENFIL: TStringField
+      FieldName = 'NENFIL'
+      Size = 60
+    end
+    object ValidaFilialFILMAT: TStringField
+      FieldName = 'FILMAT'
+      Size = 1
+    end
+  end
+  object ValidaPedido: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'numped'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'select e120ped.codemp,e120ped.codfil,e120ped.numped,e120ped.codc' +
+        'li,e120ped.sitped,'
+      '       e085cli.nomcli,e085cli.cidcli,e085cli.sigufs,'
+      '       e085hcl.codrep,'
+      '       e090rep.nomrep from e120ped'
+      'inner join e085cli on e085cli.codcli = e120ped.codcli'
+      'inner join e085hcl on e085hcl.codemp = e120ped.codemp and'
+      '                      e085hcl.codfil = e120ped.codfil and'
+      '                      e085hcl.codcli = e120ped.codcli'
+      'inner join e090rep on e090rep.codrep = e085hcl.codrep'
+      '                      where'
+      '                      e120ped.sitped in (1,2) and'
+      '                      e120ped.usu_pedtra = '#39'S'#39' and'
+      '                      e120ped.usu_precar = 0 and'
+      '                      e120ped.numped = :numped')
+    Left = 480
+    object ValidaPedidoCODEMP: TIntegerField
+      FieldName = 'CODEMP'
+    end
+    object ValidaPedidoCODFIL: TIntegerField
+      FieldName = 'CODFIL'
+    end
+    object ValidaPedidoNUMPED: TIntegerField
+      FieldName = 'NUMPED'
+    end
+    object ValidaPedidoCODCLI: TIntegerField
+      FieldName = 'CODCLI'
+    end
+    object ValidaPedidoSITPED: TIntegerField
+      FieldName = 'SITPED'
+    end
+    object ValidaPedidoCIDCLI: TStringField
+      FieldName = 'CIDCLI'
+      Size = 60
+    end
+    object ValidaPedidoSIGUFS: TStringField
+      FieldName = 'SIGUFS'
+      Size = 2
+    end
+    object ValidaPedidoCODREP: TIntegerField
+      FieldName = 'CODREP'
+    end
+    object ValidaPedidoNOMREP: TStringField
+      FieldName = 'NOMREP'
+      Size = 100
+    end
+    object ValidaPedidoNOMCLI: TStringField
+      FieldName = 'NOMCLI'
+      Size = 100
+    end
+  end
+  object ConsVolPro: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'codpro'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codder'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'select codpro,codder,volder  from e075der where codpro = :codpro' +
+        ' and'
+      '                            codder = :codder')
+    Left = 512
+    Top = 40
+    object ConsVolProCODPRO: TStringField
+      FieldName = 'CODPRO'
+      Size = 14
+    end
+    object ConsVolProCODDER: TStringField
+      FieldName = 'CODDER'
+      Size = 7
+    end
+    object ConsVolProVOLDER: TBCDField
+      FieldName = 'VOLDER'
+      Precision = 11
+      Size = 5
+    end
+  end
+  object SeExisteUsu_TProCar: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'numane'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codpro'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codder'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tprocar where usu_numane = :numane and'
+      '                                usu_codpro = :codpro and'
+      '                                usu_codder = :codder')
+    Left = 433
+    Top = 8
+    object SeExisteUsu_TProCarUSU_NUMANE: TIntegerField
+      FieldName = 'USU_NUMANE'
+    end
+    object SeExisteUsu_TProCarUSU_CODPRO: TStringField
+      FieldName = 'USU_CODPRO'
+      Size = 14
+    end
+    object SeExisteUsu_TProCarUSU_CODDER: TStringField
+      FieldName = 'USU_CODDER'
+      Size = 7
+    end
+    object SeExisteUsu_TProCarUSU_QTDPED: TIntegerField
+      FieldName = 'USU_QTDPED'
+    end
+    object SeExisteUsu_TProCarUSU_QTDPRO: TIntegerField
+      FieldName = 'USU_QTDPRO'
+    end
+    object SeExisteUsu_TProCarUSU_QTDABE: TIntegerField
+      FieldName = 'USU_QTDABE'
+    end
+    object SeExisteUsu_TProCarUSU_PROCOR: TStringField
+      FieldName = 'USU_PROCOR'
+      Size = 1
+    end
+  end
+  object SeExisteUsu_TCorCar: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'numane'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codpro'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codder'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codcor1'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codcor2'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select usu_tcorcar.* from usu_tcorcar'
+      '                     where'
+      '                     usu_numane = :numane and'
+      '                     usu_codpro = :codpro and'
+      '                     usu_codder = :codder and'
+      '                     usu_codcor1 = :codcor1 and'
+      '                     usu_codcor2 = :codcor2')
+    Left = 329
+    Top = 8
+    object SeExisteUsu_TCorCarUSU_NUMANE: TIntegerField
+      FieldName = 'USU_NUMANE'
+    end
+    object SeExisteUsu_TCorCarUSU_CODPRO: TStringField
+      FieldName = 'USU_CODPRO'
+      Size = 14
+    end
+    object SeExisteUsu_TCorCarUSU_CODDER: TStringField
+      FieldName = 'USU_CODDER'
+      Size = 7
+    end
+    object SeExisteUsu_TCorCarUSU_CODCOR1: TStringField
+      FieldName = 'USU_CODCOR1'
+      Size = 14
+    end
+    object SeExisteUsu_TCorCarUSU_QTDPED: TIntegerField
+      FieldName = 'USU_QTDPED'
+    end
+    object SeExisteUsu_TCorCarUSU_QTDPRO: TIntegerField
+      FieldName = 'USU_QTDPRO'
+    end
+    object SeExisteUsu_TCorCarUSU_QTDABE: TIntegerField
+      FieldName = 'USU_QTDABE'
+    end
+    object SeExisteUsu_TCorCarUSU_SALABE1: TBCDField
+      FieldName = 'USU_SALABE1'
+      Precision = 11
+      Size = 2
+    end
+    object SeExisteUsu_TCorCarUSU_CODCOR2: TStringField
+      FieldName = 'USU_CODCOR2'
+      Size = 14
+    end
+    object SeExisteUsu_TCorCarUSU_SALABE2: TBCDField
+      FieldName = 'USU_SALABE2'
+      Precision = 11
+      Size = 2
+    end
+    object SeExisteUsu_TCorCarUSU_TIPCOM: TIntegerField
+      FieldName = 'USU_TIPCOM'
+    end
+    object SeExisteUsu_TCorCarUSU_CORCOR: TStringField
+      FieldName = 'USU_CORCOR'
+      Size = 1
+    end
+    object SeExisteUsu_TCorCarUSU_SELITE: TStringField
+      FieldName = 'USU_SELITE'
+      Size = 1
+    end
+    object SeExisteUsu_TCorCarUSU_QTDCOR1: TBCDField
+      FieldName = 'USU_QTDCOR1'
+      Precision = 11
+      Size = 2
+    end
+    object SeExisteUsu_TCorCarUSU_QTDCOR2: TBCDField
+      FieldName = 'USU_QTDCOR2'
+      Precision = 11
+      Size = 2
+    end
+  end
+end

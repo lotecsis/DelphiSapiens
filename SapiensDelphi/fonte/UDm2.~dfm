@@ -1,0 +1,2710 @@
+object Dm2: TDm2
+  OldCreateOrder = False
+  Left = 251
+  Top = 170
+  Height = 461
+  Width = 724
+  object ConsE120ped: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'codfil'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'numped'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select e120ped.* from e120ped where codemp = 1 and'
+      '                            codfil = :codfil and'
+      '                            numped = :numped')
+    Left = 48
+    Top = 24
+    object ConsE120pedCODEMP: TIntegerField
+      FieldName = 'CODEMP'
+    end
+    object ConsE120pedCODFIL: TIntegerField
+      FieldName = 'CODFIL'
+    end
+    object ConsE120pedNUMPED: TIntegerField
+      FieldName = 'NUMPED'
+    end
+    object ConsE120pedTIPPED: TIntegerField
+      FieldName = 'TIPPED'
+    end
+    object ConsE120pedPRCPED: TIntegerField
+      FieldName = 'PRCPED'
+    end
+    object ConsE120pedTNSPRO: TStringField
+      FieldName = 'TNSPRO'
+      Size = 5
+    end
+    object ConsE120pedTNSSER: TStringField
+      FieldName = 'TNSSER'
+      Size = 5
+    end
+    object ConsE120pedDATEMI: TDateTimeField
+      FieldName = 'DATEMI'
+    end
+    object ConsE120pedHOREMI: TIntegerField
+      FieldName = 'HOREMI'
+    end
+    object ConsE120pedDATPRV: TDateTimeField
+      FieldName = 'DATPRV'
+    end
+    object ConsE120pedHORPRV: TIntegerField
+      FieldName = 'HORPRV'
+    end
+    object ConsE120pedOBSPED: TStringField
+      FieldName = 'OBSPED'
+      Size = 999
+    end
+    object ConsE120pedCODCLI: TIntegerField
+      FieldName = 'CODCLI'
+    end
+    object ConsE120pedCATCLI: TIntegerField
+      FieldName = 'CATCLI'
+    end
+    object ConsE120pedQTDVPF: TIntegerField
+      FieldName = 'QTDVPF'
+    end
+    object ConsE120pedQTDMFP: TIntegerField
+      FieldName = 'QTDMFP'
+    end
+    object ConsE120pedINDAGR: TStringField
+      FieldName = 'INDAGR'
+      Size = 1
+    end
+    object ConsE120pedSEQENT: TIntegerField
+      FieldName = 'SEQENT'
+    end
+    object ConsE120pedSEQCOB: TIntegerField
+      FieldName = 'SEQCOB'
+    end
+    object ConsE120pedSEQCTO: TIntegerField
+      FieldName = 'SEQCTO'
+    end
+    object ConsE120pedPEDCLI: TStringField
+      FieldName = 'PEDCLI'
+    end
+    object ConsE120pedCODROE: TStringField
+      FieldName = 'CODROE'
+      Size = 3
+    end
+    object ConsE120pedSEQROE: TIntegerField
+      FieldName = 'SEQROE'
+    end
+    object ConsE120pedCODREP: TIntegerField
+      FieldName = 'CODREP'
+    end
+    object ConsE120pedCODMOE: TStringField
+      FieldName = 'CODMOE'
+      Size = 3
+    end
+    object ConsE120pedCODMCP: TStringField
+      FieldName = 'CODMCP'
+      Size = 3
+    end
+    object ConsE120pedDATMFP: TDateTimeField
+      FieldName = 'DATMFP'
+    end
+    object ConsE120pedCOTMFP: TBCDField
+      FieldName = 'COTMFP'
+      Precision = 19
+      Size = 10
+    end
+    object ConsE120pedDATMOE: TDateTimeField
+      FieldName = 'DATMOE'
+    end
+    object ConsE120pedCOTMOE: TBCDField
+      FieldName = 'COTMOE'
+      Precision = 19
+      Size = 10
+    end
+    object ConsE120pedFECMOE: TStringField
+      FieldName = 'FECMOE'
+      Size = 1
+    end
+    object ConsE120pedCODFCR: TStringField
+      FieldName = 'CODFCR'
+      Size = 3
+    end
+    object ConsE120pedDATFCR: TDateTimeField
+      FieldName = 'DATFCR'
+    end
+    object ConsE120pedCODCPG: TStringField
+      FieldName = 'CODCPG'
+      Size = 6
+    end
+    object ConsE120pedPGTANT: TStringField
+      FieldName = 'PGTANT'
+      Size = 1
+    end
+    object ConsE120pedCODFPG: TIntegerField
+      FieldName = 'CODFPG'
+    end
+    object ConsE120pedQTDABE: TBCDField
+      FieldName = 'QTDABE'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120pedQTDAEN: TBCDField
+      FieldName = 'QTDAEN'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120pedCODTRA: TIntegerField
+      FieldName = 'CODTRA'
+    end
+    object ConsE120pedCODRED: TIntegerField
+      FieldName = 'CODRED'
+    end
+    object ConsE120pedCODVIA: TStringField
+      FieldName = 'CODVIA'
+      Size = 3
+    end
+    object ConsE120pedPLAVEI: TStringField
+      FieldName = 'PLAVEI'
+      Size = 10
+    end
+    object ConsE120pedVLRFUM: TBCDField
+      FieldName = 'VLRFUM'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedQTDFRE: TBCDField
+      FieldName = 'QTDFRE'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120pedFORFRE: TIntegerField
+      FieldName = 'FORFRE'
+    end
+    object ConsE120pedVLRFRE: TBCDField
+      FieldName = 'VLRFRE'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedCIFFOB: TStringField
+      FieldName = 'CIFFOB'
+      Size = 1
+    end
+    object ConsE120pedVLRSEG: TBCDField
+      FieldName = 'VLRSEG'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLREMB: TBCDField
+      FieldName = 'VLREMB'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRENC: TBCDField
+      FieldName = 'VLRENC'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLROUT: TBCDField
+      FieldName = 'VLROUT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRDAR: TBCDField
+      FieldName = 'VLRDAR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRFRD: TBCDField
+      FieldName = 'VLRFRD'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLROUD: TBCDField
+      FieldName = 'VLROUD'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedPERDS1: TBCDField
+      FieldName = 'PERDS1'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedPERDS2: TBCDField
+      FieldName = 'PERDS2'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedPERDS3: TBCDField
+      FieldName = 'PERDS3'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedPERDS4: TBCDField
+      FieldName = 'PERDS4'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedVLRBPR: TBCDField
+      FieldName = 'VLRBPR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRDPR: TBCDField
+      FieldName = 'VLRDPR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBSE: TBCDField
+      FieldName = 'VLRBSE'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRDSE: TBCDField
+      FieldName = 'VLRDSE'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRDS1: TBCDField
+      FieldName = 'VLRDS1'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRDS2: TBCDField
+      FieldName = 'VLRDS2'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRDS3: TBCDField
+      FieldName = 'VLRDS3'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRDS4: TBCDField
+      FieldName = 'VLRDS4'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLROFE: TBCDField
+      FieldName = 'VLROFE'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRDZF: TBCDField
+      FieldName = 'VLRDZF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBIP: TBCDField
+      FieldName = 'VLRBIP'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRIPI: TBCDField
+      FieldName = 'VLRIPI'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBIC: TBCDField
+      FieldName = 'VLRBIC'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRICM: TBCDField
+      FieldName = 'VLRICM'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBSI: TBCDField
+      FieldName = 'VLRBSI'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRSIC: TBCDField
+      FieldName = 'VLRSIC'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBSP: TBCDField
+      FieldName = 'VLRBSP'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRSTP: TBCDField
+      FieldName = 'VLRSTP'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBSC: TBCDField
+      FieldName = 'VLRBSC'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRSTC: TBCDField
+      FieldName = 'VLRSTC'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBIS: TBCDField
+      FieldName = 'VLRBIS'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRISS: TBCDField
+      FieldName = 'VLRISS'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBIR: TBCDField
+      FieldName = 'VLRBIR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRIRF: TBCDField
+      FieldName = 'VLRIRF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBIN: TBCDField
+      FieldName = 'VLRBIN'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRINS: TBCDField
+      FieldName = 'VLRINS'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBCO: TBCDField
+      FieldName = 'VLRBCO'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRCOM: TBCDField
+      FieldName = 'VLRCOM'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRLPR: TBCDField
+      FieldName = 'VLRLPR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRLSE: TBCDField
+      FieldName = 'VLRLSE'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRLOU: TBCDField
+      FieldName = 'VLRLOU'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRLIQ: TBCDField
+      FieldName = 'VLRLIQ'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRFIN: TBCDField
+      FieldName = 'VLRFIN'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRADT: TBCDField
+      FieldName = 'VLRADT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedQTDORI: TBCDField
+      FieldName = 'QTDORI'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120pedVLRORI: TBCDField
+      FieldName = 'VLRORI'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedTEMPAR: TStringField
+      FieldName = 'TEMPAR'
+      Size = 1
+    end
+    object ConsE120pedCODPOR: TStringField
+      FieldName = 'CODPOR'
+      Size = 4
+    end
+    object ConsE120pedCODCRT: TStringField
+      FieldName = 'CODCRT'
+      Size = 2
+    end
+    object ConsE120pedSITPED: TIntegerField
+      FieldName = 'SITPED'
+    end
+    object ConsE120pedCODMOT: TIntegerField
+      FieldName = 'CODMOT'
+    end
+    object ConsE120pedOBSMOT: TStringField
+      FieldName = 'OBSMOT'
+      Size = 250
+    end
+    object ConsE120pedPEDBLO: TStringField
+      FieldName = 'PEDBLO'
+      Size = 1
+    end
+    object ConsE120pedUSUBLO: TBCDField
+      FieldName = 'USUBLO'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE120pedDATBLO: TDateTimeField
+      FieldName = 'DATBLO'
+    end
+    object ConsE120pedHORBLO: TIntegerField
+      FieldName = 'HORBLO'
+    end
+    object ConsE120pedINDSIG: TStringField
+      FieldName = 'INDSIG'
+      Size = 1
+    end
+    object ConsE120pedVERCAL: TIntegerField
+      FieldName = 'VERCAL'
+    end
+    object ConsE120pedHORINI: TIntegerField
+      FieldName = 'HORINI'
+    end
+    object ConsE120pedHORFIM: TIntegerField
+      FieldName = 'HORFIM'
+    end
+    object ConsE120pedUSUGER: TBCDField
+      FieldName = 'USUGER'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE120pedDATGER: TDateTimeField
+      FieldName = 'DATGER'
+    end
+    object ConsE120pedHORGER: TIntegerField
+      FieldName = 'HORGER'
+    end
+    object ConsE120pedPERFRE: TBCDField
+      FieldName = 'PERFRE'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedPERSEG: TBCDField
+      FieldName = 'PERSEG'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedPEREMB: TBCDField
+      FieldName = 'PEREMB'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedPERENC: TBCDField
+      FieldName = 'PERENC'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedPEROUT: TBCDField
+      FieldName = 'PEROUT'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedCODSAC: TBCDField
+      FieldName = 'CODSAC'
+      Precision = 14
+      Size = 0
+    end
+    object ConsE120pedCODOPE: TIntegerField
+      FieldName = 'CODOPE'
+    end
+    object ConsE120pedCODVEN: TIntegerField
+      FieldName = 'CODVEN'
+    end
+    object ConsE120pedPEDPAL: TIntegerField
+      FieldName = 'PEDPAL'
+    end
+    object ConsE120pedACEPAR: TStringField
+      FieldName = 'ACEPAR'
+      Size = 1
+    end
+    object ConsE120pedPEROF1: TBCDField
+      FieldName = 'PEROF1'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedPEROF2: TBCDField
+      FieldName = 'PEROF2'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedUSUFEC: TBCDField
+      FieldName = 'USUFEC'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE120pedDATFEC: TDateTimeField
+      FieldName = 'DATFEC'
+    end
+    object ConsE120pedHORFEC: TIntegerField
+      FieldName = 'HORFEC'
+    end
+    object ConsE120pedCLIREL: TIntegerField
+      FieldName = 'CLIREL'
+    end
+    object ConsE120pedVLRBCL: TBCDField
+      FieldName = 'VLRBCL'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRCSL: TBCDField
+      FieldName = 'VLRCSL'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBPT: TBCDField
+      FieldName = 'VLRBPT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRPIT: TBCDField
+      FieldName = 'VLRPIT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBCT: TBCDField
+      FieldName = 'VLRBCT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRCRT: TBCDField
+      FieldName = 'VLRCRT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBOR: TBCDField
+      FieldName = 'VLRBOR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLROUR: TBCDField
+      FieldName = 'VLROUR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedCODMAR: TStringField
+      FieldName = 'CODMAR'
+      Size = 10
+    end
+    object ConsE120pedCODSRO: TStringField
+      FieldName = 'CODSRO'
+      Size = 3
+    end
+    object ConsE120pedFILFAT: TIntegerField
+      FieldName = 'FILFAT'
+    end
+    object ConsE120pedCODCDI: TIntegerField
+      FieldName = 'CODCDI'
+    end
+    object ConsE120pedCODLIP: TStringField
+      FieldName = 'CODLIP'
+      Size = 5
+    end
+    object ConsE120pedCEPFRE: TIntegerField
+      FieldName = 'CEPFRE'
+    end
+    object ConsE120pedVLRRIS: TBCDField
+      FieldName = 'VLRRIS'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedANAEMB: TStringField
+      FieldName = 'ANAEMB'
+      Size = 1
+    end
+    object ConsE120pedNUMEMP: TStringField
+      FieldName = 'NUMEMP'
+    end
+    object ConsE120pedQTDANE: TIntegerField
+      FieldName = 'QTDANE'
+    end
+    object ConsE120pedDATAGE: TDateTimeField
+      FieldName = 'DATAGE'
+    end
+    object ConsE120pedFILNCO: TIntegerField
+      FieldName = 'FILNCO'
+    end
+    object ConsE120pedSNFNCO: TStringField
+      FieldName = 'SNFNCO'
+      Size = 3
+    end
+    object ConsE120pedNUMNCO: TIntegerField
+      FieldName = 'NUMNCO'
+    end
+    object ConsE120pedEXPWMS: TIntegerField
+      FieldName = 'EXPWMS'
+    end
+    object ConsE120pedVLRBPF: TBCDField
+      FieldName = 'VLRBPF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRPIF: TBCDField
+      FieldName = 'VLRPIF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRBCF: TBCDField
+      FieldName = 'VLRBCF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedVLRCFF: TBCDField
+      FieldName = 'VLRCFF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedCODAPC: TIntegerField
+      FieldName = 'CODAPC'
+    end
+    object ConsE120pedSOMFRE: TStringField
+      FieldName = 'SOMFRE'
+      Size = 1
+    end
+    object ConsE120pedQTDITP: TIntegerField
+      FieldName = 'QTDITP'
+    end
+    object ConsE120pedQTDITS: TIntegerField
+      FieldName = 'QTDITS'
+    end
+    object ConsE120pedPERDS5: TBCDField
+      FieldName = 'PERDS5'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120pedVLRDS5: TBCDField
+      FieldName = 'VLRDS5'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120pedROTANX: TIntegerField
+      FieldName = 'ROTANX'
+    end
+    object ConsE120pedNUMANX: TBCDField
+      FieldName = 'NUMANX'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE120pedUSU_FILDIV: TIntegerField
+      FieldName = 'USU_FILDIV'
+    end
+    object ConsE120pedUSU_PEDDIV: TIntegerField
+      FieldName = 'USU_PEDDIV'
+    end
+    object ConsE120pedUSU_USUDIV: TBCDField
+      FieldName = 'USU_USUDIV'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE120pedUSU_DATDIV: TDateTimeField
+      FieldName = 'USU_DATDIV'
+    end
+    object ConsE120pedUSU_HORDIV: TIntegerField
+      FieldName = 'USU_HORDIV'
+    end
+    object ConsE120pedUSU_PEDTRA: TStringField
+      FieldName = 'USU_PEDTRA'
+      Size = 1
+    end
+    object ConsE120pedUSU_PRECAR: TIntegerField
+      FieldName = 'USU_PRECAR'
+    end
+    object ConsE120pedUSU_USUDES: TBCDField
+      FieldName = 'USU_USUDES'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE120pedUSU_DATDES: TDateTimeField
+      FieldName = 'USU_DATDES'
+    end
+    object ConsE120pedUSU_HORDES: TIntegerField
+      FieldName = 'USU_HORDES'
+    end
+  end
+  object ConsE085Cli: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'codfil'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codcli'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select e085cli.*,e085hcl.codrep from e085cli'
+      'inner join e085hcl on e085hcl.codcli = e085cli.codcli'
+      '                            where e085hcl.codfil = :codfil and'
+      '                                  e085cli.codcli = :codcli')
+    Left = 128
+    Top = 24
+    object ConsE085CliCODCLI: TIntegerField
+      FieldName = 'CODCLI'
+    end
+    object ConsE085CliNOMCLI: TStringField
+      FieldName = 'NOMCLI'
+      Size = 100
+    end
+    object ConsE085CliAPECLI: TStringField
+      FieldName = 'APECLI'
+      Size = 50
+    end
+    object ConsE085CliMARCLI: TStringField
+      FieldName = 'MARCLI'
+    end
+    object ConsE085CliSENCLI: TStringField
+      FieldName = 'SENCLI'
+      Size = 10
+    end
+    object ConsE085CliTIPCLI: TStringField
+      FieldName = 'TIPCLI'
+      Size = 1
+    end
+    object ConsE085CliTIPMER: TStringField
+      FieldName = 'TIPMER'
+      Size = 1
+    end
+    object ConsE085CliTIPEMC: TIntegerField
+      FieldName = 'TIPEMC'
+    end
+    object ConsE085CliCLICON: TStringField
+      FieldName = 'CLICON'
+      Size = 1
+    end
+    object ConsE085CliCODRAM: TStringField
+      FieldName = 'CODRAM'
+      Size = 5
+    end
+    object ConsE085CliINSEST: TStringField
+      FieldName = 'INSEST'
+      Size = 25
+    end
+    object ConsE085CliINSMUN: TStringField
+      FieldName = 'INSMUN'
+      Size = 16
+    end
+    object ConsE085CliCGCCPF: TBCDField
+      FieldName = 'CGCCPF'
+      Precision = 14
+      Size = 0
+    end
+    object ConsE085CliCODGRE: TIntegerField
+      FieldName = 'CODGRE'
+    end
+    object ConsE085CliZONFRA: TIntegerField
+      FieldName = 'ZONFRA'
+    end
+    object ConsE085CliCODSUF: TStringField
+      FieldName = 'CODSUF'
+      Size = 10
+    end
+    object ConsE085CliENDCLI: TStringField
+      FieldName = 'ENDCLI'
+      Size = 100
+    end
+    object ConsE085CliCPLEND: TStringField
+      FieldName = 'CPLEND'
+    end
+    object ConsE085CliCLIPRX: TStringField
+      FieldName = 'CLIPRX'
+      Size = 120
+    end
+    object ConsE085CliZIPCOD: TStringField
+      FieldName = 'ZIPCOD'
+      Size = 14
+    end
+    object ConsE085CliCEPCLI: TIntegerField
+      FieldName = 'CEPCLI'
+    end
+    object ConsE085CliCEPINI: TIntegerField
+      FieldName = 'CEPINI'
+    end
+    object ConsE085CliBAICLI: TStringField
+      FieldName = 'BAICLI'
+      Size = 75
+    end
+    object ConsE085CliCIDCLI: TStringField
+      FieldName = 'CIDCLI'
+      Size = 60
+    end
+    object ConsE085CliSIGUFS: TStringField
+      FieldName = 'SIGUFS'
+      Size = 2
+    end
+    object ConsE085CliCODPAI: TStringField
+      FieldName = 'CODPAI'
+      Size = 4
+    end
+    object ConsE085CliTEMENT: TStringField
+      FieldName = 'TEMENT'
+      Size = 1
+    end
+    object ConsE085CliENDENT: TStringField
+      FieldName = 'ENDENT'
+      Size = 100
+    end
+    object ConsE085CliNUMENT: TIntegerField
+      FieldName = 'NUMENT'
+    end
+    object ConsE085CliCPLENT: TStringField
+      FieldName = 'CPLENT'
+    end
+    object ConsE085CliCEPENT: TIntegerField
+      FieldName = 'CEPENT'
+    end
+    object ConsE085CliINIENT: TIntegerField
+      FieldName = 'INIENT'
+    end
+    object ConsE085CliCIDENT: TStringField
+      FieldName = 'CIDENT'
+      Size = 60
+    end
+    object ConsE085CliESTENT: TStringField
+      FieldName = 'ESTENT'
+      Size = 2
+    end
+    object ConsE085CliINSENT: TStringField
+      FieldName = 'INSENT'
+      Size = 25
+    end
+    object ConsE085CliCGCENT: TBCDField
+      FieldName = 'CGCENT'
+      Precision = 14
+      Size = 0
+    end
+    object ConsE085CliTEMCOB: TStringField
+      FieldName = 'TEMCOB'
+      Size = 1
+    end
+    object ConsE085CliENDCOB: TStringField
+      FieldName = 'ENDCOB'
+      Size = 100
+    end
+    object ConsE085CliNUMCOB: TIntegerField
+      FieldName = 'NUMCOB'
+    end
+    object ConsE085CliCPLCOB: TStringField
+      FieldName = 'CPLCOB'
+    end
+    object ConsE085CliCEPCOB: TIntegerField
+      FieldName = 'CEPCOB'
+    end
+    object ConsE085CliINICOB: TIntegerField
+      FieldName = 'INICOB'
+    end
+    object ConsE085CliCIDCOB: TStringField
+      FieldName = 'CIDCOB'
+      Size = 60
+    end
+    object ConsE085CliESTCOB: TStringField
+      FieldName = 'ESTCOB'
+      Size = 2
+    end
+    object ConsE085CliCGCCOB: TBCDField
+      FieldName = 'CGCCOB'
+      Precision = 14
+      Size = 0
+    end
+    object ConsE085CliENTCOR: TStringField
+      FieldName = 'ENTCOR'
+      Size = 1
+    end
+    object ConsE085CliFONCLI: TStringField
+      FieldName = 'FONCLI'
+    end
+    object ConsE085CliFONCL2: TStringField
+      FieldName = 'FONCL2'
+    end
+    object ConsE085CliFONCL3: TStringField
+      FieldName = 'FONCL3'
+    end
+    object ConsE085CliFONCL4: TStringField
+      FieldName = 'FONCL4'
+    end
+    object ConsE085CliFONCL5: TStringField
+      FieldName = 'FONCL5'
+    end
+    object ConsE085CliFAXCLI: TStringField
+      FieldName = 'FAXCLI'
+    end
+    object ConsE085CliCXAPST: TIntegerField
+      FieldName = 'CXAPST'
+    end
+    object ConsE085CliINTNET: TStringField
+      FieldName = 'INTNET'
+      Size = 100
+    end
+    object ConsE085CliCODROE: TStringField
+      FieldName = 'CODROE'
+      Size = 3
+    end
+    object ConsE085CliSEQROE: TIntegerField
+      FieldName = 'SEQROE'
+    end
+    object ConsE085CliCODFOR: TIntegerField
+      FieldName = 'CODFOR'
+    end
+    object ConsE085CliCLIREP: TIntegerField
+      FieldName = 'CLIREP'
+    end
+    object ConsE085CliCLITRA: TIntegerField
+      FieldName = 'CLITRA'
+    end
+    object ConsE085CliUSUCAD: TBCDField
+      FieldName = 'USUCAD'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE085CliDATCAD: TDateTimeField
+      FieldName = 'DATCAD'
+    end
+    object ConsE085CliDATFIM: TDateTimeField
+      FieldName = 'DATFIM'
+    end
+    object ConsE085CliHORCAD: TIntegerField
+      FieldName = 'HORCAD'
+    end
+    object ConsE085CliHORFIM: TIntegerField
+      FieldName = 'HORFIM'
+    end
+    object ConsE085CliDATVCT: TDateTimeField
+      FieldName = 'DATVCT'
+    end
+    object ConsE085CliDATATU: TDateTimeField
+      FieldName = 'DATATU'
+    end
+    object ConsE085CliHORATU: TIntegerField
+      FieldName = 'HORATU'
+    end
+    object ConsE085CliUSUATU: TBCDField
+      FieldName = 'USUATU'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE085CliQTDATU: TIntegerField
+      FieldName = 'QTDATU'
+    end
+    object ConsE085CliDATICV: TDateTimeField
+      FieldName = 'DATICV'
+    end
+    object ConsE085CliSITCLI: TStringField
+      FieldName = 'SITCLI'
+      Size = 1
+    end
+    object ConsE085CliCODMOT: TIntegerField
+      FieldName = 'CODMOT'
+    end
+    object ConsE085CliBLOCRE: TStringField
+      FieldName = 'BLOCRE'
+      Size = 1
+    end
+    object ConsE085CliOBSMOT: TStringField
+      FieldName = 'OBSMOT'
+      Size = 250
+    end
+    object ConsE085CliUSUMOT: TBCDField
+      FieldName = 'USUMOT'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE085CliDATMOT: TDateTimeField
+      FieldName = 'DATMOT'
+    end
+    object ConsE085CliHORMOT: TIntegerField
+      FieldName = 'HORMOT'
+    end
+    object ConsE085CliUSUOPE: TBCDField
+      FieldName = 'USUOPE'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE085CliCODAMA: TStringField
+      FieldName = 'CODAMA'
+      Size = 30
+    end
+    object ConsE085CliCODSAB: TStringField
+      FieldName = 'CODSAB'
+      Size = 30
+    end
+    object ConsE085CliCODGAL: TStringField
+      FieldName = 'CODGAL'
+      Size = 30
+    end
+    object ConsE085CliTRIICM: TStringField
+      FieldName = 'TRIICM'
+      Size = 1
+    end
+    object ConsE085CliTRIIPI: TStringField
+      FieldName = 'TRIIPI'
+      Size = 1
+    end
+    object ConsE085CliBAIENT: TStringField
+      FieldName = 'BAIENT'
+      Size = 75
+    end
+    object ConsE085CliBAICOB: TStringField
+      FieldName = 'BAICOB'
+      Size = 75
+    end
+    object ConsE085CliCLIFOR: TStringField
+      FieldName = 'CLIFOR'
+      Size = 1
+    end
+    object ConsE085CliIDECLI: TStringField
+      FieldName = 'IDECLI'
+    end
+    object ConsE085CliTRIPIS: TStringField
+      FieldName = 'TRIPIS'
+      Size = 1
+    end
+    object ConsE085CliTRICOF: TStringField
+      FieldName = 'TRICOF'
+      Size = 1
+    end
+    object ConsE085CliINDEXP: TIntegerField
+      FieldName = 'INDEXP'
+    end
+    object ConsE085CliDATPAL: TDateTimeField
+      FieldName = 'DATPAL'
+    end
+    object ConsE085CliHORPAL: TIntegerField
+      FieldName = 'HORPAL'
+    end
+    object ConsE085CliRETCOF: TStringField
+      FieldName = 'RETCOF'
+      Size = 1
+    end
+    object ConsE085CliRETCSL: TStringField
+      FieldName = 'RETCSL'
+      Size = 1
+    end
+    object ConsE085CliRETPIS: TStringField
+      FieldName = 'RETPIS'
+      Size = 1
+    end
+    object ConsE085CliRETOUR: TStringField
+      FieldName = 'RETOUR'
+      Size = 1
+    end
+    object ConsE085CliCODSRO: TStringField
+      FieldName = 'CODSRO'
+      Size = 3
+    end
+    object ConsE085CliDATSUF: TDateTimeField
+      FieldName = 'DATSUF'
+    end
+    object ConsE085CliCEPFRE: TIntegerField
+      FieldName = 'CEPFRE'
+    end
+    object ConsE085CliCODPDV: TIntegerField
+      FieldName = 'CODPDV'
+    end
+    object ConsE085CliDATPDV: TDateTimeField
+      FieldName = 'DATPDV'
+    end
+    object ConsE085CliHORPDV: TIntegerField
+      FieldName = 'HORPDV'
+    end
+    object ConsE085CliRETPRO: TStringField
+      FieldName = 'RETPRO'
+      Size = 1
+    end
+    object ConsE085CliRETIRF: TStringField
+      FieldName = 'RETIRF'
+      Size = 1
+    end
+    object ConsE085CliLIMRET: TStringField
+      FieldName = 'LIMRET'
+      Size = 1
+    end
+    object ConsE085CliCODCNV: TIntegerField
+      FieldName = 'CODCNV'
+    end
+    object ConsE085CliCALFUN: TStringField
+      FieldName = 'CALFUN'
+      Size = 1
+    end
+    object ConsE085CliEENCLI: TStringField
+      FieldName = 'EENCLI'
+      Size = 18
+    end
+    object ConsE085CliEENENT: TStringField
+      FieldName = 'EENENT'
+      Size = 18
+    end
+    object ConsE085CliEENCOB: TStringField
+      FieldName = 'EENCOB'
+      Size = 18
+    end
+    object ConsE085CliNUMEND: TIntegerField
+      FieldName = 'NUMEND'
+    end
+    object ConsE085CliPERAIN: TBCDField
+      FieldName = 'PERAIN'
+      Precision = 4
+      Size = 2
+    end
+    object ConsE085CliNENCLI: TStringField
+      FieldName = 'NENCLI'
+      Size = 60
+    end
+    object ConsE085CliNENENT: TStringField
+      FieldName = 'NENENT'
+      Size = 60
+    end
+    object ConsE085CliNENCOB: TStringField
+      FieldName = 'NENCOB'
+      Size = 60
+    end
+    object ConsE085CliTIPACE: TIntegerField
+      FieldName = 'TIPACE'
+    end
+    object ConsE085CliCODREP: TIntegerField
+      FieldName = 'CODREP'
+    end
+  end
+  object ConsE090Rep: TADOQuery
+    Connection = Dm.ADOBanco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'codrep'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select e090rep .* from e090rep where codrep = :codrep')
+    Left = 208
+    Top = 24
+    object ConsE090RepCODREP: TIntegerField
+      FieldName = 'CODREP'
+      ReadOnly = True
+    end
+    object ConsE090RepAPEREP: TStringField
+      FieldName = 'APEREP'
+      Size = 50
+    end
+    object ConsE090RepSENREP: TStringField
+      FieldName = 'SENREP'
+      Size = 10
+    end
+    object ConsE090RepTIPREP: TStringField
+      FieldName = 'TIPREP'
+      Size = 1
+    end
+    object ConsE090RepINSEST: TStringField
+      FieldName = 'INSEST'
+      Size = 25
+    end
+    object ConsE090RepINSMUN: TStringField
+      FieldName = 'INSMUN'
+      Size = 16
+    end
+    object ConsE090RepCGCCPF: TBCDField
+      FieldName = 'CGCCPF'
+      Precision = 14
+      Size = 0
+    end
+    object ConsE090RepENDREP: TStringField
+      FieldName = 'ENDREP'
+      Size = 100
+    end
+    object ConsE090RepCPLEND: TStringField
+      FieldName = 'CPLEND'
+    end
+    object ConsE090RepZIPCOD: TStringField
+      FieldName = 'ZIPCOD'
+      Size = 14
+    end
+    object ConsE090RepCEPREP: TIntegerField
+      FieldName = 'CEPREP'
+    end
+    object ConsE090RepBAIREP: TStringField
+      FieldName = 'BAIREP'
+      Size = 75
+    end
+    object ConsE090RepCIDREP: TStringField
+      FieldName = 'CIDREP'
+      Size = 60
+    end
+    object ConsE090RepSIGUFS: TStringField
+      FieldName = 'SIGUFS'
+      Size = 2
+    end
+    object ConsE090RepFONREP: TStringField
+      FieldName = 'FONREP'
+    end
+    object ConsE090RepFONRE2: TStringField
+      FieldName = 'FONRE2'
+    end
+    object ConsE090RepFONRE3: TStringField
+      FieldName = 'FONRE3'
+    end
+    object ConsE090RepFAXREP: TStringField
+      FieldName = 'FAXREP'
+    end
+    object ConsE090RepCXAPST: TIntegerField
+      FieldName = 'CXAPST'
+    end
+    object ConsE090RepINTNET: TStringField
+      FieldName = 'INTNET'
+      Size = 100
+    end
+    object ConsE090RepDATCAD: TDateTimeField
+      FieldName = 'DATCAD'
+    end
+    object ConsE090RepDATATU: TDateTimeField
+      FieldName = 'DATATU'
+    end
+    object ConsE090RepSITREP: TStringField
+      FieldName = 'SITREP'
+      Size = 1
+    end
+    object ConsE090RepQTDDEP: TIntegerField
+      FieldName = 'QTDDEP'
+    end
+    object ConsE090RepCALIRF: TStringField
+      FieldName = 'CALIRF'
+      Size = 1
+    end
+    object ConsE090RepCALISS: TStringField
+      FieldName = 'CALISS'
+      Size = 1
+    end
+    object ConsE090RepCALINS: TStringField
+      FieldName = 'CALINS'
+      Size = 1
+    end
+    object ConsE090RepGERTIT: TStringField
+      FieldName = 'GERTIT'
+      Size = 1
+    end
+    object ConsE090RepCODMOT: TIntegerField
+      FieldName = 'CODMOT'
+    end
+    object ConsE090RepOBSMOT: TStringField
+      FieldName = 'OBSMOT'
+      Size = 250
+    end
+    object ConsE090RepUSUMOT: TBCDField
+      FieldName = 'USUMOT'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE090RepDATMOT: TDateTimeField
+      FieldName = 'DATMOT'
+    end
+    object ConsE090RepHORMOT: TIntegerField
+      FieldName = 'HORMOT'
+    end
+    object ConsE090RepDATNAS: TDateTimeField
+      FieldName = 'DATNAS'
+    end
+    object ConsE090RepNUMRGE: TStringField
+      FieldName = 'NUMRGE'
+      Size = 12
+    end
+    object ConsE090RepORGRGE: TStringField
+      FieldName = 'ORGRGE'
+      Size = 6
+    end
+    object ConsE090RepDATRGE: TDateTimeField
+      FieldName = 'DATRGE'
+    end
+    object ConsE090RepREPCLI: TIntegerField
+      FieldName = 'REPCLI'
+    end
+    object ConsE090RepREPFOR: TIntegerField
+      FieldName = 'REPFOR'
+    end
+    object ConsE090RepINDEXP: TIntegerField
+      FieldName = 'INDEXP'
+    end
+    object ConsE090RepDATPAL: TDateTimeField
+      FieldName = 'DATPAL'
+    end
+    object ConsE090RepHORPAL: TIntegerField
+      FieldName = 'HORPAL'
+    end
+    object ConsE090RepCODCDI: TIntegerField
+      FieldName = 'CODCDI'
+    end
+    object ConsE090RepEENREP: TStringField
+      FieldName = 'EENREP'
+      Size = 18
+    end
+    object ConsE090RepHORATU: TIntegerField
+      FieldName = 'HORATU'
+    end
+    object ConsE090RepNENREP: TStringField
+      FieldName = 'NENREP'
+      Size = 60
+    end
+    object ConsE090RepUSUCAD: TBCDField
+      FieldName = 'USUCAD'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE090RepHORCAD: TIntegerField
+      FieldName = 'HORCAD'
+    end
+    object ConsE090RepUSUATU: TBCDField
+      FieldName = 'USUATU'
+      Precision = 10
+      Size = 0
+    end
+  end
+  object ConsE028Cpg: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'codcpg'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'select e028cpg.* from e028cpg where codemp = 1 and codcpg = :cod' +
+        'cpg')
+    Left = 296
+    Top = 24
+    object ConsE028CpgCODEMP: TIntegerField
+      FieldName = 'CODEMP'
+    end
+    object ConsE028CpgCODCPG: TStringField
+      FieldName = 'CODCPG'
+      Size = 6
+    end
+    object ConsE028CpgDESCPG: TStringField
+      FieldName = 'DESCPG'
+      Size = 50
+    end
+    object ConsE028CpgABRCPG: TStringField
+      FieldName = 'ABRCPG'
+      Size = 10
+    end
+    object ConsE028CpgAPLCPG: TStringField
+      FieldName = 'APLCPG'
+      Size = 1
+    end
+    object ConsE028CpgPGTANT: TStringField
+      FieldName = 'PGTANT'
+      Size = 1
+    end
+    object ConsE028CpgDIAESP: TStringField
+      FieldName = 'DIAESP'
+      Size = 1
+    end
+    object ConsE028CpgDIAME1: TIntegerField
+      FieldName = 'DIAME1'
+    end
+    object ConsE028CpgDIAME2: TIntegerField
+      FieldName = 'DIAME2'
+    end
+    object ConsE028CpgDIAME3: TIntegerField
+      FieldName = 'DIAME3'
+    end
+    object ConsE028CpgDIASEM: TStringField
+      FieldName = 'DIASEM'
+      Size = 7
+    end
+    object ConsE028CpgDIAMES: TStringField
+      FieldName = 'DIAMES'
+      Size = 31
+    end
+    object ConsE028CpgPRZMED: TIntegerField
+      FieldName = 'PRZMED'
+    end
+    object ConsE028CpgQTDPAR: TIntegerField
+      FieldName = 'QTDPAR'
+    end
+    object ConsE028CpgIPIPAR: TStringField
+      FieldName = 'IPIPAR'
+      Size = 1
+    end
+    object ConsE028CpgICMPAR: TStringField
+      FieldName = 'ICMPAR'
+      Size = 1
+    end
+    object ConsE028CpgSUBPAR: TStringField
+      FieldName = 'SUBPAR'
+      Size = 1
+    end
+    object ConsE028CpgFREPAR: TStringField
+      FieldName = 'FREPAR'
+      Size = 1
+    end
+    object ConsE028CpgSEGPAR: TStringField
+      FieldName = 'SEGPAR'
+      Size = 1
+    end
+    object ConsE028CpgENCPAR: TStringField
+      FieldName = 'ENCPAR'
+      Size = 1
+    end
+    object ConsE028CpgEMBPAR: TStringField
+      FieldName = 'EMBPAR'
+      Size = 1
+    end
+    object ConsE028CpgOUTPAR: TStringField
+      FieldName = 'OUTPAR'
+      Size = 1
+    end
+    object ConsE028CpgDARPAR: TStringField
+      FieldName = 'DARPAR'
+      Size = 1
+    end
+    object ConsE028CpgACRFIN: TBCDField
+      FieldName = 'ACRFIN'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE028CpgVENDSC: TBCDField
+      FieldName = 'VENDSC'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE028CpgCPRDSC: TBCDField
+      FieldName = 'CPRDSC'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE028CpgPERDSC: TBCDField
+      FieldName = 'PERDSC'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE028CpgPERCOM: TBCDField
+      FieldName = 'PERCOM'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE028CpgREDCOM: TBCDField
+      FieldName = 'REDCOM'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE028CpgTIPPAR: TIntegerField
+      FieldName = 'TIPPAR'
+    end
+    object ConsE028CpgSITCPG: TStringField
+      FieldName = 'SITCPG'
+      Size = 1
+    end
+    object ConsE028CpgCODTPR: TStringField
+      FieldName = 'CODTPR'
+      Size = 4
+    end
+    object ConsE028CpgFVECPG: TStringField
+      FieldName = 'FVECPG'
+      Size = 10
+    end
+    object ConsE028CpgFVEDEC: TStringField
+      FieldName = 'FVEDEC'
+      Size = 1
+    end
+    object ConsE028CpgINDEXP: TIntegerField
+      FieldName = 'INDEXP'
+    end
+    object ConsE028CpgDATPAL: TDateTimeField
+      FieldName = 'DATPAL'
+    end
+    object ConsE028CpgHORPAL: TIntegerField
+      FieldName = 'HORPAL'
+    end
+    object ConsE028CpgTIPINT: TIntegerField
+      FieldName = 'TIPINT'
+    end
+    object ConsE028CpgCODPDV: TIntegerField
+      FieldName = 'CODPDV'
+    end
+    object ConsE028CpgISSPAR: TStringField
+      FieldName = 'ISSPAR'
+      Size = 1
+    end
+    object ConsE028CpgDATGER: TDateTimeField
+      FieldName = 'DATGER'
+    end
+    object ConsE028CpgHORGER: TIntegerField
+      FieldName = 'HORGER'
+    end
+    object ConsE028CpgUSUGER: TBCDField
+      FieldName = 'USUGER'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE028CpgDATATU: TDateTimeField
+      FieldName = 'DATATU'
+    end
+    object ConsE028CpgHORATU: TIntegerField
+      FieldName = 'HORATU'
+    end
+    object ConsE028CpgUSUATU: TBCDField
+      FieldName = 'USUATU'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE028CpgPERENC: TBCDField
+      FieldName = 'PERENC'
+      Precision = 5
+      Size = 2
+    end
+  end
+  object ConsE120Ipd: TADOQuery
+    Connection = Dm.ADOBanco
+    CursorType = ctStatic
+    AfterScroll = ConsE120IpdAfterScroll
+    Parameters = <
+      item
+        Name = 'codfil'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'numped'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select e120ipd.*,e075pro.despro,e075der.desder from e120ipd'
+      'inner join e075pro on e075pro.codemp = e120ipd.codemp and'
+      '                      e075pro.codpro = e120ipd.codpro'
+      'inner join e075der on e075der.codemp = e120ipd.codemp and'
+      '                      e075der.codpro = e120ipd.codpro and'
+      '                      e075der.codder = e120ipd.codder'
+      '                      where'
+      '                      e120ipd.codemp = 1 and'
+      '                      e120ipd.codfil = :codfil and'
+      '                      e120ipd.numped = :numped'
+      'order by e120ipd.seqipd')
+    Left = 384
+    Top = 24
+    object ConsE120IpdCODEMP: TIntegerField
+      FieldName = 'CODEMP'
+    end
+    object ConsE120IpdCODFIL: TIntegerField
+      FieldName = 'CODFIL'
+    end
+    object ConsE120IpdNUMPED: TIntegerField
+      FieldName = 'NUMPED'
+    end
+    object ConsE120IpdSEQIPD: TIntegerField
+      FieldName = 'SEQIPD'
+    end
+    object ConsE120IpdTNSPRO: TStringField
+      FieldName = 'TNSPRO'
+      Size = 5
+    end
+    object ConsE120IpdPEDCLI: TStringField
+      FieldName = 'PEDCLI'
+    end
+    object ConsE120IpdSEQPCL: TStringField
+      FieldName = 'SEQPCL'
+      Size = 10
+    end
+    object ConsE120IpdPEDPRV: TStringField
+      FieldName = 'PEDPRV'
+      Size = 1
+    end
+    object ConsE120IpdCODPRO: TStringField
+      FieldName = 'CODPRO'
+      Size = 14
+    end
+    object ConsE120IpdCODDER: TStringField
+      FieldName = 'CODDER'
+      Size = 7
+    end
+    object ConsE120IpdCPLIPD: TStringField
+      FieldName = 'CPLIPD'
+      Size = 250
+    end
+    object ConsE120IpdCODFAM: TStringField
+      FieldName = 'CODFAM'
+      Size = 6
+    end
+    object ConsE120IpdCODAGR: TIntegerField
+      FieldName = 'CODAGR'
+    end
+    object ConsE120IpdCODTIC: TStringField
+      FieldName = 'CODTIC'
+      Size = 3
+    end
+    object ConsE120IpdCODTRD: TStringField
+      FieldName = 'CODTRD'
+      Size = 3
+    end
+    object ConsE120IpdCODTST: TStringField
+      FieldName = 'CODTST'
+      Size = 3
+    end
+    object ConsE120IpdCODSTP: TStringField
+      FieldName = 'CODSTP'
+      Size = 3
+    end
+    object ConsE120IpdCODSTC: TStringField
+      FieldName = 'CODSTC'
+      Size = 3
+    end
+    object ConsE120IpdCODDEP: TStringField
+      FieldName = 'CODDEP'
+      Size = 10
+    end
+    object ConsE120IpdCODLOT: TStringField
+      FieldName = 'CODLOT'
+      Size = 17
+    end
+    object ConsE120IpdRESEST: TStringField
+      FieldName = 'RESEST'
+      Size = 1
+    end
+    object ConsE120IpdQTDPED: TBCDField
+      FieldName = 'QTDPED'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdQTDAEN: TBCDField
+      FieldName = 'QTDAEN'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdQTDPOC: TBCDField
+      FieldName = 'QTDPOC'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdQTDFAT: TBCDField
+      FieldName = 'QTDFAT'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdQTDCAN: TBCDField
+      FieldName = 'QTDCAN'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdQTDABE: TBCDField
+      FieldName = 'QTDABE'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdQTDRAE: TBCDField
+      FieldName = 'QTDRAE'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdQTDNLP: TBCDField
+      FieldName = 'QTDNLP'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdQTDRES: TBCDField
+      FieldName = 'QTDRES'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdUNIMED: TStringField
+      FieldName = 'UNIMED'
+      Size = 3
+    end
+    object ConsE120IpdCODMCP: TStringField
+      FieldName = 'CODMCP'
+      Size = 3
+    end
+    object ConsE120IpdDATMFP: TDateTimeField
+      FieldName = 'DATMFP'
+    end
+    object ConsE120IpdCOTMFP: TBCDField
+      FieldName = 'COTMFP'
+      Precision = 19
+      Size = 10
+    end
+    object ConsE120IpdDATMOE: TDateTimeField
+      FieldName = 'DATMOE'
+    end
+    object ConsE120IpdCOTMOE: TBCDField
+      FieldName = 'COTMOE'
+      Precision = 19
+      Size = 10
+    end
+    object ConsE120IpdFECMOE: TStringField
+      FieldName = 'FECMOE'
+      Size = 1
+    end
+    object ConsE120IpdCODTPR: TStringField
+      FieldName = 'CODTPR'
+      Size = 4
+    end
+    object ConsE120IpdPREUNI: TBCDField
+      FieldName = 'PREUNI'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdCODMOE: TStringField
+      FieldName = 'CODMOE'
+      Size = 3
+    end
+    object ConsE120IpdPREFIX: TStringField
+      FieldName = 'PREFIX'
+      Size = 1
+    end
+    object ConsE120IpdPERDSC: TBCDField
+      FieldName = 'PERDSC'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdPEROFE: TBCDField
+      FieldName = 'PEROFE'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdPERACR: TBCDField
+      FieldName = 'PERACR'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdPERIPI: TBCDField
+      FieldName = 'PERIPI'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdPERICM: TBCDField
+      FieldName = 'PERICM'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdPERCOM: TBCDField
+      FieldName = 'PERCOM'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdDATENT: TDateTimeField
+      FieldName = 'DATENT'
+    end
+    object ConsE120IpdDATANE: TDateTimeField
+      FieldName = 'DATANE'
+    end
+    object ConsE120IpdDATPOC: TDateTimeField
+      FieldName = 'DATPOC'
+    end
+    object ConsE120IpdCODPVP: TStringField
+      FieldName = 'CODPVP'
+      Size = 8
+    end
+    object ConsE120IpdNUMPRJ: TIntegerField
+      FieldName = 'NUMPRJ'
+    end
+    object ConsE120IpdCODFPJ: TIntegerField
+      FieldName = 'CODFPJ'
+    end
+    object ConsE120IpdCTAFIN: TIntegerField
+      FieldName = 'CTAFIN'
+    end
+    object ConsE120IpdCTARED: TIntegerField
+      FieldName = 'CTARED'
+    end
+    object ConsE120IpdCODCCU: TStringField
+      FieldName = 'CODCCU'
+      Size = 9
+    end
+    object ConsE120IpdVLRFRE: TBCDField
+      FieldName = 'VLRFRE'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRSEG: TBCDField
+      FieldName = 'VLRSEG'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLREMB: TBCDField
+      FieldName = 'VLREMB'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRENC: TBCDField
+      FieldName = 'VLRENC'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLROUT: TBCDField
+      FieldName = 'VLROUT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRDAR: TBCDField
+      FieldName = 'VLRDAR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRFRD: TBCDField
+      FieldName = 'VLRFRD'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLROUD: TBCDField
+      FieldName = 'VLROUD'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRBRU: TBCDField
+      FieldName = 'VLRBRU'
+      DisplayFormat = '0.00'
+      EditFormat = '0.00'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRDSC: TBCDField
+      FieldName = 'VLRDSC'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRDS1: TBCDField
+      FieldName = 'VLRDS1'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRDS2: TBCDField
+      FieldName = 'VLRDS2'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRDS3: TBCDField
+      FieldName = 'VLRDS3'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRDS4: TBCDField
+      FieldName = 'VLRDS4'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLROFE: TBCDField
+      FieldName = 'VLROFE'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRDZF: TBCDField
+      FieldName = 'VLRDZF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRBIP: TBCDField
+      FieldName = 'VLRBIP'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRIPI: TBCDField
+      FieldName = 'VLRIPI'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRBIC: TBCDField
+      FieldName = 'VLRBIC'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRICM: TBCDField
+      FieldName = 'VLRICM'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRBSI: TBCDField
+      FieldName = 'VLRBSI'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRICS: TBCDField
+      FieldName = 'VLRICS'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRBSP: TBCDField
+      FieldName = 'VLRBSP'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRSTP: TBCDField
+      FieldName = 'VLRSTP'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRBSC: TBCDField
+      FieldName = 'VLRBSC'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRSTC: TBCDField
+      FieldName = 'VLRSTC'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRBCO: TBCDField
+      FieldName = 'VLRBCO'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRCOM: TBCDField
+      FieldName = 'VLRCOM'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRLPR: TBCDField
+      FieldName = 'VLRLPR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRLOU: TBCDField
+      FieldName = 'VLRLOU'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRLIQ: TBCDField
+      FieldName = 'VLRLIQ'
+      DisplayFormat = '0.00'
+      EditFormat = '0.00'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRFIN: TBCDField
+      FieldName = 'VLRFIN'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdSITIPD: TIntegerField
+      FieldName = 'SITIPD'
+    end
+    object ConsE120IpdCODMOT: TIntegerField
+      FieldName = 'CODMOT'
+    end
+    object ConsE120IpdOBSMOT: TStringField
+      FieldName = 'OBSMOT'
+      Size = 250
+    end
+    object ConsE120IpdGERNEC: TIntegerField
+      FieldName = 'GERNEC'
+    end
+    object ConsE120IpdGERCGA: TStringField
+      FieldName = 'GERCGA'
+      Size = 1
+    end
+    object ConsE120IpdRESMAN: TStringField
+      FieldName = 'RESMAN'
+      Size = 1
+    end
+    object ConsE120IpdINDAED: TStringField
+      FieldName = 'INDAED'
+      Size = 1
+    end
+    object ConsE120IpdNUMCTR: TIntegerField
+      FieldName = 'NUMCTR'
+    end
+    object ConsE120IpdDATCPT: TDateTimeField
+      FieldName = 'DATCPT'
+    end
+    object ConsE120IpdSEQCVP: TIntegerField
+      FieldName = 'SEQCVP'
+    end
+    object ConsE120IpdUSUGER: TBCDField
+      FieldName = 'USUGER'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE120IpdDATGER: TDateTimeField
+      FieldName = 'DATGER'
+    end
+    object ConsE120IpdHORGER: TIntegerField
+      FieldName = 'HORGER'
+    end
+    object ConsE120IpdQTDPPF: TBCDField
+      FieldName = 'QTDPPF'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdCMPKIT: TStringField
+      FieldName = 'CMPKIT'
+      Size = 1
+    end
+    object ConsE120IpdFILOCP: TIntegerField
+      FieldName = 'FILOCP'
+    end
+    object ConsE120IpdNUMOCP: TIntegerField
+      FieldName = 'NUMOCP'
+    end
+    object ConsE120IpdSEQIPO: TIntegerField
+      FieldName = 'SEQIPO'
+    end
+    object ConsE120IpdUNIVEN: TStringField
+      FieldName = 'UNIVEN'
+      Size = 3
+    end
+    object ConsE120IpdQTDVEN: TBCDField
+      FieldName = 'QTDVEN'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdPREVEN: TBCDField
+      FieldName = 'PREVEN'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdPREBRU: TBCDField
+      FieldName = 'PREBRU'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdFILCTR: TIntegerField
+      FieldName = 'FILCTR'
+    end
+    object ConsE120IpdCTRCVS: TIntegerField
+      FieldName = 'CTRCVS'
+    end
+    object ConsE120IpdCPTCVS: TDateTimeField
+      FieldName = 'CPTCVS'
+    end
+    object ConsE120IpdSEQCVS: TIntegerField
+      FieldName = 'SEQCVS'
+    end
+    object ConsE120IpdCODAVC: TIntegerField
+      FieldName = 'CODAVC'
+    end
+    object ConsE120IpdCODFXA: TStringField
+      FieldName = 'CODFXA'
+      Size = 15
+    end
+    object ConsE120IpdCODPGR: TStringField
+      FieldName = 'CODPGR'
+      Size = 5
+    end
+    object ConsE120IpdIDXGRD: TIntegerField
+      FieldName = 'IDXGRD'
+    end
+    object ConsE120IpdCODMAR: TStringField
+      FieldName = 'CODMAR'
+      Size = 10
+    end
+    object ConsE120IpdCODCLC: TStringField
+      FieldName = 'CODCLC'
+      Size = 10
+    end
+    object ConsE120IpdPERDS1: TBCDField
+      FieldName = 'PERDS1'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdPERDS2: TBCDField
+      FieldName = 'PERDS2'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdPERDS3: TBCDField
+      FieldName = 'PERDS3'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdPERDS4: TBCDField
+      FieldName = 'PERDS4'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdFILPRD: TIntegerField
+      FieldName = 'FILPRD'
+    end
+    object ConsE120IpdVLRRIS: TBCDField
+      FieldName = 'VLRRIS'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdINDPCE: TStringField
+      FieldName = 'INDPCE'
+      Size = 1
+    end
+    object ConsE120IpdINDPCR: TStringField
+      FieldName = 'INDPCR'
+      Size = 1
+    end
+    object ConsE120IpdPERPIT: TBCDField
+      FieldName = 'PERPIT'
+      Precision = 4
+      Size = 2
+    end
+    object ConsE120IpdVLRBPT: TBCDField
+      FieldName = 'VLRBPT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRPIT: TBCDField
+      FieldName = 'VLRPIT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdPERCRT: TBCDField
+      FieldName = 'PERCRT'
+      Precision = 4
+      Size = 2
+    end
+    object ConsE120IpdVLRBCT: TBCDField
+      FieldName = 'VLRBCT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRCRT: TBCDField
+      FieldName = 'VLRCRT'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdPERCSL: TBCDField
+      FieldName = 'PERCSL'
+      Precision = 4
+      Size = 2
+    end
+    object ConsE120IpdVLRBCL: TBCDField
+      FieldName = 'VLRBCL'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRCSL: TBCDField
+      FieldName = 'VLRCSL'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdPEROUR: TBCDField
+      FieldName = 'PEROUR'
+      Precision = 4
+      Size = 2
+    end
+    object ConsE120IpdVLRBOR: TBCDField
+      FieldName = 'VLRBOR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLROUR: TBCDField
+      FieldName = 'VLROUR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdPERIRF: TBCDField
+      FieldName = 'PERIRF'
+      Precision = 4
+      Size = 2
+    end
+    object ConsE120IpdVLRBIR: TBCDField
+      FieldName = 'VLRBIR'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRIRF: TBCDField
+      FieldName = 'VLRIRF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdFILNFC: TIntegerField
+      FieldName = 'FILNFC'
+    end
+    object ConsE120IpdFORNFC: TIntegerField
+      FieldName = 'FORNFC'
+    end
+    object ConsE120IpdNUMNFC: TIntegerField
+      FieldName = 'NUMNFC'
+    end
+    object ConsE120IpdSNFNFC: TStringField
+      FieldName = 'SNFNFC'
+      Size = 3
+    end
+    object ConsE120IpdSEQIPC: TIntegerField
+      FieldName = 'SEQIPC'
+    end
+    object ConsE120IpdNCTLCL: TStringField
+      FieldName = 'NCTLCL'
+    end
+    object ConsE120IpdNRECLI: TStringField
+      FieldName = 'NRECLI'
+    end
+    object ConsE120IpdNOSICL: TBCDField
+      FieldName = 'NOSICL'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE120IpdNOSFCL: TBCDField
+      FieldName = 'NOSFCL'
+      Precision = 10
+      Size = 0
+    end
+    object ConsE120IpdNOCCL1: TStringField
+      FieldName = 'NOCCL1'
+    end
+    object ConsE120IpdNOCCL2: TStringField
+      FieldName = 'NOCCL2'
+    end
+    object ConsE120IpdNOCCL3: TStringField
+      FieldName = 'NOCCL3'
+    end
+    object ConsE120IpdCODAGC: TStringField
+      FieldName = 'CODAGC'
+      Size = 5
+    end
+    object ConsE120IpdCTRCVP: TIntegerField
+      FieldName = 'CTRCVP'
+    end
+    object ConsE120IpdCPTCVP: TDateTimeField
+      FieldName = 'CPTCVP'
+    end
+    object ConsE120IpdSEQCTR: TIntegerField
+      FieldName = 'SEQCTR'
+    end
+    object ConsE120IpdINDAPE: TIntegerField
+      FieldName = 'INDAPE'
+    end
+    object ConsE120IpdOBSIPD: TStringField
+      FieldName = 'OBSIPD'
+      Size = 999
+    end
+    object ConsE120IpdSEQISP: TIntegerField
+      FieldName = 'SEQISP'
+    end
+    object ConsE120IpdEMPOCP: TIntegerField
+      FieldName = 'EMPOCP'
+    end
+    object ConsE120IpdVLRBPF: TBCDField
+      FieldName = 'VLRBPF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdPERPIF: TBCDField
+      FieldName = 'PERPIF'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdVLRPIF: TBCDField
+      FieldName = 'VLRPIF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdVLRBCF: TBCDField
+      FieldName = 'VLRBCF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdPERCFF: TBCDField
+      FieldName = 'PERCFF'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdVLRCFF: TBCDField
+      FieldName = 'VLRCFF'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdPERDS5: TBCDField
+      FieldName = 'PERDS5'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdVLRDS5: TBCDField
+      FieldName = 'VLRDS5'
+      Precision = 15
+      Size = 2
+    end
+    object ConsE120IpdUSU_TIPCMB: TIntegerField
+      FieldName = 'USU_TIPCMB'
+    end
+    object ConsE120IpdUSU_CODTEC1: TStringField
+      FieldName = 'USU_CODTEC1'
+      Size = 14
+    end
+    object ConsE120IpdUSU_CODTEC2: TStringField
+      FieldName = 'USU_CODTEC2'
+      Size = 14
+    end
+    object ConsE120IpdUSU_QTDREP: TIntegerField
+      FieldName = 'USU_QTDREP'
+    end
+    object ConsE120IpdUSU_QTDDIV: TBCDField
+      FieldName = 'USU_QTDDIV'
+      Precision = 11
+      Size = 2
+    end
+    object ConsE120IpdUSU_MEDLAR: TBCDField
+      FieldName = 'USU_MEDLAR'
+      Precision = 8
+      Size = 2
+    end
+    object ConsE120IpdUSU_MEDCOM: TBCDField
+      FieldName = 'USU_MEDCOM'
+      Precision = 8
+      Size = 2
+    end
+    object ConsE120IpdUSU_MEDALT: TBCDField
+      FieldName = 'USU_MEDALT'
+      Precision = 8
+      Size = 2
+    end
+    object ConsE120IpdUSU_PERDESC1: TBCDField
+      FieldName = 'USU_PERDESC1'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdUSU_PERDESC2: TBCDField
+      FieldName = 'USU_PERDESC2'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdUSU_PERDESC3: TBCDField
+      FieldName = 'USU_PERDESC3'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdUSU_PERDESC4: TBCDField
+      FieldName = 'USU_PERDESC4'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdUSU_PERDESC5: TBCDField
+      FieldName = 'USU_PERDESC5'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdUSU_PERDESC6: TBCDField
+      FieldName = 'USU_PERDESC6'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdUSU_CANAPR: TBCDField
+      FieldName = 'USU_CANAPR'
+      Precision = 14
+      Size = 5
+    end
+    object ConsE120IpdUSU_TOTDSC: TBCDField
+      FieldName = 'USU_TOTDSC'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdUSU_TOTDSCORI: TBCDField
+      FieldName = 'USU_TOTDSCORI'
+      Precision = 5
+      Size = 2
+    end
+    object ConsE120IpdORIRES: TStringField
+      FieldName = 'ORIRES'
+      Size = 1
+    end
+    object ConsE120IpdUSU_VLRORI: TBCDField
+      FieldName = 'USU_VLRORI'
+      Precision = 14
+      Size = 2
+    end
+    object ConsE120IpdDESPRO: TStringField
+      FieldName = 'DESPRO'
+      Size = 100
+    end
+    object ConsE120IpdDESDER: TStringField
+      FieldName = 'DESDER'
+      Size = 50
+    end
+  end
+  object ConsUsu_T120Ipd: TADOQuery
+    Connection = Dm.ADOBanco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'codfil'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'numped'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'seqipd'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_t120ipd where'
+      '                         usu_codemp = 1 and'
+      '                         usu_codfil = :codfil and'
+      '                         usu_numped = :numped and'
+      '                         usu_seqipd = :seqipd')
+    Left = 472
+    Top = 24
+    object ConsUsu_T120IpdUSU_CODEMP: TIntegerField
+      FieldName = 'USU_CODEMP'
+    end
+    object ConsUsu_T120IpdUSU_CODFIL: TIntegerField
+      FieldName = 'USU_CODFIL'
+    end
+    object ConsUsu_T120IpdUSU_NUMPED: TIntegerField
+      FieldName = 'USU_NUMPED'
+    end
+    object ConsUsu_T120IpdUSU_SEQIPD: TIntegerField
+      FieldName = 'USU_SEQIPD'
+    end
+    object ConsUsu_T120IpdUSU_QTDCOR: TIntegerField
+      FieldName = 'USU_QTDCOR'
+    end
+    object ConsUsu_T120IpdUSU_TIPCMB: TIntegerField
+      FieldName = 'USU_TIPCMB'
+    end
+    object ConsUsu_T120IpdUSU_COR001: TStringField
+      FieldName = 'USU_COR001'
+      Size = 14
+    end
+    object ConsUsu_T120IpdUSU_COR002: TStringField
+      FieldName = 'USU_COR002'
+      Size = 14
+    end
+    object ConsUsu_T120IpdUSU_SEQITE: TIntegerField
+      FieldName = 'USU_SEQITE'
+    end
+    object ConsUsu_T120IpdUSU_CODPRO: TStringField
+      FieldName = 'USU_CODPRO'
+      Size = 14
+    end
+    object ConsUsu_T120IpdUSU_CODDER: TStringField
+      FieldName = 'USU_CODDER'
+      Size = 7
+    end
+    object ConsUsu_T120IpdUSU_TECTRA: TStringField
+      FieldName = 'USU_TECTRA'
+      Size = 1
+    end
+    object ConsUsu_T120IpdUSU_QTDABE: TIntegerField
+      FieldName = 'USU_QTDABE'
+    end
+    object ConsUsu_T120IpdUSU_QTDCAN: TIntegerField
+      FieldName = 'USU_QTDCAN'
+    end
+    object ConsUsu_T120IpdUSU_NUMANE: TBCDField
+      FieldName = 'USU_NUMANE'
+      Precision = 12
+      Size = 0
+    end
+    object ConsUsu_T120IpdUSU_PRECAR: TIntegerField
+      FieldName = 'USU_PRECAR'
+    end
+  end
+  object ADOUsuT000sis: TADOQuery
+    Connection = Dm.ADOBanco
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'select * from usu_t000sid')
+    Left = 48
+    Top = 200
+    object ADOUsuT000sisUSU_URLSRV: TStringField
+      FieldName = 'USU_URLSRV'
+      Size = 255
+    end
+    object ADOUsuT000sisUSU_BASQRY: TStringField
+      FieldName = 'USU_BASQRY'
+      Size = 255
+    end
+    object ADOUsuT000sisUSU_USUCAD: TBCDField
+      FieldName = 'USU_USUCAD'
+      Precision = 10
+      Size = 0
+    end
+    object ADOUsuT000sisUSU_DATCAD: TDateTimeField
+      FieldName = 'USU_DATCAD'
+    end
+    object ADOUsuT000sisUSU_HORCAD: TIntegerField
+      FieldName = 'USU_HORCAD'
+    end
+    object ADOUsuT000sisUSU_CODEMP: TIntegerField
+      FieldName = 'USU_CODEMP'
+    end
+    object ADOUsuT000sisUSU_CODFIL: TIntegerField
+      FieldName = 'USU_CODFIL'
+    end
+    object ADOUsuT000sisUSU_USUATU: TBCDField
+      FieldName = 'USU_USUATU'
+      Precision = 10
+      Size = 0
+    end
+    object ADOUsuT000sisUSU_DATATU: TDateTimeField
+      FieldName = 'USU_DATATU'
+    end
+    object ADOUsuT000sisUSU_HORATU: TIntegerField
+      FieldName = 'USU_HORATU'
+    end
+  end
+  object CadUsu_T120Ipd: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'codemp'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codfil'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'numped'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'seqipd'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'seqite'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_t120ipd where usu_codemp = :codemp and'
+      '                                usu_codfil = :codfil and'
+      '                                usu_numped = :numped and'
+      '                                usu_seqipd = :seqipd and'
+      '                                usu_seqite = :seqite')
+    Left = 480
+    Top = 80
+    object CadUsu_T120IpdUSU_CODEMP: TIntegerField
+      FieldName = 'USU_CODEMP'
+    end
+    object CadUsu_T120IpdUSU_CODFIL: TIntegerField
+      FieldName = 'USU_CODFIL'
+    end
+    object CadUsu_T120IpdUSU_NUMPED: TIntegerField
+      FieldName = 'USU_NUMPED'
+    end
+    object CadUsu_T120IpdUSU_SEQIPD: TIntegerField
+      FieldName = 'USU_SEQIPD'
+    end
+    object CadUsu_T120IpdUSU_QTDCOR: TIntegerField
+      FieldName = 'USU_QTDCOR'
+    end
+    object CadUsu_T120IpdUSU_TIPCMB: TIntegerField
+      FieldName = 'USU_TIPCMB'
+    end
+    object CadUsu_T120IpdUSU_COR001: TStringField
+      FieldName = 'USU_COR001'
+      Size = 14
+    end
+    object CadUsu_T120IpdUSU_COR002: TStringField
+      FieldName = 'USU_COR002'
+      Size = 14
+    end
+    object CadUsu_T120IpdUSU_SEQITE: TIntegerField
+      FieldName = 'USU_SEQITE'
+    end
+    object CadUsu_T120IpdUSU_CODPRO: TStringField
+      FieldName = 'USU_CODPRO'
+      Size = 14
+    end
+    object CadUsu_T120IpdUSU_CODDER: TStringField
+      FieldName = 'USU_CODDER'
+      Size = 7
+    end
+    object CadUsu_T120IpdUSU_TECTRA: TStringField
+      FieldName = 'USU_TECTRA'
+      Size = 1
+    end
+    object CadUsu_T120IpdUSU_QTDABE: TIntegerField
+      FieldName = 'USU_QTDABE'
+    end
+    object CadUsu_T120IpdUSU_QTDCAN: TIntegerField
+      FieldName = 'USU_QTDCAN'
+    end
+    object CadUsu_T120IpdUSU_NUMANE: TBCDField
+      FieldName = 'USU_NUMANE'
+      Precision = 12
+      Size = 0
+    end
+    object CadUsu_T120IpdUSU_PRECAR: TIntegerField
+      FieldName = 'USU_PRECAR'
+    end
+  end
+  object ConsUsu_TDerCor: TADOQuery
+    Connection = Dm.ADOBanco
+    Parameters = <
+      item
+        Name = 'codemp'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codpro'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codder'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tdercor where'
+      '                          usu_codemp = :codemp and'
+      '                          usu_codpro = :codpro and'
+      '                          usu_codder = :codder and'
+      '                          usu_sittec = '#39'A'#39
+      '                          order by usu_codtec')
+    Left = 40
+    Top = 152
+    object ConsUsu_TDerCorUSU_CODEMP: TIntegerField
+      FieldName = 'USU_CODEMP'
+    end
+    object ConsUsu_TDerCorUSU_CODPRO: TStringField
+      FieldName = 'USU_CODPRO'
+      Size = 14
+    end
+    object ConsUsu_TDerCorUSU_CODDER: TStringField
+      FieldName = 'USU_CODDER'
+      Size = 7
+    end
+    object ConsUsu_TDerCorUSU_CODTEC: TStringField
+      FieldName = 'USU_CODTEC'
+      Size = 14
+    end
+    object ConsUsu_TDerCorUSU_SITTEC: TStringField
+      FieldName = 'USU_SITTEC'
+      Size = 1
+    end
+    object ConsUsu_TDerCorUSU_DESTEC: TStringField
+      FieldName = 'USU_DESTEC'
+      Size = 50
+    end
+  end
+end

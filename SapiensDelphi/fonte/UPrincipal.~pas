@@ -1,0 +1,524 @@
+unit UPrincipal;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, ExtCtrls, ComCtrls, StdCtrls, Mask, ToolEdit, CurrEdit,
+  ActnList, RbDrawCore, RbButton, ToolWin, RbSplitter, Buttons,
+  RxMenus, ImgList, jpeg, ActnMan, ActnColorMaps, ActnCtrls,
+  ActnMenus, RxHints, RXShell,MidasLib, IdBaseComponent, IdComponent,
+  IdIPWatch,IniFiles, DB, ADODB;
+
+type
+  TFPrincipal = class(TForm)
+    StatusBar1: TStatusBar;
+    Timer1: TTimer;
+    ActionList1: TActionList;
+    ToolBar1: TToolBar;
+    NivelAcesso: TAction;
+    Usuarios: TAction;
+    Formularios: TAction;
+    MainMenu1: TMainMenu;
+    mnuSeguranca: TMenuItem;
+    mnuCadUsu: TMenuItem;
+    mnuNivAce: TMenuItem;
+    mnuFormul: TMenuItem;
+    mnuForNiv: TMenuItem;
+    SpeedButton2: TSpeedButton;
+    ToolBar2: TToolBar;
+    ToolButton3: TToolButton;
+    ImageList2: TImageList;
+    AcFormNivel: TAction;
+    ToolButton1: TToolButton;
+    AcCorteTecCarga: TAction;
+    BControleCorteTecido: TToolButton;
+    AcLogBaxaCorte: TAction;
+    BLogBaixaCorte: TToolButton;
+    AcSaldoCor1001_1: TAction;
+    mnuProducao: TMenuItem;
+    mnuCorteTecido: TMenuItem;
+    mnuControleCorte: TMenuItem;
+    mnuComercial: TMenuItem;
+    mnuMercado: TMenuItem;
+    mnuSuprimentos: TMenuItem;
+    mnuGestaoCompras: TMenuItem;
+    mnuGestaoRecebimento: TMenuItem;
+    mnuGestaoEstoque: TMenuItem;
+    mnuLogBaixaTecido: TMenuItem;
+    mnuSaldoTecido1001_1: TMenuItem;
+    RxTrayIcon1: TRxTrayIcon;
+    PopupMenu1: TPopupMenu;
+    Abrir1: TMenuItem;
+    Fechar1: TMenuItem;
+    AcGeraIni: TAction;
+    ToolButton2: TToolButton;
+    N1: TMenuItem;
+    mnuGeraIni: TMenuItem;
+    AcPreCarga: TAction;
+    BPreCarga: TToolButton;
+    Bsair: TToolButton;
+    mnuGestaoVendas: TMenuItem;
+    mnuGestaoDistribuicao: TMenuItem;
+    mnuGestaoFaturamento: TMenuItem;
+    mnuPreCarga: TMenuItem;
+    AcAtualizaPreCus: TAction;
+    BAtualizaPreCus: TToolButton;
+    mnuAtualizaPreCus: TMenuItem;
+    ConsVersao: TADOQuery;
+    ConsVersaoUSU_CODVER: TBCDField;
+    ConsVersaoUSU_DATATU: TDateTimeField;
+    CadUsu_T100CCU: TADOQuery;
+    CadUsu_T100CCUUSU_CODCON: TIntegerField;
+    CadUsu_T100CCUUSU_CODUSU: TBCDField;
+    CadUsu_T100CCUUSU_DATCON: TDateTimeField;
+    CadUsu_T100CCUUSU_HORCON: TIntegerField;
+    CadUsu_T100CCUUSU_NOMMAQ: TStringField;
+    CadUsu_T100CCUUSU_IPMAQ: TStringField;
+    TProcuraConexcao: TTimer;
+    ConsUsu_T100CCU: TADOQuery;
+    ConsUsu_T100CCUUSU_CODCON: TIntegerField;
+    ConsUsu_T100CCUUSU_CODUSU: TBCDField;
+    ConsUsu_T100CCUUSU_DATCON: TDateTimeField;
+    ConsUsu_T100CCUUSU_HORCON: TIntegerField;
+    ConsUsu_T100CCUUSU_NOMMAQ: TStringField;
+    ConsUsu_T100CCUUSU_IPMAQ: TStringField;
+    CadUsu_T100CTA: TADOQuery;
+    CadUsu_T100CTAUSU_CODCON: TIntegerField;
+    CadUsu_T100CTAUSU_NOMTLA: TStringField;
+    CadUsu_T100CTAUSU_HORABE: TIntegerField;
+    AcControleConexcao: TAction;
+    mnuControleConexcao: TMenuItem;
+    AcPedido: TAction;
+    ToolButton4: TToolButton;
+    procedure Timer1Timer(Sender: TObject);
+    procedure Formularios1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure ConsultaSimplesClasse1Click(Sender: TObject);
+    procedure NivelAcesso1Click(Sender: TObject);
+    procedure Usuario1Click(Sender: TObject);
+    procedure GrupoUsurio1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure NivelAcessoExecute(Sender: TObject);
+    procedure UsuariosExecute(Sender: TObject);
+    procedure FormulariosExecute(Sender: TObject);
+    procedure GrupoUsuariosExecute(Sender: TObject);
+    procedure LoginExecute(Sender: TObject);
+    procedure LogsExecute(Sender: TObject);
+    procedure LoginErradoExecute(Sender: TObject);
+    procedure AcessosUsuariosExecute(Sender: TObject);
+    procedure AcFormNivelExecute(Sender: TObject);
+    procedure AcCorteTecCargaExecute(Sender: TObject);
+    procedure AcLogBaxaCorteExecute(Sender: TObject);
+    procedure AcSaldoCor1001_1Execute(Sender: TObject);
+    procedure mnuSairClick(Sender: TObject);
+    procedure RxTrayIcon1DblClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Abrir1Click(Sender: TObject);
+    procedure Fechar1Click(Sender: TObject);
+    procedure AcGeraIniExecute(Sender: TObject);
+    procedure AcPreCargaExecute(Sender: TObject);
+    procedure BsairClick(Sender: TObject);
+    procedure AcAtualizaPreCusExecute(Sender: TObject);
+    procedure TProcuraConexcaoTimer(Sender: TObject);
+    procedure AcControleConexcaoExecute(Sender: TObject);
+    procedure AcPedidoExecute(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    usuario : String;
+    cd_usuario, cd_pessoa_usu, vnCodCon : integer;
+    vdChamaLogin : Boolean;
+    procedure LimparLabels (form : TForm);
+    procedure GravaTela (NomeTela : String; CodCon : Integer);
+    procedure ApagaTela (NomeTela : String; CodCon : Integer);
+    
+  end;
+
+var
+  FPrincipal: TFPrincipal;
+  H : THandle;
+  
+
+implementation
+
+uses UFormulario, UCidade, UConsSimpCidade, UGrupoUsuario, UUnidadeMedida,
+  UClasseMatPrima, UConsSimpClasse, UConsSimpUnMedida, USetor,
+  UConsSimpSetor, UCondPgto, UPessoaJuridica, UPessoaFisica, UTpCobranca,
+  UConsSimpTpCobranca, UMateriaPrima, UMtPrimaNf, UConsSimpMtPrima,
+  UConsSimpFornecedor, UMovimentoEstoque, UGrupoProdutos, UEntradaMP,
+  USitTribu, UProdutos, UConsSimpGrupoProduto, UConsSimpSitTribu,
+  UTabelaPreco, URegiao, UConsSimpRegiao, UConsSimpTabPreco, UPedido,
+  UConsSimpCliente, UConsSimpCondPgto, UCompraMt, UNivelAcesso, UUsuario,
+  UConsSimpGrupoUsuario, ULogin, UPedCompAberto, UConferenciaPedido,
+  USaidaMP, UEtiquetaMt, USaidaProdAcabado, UMensagens, UDataModule4,
+  UDireitoAcasso, UDataModule1, URelCompra, UEtiquetaProd,
+  URelMateriaPrima, URelEntradaSaida, URelSaidaProdAcabado, UDataModule2,
+  UConsLogs, UShowroomTecidos, UShowroomProdutos, UFaleConosco,
+  ULoginErrado, UAcessosUsuarios, UDm, UFormNivel, UCorteTecCarga,
+  ULogBaxaCorte, USaldoCor1001_1, UGeraIni, UPreCarga, UAtualizaPreCus,
+  UControleConexcoes;
+
+{$R *.dfm}
+//grava a tela que esta aberta
+procedure TFPrincipal.GravaTela(NomeTela : String; CodCon : Integer);
+var Hora : String;
+begin
+   CadUsu_T100CTA.Open;
+   CadUsu_T100CTA.Insert;
+   CadUsu_T100CTAUSU_CODCON.Value := CodCon;
+   CadUsu_T100CTAUSU_NOMTLA.Value := NomeTela;
+   Hora := TimeToStr(Time);
+   CadUsu_T100CTAUSU_HORABE.Value := (StrToInt(Copy(Hora,1,2))*60) + StrToInt(Copy(Hora,4,2));
+   CadUsu_T100CTA.Post;
+end;
+//apaga tela aberta
+procedure TFPrincipal.ApagaTela(NomeTela : String; CodCon : Integer);
+begin
+  CadUsu_T100CTA.Close;
+  CadUsu_T100CTA.Parameters.ParamByName('codcon').Value := CodCon;
+  CadUsu_T100CTA.Parameters.ParamByName('nomtla').Value := NomeTela;
+  CadUsu_T100CTA.Open;
+  if not CadUsu_T100CTA.IsEmpty then
+    CadUsu_T100CTA.Delete;
+end;
+
+//procedimento para limpar todos os labels de form
+procedure TFPrincipal.LimparLabels(form : TForm);
+var
+  i : Integer;
+begin
+  for i:= 0 to form.ComponentCount - 1 do
+    begin
+       if form.Components[i] is TLabel then
+        begin
+          TLabel(Components[i]).Caption := '';
+        end;
+    end;
+    
+end;
+
+procedure TFPrincipal.Timer1Timer(Sender: TObject);
+var variavel_string : string;
+begin
+
+case DayOfWeek( Date ) of
+  1: variavel_string := 'Domingo';
+  2: variavel_string := 'Segunda-Feira';
+  3: variavel_string := 'Terça-Feira';
+  4: variavel_string := 'Quarta-Feira';
+  5: variavel_string := 'Quinta-Feira';
+  6: variavel_string := 'Sexta-Feira';
+  7: variavel_string := 'Sábado';
+end;
+
+StatusBar1.Panels[1].Text := variavel_string;
+StatusBar1.Panels[2].Text := DateToStr(Date);
+StatusBar1.Panels[3].Text := TimeToStr(time);
+//if getkeystate(VK_NUMLOCK) = 1 then
+//StatusBar1.Panels[4].Text := 'NumLock';
+//if getkeystate(VK_NUMLOCK) = 0 then
+//StatusBar1.Panels[4].Text := '';
+//if getkeystate(VK_CAPITAL	) = 0 then
+//StatusBar1.Panels[5].Text := '';
+//if getkeystate(VK_CAPITAL) = 1 then
+//StatusBar1.Panels[5].Text := 'CapsLock';
+//StatusBar1.Panels[6].Text := usuario;
+
+end;
+
+procedure TFPrincipal.Formularios1Click(Sender: TObject);
+begin
+ FFormulario.ShowModal;
+end;
+
+procedure TFPrincipal.FormShow(Sender: TObject);
+var i,ii,iii,iiii : Integer;
+    ArqVer, ArqAtu : TIniFile;
+    vaVersao : String;
+
+begin
+if vdChamaLogin = true then
+  begin
+
+ dm.ADOBanco.Connected := true;
+
+ Application.CreateForm(TFLogin, FLogin);
+ FLogin.ShowModal;
+
+ Timer1.Enabled := True;
+
+    for i := 0 to MainMenu1.Items.Count-1 do
+    begin//1
+      dm.ConsValidaMenu.Close;
+      dm.ConsValidaMenu.Parameters.ParamByName('codusu').Value := cd_usuario;
+      dm.ConsValidaMenu.Parameters.ParamByName('nomfor').Value := MainMenu1.Items[i].Name;
+      dm.ConsValidaMenu.Open;
+      if dm.ConsValidaMenuUSU_FORLIB.Value = 'N' then
+        begin
+          MainMenu1.Items[i].Visible := false;
+        end;
+
+        //percorre o sub menu
+        for ii := 0 to Fprincipal.MainMenu1.Items[i].count - 1 do
+          begin//2
+            dm.ConsValidaMenu.Close;
+            dm.ConsValidaMenu.Parameters.ParamByName('codusu').Value := cd_usuario;
+            dm.ConsValidaMenu.Parameters.ParamByName('nomfor').Value := MainMenu1.Items[i].Items[ii].Name;
+            dm.ConsValidaMenu.Open;
+
+             if dm.ConsValidaMenuUSU_FORLIB.Value = 'N' then
+              begin
+                MainMenu1.Items[i].Items[ii].Visible := false;
+              end;
+
+              //percorre o sub do sub menu
+              for iii := 0 to Fprincipal.MainMenu1.Items[i].Items[ii].Count - 1 do
+              begin//3
+                dm.ConsValidaMenu.Close;
+                dm.ConsValidaMenu.Parameters.ParamByName('codusu').Value := cd_usuario;
+                dm.ConsValidaMenu.Parameters.ParamByName('nomfor').Value := MainMenu1.Items[i].Items[ii].Items[iii].Name;
+                dm.ConsValidaMenu.Open;
+
+                if dm.ConsValidaMenuUSU_FORLIB.Value = 'N' then
+                  begin
+                    MainMenu1.Items[i].Items[ii].Items[iii].Visible := false;
+                  end;
+
+
+                  //percorre o sub do sub do sub menu
+                  for iiii := 0 to Fprincipal.MainMenu1.Items[i].Items[ii].Items[iii].Count - 1 do
+                     begin//4
+                       dm.ConsValidaMenu.Close;
+                       dm.ConsValidaMenu.Parameters.ParamByName('codusu').Value := cd_usuario;
+                       dm.ConsValidaMenu.Parameters.ParamByName('nomfor').Value := MainMenu1.Items[i].Items[ii].Items[iii].Items[iiii].Name;
+                       dm.ConsValidaMenu.Open;
+
+                       if dm.ConsValidaMenuUSU_FORLIB.Value = 'N' then
+                          begin
+                             MainMenu1.Items[i].Items[ii].Items[iii].Items[iiii].Visible := false;
+                          end;
+                     end;//4
+              end;//3
+          end;//2
+    end;//1
+
+    BControleCorteTecido.Visible := mnuControleCorte.Visible;
+    BLogBaixaCorte.Visible := mnuLogBaixaTecido.Visible;
+    BPreCarga.Visible := mnuPreCarga.Visible;
+    BAtualizaPreCus.Visible := mnuAtualizaPreCus.Visible;
+ end;
+ //end;
+end;
+
+procedure TFPrincipal.ConsultaSimplesClasse1Click(Sender: TObject);
+begin
+
+;
+
+end;
+
+procedure TFPrincipal.NivelAcesso1Click(Sender: TObject);
+begin
+FNivelAcesso.ShowModal;
+end;
+
+procedure TFPrincipal.Usuario1Click(Sender: TObject);
+begin
+  FUsuario.ShowModal;
+end;
+
+procedure TFPrincipal.GrupoUsurio1Click(Sender: TObject);
+begin
+FConsSimpGrupoUsuario.ShowModal;
+end;
+
+procedure TFPrincipal.FormCreate(Sender: TObject);
+begin
+
+// --> formação do hint
+RxHints.SetHintStyle(hsRoundRect, 0, true, taLeftJustify); //Forma do Balão
+//Application.HintColor := clBtnFace; //muda a cor de fundo
+Application.HintHidePause := 100000; // sustenta o hint por + tempo
+
+vdChamaLogin := true;
+
+end;
+
+procedure TFPrincipal.NivelAcessoExecute(Sender: TObject);
+begin
+FNivelAcesso := TFNivelAcesso.Create(Self);
+FNivelAcesso.ShowModal;
+FreeAndNil(FNivelAcesso);
+end;
+
+procedure TFPrincipal.UsuariosExecute(Sender: TObject);
+begin
+FUsuario := TFUsuario.Create(Self);
+FUsuario.ShowModal;
+FreeAndNil(FUsuario);
+end;
+
+procedure TFPrincipal.FormulariosExecute(Sender: TObject);
+begin
+FFormulario := TFFormulario.Create(Self);
+FFormulario.ShowModal;
+FreeAndNil(FFormulario);
+end;
+
+procedure TFPrincipal.GrupoUsuariosExecute(Sender: TObject);
+begin
+FGrupoUsuario := TFGrupoUsuario.Create(Self);
+FGrupoUsuario.ShowModal;
+FreeAndNil(FGrupoUsuario);
+end;
+
+procedure TFPrincipal.LoginExecute(Sender: TObject);
+begin
+   FLogin := TFLogin.Create(Self);
+    FLogin.ShowModal;
+    FreeAndNil(FLogin);
+end;
+
+procedure TFPrincipal.LogsExecute(Sender: TObject);
+begin
+   FConsLogs := TFConsLogs.Create(Self);
+   FConsLogs.ShowModal;
+   FreeAndNil(FConsLogs);
+end;
+
+procedure TFPrincipal.LoginErradoExecute(Sender: TObject);
+begin
+  FLoginErrado := TFLoginErrado.Create(Self);
+  FLoginErrado.ShowModal;
+  FreeAndNil(FLoginErrado);
+end;
+
+procedure TFPrincipal.AcessosUsuariosExecute(Sender: TObject);
+begin
+  FAcessosUsuarios := TFAcessosUsuarios.Create(Self);
+  FAcessosUsuarios.ShowModal;
+  FreeAndNil(FAcessosUsuarios);
+end;
+
+procedure TFPrincipal.AcFormNivelExecute(Sender: TObject);
+begin
+  FFormNivel := TFFormNivel.Create(Self);
+  FFormNivel.ShowModal;
+  FreeAndNil(FFormNivel);
+end;
+
+procedure TFPrincipal.AcCorteTecCargaExecute(Sender: TObject);
+begin
+  FCorteTecCarga := TFCorteTecCarga.Create(Self);
+  FCorteTecCarga.ShowModal;
+  FreeAndNil(FCorteTecCarga);
+end;
+
+procedure TFPrincipal.AcLogBaxaCorteExecute(Sender: TObject);
+begin
+    FLogBaxaCorte := TFLogBaxaCorte.Create(Self);
+    FLogBaxaCorte.ShowModal;
+    FreeAndNil(FLogBaxaCorte);
+end;
+
+procedure TFPrincipal.AcSaldoCor1001_1Execute(Sender: TObject);
+begin
+    FSaldoCor1001_1 := TFSaldoCor1001_1.Create(Self);
+    FSaldoCor1001_1.ShowModal;
+    FreeAndNil(FSaldoCor1001_1);
+end;
+
+procedure TFPrincipal.mnuSairClick(Sender: TObject);
+begin
+//  Application.Terminate;
+end;
+
+procedure TFPrincipal.RxTrayIcon1DblClick(Sender: TObject);
+begin
+    show; {Mostra o form}
+    H := FindWindow(nil,'TrayIcon'); { acha o ponteiro da aplicação no sistema}
+    ShowWindow(h,SW_RESTORE); { mostra aplicação na barra de tarefas}
+    RxTrayIcon1.Active := false; {oculta ícone do tray icon}
+end;
+
+procedure TFPrincipal.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  if CanClose then { se o comando para fechar for acionado }
+    CanClose := false; { cancela o comando }
+    h := FindWindow(nil,'TrayIcon'); { acha o ponteiro da aplicação no sistema}
+    ShowWindow(h,SW_HIDE); { esconde a aplicação da barra de tarefas}
+    RxTrayIcon1.Active := true; { coloca ícone no tray icon}
+    hide; { esconde o form }
+    vdChamaLogin := False;
+end;
+
+procedure TFPrincipal.Abrir1Click(Sender: TObject);
+begin
+  RxTrayIcon1DblClick(Sender);
+end;
+
+procedure TFPrincipal.Fechar1Click(Sender: TObject);
+begin
+CadUsu_T100CCU.Close;
+CadUsu_T100CCU.Parameters.ParamByName('codcon').Value := vnCodCon;
+CadUsu_T100CCU.Open;
+if not CadUsu_T100CCU.IsEmpty then
+  CadUsu_T100CCU.Delete;
+  
+Application.Terminate;
+end;
+
+procedure TFPrincipal.AcGeraIniExecute(Sender: TObject);
+begin
+  FGeraIni := TFGeraIni.Create(Self);
+  FGeraIni.ShowModal;
+  FreeAndNil(FGeraIni);
+end;
+
+procedure TFPrincipal.AcPreCargaExecute(Sender: TObject);
+begin
+  FPreCarga := TFPreCarga.Create(Self);
+  FPreCarga.ShowModal;
+  FreeAndNil(FPreCarga);
+end;
+
+procedure TFPrincipal.BsairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFPrincipal.AcAtualizaPreCusExecute(Sender: TObject);
+begin
+  FAtualizaPreCus := TFAtualizaPreCus.Create(Self);
+  FAtualizaPreCus.ShowModal;
+  FreeAndNil(FAtualizaPreCus);
+end;
+
+procedure TFPrincipal.TProcuraConexcaoTimer(Sender: TObject);
+begin
+    ConsUsu_T100CCU.Close;
+    ConsUsu_T100CCU.Parameters.ParamByName('codcon').Value := vnCodCon;
+    ConsUsu_T100CCU.Open;
+
+    if ConsUsu_T100CCU.IsEmpty then
+      Application.Terminate;
+end;
+
+procedure TFPrincipal.AcControleConexcaoExecute(Sender: TObject);
+begin
+  FControleConexca := TFControleConexca.Create(Self);
+  FControleConexca.ShowModal;
+  FreeAndNil(FControleConexca);
+end;
+
+procedure TFPrincipal.AcPedidoExecute(Sender: TObject);
+begin
+  FPedido := TFPedido.Create(Self);
+  FPedido.ShowModal;
+  FreeAndNil(FPedido);
+end;
+
+end.

@@ -1,0 +1,522 @@
+
+create table CIDADE(
+cd_cidade integer not null,
+nm_cidade varchar(100) not null, 
+sigla_uf varchar(100),
+cep varchar(15),
+constraint pk_cidade primary key(cd_cidade))
+
+
+create table CONTATOS(
+cd_contato integer not null,
+cd_pessoa integer not null,
+ds_contato varchar(100),
+tel varchar(100),
+cargo varchar(100),
+constraint pk_contato primary key(cd_contato,cd_pessoa),
+constraint fk_pessoa_c foreign key(cd_pessoa) references pessoa(cd_pessoa))
+
+create table EMAIL(
+cd_email integer not null,
+cd_pessoa integer not null,
+email varchar(100),
+ds_email varchar(100),
+constraint pk_email primary key(cd_email, cd_pessoa),
+constraint fk_pessoa foreign key(cd_pessoa) references pessoa(cd_pessoa))
+
+
+create table FONE(
+cd_fone integer not null, 
+num_fone varchar(30),
+ddd varchar(10),
+ds_fone varchar(100),
+cd_pessoa integer not null, 
+constraint pk_fone primary key(cd_fone, cd_pessoa),
+constraint fk_pessoa_f foreign key(cd_pessoa) references pessoa(cd_pessoa))
+
+create table ALERTA_PESSOA(
+cd_alerta integer not null,
+cd_pessoa integer not null,
+ds_alerta varchar(300) not null,
+usuarioo varchar(100),
+dt_alerta date,
+hr_alerta time, 
+constraint pk_alerta primary key(cd_alerta, cd_pessoa),
+constraint fk_alerta foreign key(cd_pessoa) references pessoa(cd_pessoa))
+
+
+create table PESSOA(
+cd_pessoa integer not null,
+cd_cidade integer not null,
+rua varchar(100) not null,
+bairro varchar(100),
+cep varchar(15),
+complemento varchar(100),
+home_page varchar(50),
+dt_cadastro date not null,
+situacao char(1),
+observacoes varchar(300),
+usuario varchar(100),
+constraint pk_pessoa primary key(cd_pessoa),
+constraint fk_cidade foreign key(cd_cidade) references cidade(cd_cidade))
+alter table pessoa add constraint fk_cidade_p foreign key(cd_cidade) references cidade(cd_cidade)
+
+
+create table PESSOA_FISICA(
+cd_pessoa_fi integer not null,
+cd_pessoa integer not null,
+rg varchar(15),
+cpf varchar(15),
+dt_nascimento date not null,
+sexo char(1),
+constraint pk_pessoa_fi primary key(cd_pessoa_fi))
+alter table pessoa_fisica add constraint fk_pessoa_fi foreign key(cd_pessoa) references pessoa(cd_pessoa)
+alter table pessoa_fisica add nm_pessoa varchar(100)
+
+create table PESSOA_JURIDICA(
+cd_pessoa_ju integer not null,
+cd_pessoa integer not null,
+cgc varchar(15),
+insc_estadual varchar(15),
+rz_social varchar(100) not null, 
+nm_fantazia varchar(100) not null,
+cli_for char(1) not null,
+bloqueado char(1),
+constraint pk_pessoa_ju primary key(cd_pessoa_ju))
+alter table pessoa_juridica add constraint pk_pessoa_juu primary key(cd_pessoa)
+alter table pessoa_juridica add constraint fk_pessoa_ju foreign key(cd_pessoa) references pessoa(cd_pessoa)
+alter table pessoa_juridica add rm_atividade varchar(100)
+alter table pessoa_juridica add cd_regiao integer not null 
+alter table pessoa_juridica add constraint fk_regiaoo foreign key(cd_regiao) references regiao(cd_regiao)
+
+create table TABELA_PRECO(
+cd_tabela integer not null,
+ds_tabela varchar(100) not null,
+sigla_tabela varchar(20),
+dt_cadastro date not null,
+usuario varchar(100),
+constraint pk_tabela_preco primary key(cd_tabela))
+
+
+create table PRODUTOS_TABELA(
+cd_produto integer not null,
+cd_tabela integer not null, 
+preco_venda numeric(7,2),
+perc_min numeric(7,2),
+perc_max numeric(7,2),
+constraint pk_prod_tab1 primary key(cd_tabela, cd_produto),
+constraint fk_tab foreign key(cd_tabela) references tabela_preco(cd_tabela))
+
+
+create table REGIAO(
+cd_regiao integer not null,
+cd_tabela_preco integer not null,
+ds_regiao varchar(100),
+populacao numeric(10),
+observacoes varchar(300),
+constraint pk_regiao primary key(cd_regiao),
+constraint fk_tabela foreign key(cd_tabela_preco) references tabela_preco(cd_tabela))
+
+
+create table REPRESENTANTE(
+cd_representante integer not null,
+cd_pessoa integer not null,
+cd_regiao integer not null, 
+cgc varchar(15),
+insc_estadual varchar(15),
+rz_social varchar(100) not null, 
+nm_fantazia varchar(100) not null,
+dt_entrada date,
+constraint pk_representante primary key(cd_representante))
+alter table representante add constraint fk_representante foreign key(cd_pessoa) references pessoa(cd_pessoa)
+alter table representante add constraint fk_regiao foreign key(cd_regiao) references regiao(cd_regiao)
+
+
+create table REPRESENTANTES_REGIAO(
+cd_regiao integer not null,
+cd_representante integer not null,
+constraint pk_rep_reg primary key(cd_regiao, cd_representante),
+constraint fk_regiao_r foreign key(cd_regiao) references regiao(cd_regiao),
+constraint fk_representante_ff foreign key(cd_representante) references representante(cd_representante))
+
+
+create table FORMULARIO(
+cd_formulario integer not null,
+nm_formulario varchar(100),
+ds_formulario varchar(100),
+constraint pk_formulario_ff primary key(cd_formulario))
+
+
+create table FORM_NIVEL(
+cd_form_nivel integer not null,
+cd_formulario integer not null,
+cd_nivel integer not null,
+liberado char(1) not null, 
+constraint pk_form_nivel primary key(cd_form_nivel),
+constraint fk_formulario foreign key(cd_formulario) references formulario(cd_formulario),
+constraint fk_nivel foreign key(cd_nivel) references nivel_acesso(cd_nivel))
+
+
+create table NIVEL_ACESSO(
+cd_nivel integer not null
+ds_nivel varchar(100),
+constraint pk_nivel primary key(cd_nivel))
+
+
+
+create table USUARIO(
+cd_usuario integer not null,
+cd_nivel integer not null,
+cd_grupo integer not null,
+nm_usuario varchar(100) not null,
+login varchar(100) not null,
+senha varchar(15) not null, 
+dt_cadastro date not null,
+constraint pk_usuario primary key(cd_usuario),
+constraint fk_nivel_u foreign key(cd_nivel) references nivel_acesso(cd_nivel),
+constraint fk_grupo_u foreign key(cd_grupo) references grupo_usuario(cd_grupo))
+
+
+create table GRUPO_USUARIO(
+cd_grupo integer not null,
+ds_grupo varchar(100),
+constraint pk_grupoo primary key(cd_grupo))
+
+
+create table FALE_CONOSCO(
+cd_mensagem integer not null, 
+ds_mensagem varchar(500),
+dt_mensagem date,
+hr_mensagem time,
+nm_remetente varchar(100),
+email_remetente varchar(100),
+tel_remetente varchar(100),
+aberto_por varchar(100),
+situacao char(1),
+constraint pk_fale_conosco primary key(cd_mensagem))
+
+
+create table TIPO_COBRANCA(
+cd_tipo_cobranca integer not null,
+ds_tipo_cobranca varchar(100),
+dt_cadastro date,
+usuarioo varchar(100),
+constraint pk_tipo_cobranca primary key(cd_tipo_cobranca))
+
+
+create table CONDICAO_PGTO(
+cd_cond_pgto integer not null,
+ds_cond_pgto varchar(100),
+dt_cadastro date,
+usuarioo varchar(100),
+constraint pk_cond_pgto primary key(cd_cond_pgto))
+
+
+create table UNIDADE_MEDIDA(
+cd_unidade integer not null,
+sigla_unidade varchar(2),
+ds_unidade varchar(50),
+dt_cadastro date,
+usuarioo varchar(100),
+constraint pk_unidade primary key(cd_unidade))
+
+
+create table CLASSE_MAT_PRIMA(
+cd_classe integer not null,
+ds_classe varchar(100),
+situacao char(1),
+dt_cadastro date,
+usuarioo varchar(100),
+constraint pk_classe primary key(cd_classe))
+
+
+create table SETOR(
+cd_setor integer not null,
+ds_setor varchar(100),
+dt_cadastro date,
+usuarioo varchar(100),
+constraint pk_setor primary key(cd_setor))
+
+
+create table MOVIMENTO_ESTOQUE(
+cd_movimento integer not null,
+ds_movimento varchar(100),
+tipo_movimento char(1),
+dt_cadastro date, 
+usuarioo varchar(100),
+constraint pk_movimento primary key(cd_movimento))
+
+
+create table MATERIA_PRIMA(
+cd_mat_prima integer not null, 
+cd_setor integer not null,
+cd_classe integer not null,
+cd_un_medida integer not null,
+ds_mat_prima varchar(100),
+qtde_embalagem numeric(7,2),
+valor numeric(7,2),
+estoque_minimo numeric(7,2),
+peso numeric(7,2),
+fora_linha char(1),
+imagem varchar(500),
+qtde_estoque numeric(7,2),
+observacoes varchar(300),
+dt_cadastro date, 
+usuarioo varchar(100),
+constraint pk_mat_prima primary key(cd_mat_prima),
+constraint fk_setor foreign key(cd_setor) references setor(cd_setor),
+constraint fk_classe foreign key(cd_classe) references classe_mat_prima(cd_classe),
+constraint fk_unidade foreign key(cd_un_medida) references unidade_medida(cd_unidade))
+
+
+create table GRUPO_PRODUTO(
+cd_grupo integer not null,
+ds_grupo varchar(100),
+dt_cadastro date,
+usuarioo varchar(100),
+constraint pk_grupo primary key(cd_grupo))
+
+
+create table SITU_TRIBUTARIA(
+cd_situacao integer not null,
+ds_situacao varchar(200),
+sigla varchar(100),
+isento_icms char(1),
+icms_substituido char(1),
+redu_bc_icms char(1),
+constraint pk_situacao_tribu primary key(cd_situacao))
+
+
+create table PRODUTO(
+cd_produto integer not null,
+cd_situ_tribu integer not null,
+cd_un_medida integer not null,
+cd_grupo_prod integer not null,
+ds_produto varchar(100),
+situacao char(1),
+preco_venda numeric(7,2),
+cubico numeric(7,2),
+codigo_barras varchar(20),
+vend_suspensa char(1),
+perc_min numeric(7,2),
+perc_max numeric(7,2),
+peso numeric(7,2),
+imagem varchar(500),
+constraint pk_produto primary key(cd_produto),
+constraint fk_situ_tribu foreign key(cd_situ_tribu) references situ_tributaria (cd_situacao),
+constraint fk_un_medida foreign key(cd_un_medida) references unidade_medida (cd_unidade),
+constraint fk_grupo foreign key(cd_grupo_prod) references grupo_produto (cd_grupo))
+
+
+create table COMPOSICAO_PRODUTO(
+cd_mat_prima integer not null,
+cd_produto integer not null,
+qtde_mat_prima numeric(7,2),
+constraint pk_composicao_prod primary key(cd_mat_prima, cd_produto),
+constraint fk_mat_prima foreign key(cd_mat_prima) references materia_prima(cd_mat_prima),
+constraint fk_produto foreign key(cd_produto) references produto(cd_produto))
+
+
+create table showroom(
+cd_produto integer not null,
+dt_cadastro date,
+dt_validade date,
+usuarioo varchar(100),
+constraint pk_showroom primary key(cd_produto),
+constraint fk_produto_show foreign key(cd_produto) references produto(cd_produto))
+
+
+create table SHOW_TECIDOS(
+cd_mat_prima integer not null,
+dt_cadastro date,
+usuarioo varchar(100),
+constraint pk_show_teido primary key(cd_mat_prima),
+constraint fk_tecido_show foreign key(cd_mat_prima) references materia_prima(cd_mat_prima))
+
+
+create table MT_PRIMA_NF(
+cd_prima_nf integer not null,
+cd_mat_prima integer not null,
+cd_fornecedor integer not null,
+ds_prima_nf varchar(100),
+dt_cadastro date,
+usuarioo varchar(100),
+situacao char(1),
+constraint pk_mat_prima_nf primary key(cd_prima_nf, cd_mat_prima),
+constraint fk_mt_prima foreign key(cd_mat_prima) references materia_prima(cd_mat_prima),
+constraint fk_fornecdor_nf foreign key(cd_fornecedor) references pessoa_juridica(cd_pessoa_ju))
+
+
+create table CONTROLE_ENTRADA_SAIDA(
+cd_mat_prima integer not null,
+cd_controle integer not null,
+cd_movimento integer not null,
+dt_movimento date,
+hr_movimento time,
+qtde numeric(7,2),
+valor_mt_prima numeric(7,2),
+usuarioo varchar(100),
+constraint pk_controle_entra_saida primary key(cd_mat_prima, cd_controle),
+constraint fk_movimento_ent_saida foreign key(cd_movimento) references movimento_estoque(cd_movimento))
+
+
+create table COMPRA(
+cd_pedido integer not null,
+cd_fornecedor integer not null,
+local_retira varchar(200),
+dt_compra date,
+vendedor varchar(100),
+cond_pgto varchar(50),
+prazo_entrega integer, 
+dt_chegada date,
+num_nota varchar(40),
+situacao char(1),
+dt_sistema date, 
+constraint pk_compra primary key(cd_pedido),
+constraint fk_compra_forne foreign key(cd_fornecedor) references pessoa_juridica(cd_pessoa_ju)
+
+
+create table MT_PRIMA_COMPRA(
+cd_pedido integer not null,
+cd_mat_prima integer not null,
+cd_mat_pri_nf1 integer not null,
+cd_mat_pri_nf2 integer not null,
+qtde numeric(7,2),
+valor numeric(7,2),
+constraint pk_mt_compra primary key(cd_pedido, cd_mat_prima),
+constraint fk_mt_nf foreign key(cd_mat_pri_nf1, cd_mat_pri_nf2) references mt_prima_nf(cd_prima_nf, cd_mat_prima))
+
+
+create table CARTEIRA(
+cd_mat_prima integer not null,
+qtde numeric(7,2),
+constraint pk_carteira primary key(cd_mat_prima),
+constraint fk_cart_prima foreign key(cd_mat_prima) references materia_prima(cd_mat_prima))
+
+
+create table MT_PROCESSO(
+cd_mat_prima integer not null,
+qtde numeric(7,2),
+constraint pk_mt_processo primary key(cd_mat_prima),
+constraint fk_mt_processo foreign key(cd_mat_prima) references materia_prima(cd_mat_prima))
+
+
+create table MENSAGENS(
+cd_mensagem integer not null,
+cd_usuario integer not null,
+mensagem varchar(500),
+dt_mensagem date,
+hr_mensagem time,
+usuario_envio varchar(100),
+situacao char(1),
+constraint pk_msg primary key(cd_mensagem, cd_usuario),
+constraint fk_usuario_msg foreign key(cd_usuario) references usuario(cd_usuario))
+
+
+create table MSG_USUARIO(
+cd_mensagem integer not null,
+cd_usuario integer not null,
+constraint pk_msg_usuario primary key(cd_mensagem, cd_usuario),
+constraint fk_msg_usuario foreign key(cd_mensagem, cd_usuario) references mensagens(cd_mensagem,cd_usuario))
+
+
+create table PEDIDO(
+cd_pedido integer not null,
+cd_representante integer not null,
+cd_cond_pgto integer not null,
+cd_pessoa_ju integer not null,
+cd_tipo_cobranca integer not null,
+dt_pedido date,
+dt_sistema date,
+hr_pedido time,
+situacao varchar(20),
+observacoes varchar(500),
+usuarioo varchar(100),
+modelo char(1),
+transportador varchar(200),
+constraint pk_pedido primary key(cd_pedido),
+constraint fk_representante_pedd foreign key(cd_representante) references representante(cd_representante),
+constraint fk_cond_pgtoo foreign key(cd_cond_pgto) references condicao_pgto(cd_cond_pgto),
+constraint fk_pessoa_juu foreign key(cd_pessoa_ju) references pessoa_juridica(cd_pessoa_ju),
+constraint fk_tipo_cobrancaa foreign key(cd_tipo_cobranca) references tipo_cobranca(cd_tipo_cobranca))
+
+
+create table PEDIDOS_LIBERADOS(
+cd_liberacao integer not null,
+cd_pedido integer not null,
+dt_liberacao date,
+hr_liberacao time,
+usuarioo varchar(100),
+constraint pk_liberacao primary key(cd_liberacao),
+constraint fk_pedido_lib foreign key(cd_pedido) references pedido(cd_pedido))
+
+
+create table PEDIDO_BLOQUEADO(
+cd_bloqueio integer not null,
+cd_pedido integer not null,
+dt_bloqueio date,
+hr_bloqueio time, 
+usuarioo varchar(100),
+constraint pk_bloqueio primary key(cd_bloqueio),
+constraint fk_pedido_bloq foreign key(cd_pedido) references pedido(cd_pedido))
+
+
+create table PEDIDO_RECEBIDO(
+cd_recebimento integer not null,
+cd_pedido integer not null, 
+dt_recebimento date,
+hr_recebimento time, 
+constraint pk_recebimento primary key(cd_recebimento),
+constraint fk_pedido_rece foreign key(cd_pedido) references pedido(cd_pedido))
+
+
+create table LOCAL_ENT_PEDI(
+cd_pedido integer not null,
+cd_cidade integer not null,
+endereco varchar(100),
+cep varchar(15),
+bairro varchar(100),
+constraint pk_local_entrega primary key(cd_pedido),
+constraint fk_pedido_local_ent foreign key(cd_pedido) references pedido(cd_pedido),
+constraint fk_cidade_local foreign key(cd_cidade) references cidade(cd_cidade))
+
+
+create table PRODUTOS_PEDIDO(
+cd_produto integer not null,
+cd_pedido integer not null,
+qtde_produto numeric(7,2),
+perc_desconto numeric(7,2),
+cor integer not null,
+valor_prod numeric(7,2),
+constraint pk_prod_pedido primary key(cd_produto, cd_pedido),
+constraint fk_ped_pro foreign key(cd_pedido) references pedido(cd_pedido),
+constraint fk_prod_ped foreign key(cd_produto) references produto(cd_produto),
+constraint fk_cor foreign key(cor) references materia_prima(cd_mat_prima))
+
+
+create table SAIDA_PROD_ACABADO(
+cd_saida integer not null,
+cd_produto integer not null,
+cd_cor integer not null,
+qtde integer not null,
+dt_saida date,
+hr_saida time,
+usuarioo varchar(100),
+constraint pk_saida_prod_acabado primary key(cd_saida),
+constraint fk_prod_acabado foreign key(cd_produto) references produto(cd_produto),
+constraint fk_cor_prod foreign key(cd_cor) references materia_prima(cd_mat_prima))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,586 @@
+unit UPedido;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, ComCtrls, Grids, DBGrids, Mask, ToolEdit, StdCtrls,
+  Buttons, DB, DBCtrls, ADODB, CurrEdit, IdBaseComponent, IdComponent,
+  IdTCPConnection, IdTCPClient, IdHTTP;
+
+type
+  TFPedido = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    PaginaControle: TPageControl;
+    TbProdutos: TTabSheet;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    Panel10: TPanel;
+    Panel11: TPanel;
+    DBGProdutos: TDBGrid;
+    DBGCores: TDBGrid;
+    EdNumPed: TEdit;
+    EdDatEmi: TDateEdit;
+    EdTnsPro: TEdit;
+    EdCodCli: TEdit;
+    EdCodRep: TEdit;
+    EdCodCpg: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Panel12: TPanel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Panel13: TPanel;
+    BRemoveProd: TBitBtn;
+    BAltProd: TBitBtn;
+    BAddProd: TBitBtn;
+    BNumPed: TSpeedButton;
+    BCodCli: TSpeedButton;
+    BCodCpg: TSpeedButton;
+    BCodRep: TSpeedButton;
+    BTnsPro: TSpeedButton;
+    EdSitPed: TEdit;
+    Label9: TLabel;
+    LDsCodCli: TLabel;
+    LDsCodRep: TLabel;
+    LDsCodCpg: TLabel;
+    LDsSitPed: TLabel;
+    LDsProduto: TLabel;
+    LDsDerivacao: TLabel;
+    BSair: TBitBtn;
+    EdCodFil: TEdit;
+    Label10: TLabel;
+    LEndCli: TLabel;
+    DsConsE120Ipd: TDataSource;
+    DBDesPro: TDBText;
+    DBDesDer: TDBText;
+    DsConsUsu_T120Ipd: TDataSource;
+    ConsVolPro: TADOQuery;
+    ConsVolProCODPRO: TStringField;
+    ConsVolProCODDER: TStringField;
+    ConsVolProVOLDER: TBCDField;
+    ConsVolProPESBRU: TBCDField;
+    ConsVolProPESLIQ: TBCDField;
+    Panel14: TPanel;
+    GroupBox4: TGroupBox;
+    LPesoBruto: TLabel;
+    LPesoLiquido: TLabel;
+    LVolPedido: TLabel;
+    LVolAberto: TLabel;
+    LVlrBru: TLabel;
+    LVlrLiq: TLabel;
+    LQtdItens: TLabel;
+    LQtdAberto: TLabel;
+    Panel15: TPanel;
+    BAlterar: TBitBtn;
+    SapSid: TIdHTTP;
+    BInserir: TBitBtn;
+    procedure EdNumPedExit(Sender: TObject);
+    procedure BSairClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure EdNumPedKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure EdCodCliExit(Sender: TObject);
+    procedure EdCodRepExit(Sender: TObject);
+    procedure EdCodCliKeyPress(Sender: TObject; var Key: Char);
+    procedure EdCodRepKeyPress(Sender: TObject; var Key: Char);
+    procedure EdCodCpgExit(Sender: TObject);
+    procedure EdSitPedExit(Sender: TObject);
+    procedure EdDatEmiExit(Sender: TObject);
+    procedure EdTnsProExit(Sender: TObject);
+    procedure BAlterarClick(Sender: TObject);
+    procedure BInserirClick(Sender: TObject);
+    procedure BAltProdClick(Sender: TObject);
+    procedure BAddProdClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    vaCodFil, vaNumPed, vaDatEmi, vaTnsPro, vaCodCli, vaCodRep, vaCodCpg, vaSitPed : String;
+
+    function AnalizaAlteracao : string;
+  end;
+
+var
+  FPedido: TFPedido;
+
+implementation
+
+uses UDm2, UDm, UAlteraProdPedido, UAddProdPed;
+
+{$R *.dfm}
+
+function TFPedido.AnalizaAlteracao : string;
+var vaDatEmii : string;
+begin
+   vaDatEmii := DateToStr(EdDatEmi.Date);
+
+   if (vaDatEmii = vaDatEmi) and (vaTnsPro = EdTnsPro.Text) and (vaCodCli = EdCodCli.Text) and
+      (vaCodRep = EdCodRep.Text) and (vaCodCpg = EdCodCpg.Text) and (vaSitPed = EdSitPed.Text) then
+         result := 'N'
+   else
+         Result := 'S';
+end;
+
+procedure TFPedido.EdNumPedExit(Sender: TObject);
+var vnVlrBru, vnVlrLiq, vnVolPed, vnVolAbe, vnPesBru, vnPesLiq, vnQtdIte, vnQtdAbe : Double;
+    vaVlrBru, vaVlrLiq : String;
+begin
+  if EdNumPed.Text <> '' then
+     begin//1
+        if StrToInt(EdNumPed.Text) = 0 then
+           begin//2
+
+
+           end//2
+        else
+           begin//3
+              Dm2.ConsE120ped.Close;
+              Dm2.ConsE120ped.Parameters.ParamByName('codfil').Value := StrToInt(EdCodFil.Text);
+              Dm2.ConsE120ped.Parameters.ParamByName('numped').Value := StrToInt(EdNumPed.Text);
+              Dm2.ConsE120ped.Open;
+              if Dm2.ConsE120ped.IsEmpty then
+                 begin//4
+                   Application.MessageBox('Pedido não encontrado','ERRO', MB_ICONERROR+MB_OK);
+                   EdNumPed.Clear;
+                   EdNumPed.SetFocus;
+                 end//4
+              else
+                 begin//5
+                   EdDatEmi.Date := Dm2.ConsE120pedDATEMI.Value;
+                   EdTnsPro.Text := Dm2.ConsE120pedTNSPRO.Value;
+                   EdCodCli.Text := IntToStr(Dm2.ConsE120pedCODCLI.Value);
+                   EdCodRep.Text := IntToStr(Dm2.ConsE120pedCODREP.Value);
+                   EdCodCpg.Text := Dm2.ConsE120pedCODCPG.Value;
+                   EdSitPed.Text := IntToStr(Dm2.ConsE120pedSITPED.Value);
+
+                  vaCodFil := EdCodFil.Text;
+                  vaNumPed := EdNumPed.Text;
+                  vaDatEmi := DateToStr(EdDatEmi.Date);
+                  vaTnsPro := EdTnsPro.Text;
+                  vaCodCli := EdCodCli.Text;
+                  vaCodRep := EdCodRep.Text;
+                  vaCodCpg := EdCodCpg.Text;
+                  vaSitPed := EdSitPed.Text;
+
+                   EdCodCliExit(Sender);
+                   EdCodRepExit(Sender);
+                   EdCodCpgExit(Sender);
+                   EdSitPedExit(Sender);
+
+                   Dm2.ConsE120Ipd.Close;
+                   Dm2.ConsE120Ipd.Parameters.ParamByName('codfil').Value := StrToInt(EdCodFil.Text);
+                   Dm2.ConsE120Ipd.Parameters.ParamByName('numped').Value := StrToInt(EdNumPed.Text);
+                   Dm2.ConsE120Ipd.Open;
+                   Dm2.ConsE120Ipd.First;
+                   vnVlrBru := 0;
+                   vnVlrLiq := 0;
+                   vnVolPed := 0;
+                   vnVolAbe := 0;
+                   vnPesBru := 0;
+                   vnPesLiq := 0;
+                   vnQtdIte := 0;
+                   vnQtdAbe := 0;
+                   while not Dm2.ConsE120Ipd.Eof do
+                      begin//6
+                         vnVlrBru := vnVlrBru + Dm2.ConsE120IpdVLRBRU.Value;
+                         vnVlrLiq := vnVlrLiq + Dm2.ConsE120IpdVLRLIQ.Value;
+
+                         //consulta o volume e peso do produto
+                         ConsVolPro.Close;
+                         ConsVolPro.Parameters.ParamByName('codpro').Value := Dm2.ConsE120IpdCODPRO.Value;
+                         ConsVolPro.Parameters.ParamByName('codder').Value := Dm2.ConsE120IpdCODDER.Value;
+                         ConsVolPro.Open;
+                         vnVolPed := vnVolPed + (ConsVolProVOLDER.Value * Dm2.ConsE120IpdQTDPED.Value);
+                         vnVolAbe := vnVolAbe + (ConsVolProVOLDER.Value * Dm2.ConsE120IpdQTDABE.Value);
+
+                         vnPesBru := vnPesBru + (ConsVolProPESBRU.Value * Dm2.ConsE120IpdQTDABE.Value);
+                         vnPesLiq := vnPesLiq + (ConsVolProPESLIQ.Value * Dm2.ConsE120IpdQTDABE.Value);
+                         vnQtdIte := vnQtdIte + 1;
+                         vnQtdAbe := vnQtdAbe + Dm2.ConsE120IpdQTDABE.Value;
+                         Dm2.ConsE120Ipd.Next;
+                      end;//6
+
+                  vaVlrBru := FloatToStr(vnVlrBru);
+                  vaVlrLiq := FloatToStr(vnVlrLiq);
+                  LVlrBru.Caption := FormatFloat('#,##0.00',StrToFloat(vaVlrBru));
+                  LVlrLiq.Caption := FormatFloat('#,##0.00',StrToFloat(vaVlrLiq));
+                  LVolPedido.Caption := FloatToStr(vnVolPed);
+                  LVolAberto.Caption := FloatToStr(vnVolAbe);
+                  LPesoBruto.Caption := FloatToStr(vnPesBru);
+                  LPesoLiquido.Caption := FloatToStr(vnPesLiq);
+                  LQtdItens.Caption := FloatToStr(vnQtdIte);
+                  LQtdAberto.Caption := FloatToStr(vnQtdAbe);
+
+                 end;//5
+           end;//3
+
+     end;//1
+
+end;
+
+procedure TFPedido.BSairClick(Sender: TObject);
+begin
+Close;
+end;
+
+procedure TFPedido.FormShow(Sender: TObject);
+begin
+  EdCodFil.Text := '1';
+end;
+
+procedure TFPedido.EdNumPedKeyPress(Sender: TObject; var Key: Char);
+begin
+   if not (key in [#48..#57]) and not (key in [#8])
+      and not (key in [#240]) then
+      key := #0;
+end;
+
+procedure TFPedido.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+    begin
+      key := #0;
+      Perform (Wm_NextDlgCtl,0,0);
+    end;
+end;
+
+procedure TFPedido.EdCodCliExit(Sender: TObject);
+var vaEndCli : String;
+    vaAlteracao : string;
+begin
+    if EdCodCli.Text <> '' then
+      begin
+         Dm2.ConsE085Cli.Close;
+         Dm2.ConsE085Cli.Parameters.ParamByName('codfil').Value := StrToInt(EdCodFil.Text);
+         Dm2.ConsE085Cli.Parameters.ParamByName('codcli').Value := StrToInt(EdCodCli.Text);
+         Dm2.ConsE085Cli.Open;
+         if Dm2.ConsE085Cli.IsEmpty then
+            begin
+               Application.MessageBox('Cliente não encontrado','ERRO', MB_ICONERROR+MB_OK);
+               EdCodCli.Clear;
+               EdCodCli.SetFocus;
+            end
+         else
+            begin
+              LDsCodCli.Caption := Dm2.ConsE085CliNOMCLI.Value;
+              vaEndCli := Dm2.ConsE085CliAPECLI.Value +'  -  '+
+              Dm2.ConsE085CliENDCLI.Value+'  -  '+
+              Dm2.ConsE085CliNENCLI.Value+'  -  '+
+              Dm2.ConsE085CliBAICLI.Value+'  -  '+
+              Dm2.ConsE085CliCIDCLI.Value+'  -  '+
+              Dm2.ConsE085CliSIGUFS.Value+'  -  '+
+              Dm2.ConsE085CliFONCLI.Value;
+              LEndCli.Caption := vaEndCli;
+
+              if EdCodRep.Text = '' then
+                EdCodRep.Text := IntToStr(Dm2.ConsE085CliCODREP.Value);
+
+
+            end;
+
+      end;
+      
+      vaAlteracao := FPedido.AnalizaAlteracao;
+      if vaAlteracao = 'S' then
+        BAlterar.Enabled := true
+      else
+        BAlterar.Enabled := false;
+
+end;
+
+procedure TFPedido.EdCodRepExit(Sender: TObject);
+var vaAlteracao : string;
+begin
+    if EdCodRep.Text <> '' then
+      begin
+        Dm2.ConsE090Rep.Close;
+        Dm2.ConsE090Rep.Parameters.ParamByName('codrep').Value := StrToInt(EdCodRep.Text);
+        Dm2.ConsE090Rep.Open;
+        LDsCodRep.Caption := Dm2.ConsE090RepAPEREP.Value;
+
+      end;
+
+      vaAlteracao := FPedido.AnalizaAlteracao;
+      if vaAlteracao = 'S' then
+        BAlterar.Enabled := true
+      else
+        BAlterar.Enabled := false;
+end;
+
+procedure TFPedido.EdCodCliKeyPress(Sender: TObject; var Key: Char);
+begin
+if not (key in [#48..#57]) and not (key in [#8])
+      and not (key in [#240]) then
+      key := #0;
+end;
+
+procedure TFPedido.EdCodRepKeyPress(Sender: TObject; var Key: Char);
+begin
+if not (key in [#48..#57]) and not (key in [#8])
+      and not (key in [#240]) then
+      key := #0;
+end;
+
+procedure TFPedido.EdCodCpgExit(Sender: TObject);
+var vaAlteracao : String;
+begin
+  if EdCodCpg.Text <> '' then
+     begin
+       Dm2.ConsE028Cpg.Close;
+       Dm2.ConsE028Cpg.Parameters.ParamByName('codcpg').Value := EdCodCpg.Text;
+       Dm2.ConsE028Cpg.Open;
+
+       LDsCodCpg.Caption := Dm2.ConsE028CpgDESCPG.Value;
+     end;
+
+     vaAlteracao := FPedido.AnalizaAlteracao;
+      if vaAlteracao = 'S' then
+        BAlterar.Enabled := true
+      else
+        BAlterar.Enabled := false;
+end;
+
+procedure TFPedido.EdSitPedExit(Sender: TObject);
+var vaAlteracao : String;
+begin
+    if EdSitPed.Text <> '' then
+      begin
+         if EdSitPed.Text = '1' then
+            LDsSitPed.Caption := 'Aberto Total'
+         else if edSitPed.Text = '2' then
+                 LDsSitPed.Caption := 'Aberto Parcial'
+              else if edSitPed.Text = '3' then
+                      LDsSitPed.Caption := 'Suspenso'
+                   else if edSitPed.Text = '4' then
+                           LDsSitPed.Caption := 'Liquidado'
+                         else if edSitPed.Text = '5' then
+                                 LDsSitPed.Caption := 'Cancelado'
+                               else if edSitPed.Text = '7' then
+                                       LDsSitPed.Caption := 'Em Transmição'
+                                    else if edSitPed.Text = '8' then
+                                            LDsSitPed.Caption := 'Preparação Análise ou NF'
+                                          else if edSitPed.Text = '9' then
+                                                  LDsSitPed.Caption := 'Não Fechado';
+
+
+
+      end;
+      vaAlteracao := FPedido.AnalizaAlteracao;
+      if vaAlteracao = 'S' then
+        BAlterar.Enabled := true
+      else
+        BAlterar.Enabled := false;
+end;
+
+procedure TFPedido.EdDatEmiExit(Sender: TObject);
+var vaAlteracao : string;
+begin
+if EdDatEmi.Date <> 0 then
+ begin
+      vaAlteracao := FPedido.AnalizaAlteracao;
+      if vaAlteracao = 'S' then
+        BAlterar.Enabled := true
+      else
+        BAlterar.Enabled := false;
+ end;
+
+end;
+
+procedure TFPedido.EdTnsProExit(Sender: TObject);
+var vaAlteracao : string;
+begin
+
+      vaAlteracao := FPedido.AnalizaAlteracao;
+      if vaAlteracao = 'S' then
+        BAlterar.Enabled := true
+      else
+        BAlterar.Enabled := false;
+
+end;
+
+procedure TFPedido.BAlterarClick(Sender: TObject);
+var
+vA_URL, vA_BasQry, xRetorno : String;
+xPostQuery		              : TStringList;
+
+vaIDatEmi : String;
+vaICodFil : String;
+vaINumPed : String;
+vaITnsPro : String;
+vaICodCli : String;
+vaICodRep : String;
+vaICodCpg : String;
+vaISitPed : String;
+
+begin
+
+  //atribui os valores dos campos para as variaveis
+  vaIDatEmi := DateToStr(EdDatEmi.Date);
+  vaIDatEmi := FormatDateTime('DD/MM/YYYY',StrToDate(vaIDatEmi));
+  vaICodFil := EdCodFil.Text;
+  vaINumPed := EdNumPed.Text;
+  vaITnsPro := EdTnsPro.Text;
+  vaICodCli := EdCodCli.Text;
+  vaICodRep := EdCodRep.Text;
+  vaICodCpg := EdCodCpg.Text;
+  vaISitPed := EdSitPed.Text;
+
+
+  xPostQuery := TStringList.Create;
+
+  Dm2.ADOUsuT000sis.Close;
+  Dm2.ADOUsuT000sis.Open;
+  vA_URL := Dm2.ADOUsuT000sisUSU_URLSRV.Value;
+  vA_BasQry := Dm2.ADOUsuT000sisUSU_BASQRY.Value;
+
+  xPostQuery.Add('ACAO=EXESENHA');
+  xPostQuery.Add('&NOMUSU=sapienssid');
+  xPostQuery.Add('&SENUSU=sapienssid');
+
+  // Executar ação de autenticação no Sapiens SID
+  xRetorno := Trim(SapSID.Post(vA_URL, xPostQuery));
+
+  // Verificar se a ação executou com sucesso
+  if (StrToIntDef(Copy(xRetorno, 1, 5), 0)) = 0 then
+    raise Exception.Create('ERRO - Conexão SID não foi estabelecida: ' + xRetorno)
+  else
+    vA_URL := vA_URL + '&USER=sapienssid&CONNECTION=' + xRetorno;
+
+  // Altera cabeçalho do pedido
+  xPostQuery.Clear;
+  xPostQuery.Add('ACAO=SID.Ped.Gravar');
+  xPostQuery.Add('&CodCli='+VaICodCli);
+  xPostQuery.Add('&NumPed='+VaINumPed);
+  xPostQuery.Add('&DatEmi='+VaIDatEmi);
+  xPostQuery.Add('&TnsPro='+VaITnsPro);
+  xPostQuery.Add('&CodRep='+VaICodRep);
+  xPostQuery.Add('&CodCpg='+VaICodCpg);
+  xPostQuery.Add('&SitPed='+VaISitPed);
+
+ // Executar ação  Alterar Pedido
+  xRetorno := Trim(SapSID.Post(vA_URL, xPostQuery));
+
+  // Verificar retorno
+  if (xRetorno <> vaNumPed) then
+    raise Exception.Create(xRetorno)
+  else
+     MessageDlg('Pedido: ' + vaNumPed + '  alterado com sucesso.',mtInformation,[mbOk],0);
+
+   BAlterar.Enabled := False;
+   Dm2.ADOUsuT000sis.Close;
+
+end;
+
+procedure TFPedido.BInserirClick(Sender: TObject);
+var
+vA_URL, vA_BasQry, xRetorno : String;
+xPostQuery		              : TStringList;
+
+vaIDatEmi : String;
+vaICodFil : String;
+vaINumPed : String;
+vaITnsPro : String;
+vaICodCli : String;
+vaICodRep : String;
+vaICodCpg : String;
+vaISitPed : String;
+
+begin
+
+  //atribui os valores dos campos para as variaveis
+  vaIDatEmi := DateToStr(EdDatEmi.Date);
+  vaIDatEmi := FormatDateTime('DD/MM/YYYY',StrToDate(vaIDatEmi));
+  vaICodFil := EdCodFil.Text;
+  //vaINumPed := EdNumPed.Text;
+  vaITnsPro := EdTnsPro.Text;
+  vaICodCli := EdCodCli.Text;
+  vaICodRep := EdCodRep.Text;
+  vaICodCpg := EdCodCpg.Text;
+  //vaISitPed := EdSitPed.Text;
+
+
+  xPostQuery := TStringList.Create;
+
+  Dm2.ADOUsuT000sis.Close;
+  Dm2.ADOUsuT000sis.Open;
+  vA_URL := Dm2.ADOUsuT000sisUSU_URLSRV.Value;
+  vA_BasQry := Dm2.ADOUsuT000sisUSU_BASQRY.Value;
+
+  xPostQuery.Add('ACAO=EXESENHA');
+  xPostQuery.Add('&NOMUSU=sapienssid');
+  xPostQuery.Add('&SENUSU=sapienssid');
+
+  // Executar ação de autenticação no Sapiens SID
+  xRetorno := Trim(SapSID.Post(vA_URL, xPostQuery));
+
+  // Verificar se a ação executou com sucesso
+  if (StrToIntDef(Copy(xRetorno, 1, 5), 0)) = 0 then
+    raise Exception.Create('ERRO - Conexão SID não foi estabelecida: ' + xRetorno)
+  else
+    vA_URL := vA_URL + '&USER=sapienssid&CONNECTION=' + xRetorno;
+
+  // Altera cabeçalho do pedido
+  xPostQuery.Clear;
+  xPostQuery.Add('ACAO=SID.Ped.Gravar');
+  xPostQuery.Add('&CodCli='+VaICodCli);
+  //xPostQuery.Add('&NumPed='+VaINumPed);
+  xPostQuery.Add('&DatEmi='+VaIDatEmi);
+  xPostQuery.Add('&TnsPro='+VaITnsPro);
+  xPostQuery.Add('&CodRep='+VaICodRep);
+  xPostQuery.Add('&CodCpg='+VaICodCpg);
+ // xPostQuery.Add('&SitPed='+VaISitPed);
+
+ // Executar ação  Inserir o pedido
+  xRetorno := Trim(SapSID.Post(vA_URL, xPostQuery));
+
+  // Verificar retorno
+  {if (xRetorno <> vaNumPed) then
+    raise Exception.Create(xRetorno)
+  else}
+     MessageDlg('Pedido: ' + xRetorno + '  incluido com sucesso.',mtInformation,[mbOk],0);
+
+     EdNumPed.Text := xRetorno;
+  
+   Dm2.ADOUsuT000sis.Close;
+
+end;
+
+procedure TFPedido.BAltProdClick(Sender: TObject);
+begin
+  FAlteraProdPedido := TFAlteraProdPedido.Create(Self);
+  FAlteraProdPedido.EdNumPed.Text := EdNumPed.Text;
+  FAlteraProdPedido.EdCodPro.Text := Dm2.ConsE120IpdCODPRO.Value;
+  FAlteraProdPedido.LDsCodPro.Caption := Dm2.ConsE120IpdDESPRO.Value;
+  FAlteraProdPedido.EdCodDer.Text := Dm2.ConsE120IpdCODDER.Value;
+  FAlteraProdPedido.LDsCodDer.Caption := Dm2.ConsE120IpdDESDER.Value;
+  FAlteraProdPedido.EdSeqIpd.Text := IntToStr(Dm2.ConsE120IpdSEQIPD.Value);
+  FAlteraProdPedido.EdQtdPed.Text := IntToStr(Dm2.ConsE120IpdQTDPED.AsInteger);
+  FAlteraProdPedido.EdQtdCan.Text := IntToStr(Dm2.ConsE120IpdQTDCAN.AsInteger);
+  FAlteraProdPedido.EdQtdAbe.Text := IntToStr(Dm2.ConsE120IpdQTDABE.AsInteger);
+  FAlteraProdPedido.EdPreUni.Value := Dm2.ConsE120IpdPREUNI.Value;
+
+  FAlteraProdPedido.ShowModal;
+  FreeAndNil(FAlteraProdPedido);
+
+end;
+
+procedure TFPedido.BAddProdClick(Sender: TObject);
+begin
+   FAddProdPred := TFAddProdPred.Create(Self);
+   FAddProdPred.ShowModal;
+   FreeAndNil(FAddProdPred);
+
+end;
+
+end.

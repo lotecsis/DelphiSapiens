@@ -1,0 +1,71 @@
+unit UAlertaPessoa;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, DB, Mask, DBCtrls, rxToolEdit, RXDBCtrl;
+
+type
+  TFAlertasPessoa = class(TForm)
+    BConfirma: TBitBtn;
+    BCancela: TBitBtn;
+    Label1: TLabel;
+    DSAlerta: TDataSource;
+    DBEAlerta: TDBMemo;
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure DBENumeroKeyPress(Sender: TObject; var Key: Char);
+    procedure DBEDddKeyPress(Sender: TObject; var Key: Char);
+    procedure BConfirmaClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FAlertasPessoa: TFAlertasPessoa;
+
+implementation
+
+uses UDataModule1, UDataModule2;
+
+{$R *.dfm}
+
+procedure TFAlertasPessoa.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+    begin
+      key := #0;
+      Perform (Wm_NextDlgCtl,0,0);
+    end;
+end;
+
+procedure TFAlertasPessoa.DBENumeroKeyPress(Sender: TObject; var Key: Char);
+begin
+if not (key in [#48..#57]) and not (key in [#8])
+      and not (key in [#240]) then
+      key := #0;
+end;
+
+procedure TFAlertasPessoa.DBEDddKeyPress(Sender: TObject; var Key: Char);
+begin
+if not (key in [#48..#57]) and not (key in [#8])
+      and not (key in [#240]) then
+      key := #0;
+end;
+
+procedure TFAlertasPessoa.BConfirmaClick(Sender: TObject);
+begin
+  if DBEAlerta.Text = '' then
+    begin
+      MessageDlg('Descrição do Alerta Obrigatório.',mtWarning,[mbok],0);
+       DBEAlerta.SetFocus;
+    end
+  else
+    begin
+      BConfirma.ModalResult := mrOk;
+    end;
+end;
+
+end.

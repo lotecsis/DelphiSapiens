@@ -1,0 +1,70 @@
+object ImprimirEtiquetaColchao: TImprimirEtiquetaColchao
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'ImprimirEtiquetaColchao'
+  ClientHeight = 253
+  ClientWidth = 429
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lbl1: TLabel
+    Left = 64
+    Top = 56
+    Width = 38
+    Height = 13
+    Caption = 'Produto'
+  end
+  object lbl2: TLabel
+    Left = 63
+    Top = 96
+    Width = 39
+    Height = 13
+    Caption = 'Medidas'
+  end
+  object btnImprimir: TBitBtn
+    Left = 184
+    Top = 133
+    Width = 121
+    Height = 25
+    Caption = 'Imprimir'
+    DoubleBuffered = True
+    ParentDoubleBuffered = False
+    TabOrder = 0
+    OnClick = btnImprimirClick
+  end
+  object edtProduto: TEdit
+    Left = 108
+    Top = 53
+    Width = 270
+    Height = 27
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+  end
+  object edtMedidas: TEdit
+    Left = 108
+    Top = 93
+    Width = 270
+    Height = 27
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+  end
+end

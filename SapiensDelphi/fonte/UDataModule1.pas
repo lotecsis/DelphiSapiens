@@ -1,0 +1,640 @@
+unit UDataModule1;
+
+interface
+
+uses
+  SysUtils, Classes, IBDatabase, DB, IBCustomDataSet,Graphics, IBQuery, Forms,
+  DBClient, Provider;
+
+type
+  TDataModule1 = class(TDataModule)
+    IBDBanco1: TIBDatabase;
+    IBTTransacao: TIBTransaction;
+    IBDFormularios: TIBDataSet;
+    IBDFormulariosCD_FORMULARIO: TIntegerField;
+    IBDFormulariosNM_FORMULARIO: TIBStringField;
+    IBDFormulariosDS_FORMULARIO: TIBStringField;
+    IBQUltimoForm: TIBQuery;
+    IBQUltimoFormULTIMO: TLargeintField;
+    IBQConsultaForm: TIBQuery;
+    IBQConsultaFormCD_FORMULARIO: TIntegerField;
+    IBQConsultaFormNM_FORMULARIO: TIBStringField;
+    IBQConsultaFormDS_FORMULARIO: TIBStringField;
+    IBDCidade: TIBDataSet;
+    IBDCidadeCD_CIDADE: TIntegerField;
+    IBDCidadeNM_CIDADE: TIBStringField;
+    IBDCidadeSIGLA_UF: TIBStringField;
+    IBDCidadeCEP: TIBStringField;
+    IBQUltimaCidade: TIBQuery;
+    IBQUltimaCidadeULTIMA: TLargeintField;
+    IBQConsultaCidade: TIBQuery;
+    IBQConsultaCidadeCD_CIDADE: TIntegerField;
+    IBQConsultaCidadeNM_CIDADE: TIBStringField;
+    IBQConsultaCidadeSIGLA_UF: TIBStringField;
+    IBQConsultaCidadeCEP: TIBStringField;
+    IBDGrupoUsuario: TIBDataSet;
+    IBDGrupoUsuarioCD_GRUPO: TIntegerField;
+    IBDGrupoUsuarioDS_GRUPO: TIBStringField;
+    IBQUltimoGrupoUsuario: TIBQuery;
+    IBQUltimoGrupoUsuarioULTIMO: TLargeintField;
+    IBQConsGPUsuario: TIBQuery;
+    IBQConsGPUsuarioCD_GRUPO: TIntegerField;
+    IBQConsGPUsuarioDS_GRUPO: TIBStringField;
+    IBDUnMedida: TIBDataSet;
+    IBDUnMedidaCD_UNIDADE: TIntegerField;
+    IBDUnMedidaSIGLA_UNIDADE: TIBStringField;
+    IBDUnMedidaDS_UNIDADE: TIBStringField;
+    IBDUnMedidaDT_CADASTRO: TDateField;
+    IBDUnMedidaUSUARIOO: TIBStringField;
+    IBQUltimaUnMedida: TIBQuery;
+    IBQUltimaUnMedidaULTIMO: TLargeintField;
+    IBQConsUnMedida: TIBQuery;
+    IBQConsUnMedidaCD_UNIDADE: TIntegerField;
+    IBQConsUnMedidaSIGLA_UNIDADE: TIBStringField;
+    IBQConsUnMedidaDS_UNIDADE: TIBStringField;
+    IBQConsUnMedidaDT_CADASTRO: TDateField;
+    IBQConsUnMedidaUSUARIOO: TIBStringField;
+    IBDClasse: TIBDataSet;
+    IBDClasseCD_CLASSE: TIntegerField;
+    IBDClasseDS_CLASSE: TIBStringField;
+    IBDClasseSITUACAO: TIBStringField;
+    IBDClasseDT_CADASTRO: TDateField;
+    IBDClasseUSUARIOO: TIBStringField;
+    IBQUltimaClasse: TIBQuery;
+    IBQUltimaClasseULTIMO: TLargeintField;
+    IBQConsClasse: TIBQuery;
+    IBQConsClasseCD_CLASSE: TIntegerField;
+    IBQConsClasseDS_CLASSE: TIBStringField;
+    IBQConsClasseSITUACAO: TIBStringField;
+    IBQConsClasseDT_CADASTRO: TDateField;
+    IBQConsClasseUSUARIOO: TIBStringField;
+    IBDSetor: TIBDataSet;
+    IBDSetorCD_SETOR: TIntegerField;
+    IBDSetorDS_SETOR: TIBStringField;
+    IBDSetorDT_CADASTRO: TDateField;
+    IBDSetorUSUARIOO: TIBStringField;
+    IBQUltimoSetor: TIBQuery;
+    IBQUltimoSetorULTIMO: TLargeintField;
+    IBQConsSetor: TIBQuery;
+    IBQConsSetorCD_SETOR: TIntegerField;
+    IBQConsSetorDS_SETOR: TIBStringField;
+    IBQConsSetorDT_CADASTRO: TDateField;
+    IBQConsSetorUSUARIOO: TIBStringField;
+    IBDCondPgto: TIBDataSet;
+    IBDCondPgtoCD_COND_PGTO: TIntegerField;
+    IBDCondPgtoDS_COND_PGTO: TIBStringField;
+    IBDCondPgtoDT_CADASTRO: TDateField;
+    IBDCondPgtoUSUARIOO: TIBStringField;
+    IBQUltimaCondicao: TIBQuery;
+    IBQUltimaCondicaoULTIMO: TLargeintField;
+    IBQConsCondPgto: TIBQuery;
+    IBQConsCondPgtoCD_COND_PGTO: TIntegerField;
+    IBQConsCondPgtoDS_COND_PGTO: TIBStringField;
+    IBQConsCondPgtoDT_CADASTRO: TDateField;
+    IBQConsCondPgtoUSUARIOO: TIBStringField;
+    IBDTpCobranca: TIBDataSet;
+    IBQUltimoTpCobranca: TIBQuery;
+    IBQConsTpCobranca: TIBQuery;
+    IBDTpCobrancaCD_TIPO_COBRANCA: TIntegerField;
+    IBDTpCobrancaDS_TIPO_COBRANCA: TIBStringField;
+    IBDTpCobrancaDT_CADASTRO: TDateField;
+    IBDTpCobrancaUSUARIOO: TIBStringField;
+    IBQUltimoTpCobrancaULTIMO: TLargeintField;
+    IBQConsTpCobrancaCD_TIPO_COBRANCA: TIntegerField;
+    IBQConsTpCobrancaDS_TIPO_COBRANCA: TIBStringField;
+    IBQConsTpCobrancaDT_CADASTRO: TDateField;
+    IBQConsTpCobrancaUSUARIOO: TIBStringField;
+    IBDMateriaPrima: TIBDataSet;
+    IBDMateriaPrimaCD_MAT_PRIMA: TIntegerField;
+    IBDMateriaPrimaCD_SETOR: TIntegerField;
+    IBDMateriaPrimaCD_CLASSE: TIntegerField;
+    IBDMateriaPrimaCD_UN_MEDIDA: TIntegerField;
+    IBDMateriaPrimaDS_MAT_PRIMA: TIBStringField;
+    IBDMateriaPrimaQTDE_EMBALAGEM: TIBBCDField;
+    IBDMateriaPrimaVALOR: TIBBCDField;
+    IBDMateriaPrimaESTOQUE_MINIMO: TIBBCDField;
+    IBDMateriaPrimaPESO: TIBBCDField;
+    IBDMateriaPrimaFORA_LINHA: TIBStringField;
+    IBDMateriaPrimaIMAGEM: TIBStringField;
+    IBDMateriaPrimaQTDE_ESTOQUE: TIBBCDField;
+    IBDMateriaPrimaOBSERVACOES: TIBStringField;
+    IBDMateriaPrimaDT_CADASTRO: TDateField;
+    IBDMateriaPrimaUSUARIOO: TIBStringField;
+    IBDMateriaPrimaCODIGO_BARRAS: TIBStringField;
+    IBQUltimaMatPrima: TIBQuery;
+    IBQUltimaMatPrimaULTIMO: TLargeintField;
+    IBQConsMatPrima: TIBQuery;
+    IBQConsMatPrimaCD_MAT_PRIMA: TIntegerField;
+    IBQConsMatPrimaCD_SETOR: TIntegerField;
+    IBQConsMatPrimaCD_CLASSE: TIntegerField;
+    IBQConsMatPrimaCD_UN_MEDIDA: TIntegerField;
+    IBQConsMatPrimaDS_MAT_PRIMA: TIBStringField;
+    IBQConsMatPrimaQTDE_EMBALAGEM: TIBBCDField;
+    IBQConsMatPrimaESTOQUE_MINIMO: TIBBCDField;
+    IBQConsMatPrimaPESO: TIBBCDField;
+    IBQConsMatPrimaFORA_LINHA: TIBStringField;
+    IBQConsMatPrimaIMAGEM: TIBStringField;
+    IBQConsMatPrimaQTDE_ESTOQUE: TIBBCDField;
+    IBQConsMatPrimaOBSERVACOES: TIBStringField;
+    IBQConsMatPrimaDT_CADASTRO: TDateField;
+    IBQConsMatPrimaUSUARIOO: TIBStringField;
+    IBQConsMatPrimaCODIGO_BARRAS: TIBStringField;
+    IBQConsMatPrimaDS_SETOR: TIBStringField;
+    IBQConsMatPrimaDS_UNIDADE: TIBStringField;
+    IBQConsMatPrimaSIGLA_UNIDADE: TIBStringField;
+    IBQConsMatPrimaDS_CLASSE: TIBStringField;
+    IBDMatPrimaNf: TIBDataSet;
+    IBQUltimaMatPrimaNf: TIBQuery;
+    IBQConsMtPrimaNf: TIBQuery;
+    IBQUltimaMatPrimaNfULTIMO: TLargeintField;
+    IBQConsFornecedor: TIBQuery;
+    IBQConsFornecedorCD_PESSOA_JU: TIntegerField;
+    IBQConsFornecedorRZ_SOCIAL: TIBStringField;
+    IBQConsMatPrimapNf: TIBQuery;
+    IBQConsMatPrimapNfCD_MAT_PRIMA: TIntegerField;
+    IBQConsMatPrimapNfCD_SETOR: TIntegerField;
+    IBQConsMatPrimapNfCD_CLASSE: TIntegerField;
+    IBQConsMatPrimapNfCD_UN_MEDIDA: TIntegerField;
+    IBQConsMatPrimapNfDS_MAT_PRIMA: TIBStringField;
+    IBQConsMatPrimapNfQTDE_EMBALAGEM: TIBBCDField;
+    IBQConsMatPrimapNfVALOR: TIBBCDField;
+    IBQConsMatPrimapNfESTOQUE_MINIMO: TIBBCDField;
+    IBQConsMatPrimapNfPESO: TIBBCDField;
+    IBQConsMatPrimapNfFORA_LINHA: TIBStringField;
+    IBQConsMatPrimapNfIMAGEM: TIBStringField;
+    IBQConsMatPrimapNfQTDE_ESTOQUE: TIBBCDField;
+    IBQConsMatPrimapNfOBSERVACOES: TIBStringField;
+    IBQConsMatPrimapNfDT_CADASTRO: TDateField;
+    IBQConsMatPrimapNfUSUARIOO: TIBStringField;
+    IBQConsMatPrimapNfCODIGO_BARRAS: TIBStringField;
+    IBQConsFornecedorGrid: TIBQuery;
+    IBQConsFornecedorGridCD_PRIMA_NF: TIntegerField;
+    IBQConsFornecedorGridDS_PRIMA_NF: TIBStringField;
+    IBQConsFornecedorGridCD_PESSOA_JU: TIntegerField;
+    IBQConsFornecedorGridRZ_SOCIAL: TIBStringField;
+    IBQConsMatPrimapNfDS_UNIDADE: TIBStringField;
+    IBDMatPrimaNfCD_PRIMA_NF: TIntegerField;
+    IBDMatPrimaNfCD_MAT_PRIMA: TIntegerField;
+    IBDMatPrimaNfCD_FORNECEDOR: TIntegerField;
+    IBDMatPrimaNfDS_PRIMA_NF: TIBStringField;
+    IBDMatPrimaNfDT_CADASTRO: TDateField;
+    IBDMatPrimaNfUSUARIOO: TIBStringField;
+    IBDMatPrimaNfSITUACAO: TIBStringField;
+    IBDMatPrimaNfVL_MAX: TIBBCDField;
+    IBDMatPrimaNfVL_MIN: TIBBCDField;
+    IBDMatPrimaNfIMPORTANCIA: TIBStringField;
+    IBQConsMtPrimaNfRZ_SOCIAL: TIBStringField;
+    IBQConsMtPrimaNfDS_MAT_PRIMA: TIBStringField;
+    IBQConsMtPrimaNfCD_PRIMA_NF: TIntegerField;
+    IBQConsMtPrimaNfCD_MAT_PRIMA: TIntegerField;
+    IBQConsMtPrimaNfCD_FORNECEDOR: TIntegerField;
+    IBQConsMtPrimaNfDS_PRIMA_NF: TIBStringField;
+    IBQConsMtPrimaNfDT_CADASTRO: TDateField;
+    IBQConsMtPrimaNfUSUARIOO: TIBStringField;
+    IBQConsMtPrimaNfSITUACAO: TIBStringField;
+    IBQConsMtPrimaNfVL_MAX: TIBBCDField;
+    IBQConsMtPrimaNfVL_MIN: TIBBCDField;
+    IBQConsMtPrimaNfIMPORTANCIA: TIBStringField;
+    IBQContaImportania: TIBQuery;
+    IBQContaImportaniaTOTAL: TIntegerField;
+    IBQValidaFornecedor: TIBQuery;
+    IBQValidaFornecedorCD_PRIMA_NF: TIntegerField;
+    IBQValidaFornecedorCD_MAT_PRIMA: TIntegerField;
+    IBQValidaFornecedorCD_FORNECEDOR: TIntegerField;
+    IBQValidaFornecedorDS_PRIMA_NF: TIBStringField;
+    IBQValidaFornecedorDT_CADASTRO: TDateField;
+    IBQValidaFornecedorUSUARIOO: TIBStringField;
+    IBQValidaFornecedorSITUACAO: TIBStringField;
+    IBQValidaFornecedorVL_MAX: TIBBCDField;
+    IBQValidaFornecedorVL_MIN: TIBBCDField;
+    IBQValidaFornecedorIMPORTANCIA: TIBStringField;
+    IBDNivelAcesso: TIBDataSet;
+    IBDNivelAcessoCD_NIVEL: TIntegerField;
+    IBDNivelAcessoDS_NIVEL: TIBStringField;
+    IBQUltimoNivel: TIBQuery;
+    IBQUltimoNivelULTIMO: TLargeintField;
+    IBQConsNivel: TIBQuery;
+    IBQConsNivelCD_NIVEL: TIntegerField;
+    IBQConsNivelDS_NIVEL: TIBStringField;
+    IBDUsuario: TIBDataSet;
+    IBDUsuarioCD_USUARIO: TIntegerField;
+    IBDUsuarioNM_USUARIO: TIBStringField;
+    IBDUsuarioLOGIN: TIBStringField;
+    IBDUsuarioSENHA: TIBStringField;
+    IBDUsuarioDT_CADASTRO: TDateField;
+    IBDUsuarioCD_NIVEL: TIntegerField;
+    IBDUsuarioCD_GRUPO: TIntegerField;
+    IBDUsuarioCD_PESSOA_JU: TIntegerField;
+    IBQUltimoUsuario: TIBQuery;
+    IBQUltimoUsuarioULTIMO: TLargeintField;
+    IBQConsUsuario: TIBQuery;
+    IBQConsUsuarioCD_USUARIO: TIntegerField;
+    IBQConsUsuarioNM_USUARIO: TIBStringField;
+    IBQConsUsuarioLOGIN: TIBStringField;
+    IBQConsUsuarioSENHA: TIBStringField;
+    IBQConsUsuarioDT_CADASTRO: TDateField;
+    IBQConsUsuarioCD_NIVEL: TIntegerField;
+    IBQConsUsuarioCD_GRUPO: TIntegerField;
+    IBQConsUsuarioCD_PESSOA_JU: TIntegerField;
+    IBQConsUsuarioRZ_SOCIAL: TIBStringField;
+    IBQConsUsuarioDS_NIVEL: TIBStringField;
+    IBQConsUsuarioDS_GRUPO: TIBStringField;
+    IBQConsLogin: TIBQuery;
+    IBQConsLoginCD_USUARIO: TIntegerField;
+    IBQConsLoginNM_USUARIO: TIBStringField;
+    IBQConsLoginLOGIN: TIBStringField;
+    IBQConsLoginSENHA: TIBStringField;
+    IBQConsLoginDT_CADASTRO: TDateField;
+    IBQConsLoginCD_NIVEL: TIntegerField;
+    IBQConsLoginCD_GRUPO: TIntegerField;
+    IBQConsLoginCD_PESSOA_JU: TIntegerField;
+    IBQConsLoginRZ_SOCIAL: TIBStringField;
+    IBQConsLoginDS_NIVEL: TIBStringField;
+    IBQConsLoginDS_GRUPO: TIBStringField;
+    IBQConsPedEspera: TIBQuery;
+    IBQConsPedUsuario: TIBQuery;
+    IBQConsPedEsperaCD_REGIAO: TIntegerField;
+    IBQConsPedEsperaDS_REGIAO: TIBStringField;
+    IBQConsPedEsperaCD_PESSOA_JU: TIntegerField;
+    IBQConsPedEsperaRZ_SOCIAL: TIBStringField;
+    IBQConsPedEsperaVL_TOT: TIBBCDField;
+    IBQConsPedEsperaQTDE_PED: TIntegerField;
+    IBQConsPedUsuario2: TIBQuery;
+    IBQConsPedUsuario2CD_PESSOA_JU: TIntegerField;
+    IBQConsPedUsuario2CD_PESSOA: TIntegerField;
+    IBQConsPedUsuario2CGC: TIBStringField;
+    IBQConsPedUsuario2INSC_ESTADUAL: TIBStringField;
+    IBQConsPedUsuario2RZ_SOCIAL: TIBStringField;
+    IBQConsPedUsuario2NM_FANTAZIA: TIBStringField;
+    IBQConsPedUsuario2CLI_FOR: TIBStringField;
+    IBQConsPedUsuario2BLOQUEADO: TIBStringField;
+    IBQConsPedUsuario2RM_ATIVIDADE: TIBStringField;
+    IBQConsPedUsuario2CD_REGIAO: TIntegerField;
+    IBQConsPedUsuario2NM_CIDADE: TIBStringField;
+    IBQConsPedUsuario2SIGLA_UF: TIBStringField;
+    IBQConsAlertas: TIBQuery;
+    IBQConsAlertasCD_ALERTA: TIntegerField;
+    IBQConsAlertasCD_PESSOA: TIntegerField;
+    IBQConsAlertasDS_ALERTA: TIBStringField;
+    IBQConsAlertasUSUARIOO: TIBStringField;
+    IBQConsAlertasDT_ALERTA: TDateField;
+    IBQConsAlertasHR_ALERTA: TTimeField;
+    IBQConsComposicaoProduto: TIBQuery;
+    IBQConsComposicaoProdutoCD_MAT_PRIMA: TIntegerField;
+    IBQConsComposicaoProdutoCD_PRODUTO: TIntegerField;
+    IBQConsComposicaoProdutoQTDE_MAT_PRIMA: TIBBCDField;
+    IBQConsCarteira: TIBQuery;
+    IBQConsFornecedorGridVL_MAX: TIBBCDField;
+    IBDTipoCodigo: TIBDataSet;
+    IBDTipoCodigoCD_MATERIA: TIntegerField;
+    IBDTipoCodigoTP_MATERIA: TIBStringField;
+    IBQUltimoTipoCodigo: TIBQuery;
+    IBQUltimoTipoCodigoULTIMO: TLargeintField;
+    IBQCodigoDentroFaxa: TIBQuery;
+    IBQCodigoDentroFaxaCD_MAT_PRIMA: TIntegerField;
+    IBDFormNivel: TIBDataSet;
+    IBDFormNivelCD_FORM_NIVEL: TIntegerField;
+    IBDFormNivelCD_FORMULARIO: TIntegerField;
+    IBDFormNivelCD_NIVEL: TIntegerField;
+    IBDFormNivelLIBERADO: TIBStringField;
+    IBQApagaFormNivel: TIBQuery;
+    IBQConsUsuarioDireitos: TIBQuery;
+    IBQConsUsuarioDireitosCD_USUARIO: TIntegerField;
+    IBQConsUsuarioDireitosNM_USUARIO: TIBStringField;
+    IBQConsUsuarioDireitosLOGIN: TIBStringField;
+    IBQConsUsuarioDireitosSENHA: TIBStringField;
+    IBQConsUsuarioDireitosDT_CADASTRO: TDateField;
+    IBQConsUsuarioDireitosCD_NIVEL: TIntegerField;
+    IBQConsUsuarioDireitosCD_GRUPO: TIntegerField;
+    IBQConsUsuarioDireitosCD_PESSOA_JU: TIntegerField;
+    IBQFormNivel: TIBQuery;
+    ProviderFormNivel: TDataSetProvider;
+    ClienteFormNivel: TClientDataSet;
+    IBQFormNivelCD_FORM_NIVEL: TIntegerField;
+    IBQFormNivelCD_FORMULARIO: TIntegerField;
+    IBQFormNivelCD_NIVEL: TIntegerField;
+    IBQFormNivelLIBERADO: TIBStringField;
+    IBQFormNivelNM_FORMULARIO: TIBStringField;
+    IBQFormNivelTIKA: TIBStringField;
+    ClienteFormNivelCD_FORM_NIVEL: TIntegerField;
+    ClienteFormNivelCD_FORMULARIO: TIntegerField;
+    ClienteFormNivelCD_NIVEL: TIntegerField;
+    ClienteFormNivelLIBERADO: TStringField;
+    ClienteFormNivelNM_FORMULARIO: TStringField;
+    ClienteFormNivelTIKA: TStringField;
+    IBQDireitosUsuario: TIBQuery;
+    IBQDireitosUsuarioCD_FORM_NIVEL: TIntegerField;
+    IBQDireitosUsuarioCD_FORMULARIO: TIntegerField;
+    IBQDireitosUsuarioCD_NIVEL: TIntegerField;
+    IBQDireitosUsuarioLIBERADO: TIBStringField;
+    IBDMatPrimaNfCLASS_FISCAL: TIBStringField;
+    IBDMatPrimaNfIPI: TIBBCDField;
+    IBDMatPrimaNfICMS: TIBBCDField;
+    IBDMatPrimaNfSUB_TRIBUTARIA: TIntegerField;
+    IBQConsMtPrimaNfCLASS_FISCAL: TIBStringField;
+    IBQConsMtPrimaNfIPI: TIBBCDField;
+    IBQConsMtPrimaNfICMS: TIBBCDField;
+    IBQConsMtPrimaNfSUB_TRIBUTARIA: TIntegerField;
+    IBQConsFornecedorGridIMPORTANCIA: TIBStringField;
+    IBQConsPedUsuarioCD_PESSOA_JU: TIntegerField;
+    IBQConsPedUsuarioCD_PESSOA: TIntegerField;
+    IBQConsPedUsuarioCGC: TIBStringField;
+    IBQConsPedUsuarioINSC_ESTADUAL: TIBStringField;
+    IBQConsPedUsuarioRZ_SOCIAL: TIBStringField;
+    IBQConsPedUsuarioNM_FANTAZIA: TIBStringField;
+    IBQConsPedUsuarioCLI_FOR: TIBStringField;
+    IBQConsPedUsuarioBLOQUEADO: TIBStringField;
+    IBQConsPedUsuarioRM_ATIVIDADE: TIBStringField;
+    IBQConsPedUsuarioCD_REGIAO: TIntegerField;
+    IBQConsPedUsuarioCD_PEDIDO: TIntegerField;
+    IBQConsPedUsuarioCD_COND_PGTO: TIntegerField;
+    IBQConsPedUsuarioCD_PESSOA_JU1: TIntegerField;
+    IBQConsPedUsuarioCD_TIPO_COBRANCA: TIntegerField;
+    IBQConsPedUsuarioDT_PEDIDO: TDateField;
+    IBQConsPedUsuarioDT_SISTEMA: TDateField;
+    IBQConsPedUsuarioHR_PEDIDO: TTimeField;
+    IBQConsPedUsuarioSITUACAO: TIBStringField;
+    IBQConsPedUsuarioOBSERVACOES: TIBStringField;
+    IBQConsPedUsuarioUSUARIOO: TIBStringField;
+    IBQConsPedUsuarioMODELO: TIBStringField;
+    IBQConsPedUsuarioTRANSPORTADOR: TIBStringField;
+    IBQConsPedUsuarioCD_PESSOA_USU: TIntegerField;
+    IBQConsPedUsuarioDS_COND_PGTO: TIBStringField;
+    IBQConsPedUsuarioDS_TIPO_COBRANCA: TIBStringField;
+    IBQConsPedUsuarioDS_REGIAO: TIBStringField;
+    IBQConsPedUsuarioCD_REGIAO1: TIntegerField;
+    IBQConsPedUsuarioRZ_SOCIAL1: TIBStringField;
+    IBQConsPedUsuarioNM_CIDADE: TIBStringField;
+    IBQConsPedUsuarioSIGLA_UF: TIBStringField;
+    IBQConsPedUsuarioSITUACAO1: TIBStringField;
+    IBQConsPedUsuarioTOTAL: TIBBCDField;
+    IBDMateriaPrimaIMAGEM_GRANDE: TIBStringField;
+    IBQApagaContEntSaida: TIBQuery;
+    IBDMateriaPrimaNM_IMAGEM_GRANDE: TIBStringField;
+    IBDMateriaPrimaNM_IMAGEM_PEQUENA: TIBStringField;
+    IBDUsuarioSITUACAO: TIBStringField;
+    IBQConsLoginSITUACAO: TIBStringField;
+    procedure IBDFormulariosBeforePost(DataSet: TDataSet);
+    procedure IBDCidadeBeforePost(DataSet: TDataSet);
+    procedure IBDGrupoUsuarioBeforePost(DataSet: TDataSet);
+    procedure IBDUnMedidaBeforePost(DataSet: TDataSet);
+    procedure IBDClasseBeforePost(DataSet: TDataSet);
+    procedure IBDSetorBeforePost(DataSet: TDataSet);
+    procedure IBDCondPgtoBeforePost(DataSet: TDataSet);
+    procedure IBDTpCobrancaBeforePost(DataSet: TDataSet);
+    procedure IBDMateriaPrimaBeforePost(DataSet: TDataSet);
+    procedure IBDMatPrimaNfBeforePost(DataSet: TDataSet);
+    procedure IBDNivelAcessoBeforePost(DataSet: TDataSet);
+    procedure IBDUsuarioBeforePost(DataSet: TDataSet);
+    procedure IBQConsPedUsuarioAfterScroll(DataSet: TDataSet);
+    procedure IBQConsFornecedorGridAfterScroll(DataSet: TDataSet);
+    procedure ibacons(Sender: TObject);
+    procedure IBQConsUsuarioDireitosAfterScroll(DataSet: TDataSet);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+uses UPedCompAberto, UMateriaPrima;
+
+{$R *.dfm}
+
+procedure TDataModule1.IBDFormulariosBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDFormularios.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimoForm.Close;
+    DataModule1.IBQUltimoForm.Open;
+    if DataModule1.IBQUltimoFormULTIMO.AsInteger = 0 then
+        DataModule1.IBDFormulariosCD_FORMULARIO.AsInteger := 1
+    else
+        DataModule1.IBDFormulariosCD_FORMULARIO.AsInteger :=
+        DataModule1.IBQUltimoFormULTIMO.AsInteger;
+end;
+end;
+
+procedure TDataModule1.IBDCidadeBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDCidade.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimaCidade.Close;
+    DataModule1.IBQUltimaCidade.Open;
+    if DataModule1.IBQUltimaCidadeULTIMA.AsInteger = 0 then
+        DataModule1.IBDCidadeCD_CIDADE.AsInteger := 1
+    else
+        DataModule1.IBDCidadeCD_CIDADE.AsInteger :=
+        DataModule1.IBQUltimaCidadeULTIMA.AsInteger;
+end;
+   end;
+procedure TDataModule1.IBDGrupoUsuarioBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDGrupoUsuario.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimoGrupoUsuario.Close;
+    DataModule1.IBQUltimoGrupoUsuario.Open;
+    if DataModule1.IBQUltimoGrupoUsuarioULTIMO.AsInteger = 0 then
+        DataModule1.IBDGrupoUsuarioCD_GRUPO.AsInteger := 1
+    else
+        DataModule1.IBDGrupoUsuarioCD_GRUPO.AsInteger :=
+        DataModule1.IBQUltimoGrupoUsuarioULTIMO.AsInteger;
+end;
+end;
+
+procedure TDataModule1.IBDUnMedidaBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDUnMedida.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimaUnMedida.Close;
+    DataModule1.IBQUltimaUnMedida.Open;
+    if DataModule1.IBQUltimaUnMedidaULTIMO.AsInteger = 0 then
+        DataModule1.IBDUnMedidaCD_UNIDADE.AsInteger := 1
+    else
+        DataModule1.IBDUnMedidaCD_UNIDADE.AsInteger :=
+        DataModule1.IBQUltimaUnMedidaULTIMO.AsInteger;
+end;
+end;
+
+procedure TDataModule1.IBDClasseBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDClasse.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimaClasse.Close;
+    DataModule1.IBQUltimaClasse.Open;
+    if DataModule1.IBQUltimaClasseULTIMO.AsInteger = 0 then
+        DataModule1.IBDClasseCD_CLASSE.AsInteger := 1
+    else
+        DataModule1.IBDClasseCD_CLASSE.AsInteger :=
+        DataModule1.IBQUltimaClasseULTIMO.AsInteger;
+end;
+end;
+
+procedure TDataModule1.IBDSetorBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDSetor.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimoSetor.Close;
+    DataModule1.IBQUltimoSetor.Open;
+    if DataModule1.IBQUltimoSetorULTIMO.AsInteger = 0 then
+        DataModule1.IBDSetorCD_SETOR.AsInteger := 1
+    else
+        DataModule1.IBDSetorCD_SETOR.AsInteger :=
+        DataModule1.IBQUltimoSetorULTIMO.AsInteger;
+end;
+end;
+
+procedure TDataModule1.IBDCondPgtoBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDCondPgto.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimaCondicao.Close;
+    DataModule1.IBQUltimaCondicao.Open;
+    if DataModule1.IBQUltimaCondicaoULTIMO.AsInteger = 0 then
+        DataModule1.IBDCondPgtoCD_COND_PGTO.AsInteger := 1
+    else
+        DataModule1.IBDCondPgtoCD_COND_PGTO.AsInteger :=
+        DataModule1.IBQUltimaCondicaoULTIMO.AsInteger;
+end;
+end;
+
+procedure TDataModule1.IBDTpCobrancaBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDTpCobranca.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimoTpCobranca.Close;
+    DataModule1.IBQUltimoTpCobranca.Open;
+    if DataModule1.IBQUltimoTpCobrancaULTIMO.AsInteger = 0 then
+        DataModule1.IBDTpCobrancaCD_TIPO_COBRANCA.AsInteger := 1
+    else
+        DataModule1.IBDTpCobrancaCD_TIPO_COBRANCA.AsInteger :=
+        DataModule1.IBQUltimoTpCobrancaULTIMO.AsInteger;
+end;
+end;
+
+procedure TDataModule1.IBDMateriaPrimaBeforePost(DataSet: TDataSet);
+begin
+{if DataModule1.IBDMateriaPrima.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimaMatPrima.Close;
+    DataModule1.IBQUltimaMatPrima.Open;
+    if DataModule1.IBQUltimaMatPrimaULTIMO.AsInteger = 0 then
+        DataModule1.IBDMateriaPrimaCD_MAT_PRIMA.AsInteger := 1
+    else
+        DataModule1.IBDMateriaPrimaCD_MAT_PRIMA.AsInteger :=
+        DataModule1.IBQUltimaMatPrimaULTIMO.AsInteger;
+end;}
+end;
+
+procedure TDataModule1.IBDMatPrimaNfBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDMatPrimaNf.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimaMatPrimaNf.Close;
+    DataModule1.IBQUltimaMatPrimaNf.Open;
+    if DataModule1.IBQUltimaMatPrimaNfULTIMO.AsInteger = 0 then
+        DataModule1.IBDMatPrimaNfCD_PRIMA_NF.AsInteger := 1
+    else
+        DataModule1.IBDMatPrimaNfCD_PRIMA_NF.AsInteger :=
+        DataModule1.IBQUltimaMatPrimaNfULTIMO.AsInteger;
+end;
+end;
+
+procedure TDataModule1.IBDNivelAcessoBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDNivelAcesso.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimoNivel.Close;
+    DataModule1.IBQUltimoNivel.Open;
+    if DataModule1.IBQUltimoNivelULTIMO.AsInteger = 0 then
+        DataModule1.IBDNivelAcessoCD_NIVEL.AsInteger := 1
+    else
+        DataModule1.IBDNivelAcessoCD_NIVEL.AsInteger :=
+        DataModule1.IBQUltimoNivelULTIMO.AsInteger;
+end;
+end;
+
+procedure TDataModule1.IBDUsuarioBeforePost(DataSet: TDataSet);
+begin
+if DataModule1.IBDUsuario.State in [dsinsert] then
+  begin
+    DataModule1.IBQUltimoUsuario.Close;
+    DataModule1.IBQUltimoUsuario.Open;
+    if DataModule1.IBQUltimoUsuarioULTIMO.AsInteger = 0 then
+        DataModule1.IBDUsuarioCD_USUARIO.AsInteger := 1
+    else
+        DataModule1.IBDUsuarioCD_USUARIO.AsInteger :=
+        DataModule1.IBQUltimoUsuarioULTIMO.AsInteger;
+end;
+end;
+
+procedure TDataModule1.IBQConsPedUsuarioAfterScroll(DataSet: TDataSet);
+begin
+
+  IBQConsPedUsuario2.Close;
+  IBQConsPedUsuario2.ParamByName('ppessoa').AsInteger :=
+  IBQConsPedUsuarioCD_PESSOA_JU.AsInteger;
+  IBQConsPedUsuario2.Open;
+  if IBQConsPedUsuario2.IsEmpty then
+    begin
+
+    end
+  else
+  begin
+
+
+
+ if IBQConsPedUsuarioOBSERVACOES.AsString <> '' then
+  begin
+
+  end
+ else
+  begin
+
+  end;
+
+          
+
+  end;
+end;
+
+procedure TDataModule1.IBQConsFornecedorGridAfterScroll(DataSet: TDataSet);
+begin
+  FMateriaPrima.EdVrUnitario.Text :=  FloatToStr(IBQConsFornecedorGridVL_MAX.AsFloat);
+
+end;
+
+procedure TDataModule1.ibacons(Sender: TObject);
+  var diret:String;
+  i : Integer;
+begin
+  diret := Application.ExeName;
+  diret := ExtractFilePath(Diret);
+  diret := diret + 'banco\SYSLIDER.FDB';
+  //IBDBanco1.DatabaseName := diret;
+  //IBDBanco1.Connected := true;
+
+
+     for i := 0 to ComponentCount - 1 do
+          begin
+            if Components[i] is TIBDataSet then
+              begin
+                 TIBDataSet(Components[i]).Active := true;;
+              end;
+          end;
+
+        
+end;
+
+procedure TDataModule1.IBQConsUsuarioDireitosAfterScroll(
+  DataSet: TDataSet);
+begin
+  IBQFormNivel.Close;
+  ClienteFormNivel.Close;
+end;
+
+end.

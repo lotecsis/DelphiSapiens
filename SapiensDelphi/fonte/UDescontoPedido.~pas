@@ -1,0 +1,137 @@
+unit UDescontoPedido;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, Mask, ToolEdit, CurrEdit;
+
+type
+  TFDescontoPedido = class(TForm)
+    Desc1: TCurrencyEdit;
+    Desc2: TCurrencyEdit;
+    Desc3: TCurrencyEdit;
+    Desc4: TCurrencyEdit;
+    Desc5: TCurrencyEdit;
+    Desc6: TCurrencyEdit;
+    BOk: TBitBtn;
+    BCancelar: TBitBtn;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    TotDesc: TCurrencyEdit;
+    procedure Desc1Exit(Sender: TObject);
+    procedure Desc2Exit(Sender: TObject);
+    procedure Desc3Exit(Sender: TObject);
+    procedure Desc4Exit(Sender: TObject);
+    procedure Desc5Exit(Sender: TObject);
+    procedure Desc6Exit(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure BCancelarClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+  private
+    { Private declarations }
+    function calcula(desc1,desc2,desc3,desc4,desc5,desc6 : Real): Real;
+  public
+    { Public declarations }
+    vnTotDesc : Real;
+  end;
+
+var
+  FDescontoPedido: TFDescontoPedido;
+
+implementation
+
+{$R *.dfm}
+function TFDescontoPedido.calcula(desc1,desc2,desc3,desc4,desc5,desc6 : Real): Real;
+var vnValor, vnTotal: Real;
+begin
+    vnValor := 100;
+    vnValor := vnValor - (vnValor * desc1);
+    vnValor := vnValor - (vnValor * desc2);
+    vnValor := vnValor - (vnValor * desc3);
+    vnValor := vnValor - (vnValor * desc4);
+    vnValor := vnValor - (vnValor * desc5);
+    vnValor := vnValor - (vnValor * desc6);
+    vnTotal := 100 - vnValor;
+    if vnTotal > 30 then
+      begin
+        Application.MessageBox('Desconto maior do que permitido','Aviso',+MB_ICONWARNING+MB_OK);
+        FDescontoPedido.Desc1.Value := 0;
+        FDescontoPedido.Desc2.Value := 0;
+        FDescontoPedido.Desc3.Value := 0;
+        FDescontoPedido.Desc4.Value := 0;
+        FDescontoPedido.Desc5.Value := 0;
+        FDescontoPedido.Desc6.Value := 0;
+        ActiveControl := FDescontoPedido.Desc1;
+        Abort;
+      end
+    else
+      begin
+        Result := vnTotal;
+      end;
+end;
+procedure TFDescontoPedido.Desc1Exit(Sender: TObject);
+begin
+vnTotDesc := calcula(Desc1.Value/100,Desc2.Value/100,Desc3.Value/100,Desc4.Value/100,Desc5.Value/100,Desc6.Value/100);
+    TotDesc.Value := vnTotDesc;
+end;
+
+procedure TFDescontoPedido.Desc2Exit(Sender: TObject);
+begin
+vnTotDesc := calcula(Desc1.Value/100,Desc2.Value/100,Desc3.Value/100,Desc4.Value/100,Desc5.Value/100,Desc6.Value/100);
+    TotDesc.Value := vnTotDesc;
+end;
+
+procedure TFDescontoPedido.Desc3Exit(Sender: TObject);
+begin
+vnTotDesc := calcula(Desc1.Value/100,Desc2.Value/100,Desc3.Value/100,Desc4.Value/100,Desc5.Value/100,Desc6.Value/100);
+    TotDesc.Value := vnTotDesc;
+end;
+
+procedure TFDescontoPedido.Desc4Exit(Sender: TObject);
+begin
+vnTotDesc := calcula(Desc1.Value/100,Desc2.Value/100,Desc3.Value/100,Desc4.Value/100,Desc5.Value/100,Desc6.Value/100);
+    TotDesc.Value := vnTotDesc;
+end;
+
+procedure TFDescontoPedido.Desc5Exit(Sender: TObject);
+begin
+vnTotDesc := calcula(Desc1.Value/100,Desc2.Value/100,Desc3.Value/100,Desc4.Value/100,Desc5.Value/100,Desc6.Value/100);
+    TotDesc.Value := vnTotDesc;
+end;
+
+procedure TFDescontoPedido.Desc6Exit(Sender: TObject);
+begin
+vnTotDesc := calcula(Desc1.Value/100,Desc2.Value/100,Desc3.Value/100,Desc4.Value/100,Desc5.Value/100,Desc6.Value/100);
+    TotDesc.Value := vnTotDesc;
+end;
+
+procedure TFDescontoPedido.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+    begin
+      key := #0;
+      Perform (Wm_NextDlgCtl,0,0);
+    end;
+end;
+
+procedure TFDescontoPedido.BCancelarClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFDescontoPedido.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if key = VK_UP then
+    SelectNext(ActiveControl,false,true);
+  if key = VK_DOWN then
+    SelectNext(ActiveControl, true, true);
+end;
+
+end.

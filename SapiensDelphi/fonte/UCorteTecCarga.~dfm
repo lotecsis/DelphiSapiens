@@ -1,0 +1,1054 @@
+object FCorteTecCarga: TFCorteTecCarga
+  Left = 241
+  Top = 143
+  Width = 807
+  Height = 727
+  Caption = 'FCorteTecCarga'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PaginaControle: TPageControl
+    Left = 0
+    Top = 0
+    Width = 799
+    Height = 693
+    ActivePage = TbCargas
+    Align = alClient
+    TabOrder = 0
+    object TbCargas: TTabSheet
+      Caption = 'Cargas - Cortar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      OnShow = TbCargasShow
+      object Label1: TLabel
+        Left = 77
+        Top = 7
+        Width = 171
+        Height = 13
+        Caption = 'Cargas Liberadas P/Produ'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 572
+        Top = 6
+        Width = 118
+        Height = 13
+        Caption = 'Cargas em Produ'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clMaroon
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object SpeedButton1: TSpeedButton
+        Left = 349
+        Top = 59
+        Width = 89
+        Height = 41
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        Glyph.Data = {
+          FA0E0000424DFA0E000000000000360000002800000023000000230000000100
+          180000000000C40E0000120B0000120B00000000000000000000FFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFEF1F1
+          F1DBDBDBCACACAC3C3C3C4C5C5CECECEE2E2E2F3F3F3FDFDFDFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFEFEFED7D7D79D9A9A877A7A8B7979917A7A967B7A8F7877856F6F7A6E6D81
+          7E7EAFB0B0E6E6E6FDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFF
+          FFFFFFFFFFFFFFFFFFFFF7F7F7A39E9E9C8887C8B1B1DACACADFD1D1E0CECEDF
+          C7C7E0C5C5D9B8B7D4AEADBB9393896D6C777474C4C4C4F9F9F9FFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFDFDFDA09797CEB6B7E7E3E2E3
+          E2E2DEDDDCDBD6D6DAD1D1DCCDCDC9AAA9B18C8CB79090CEA8A7D6AAAAB28685
+          746A69C9C9C9FEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFC7
+          C4C4CBB6B6EDEDECE9E7E6E8E6E5E5E3E1DEDCDCDCD6D6D6C8C8C7A6A6BDB6B6
+          998383A1797AC29898D7A9A8B084838A8888F6F6F6FFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+          0000FFFFFFFFFFFFF6F6F6B1A7A7EEE6E4EDECECF1F0EFF1F0F0ECEBEBE5E3E1
+          DFDDDDCFBFBECFB3B2BCA9A9A68989A78788BE9897D4ABAACD9A998A7F7EF1F1
+          F1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFEFEFEBAB3B3F2E9E9F2F2F2
+          FAFAFAFAFBFBF1F1F0E9E7E6E1E1E0CCB4B4D3B2B2B79190AE8180AF7F7DC49A
+          9AD3ABABD09D9C968E8EFCFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFF
+          FFFFFFEBEBEBCFBEBEFFFFFFFAF9F9F9F8F7F4F8F8EAEAE9E0DFDFCAAAAAD0A9
+          A8B87E7EB87978B97675C99898DBB1B1AD8A89D1D1D1FFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFDFDEDEC9C1C1D8B8B7C88E93D7B3
+          BAE1D8D7DBD5D5CBA3A3CB9797BD7070C07171C26D6CD59A9AB59292BCBABAFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFF5F5F5AC8A8CDF9C76E2AB88CE979AC79199C68486C87372C86A6ACA6B6BD3
+          6D6E9B7C7CD6D5D5FFFFFFFFFFFFFFFFFFFFFFFFFEFEFEF4F4F4EBEBEBE8E8E8
+          EEEEEEF7F7F7FEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFF1F1F1B18E92EE9734FFAA13FDB54BEBAD78D3
+          9389C87279C56368C15A5AC7625F9B8F8FFEFEFEFFFFFFFFFFFFF7F7F7C4C3C3
+          999494887F7E877A7A8679788178778A8686A9AAAADFDFDFFBFBFBFFFFFFFFFF
+          FFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD5D5D4BE918FF3
+          9E2FFFA81CFFA81DFFAE22FEB941F1B56ADB9A81C47476C364678F8181E7E7E7
+          FFFFFFE0DFDF968C8CB09C9CD0BFBFDDCCCCDFC8C7DEC2C2D3B0B0C7A2A19E7E
+          7E786F6FB6B7B7F5F5F5FFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFB9B7B6CF9B8FF8A830FFB22EFFB233FFB336FFB333FFB52FFFB93B
+          F7B758E6A375B578738E767BA39FA19D9191E8DCDCEAE8E8E2E1E0DCD8D8DCD4
+          D4CFB5B4B49696B28E8ECFA5A4CB9C9C7D6C6BC1C1C1FFFFFFFFFFFFFFFFFF00
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFABA4A4D9A38AFDB234FEB73DFEB941
+          FEBA45FEBB46FEBB47FEBA44FFBA3EFFBB3CFFBB4DF5AA5DD07E5DDDAEAEEDF1
+          F0EDEBEBE9E8E7E1DEDEDBD4D5CBAFAFBEB1B29C8485AB8585D6ABAAC0919096
+          9493FDFDFDFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA89E9D
+          DEA57DFFBC40FEBD4AFEC04EFFC251FFC252FFC353FFC252FFC150FEBF4DFFBD
+          46FFBD3BE2A43AC5A29EFAFBFDFAFBFBF2F1F1E7E6E4D9D1D1CFAFAEBD9C9CAA
+          8180B58B8AD3ABAACD9C9BA29E9EFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFF
+          FFFFFFFFFFFFEDEDEDB2A2A4E1AA72FFC44CFFC556FFC75BFFC95EFFCA60FFCA
+          61FFCB60FFC95DFFCC5CFFC956F8B94B79A96B489665E5E2E6FBF2F3F3F3F3EA
+          EEEDD5C9C8CEA6A6BC8584B77675C08483DFB4B3A98C8CD9D9D9FFFFFFFFFFFF
+          FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFD2D2D1C2AAACE6B068FFCB59FFCC
+          63FFCF69FFD16CFFD26EFFD370FACE6B93924E9B8A42E4AD51DBA84C63C98530
+          CF53658769D19195D4A7ADD7C3CACFAFB1CA9291C17170C56D6DC97B7AAB8F8F
+          CBCACAFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFBCB9
+          B8D0B4B3ECBA66FFD167FFD26FFFD575FFD77AFFD87DFFDD7FD8BB6B6FCA8D42
+          C66B4491485D86505DDF8738DC561CA23B8D7543FFB14AE3A47ACE8F8DC57078
+          C76366CD6262AD6B6ACBCBCBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFF
+          FFFFFFFFFFFFFFFFFFFFB3ABA8D4B5ADF6C668FFD673FFD87BFFDB83FFDE89FF
+          DF8BFFE28BAFB37570F19F5FFF8D55F3804EE37947DE6A36CF5127CC43248828
+          D18F1CFFB11FFDB442EBAC6CD48B7BC36569A4686ABFC0C0FBFBFBFFFFFFFFFF
+          FFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFEFEFEB4ACABD1B5A1FED16FFF
+          DA7EFFDE88FFE290FFE595FFE89BF6DA908EBF8969FF9C5BF38554EC7A49E36C
+          3ED75C33CC4E27C33D11B72D3F7A2AF3AA39FFB531FFB632FFBA41F3B25ED591
+          6F9672729C9496D6D6D6FCFCFCFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFEA
+          EAEAC3BABBD0B494FFDA78FFDD88FFE392FFE89CFFEAA4FFF0ABE4D5976CBF7D
+          4BE97A53F28150EC7746DE673BD4582FC94823BE3818B72A02A01D71823AFFC1
+          4EFFBD4AFEBC47FFBC40FFBE42FFBB52E794639A8889F9F9F9FFFFFFFFFFFF00
+          0000FFFFFFFFFFFFFFFFFFD0D0CFCEC7CCD8BB86FFE380FFE590FFE99CFFECA8
+          FFF1B0FFF3B6FEF3B7D8D89A9DBE7666B7614DCE6D45DF6836D0532BC5431FBD
+          3315B92B0DBD2A0B8929BC9E4EFFCC5CFFC75AFFC457FFC251FFC345FAAB529B
+          898BFAFAFAFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFBBBAB9D3CED0B49E83
+          DABF8AEDD394FAE5A3FFF4B1FFFBC0FFFEC8FFFFCAFFFDC6FFFBBFDFCC935ABF
+          743DE26231D44D21C3370FA629259A35569C4484A052CEB662FFD46EFFD06BFF
+          CE68FFCB61FFCC57EDA160A19699FEFEFEFFFFFFFFFFFF000000FFFFFFFFFFFF
+          FAFAFAB1B2B1F1EEEEB3AAAEA59AA1A39294AA958FB9A293CAB9A2DED3B3EFEA
+          C0FBF8C9FFFFC7B3C98D3ECD6A36C1503B9D4C5A94668D936FE0B864FFCE73FF
+          DA7AFFDC7EFFD97EFFD97DFFD779FFD371FFD467DD9869AAA4A6FFFFFFFFFFFF
+          FFFFFF000000FFFFFFFFFFFFFFFFFFDADBDAABB0A7BCBBB3C9C4BBD0C8C0D2C4
+          C1C9B6B9BEA5A9B69698B18F8EB5968FC8A797A29C8386A47CB8A386897174A6
+          989DE9C093FFDA70FFDA7FFFDE88FFE18EFFE290FFE18FFFDF8AFFDB81FFDA76
+          CD9071B5B2B4FFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFF9F9F9E5E5E4CACAC7B4B4ACADABA4B4ADADBDAFAFC8B3B3CDB0B1CAA8ABCA
+          9FA3CB9799C98F8E8E7E7DB1A8AAE5C286FFDE7EFFE18EFFE699FFE9A1FFEAA4
+          FFE9A1FFE79AFFE38FFFDE84BC8877C2C1C2FFFFFFFFFFFFFFFFFF000000FFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7
+          F7F7E4E4E4CAC8C8B8B3B3B0A6A6B7A4A4AF9090A29D9DC3BBBAEDCC7FFFE689
+          FFEA9AFFEEA9FFF1B2FFF3B6FFF1B2FFEDA9FFE99CFFDF8EAE8279CFCFCFFFFF
+          FFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFCFEFEFE
+          BFBEBECFC6C6B9A283D6BD8DE8D49CF8EBB0FFFAC3FFFFCDFFFEC8FFF7B8FFF0
+          A7FDDC97A4807EDBDBDBFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFC2C4C2D6D7D0C4BDC0BDB2B6B9A7A9B8A29FBFA9
+          9ECDBAA4DDCFB0EEE0B1FEEEAAF9D79B95797AE8E8E8FFFFFFFFFFFFFFFFFF00
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCFCFCD9D9D8C0C0
+          BCB2B1AAAEAC9FB5AEA8BEACAFC4A6A9C4A2A5C39E9FC89F95D19F91948283F2
+          F2F2FFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F7E9E8E8D3D2D1BDBABAB2
+          A9A9B1A0A1B79698B1ADADFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFEF3F3F3FCFCFCFFFFFFFFFFFFFFFFFF
+          FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000}
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        OnClick = SpeedButton1Click
+      end
+      object DBGrid1: TDBGrid
+        Left = 4
+        Top = 23
+        Width = 311
+        Height = 120
+        DataSource = DsConsUsu_TPreCarLib
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ReadOnly = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_PRECAR'
+            Title.Alignment = taCenter
+            Title.Caption = 'Carga'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_DATLIB'
+            Title.Alignment = taCenter
+            Title.Caption = 'Dat.Lib'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'NOMUSU'
+            Title.Alignment = taCenter
+            Title.Caption = 'Usu'#225'rio'
+            Width = 100
+            Visible = True
+          end>
+      end
+      object DBGrid2: TDBGrid
+        Left = 474
+        Top = 22
+        Width = 310
+        Height = 120
+        DataSource = DsConsUsu_TCarPro
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        PopupMenu = PopCargaEmProd
+        ReadOnly = True
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_NUMANE'
+            Title.Alignment = taCenter
+            Title.Caption = 'Carga'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_DATIMP'
+            Title.Alignment = taCenter
+            Title.Caption = 'Dat.Imp'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'NOMUSU'
+            Title.Alignment = taCenter
+            Title.Caption = 'Usu'#225'rio'
+            Width = 100
+            Visible = True
+          end>
+      end
+      object DBGrid3: TDBGrid
+        Left = 4
+        Top = 171
+        Width = 785
+        Height = 313
+        DataSource = DsConsUsu_TProCar
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        PopupMenu = PopProdEmProd
+        ReadOnly = True
+        TabOrder = 2
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        OnDblClick = DBGrid3DblClick
+        OnKeyPress = DBGrid3KeyPress
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_NUMANE'
+            Title.Alignment = taCenter
+            Title.Caption = 'Carga'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODPRO'
+            Title.Alignment = taCenter
+            Title.Caption = 'Cod.Produto'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESPRO'
+            Title.Alignment = taCenter
+            Title.Caption = 'Desc.Produto'
+            Width = 300
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODDER'
+            Title.Alignment = taCenter
+            Title.Caption = 'Deriva'#231#227'o'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDABE'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Aberto'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDPED'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Pedida'
+            Width = 90
+            Visible = True
+          end>
+      end
+      object DBGrid4: TDBGrid
+        Left = 4
+        Top = 488
+        Width = 785
+        Height = 143
+        DataSource = DsConsUsu_TCorCar1
+        ReadOnly = True
+        TabOrder = 3
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODCOR1'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Title.Alignment = taCenter
+            Title.Caption = 'Cor 01'
+            Width = 100
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODCOR2'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Title.Alignment = taCenter
+            Title.Caption = 'Cor 02'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDABE'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Aberto'
+            Width = 70
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDPED'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Pedida'
+            Width = 70
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDPRO'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Produzida'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_SALABE1'
+            Title.Alignment = taCenter
+            Title.Caption = 'Saldo Cor 01'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_SALABE2'
+            Title.Alignment = taCenter
+            Title.Caption = 'Saldo Cor 02'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_TIPCOM'
+            Title.Alignment = taCenter
+            Title.Caption = 'Tipo'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'USU_ABRTIP'
+            Title.Alignment = taCenter
+            Title.Caption = 'Desc.Tipo'
+            Width = 110
+            Visible = True
+          end>
+      end
+      object BarraProgresso: TProgressBar
+        Left = 328
+        Top = 104
+        Width = 137
+        Height = 17
+        Smooth = True
+        TabOrder = 4
+        Visible = False
+      end
+      object EdPesquisa: TEdit
+        Left = 4
+        Top = 148
+        Width = 785
+        Height = 21
+        CharCase = ecUpperCase
+        TabOrder = 5
+        OnChange = EdPesquisaChange
+      end
+      object BBaixa: TBitBtn
+        Left = 475
+        Top = 637
+        Width = 75
+        Height = 25
+        Caption = '&Baixa'
+        TabOrder = 6
+        OnClick = BBaixaClick
+        Glyph.Data = {
+          26040000424D2604000000000000360000002800000012000000120000000100
+          180000000000F0030000120B0000120B00000000000000000000FFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFEBDCEBDD1DFD1CADACAC2D7C2E1EC
+          E1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFF7498758FB18F84AE8475A875A6CAA6F9FBF9FFFFFFFF
+          FFFFFFFFFFFFFFFF57FFFFFFFFFFFFFFFFFFFFFCF7F0F9ECDDFFFFFFFFFFFFFF
+          FFFFA0B8A05F945F77AB7864A4637AB579E0EFE0FFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFEFCFAE8B67BE19B41F3D9B7FFFFFFFFFFFFD5DFD5277729
+          5FA25E4E9F4D4BA34CBBE0BDFFFFFFFFFFFFFFFFFFFFFFFFAAFFFFFFFFFFFFFF
+          EEC9A0EA9E22DF8915DC8E2DF1CD9DFFFFFEFDFDFC267928329031379B392F9F
+          398FCE98FFFFFFFFFFFFFFFFFFFFFFFF46FFFFFFFFF2DBC6F2AE33F2A719DD88
+          13D88113E08F1EF3C280FFFCFA5D9B5806840F2B9C3423A83C41C469F2F8F2FF
+          FFFFFFFFFFFFFFFF73FFF6E7DAEFB143FFC521F4A918E18C16D88011DE8913E5
+          9518F2B963C3C99776B1737ABD8377B97F7ABB86E8E4DBFFF9FAFCFAFAFFFFFF
+          FFFFE5B78FECA32AECA931EEA62CE59418DA8214DE841EE5972AEB9E27F7B66F
+          FAF8F2F7FBF8DFE4DAA4514BA9514CBF796BCC9586FCF6F4FFFFFCF6F2F9F1EA
+          FAF3EDECC392EA9A1ADD8817E0973EF7E1C5FDF6ECFEF5E9FFFFFFFFFFFFF9F6
+          F6A553539A200AB14C21C1632FF7E4DD3EFFFFFFFFFFFFFFFFFFFFF3DCC2E99E
+          26E08A13DD8F2CF4DAB7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC18986AD2C01C4
+          530CDF7513E9C1A6FBFFFFFFFFFFFFFFFFFFFFFAEDDDE7A544E38F12DB8B24EE
+          C58DFEFDFBFFFFFFE6EEE7CBD4CCDFE2DFC5ADA2B8683BC07444CA7E43E0B799
+          26FFFFFFFFFFFFFFFFFFFFFCF9F6F3B86DE69313DB891FE9B46CFEFAF6FFFFFF
+          95BD95159F1C2EAC3E80D593A4E1B4E3EBE2FFFFFFFFFFFFF2FFFFFFFFFFFFFF
+          FFFFFFFFFFFFF8E3C6FEBE66F5B161F7C691FFFFFFFFFFFFDCEADD0F9B26089E
+          2A40B9607DD396CEF8DEFFFFFFFFFFFF0AFFFFFFFFFFFFFFFFFFFFD6D9D3AAB5
+          88C0B374C0B273C4BB81D9D7B3D8EDD7A8DFB22AAD4C1CB74D2DC3635BD188B2
+          EBC8FBFFFDFFFFFFF2FFFFFFFFFFFFFFFFFFFFA7B0A70049000554070E660D0F
+          770F0F891912982825AD4626BA562BC86830D37842DC8A89E7B6EFFCF4FFFFFF
+          13FFFFFFFFFFFFFFFFFFFFCCD0CC1F5C1F00570000650000750000840205991F
+          14AF4226C76532DB823DEB9A44F5AA59F6B5DAFAE5FFFFFF33FFFFFFFFFFFFFF
+          FFFFFFF1F2F1577A570052000E670E167916258D2C35A24842B1604BC37550D2
+          8654E19952EBA346E79FB8F5CEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC6CC
+          C69AAD9AA3B6A3A6BAA6AABFAAADC5AEAFC9B1B0CCB2AFD0B2AEDEB4ADE6B4A5
+          E4B0DAEBDDFFFFFF39FF}
+      end
+      object BMovimentos: TBitBtn
+        Left = 680
+        Top = 637
+        Width = 99
+        Height = 25
+        Caption = 'Movimentos'
+        TabOrder = 7
+        OnClick = BMovimentosClick
+        Glyph.Data = {
+          26040000424D2604000000000000360000002800000012000000120000000100
+          180000000000F0030000120B0000120B00000000000000000000FFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFF8E9A8FA5AEA6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFF97A4
+          953E874096B098FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFF99B5BE41813C3B853D99BA9BFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          0000FFFFFFFFFFFF96ADAF44823F3E853F37893953AB5862BD695FC4675DC867
+          5CC9655AC66356BE5F57B45D57A75C529657A5BDA8FFFFFF0000FFFFFF99B2B5
+          4782414588453A913C32A9352EBC3329C93221D62E1BDE2914DE240ED81D07C8
+          1303B00A0388050C6F0F6B9F70FFFFFF0000FFFFFF93B2B7377E3025892927AC
+          2F2EC3383BDB4842EA5148F15848F4593DF24E2EE93F20D63012BB1D02940707
+          6E0B6AA671FFFFFF0000FFFFFFEBF3FA76AFB6089C111DC22B41E15167D57786
+          EB9192EF9C97F1A091F19686F18977DA7F52C76616B92205890A6AB071FFFFFF
+          0000FFFFFFC0D8EDB3D6FC79C4C73FD94362FB70ACEBB2FFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFF7CE6832BCE39069D0C6DBD75FFFFFF0000FFFFFF9BC1E3
+          74B7F4A1D0FF85D6BC81FA84B7F3BCFFFFFFFFFFFFFFFFFFFFFFFF9BC4FFB6DE
+          EBB0F6B56FE67946BE4C96D59CFFFFFF0000FFFFFF6EA4D33797EB5AADFFAAD7
+          F8AEE7BEBFF3BCFFFFFFFFFFFFFFFFFFFFFFFF96CBFF72B3FC9EE4C9C3F9C49C
+          DE9FC8EACBFFFFFF0000FFFFFF4385C00076DC178BF87DBAFDFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFF87BEF754ABFF228DE4AAE2C0EEF9EEEEF9EFFFFFFF
+          0000FFFFFF3E7CB70271D60678E0378EEA68AEFA77B9FF85C1FF8AC4FF83C1FE
+          7BB9F7519CF11388FD0067D70F559AB0D5BBFFFFFFFFFFFF0000FFFFFF4D82B5
+          2B82DF1F83DD1A92F32FA6FF57B6FF6EC0FF71C1FF60B9FF3DAAFF1191FD0077
+          E40061BE0047980B468DB0CEBDFFFFFF0000FFFFFF6790B878B7FF69B3F862BD
+          FE5AC2FF60C7FF64C7FF59C2FF44B7FF35A9FD2A96EE2180D61B6CC01964BC1B
+          5396B5D0BFFFFFFF0000FFFFFF9CACBB87A5C286A8C884ACCE82AFD380B1D77C
+          AED779ADD777AAD477A5CE699CCE609CDE5F9AE14C7CB1BDD1C2FFFFFFFFFFFF
+          0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFF8AA1BAAAD3FF7B9AC7BDDAC3FFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF99A7B3B0C2
+          D4BDC0C5FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF989DA0B6B6B8FFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFF0000}
+      end
+      object BAlteraProdutos: TBitBtn
+        Left = 558
+        Top = 637
+        Width = 113
+        Height = 25
+        Caption = 'Alterar Produtos '
+        TabOrder = 8
+        OnClick = BAlteraProdutosClick
+        Glyph.Data = {
+          E6040000424DE604000000000000360000002800000014000000140000000100
+          180000000000B0040000120B0000120B00000000000000000000ECE8EACDCACB
+          9F908DA9A1A0BDBBBDB0ADAFACA9AAA8A5A7A8A5A7A8A5A7A8A5A7A8A5A7A8A5
+          A7AAA7A8AEABACBDBABAB2AFB49B98AACECBCDE6E2E4E8E3E5986044D97F39C4
+          6F359F857AE1DDDFD2CFD1D1CED0D2CED0D2CED0D2CED0D2CED0D2CED0D3D0D1
+          E1DEE0ABA8B52D2C8E3030C4908FC1E6E2E5DFCEC8BD561CE5C7B7E39A60C65E
+          1ECAAEA3EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBA6A3C21E
+          1DA42121AF6C6CDF6060E1A2A0DAEDE9EBC9885FCA6726C56328D2712DC2652B
+          D9C0B7EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB8E8CBD1A1AA52323AF7878
+          E44D4DD01616A4B6B3DEEDE9EBE6DBD9C77E48A9410FAF3B03D77933BE6E3DE5
+          DAD8EDE9EBEDE9EBEDE9EBEDE9EBA9A6CA17179E2525B08282E65454D212129F
+          8684CDEDE9EBEDE9EBEDE9EBE2D3CDC0733D9C3307B9480AD97E38C07B52EBE6
+          E7EDE9EBEDE9EBD5D1E02C2CA42323AF8383E65454D211109E5D5DBBECE8EBED
+          E9EBEDE9EBEDE9EBEDE9EBDECAC1BF76419A3006C05111D9803BC99170EDE9EB
+          EDE9EB5D5DB32020AD7B7BE55252D211109D5455B6E6E3EAEDE9EBEDE9EBEDE9
+          EBEDE9EBEDE9EBEDE9EBDBC6BBBE794C9C3204C9601CDD7E30D0AFA2908DC620
+          21B07070E34E4ED01313A06766BCE2DEE9EDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+          EDE9EBEDE9EBEDE9EBDAC4B7B96F41A43300A956375845982021AD5656D74A4A
+          D12A2AABA4A1D2EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBED
+          E9EBEDE9EBEDE9EBDBC3B5AD5D31271B8F2027BF8787EB4041CA4346B9DBD7E6
+          EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9
+          EBEDE9EBEDE9EBD8C1B58871A56C73F1494BD24C49BDDBD3DEEDE9EBEDE9EBED
+          E9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EB
+          EDE9EBD6D1D3BAB0ABA294C7272BBF7F486AD2997AEDE9EBEDE9EBEDE9EBEDE9
+          EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBCBC8CBAF
+          B0B5D0CED0DBC6BE9E503EC35A16AE826BAAACB0DBD8DAEDE9EBEDE9EBEDE9EB
+          EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBCBC8CBAEADB0CFCDD0EDE9
+          EBEDE9EBD2B9ADAD8F7EB8BDC29E9D9FB5B4B5D4D3D4D8D6D8EDE9EBEDE9EBED
+          E9EBEDE9EBEDE9EBEDE9EBEDE9EBCECBCDB1B1B4CFCDCFEDE9EBEDE9EBEDE9EB
+          EDE9EBBFBFC2C9C8CA6D6C6E89888ADFDFE0CDCBCDEDE9EBEDE9EBEDE9EBEDE9
+          EBEDE9EBEDE9EBCAC6CAB1B0B3D0CED0EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBCF
+          CCCEFFFFFFD0CFD0C1C1C2C2C2C3B5B6B7CDCBCDEDE9EBEDE9EBEDE9EBEDE9EB
+          CAC7CAB4B3B6D1CFD2EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBD4D0D2FFFF
+          FFEDEDEDBEBEBFA9A8AABEBDBEACACADE7E3E5EDE9EBEDE9EBB8B5B8EAEAEAC8
+          C6C8EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBE3DFE1E2E2E3C5C5C6
+          B2B2B3CBC8CAEDE9EBBCBABCE0DDDFEDE9EBC7C4C6F8F8F8B2B0B2DCD9DBEDE9
+          EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBC7C4C6C1C1C2D1D1D2B3
+          B1B3C8C6C7ECE8EAEDE9EBEDE9EBD9D6D8C4C2C3E2DEE1EDE9EBEDE9EBEDE9EB
+          EDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBEDE9EBD8D5D7CCCACBD6D5D6D6D4
+          D6E9E6E8EDE9EBEDE9EB}
+      end
+    end
+    object TbCargasHistorico: TTabSheet
+      Caption = 'Cargas - Cortado'
+      ImageIndex = 1
+      object Label3: TLabel
+        Left = 32
+        Top = 6
+        Width = 248
+        Height = 13
+        Caption = 'Cargas em Produ'#231#227'o - Produtos j'#225' Cortados'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clMaroon
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object DBGrid5: TDBGrid
+        Left = 4
+        Top = 171
+        Width = 785
+        Height = 327
+        DataSource = DsConsUsu_TProCar1
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        PopupMenu = PopProdJaProd
+        ReadOnly = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_NUMANE'
+            Title.Alignment = taCenter
+            Title.Caption = 'Carga'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODPRO'
+            Title.Alignment = taCenter
+            Title.Caption = 'Cod.Produto'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESPRO'
+            Title.Alignment = taCenter
+            Title.Caption = 'Desc.Produto'
+            Width = 300
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODDER'
+            Title.Alignment = taCenter
+            Title.Caption = 'Deriva'#231#227'o'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDPED'
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Pedida'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDPRO'
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Produzido'
+            Width = 90
+            Visible = True
+          end>
+      end
+      object DBGrid7: TDBGrid
+        Left = 4
+        Top = 503
+        Width = 785
+        Height = 152
+        DataSource = DsConUsu_TCorCar2
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ReadOnly = True
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODCOR1'
+            Title.Alignment = taCenter
+            Title.Caption = 'Cor 01'
+            Width = 100
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODCOR2'
+            Title.Alignment = taCenter
+            Title.Caption = 'Cor 02'
+            Width = 100
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDPED'
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Pedida'
+            Width = 70
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDPRO'
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Produzida'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_SALABE1'
+            Title.Alignment = taCenter
+            Title.Caption = 'Saldo cor 01'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_SALABE2'
+            Title.Alignment = taCenter
+            Title.Caption = 'Saldo Cor 02'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_TIPCOM'
+            Title.Alignment = taCenter
+            Title.Caption = 'Tipo'
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_ABRTIP'
+            Title.Alignment = taCenter
+            Title.Caption = 'Desc.Tipo'
+            Width = 170
+            Visible = True
+          end>
+      end
+      object DBGrid6: TDBGrid
+        Left = 4
+        Top = 23
+        Width = 311
+        Height = 120
+        DataSource = DsConsUsu_TCarPro
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ReadOnly = True
+        TabOrder = 2
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_NUMANE'
+            Title.Alignment = taCenter
+            Title.Caption = 'Carga'
+            Width = 90
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_DATIMP'
+            Title.Alignment = taCenter
+            Title.Caption = 'Dat.Imp'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'NOMUSU'
+            Title.Alignment = taCenter
+            Title.Caption = 'Usu'#225'rio'
+            Width = 100
+            Visible = True
+          end>
+      end
+      object EdPesquisa1: TEdit
+        Left = 4
+        Top = 148
+        Width = 785
+        Height = 21
+        CharCase = ecUpperCase
+        TabOrder = 3
+        OnChange = EdPesquisa1Change
+      end
+    end
+    object TbSaldoGeral: TTabSheet
+      Caption = 'Saldo Geral'
+      ImageIndex = 2
+      OnShow = TbSaldoGeralShow
+      object DBGrid8: TDBGrid
+        Left = 1
+        Top = 32
+        Width = 529
+        Height = 617
+        DataSource = DsConsUsu_TSalPro
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ReadOnly = True
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODPRO'
+            Title.Alignment = taCenter
+            Title.Caption = 'C'#243'digo'
+            Width = 80
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DESPRO'
+            Title.Alignment = taCenter
+            Title.Caption = 'Descri'#231#227'o'
+            Width = 250
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODDER'
+            Title.Alignment = taCenter
+            Title.Caption = 'Deriva'#231#227'o'
+            Width = 80
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDABE'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Aberto'
+            Width = 80
+            Visible = True
+          end>
+      end
+      object DBGrid9: TDBGrid
+        Left = 536
+        Top = 32
+        Width = 248
+        Height = 617
+        DataSource = DsConsUsu_TCorSal
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ReadOnly = True
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'MS Sans Serif'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODCOR1'
+            Title.Alignment = taCenter
+            Title.Caption = 'Cor 01'
+            Width = 75
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_CODCOR2'
+            Title.Alignment = taCenter
+            Title.Caption = 'Cor 02'
+            Width = 75
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'USU_QTDABE'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            Title.Alignment = taCenter
+            Title.Caption = 'Qtd.Aberta'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'USU_ABRTIP'
+            Visible = True
+          end>
+      end
+      object EdPesquisa2: TEdit
+        Left = 2
+        Top = 10
+        Width = 528
+        Height = 21
+        CharCase = ecUpperCase
+        TabOrder = 2
+        OnChange = EdPesquisa2Change
+      end
+    end
+  end
+  object DsConsUsu_TPreCarLib: TDataSource
+    AutoEdit = False
+    DataSet = Dm1.ConsUsu_TPreCarLib
+    Left = 756
+  end
+  object DsConsUsu_TCarPro: TDataSource
+    AutoEdit = False
+    DataSet = Dm1.ConsUsu_TCarPro
+    Left = 732
+  end
+  object DsConsUsu_TProCar: TDataSource
+    AutoEdit = False
+    DataSet = Dm1.ConsUsu_TProCar
+    Left = 704
+  end
+  object DsConsUsu_TCorCar1: TDataSource
+    AutoEdit = False
+    DataSet = Dm1.ConsUsu_tCorCar1
+    Left = 674
+  end
+  object DsConsUsu_TProCar1: TDataSource
+    AutoEdit = False
+    DataSet = Dm1.ConsUsu_TProCar1
+    Left = 644
+  end
+  object DsConUsu_TCorCar2: TDataSource
+    AutoEdit = False
+    DataSet = Dm1.ConsUsu_TCorCar2
+    Left = 615
+    Top = 1
+  end
+  object DsConsUsu_TSalPro: TDataSource
+    DataSet = Dm1.ConsUsu_TSalPro
+    Left = 580
+  end
+  object DsConsUsu_TCorSal: TDataSource
+    DataSet = Dm1.ConsUsu_TCorSal
+    Left = 548
+    Top = 2
+  end
+  object PopCargaEmProd: TPopupMenu
+    Left = 436
+    Top = 40
+    object Movimentos1: TMenuItem
+      Caption = 'Movimentos'
+      OnClick = Movimentos1Click
+    end
+  end
+  object PopProdEmProd: TPopupMenu
+    Left = 404
+    Top = 40
+    object Movimentos2: TMenuItem
+      Caption = 'Movimentos'
+      OnClick = Movimentos2Click
+    end
+  end
+  object PopProdJaProd: TPopupMenu
+    Left = 372
+    Top = 40
+    object Movimentos3: TMenuItem
+      Caption = 'Movimentos'
+      OnClick = Movimentos3Click
+    end
+  end
+end

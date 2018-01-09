@@ -1,0 +1,562 @@
+unit URelMateriaPrima;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RbDrawCore, RbButton, RbRadioButton, RbCheckBox, StdCtrls;
+
+type
+  TFRelMateriaPrima = class(TForm)
+    GroupBox1: TGroupBox;
+    RbEmLinha: TRbCheckBox;
+    RbForaLinha: TRbCheckBox;
+    GroupBox2: TGroupBox;
+    RbComValor: TRbRadioButton;
+    RbSemValor: TRbRadioButton;
+    GroupBox3: TGroupBox;
+    EdClasse: TEdit;
+    BClasse: TRbButton;
+    BImprimir: TRbButton;
+    RbClasse: TRbCheckBox;
+    procedure BImprimirClick(Sender: TObject);
+    procedure BClasseClick(Sender: TObject);
+    procedure EdClasseKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRelMateriaPrima: TFRelMateriaPrima;
+
+implementation
+
+uses UQrRelMtPrimaComValor, UDataModule5, UConsSimpClasse, UDataModule1,
+  UQrRelMtPrimaSemValor;
+
+{$R *.dfm}
+
+procedure TFRelMateriaPrima.BImprimirClick(Sender: TObject);
+begin
+
+if (RbClasse.Checked = true) and (EdClasse.Text = '') then
+  begin
+     Application.MessageBox('Informe a Classe', 'Campo em Branco', MB_ICONWARNING+MB_OK);
+     EdClasse.SetFocus;
+  end
+else
+  begin
+if (RbEmLinha.Checked = true) and (RbComValor.Checked = true)
+  and (RbForaLinha.Checked = false) and (RbClasse.Checked = false)then
+  begin//1
+
+  DataModule5.IBQConsClasse.Close;
+  DataModule5.IBQConsMatPrima.Close;
+
+  DataModule5.IBQConsClasse.SQL.Clear;
+  DataModule5.IBQConsClasse.SQL.Add('select cl.cd_classe,cl.ds_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('count(distinct(mt.cd_mat_prima)) as qtde_mt');
+  DataModule5.IBQConsClasse.SQL.Add('from CLASSE_MAT_PRIMA cl');
+  DataModule5.IBQConsClasse.SQL.Add('inner join MATERIA_PRIMA mt on mt.cd_classe = cl.cd_classe');
+  DataModule5.IBQConsClasse.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsClasse.SQL.Add('where mt.fora_linha = ''N''');
+  DataModule5.IBQConsClasse.SQL.Add('group by cl.cd_classe,cl.ds_classe');
+  DataModule5.IBQConsClasse.SQL.Add('order by cl.ds_classe');
+
+//----------------------------------------------
+  DataModule5.IBQConsMatPrima.SQL.Clear;
+  DataModule5.IBQConsMatPrima.SQL.Add('select mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max,');
+  DataModule5.IBQConsMatPrima.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_tot');
+  DataModule5.IBQConsMatPrima.SQL.Add('from');
+  DataModule5.IBQConsMatPrima.SQL.Add('MATERIA_PRIMA mt');
+  DataModule5.IBQConsMatPrima.SQL.Add('inner join UNIDADE_MEDIDA un on un.cd_unidade = mt.cd_un_medida');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join PESSOA_JURIDICA pj on pj.cd_pessoa_ju = mt_nf.cd_fornecedor');
+  DataModule5.IBQConsMatPrima.SQL.Add('where');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_classe = :cd_classe and');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.fora_linha = ''N''');
+  DataModule5.IBQConsMatPrima.SQL.Add('group by');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max');
+  DataModule5.IBQConsMatPrima.SQL.Add('order by mt.ds_mat_prima');
+
+  DataModule5.IBQConsClasse.Open;
+  DataModule5.IBQConsMatPrima.Open;
+  //QrMtPrimaComValor := TQrMtPrimaComValor.Create(Self);
+  QrMtPrimaComValor.LEmLinha.Caption := 'Em Linha';
+
+  QrMtPrimaComValor.Preview;
+  end//1
+else
+
+  if (RbForaLinha.Checked = true) and (RbComValor.Checked = true)
+      and (RbEmLinha.Checked = false) and (RbClasse.Checked = false)then
+  begin//2
+
+
+  DataModule5.IBQConsClasse.Close;
+  DataModule5.IBQConsMatPrima.Close;
+  DataModule5.IBQConsClasse.SQL.Clear;
+  DataModule5.IBQConsClasse.SQL.Add('select cl.cd_classe,cl.ds_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('count(distinct(mt.cd_mat_prima)) as qtde_mt');
+  DataModule5.IBQConsClasse.SQL.Add('from CLASSE_MAT_PRIMA cl');
+  DataModule5.IBQConsClasse.SQL.Add('inner join MATERIA_PRIMA mt on mt.cd_classe = cl.cd_classe');
+  DataModule5.IBQConsClasse.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsClasse.SQL.Add('where mt.fora_linha = ''S''');
+  DataModule5.IBQConsClasse.SQL.Add('group by cl.cd_classe,cl.ds_classe');
+  DataModule5.IBQConsClasse.SQL.Add('order by cl.ds_classe');
+//----------------------------------------------
+  DataModule5.IBQConsMatPrima.SQL.Clear;
+  DataModule5.IBQConsMatPrima.SQL.Add('select mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max,');
+  DataModule5.IBQConsMatPrima.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_tot');
+  DataModule5.IBQConsMatPrima.SQL.Add('from');
+  DataModule5.IBQConsMatPrima.SQL.Add('MATERIA_PRIMA mt');
+  DataModule5.IBQConsMatPrima.SQL.Add('inner join UNIDADE_MEDIDA un on un.cd_unidade = mt.cd_un_medida');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join PESSOA_JURIDICA pj on pj.cd_pessoa_ju = mt_nf.cd_fornecedor');
+  DataModule5.IBQConsMatPrima.SQL.Add('where');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_classe = :cd_classe and');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.fora_linha = ''S''');
+  DataModule5.IBQConsMatPrima.SQL.Add('group by');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max');
+  DataModule5.IBQConsMatPrima.SQL.Add('order by mt.ds_mat_prima');
+
+  DataModule5.IBQConsClasse.Open;
+  DataModule5.IBQConsMatPrima.Open;
+  //QrMtPrimaComValor := TQrMtPrimaComValor.Create(Self);
+  QrMtPrimaComValor.LEmLinha.Caption := 'Fora de Linha';
+  QrMtPrimaComValor.Preview;
+  end//2
+else
+if (RbForaLinha.Checked = true) and (RbComValor.Checked = true)
+      and (RbEmLinha.Checked = false) and (RbClasse.Checked = true)then
+  begin//3
+
+
+  DataModule5.IBQConsClasse.Close;
+  DataModule5.IBQConsMatPrima.Close;
+  DataModule5.IBQConsClasse.SQL.Clear;
+  DataModule5.IBQConsClasse.SQL.Add('select cl.cd_classe,cl.ds_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('count(distinct(mt.cd_mat_prima)) as qtde_mt');
+  DataModule5.IBQConsClasse.SQL.Add('from CLASSE_MAT_PRIMA cl');
+  DataModule5.IBQConsClasse.SQL.Add('inner join MATERIA_PRIMA mt on mt.cd_classe = cl.cd_classe');
+  DataModule5.IBQConsClasse.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsClasse.SQL.Add('where mt.fora_linha = ''S'' and');
+  DataModule5.IBQConsClasse.SQL.Add('cl.ds_classe LIKE'+QuotedStr('%'+EdClasse.Text+'%'));
+  DataModule5.IBQConsClasse.SQL.Add('group by cl.cd_classe,cl.ds_classe');
+  DataModule5.IBQConsClasse.SQL.Add('order by cl.ds_classe');
+
+//----------------------------------------------
+  DataModule5.IBQConsMatPrima.SQL.Clear;
+  DataModule5.IBQConsMatPrima.SQL.Add('select mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max,');
+  DataModule5.IBQConsMatPrima.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_tot');
+  DataModule5.IBQConsMatPrima.SQL.Add('from');
+  DataModule5.IBQConsMatPrima.SQL.Add('MATERIA_PRIMA mt');
+  DataModule5.IBQConsMatPrima.SQL.Add('inner join UNIDADE_MEDIDA un on un.cd_unidade = mt.cd_un_medida');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join PESSOA_JURIDICA pj on pj.cd_pessoa_ju = mt_nf.cd_fornecedor');
+  DataModule5.IBQConsMatPrima.SQL.Add('where');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_classe = :cd_classe and');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.fora_linha = ''S''');
+  DataModule5.IBQConsMatPrima.SQL.Add('group by');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max');
+  DataModule5.IBQConsMatPrima.SQL.Add('order by mt.ds_mat_prima');
+
+  DataModule5.IBQConsClasse.Open;
+  DataModule5.IBQConsMatPrima.Open;
+  //QrMtPrimaComValor := TQrMtPrimaComValor.Create(Self);
+  QrMtPrimaComValor.LEmLinha.Caption := 'Fora de Linha';
+  QrMtPrimaComValor.Preview;
+  end//3
+else
+if (RbForaLinha.Checked = false) and (RbComValor.Checked = true)
+      and (RbEmLinha.Checked = true) and (RbClasse.Checked = true)then
+  begin//4
+
+  DataModule5.IBQConsClasse.Close;
+  DataModule5.IBQConsMatPrima.Close;
+  DataModule5.IBQConsClasse.SQL.Clear;
+  DataModule5.IBQConsClasse.SQL.Add('select cl.cd_classe,cl.ds_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('count(distinct(mt.cd_mat_prima)) as qtde_mt');
+  DataModule5.IBQConsClasse.SQL.Add('from CLASSE_MAT_PRIMA cl');
+  DataModule5.IBQConsClasse.SQL.Add('inner join MATERIA_PRIMA mt on mt.cd_classe = cl.cd_classe');
+  DataModule5.IBQConsClasse.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsClasse.SQL.Add('where mt.fora_linha = ''N'' and');
+  DataModule5.IBQConsClasse.SQL.Add('cl.ds_classe LIKE'+QuotedStr('%'+EdClasse.Text+'%'));
+  DataModule5.IBQConsClasse.SQL.Add('group by cl.cd_classe,cl.ds_classe');
+  DataModule5.IBQConsClasse.SQL.Add('order by cl.ds_classe');
+//----------------------------------------------
+  DataModule5.IBQConsMatPrima.SQL.Clear;
+  DataModule5.IBQConsMatPrima.SQL.Add('select mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max,');
+  DataModule5.IBQConsMatPrima.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_tot');
+  DataModule5.IBQConsMatPrima.SQL.Add('from');
+  DataModule5.IBQConsMatPrima.SQL.Add('MATERIA_PRIMA mt');
+  DataModule5.IBQConsMatPrima.SQL.Add('inner join UNIDADE_MEDIDA un on un.cd_unidade = mt.cd_un_medida');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join PESSOA_JURIDICA pj on pj.cd_pessoa_ju = mt_nf.cd_fornecedor');
+  DataModule5.IBQConsMatPrima.SQL.Add('where');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_classe = :cd_classe and');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.fora_linha = ''N''');
+  DataModule5.IBQConsMatPrima.SQL.Add('group by');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max');
+  DataModule5.IBQConsMatPrima.SQL.Add('order by mt.ds_mat_prima');
+
+  DataModule5.IBQConsClasse.Open;
+  DataModule5.IBQConsMatPrima.Open;
+  //QrMtPrimaComValor := TQrMtPrimaComValor.Create(Self);
+  QrMtPrimaComValor.LEmLinha.Caption := 'Em Linha';
+  QrMtPrimaComValor.Preview;
+  end//4
+else
+if (RbEmLinha.Checked = true) and (RbSemValor.Checked = true)
+  and (RbForaLinha.Checked = false) and (RbClasse.Checked = false)then
+  begin//5
+
+  DataModule5.IBQConsClasse.Close;
+  DataModule5.IBQConsMatPrima.Close;
+    DataModule5.IBQConsClasse.SQL.Clear;
+  DataModule5.IBQConsClasse.SQL.Add('select cl.cd_classe,cl.ds_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('count(distinct(mt.cd_mat_prima)) as qtde_mt');
+  DataModule5.IBQConsClasse.SQL.Add('from CLASSE_MAT_PRIMA cl');
+  DataModule5.IBQConsClasse.SQL.Add('inner join MATERIA_PRIMA mt on mt.cd_classe = cl.cd_classe');
+  DataModule5.IBQConsClasse.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsClasse.SQL.Add('where mt.fora_linha = ''N''');
+  DataModule5.IBQConsClasse.SQL.Add('group by cl.cd_classe,cl.ds_classe');
+  DataModule5.IBQConsClasse.SQL.Add('order by cl.ds_classe');
+//----------------------------------------------
+  DataModule5.IBQConsMatPrima.SQL.Clear;
+  DataModule5.IBQConsMatPrima.SQL.Add('select mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max,');
+  DataModule5.IBQConsMatPrima.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_tot');
+  DataModule5.IBQConsMatPrima.SQL.Add('from');
+  DataModule5.IBQConsMatPrima.SQL.Add('MATERIA_PRIMA mt');
+  DataModule5.IBQConsMatPrima.SQL.Add('inner join UNIDADE_MEDIDA un on un.cd_unidade = mt.cd_un_medida');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join PESSOA_JURIDICA pj on pj.cd_pessoa_ju = mt_nf.cd_fornecedor');
+  DataModule5.IBQConsMatPrima.SQL.Add('where');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_classe = :cd_classe and');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.fora_linha = ''N''');
+  DataModule5.IBQConsMatPrima.SQL.Add('group by');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max');
+  DataModule5.IBQConsMatPrima.SQL.Add('order by mt.ds_mat_prima');
+
+  DataModule5.IBQConsClasse.Open;
+  DataModule5.IBQConsMatPrima.Open;
+  //QrMtPrimaSemValor := TQrMtPrimaSemValor.Create(Self);
+  QrMtPrimaSemValor.LEmLinha.Caption := 'Em Linha';
+  QrMtPrimaSemValor.Preview;
+  end//5
+else
+
+  if (RbForaLinha.Checked = true) and (RbSemValor.Checked = true)
+      and (RbEmLinha.Checked = false) and (RbClasse.Checked = false)then
+  begin//6
+
+  DataModule5.IBQConsClasse.Close;
+  DataModule5.IBQConsMatPrima.Close;
+    DataModule5.IBQConsClasse.SQL.Clear;
+  DataModule5.IBQConsClasse.SQL.Add('select cl.cd_classe,cl.ds_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('count(distinct(mt.cd_mat_prima)) as qtde_mt');
+  DataModule5.IBQConsClasse.SQL.Add('from CLASSE_MAT_PRIMA cl');
+  DataModule5.IBQConsClasse.SQL.Add('inner join MATERIA_PRIMA mt on mt.cd_classe = cl.cd_classe');
+  DataModule5.IBQConsClasse.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsClasse.SQL.Add('where mt.fora_linha = ''S''');
+  DataModule5.IBQConsClasse.SQL.Add('group by cl.cd_classe,cl.ds_classe');
+  DataModule5.IBQConsClasse.SQL.Add('order by cl.ds_classe');
+//----------------------------------------------
+  DataModule5.IBQConsMatPrima.SQL.Clear;
+  DataModule5.IBQConsMatPrima.SQL.Add('select mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max,');
+  DataModule5.IBQConsMatPrima.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_tot');
+  DataModule5.IBQConsMatPrima.SQL.Add('from');
+  DataModule5.IBQConsMatPrima.SQL.Add('MATERIA_PRIMA mt');
+  DataModule5.IBQConsMatPrima.SQL.Add('inner join UNIDADE_MEDIDA un on un.cd_unidade = mt.cd_un_medida');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join PESSOA_JURIDICA pj on pj.cd_pessoa_ju = mt_nf.cd_fornecedor');
+  DataModule5.IBQConsMatPrima.SQL.Add('where');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_classe = :cd_classe and');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.fora_linha = ''S''');
+  DataModule5.IBQConsMatPrima.SQL.Add('group by');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max');
+  DataModule5.IBQConsMatPrima.SQL.Add('order by mt.ds_mat_prima');
+
+  DataModule5.IBQConsClasse.Open;
+  DataModule5.IBQConsMatPrima.Open;
+  //QrMtPrimaSemValor := TQrMtPrimaSemValor.Create(Self);
+  QrMtPrimaSemValor.LEmLinha.Caption := 'Fora de Linha';
+  QrMtPrimaSemValor.Preview;
+  end//6
+else
+if (RbForaLinha.Checked = true) and (RbSemValor.Checked = true)
+      and (RbEmLinha.Checked = false) and (RbClasse.Checked = true)then
+  begin//7
+
+  DataModule5.IBQConsClasse.Close;
+  DataModule5.IBQConsMatPrima.Close;
+  DataModule5.IBQConsClasse.SQL.Clear;
+  DataModule5.IBQConsClasse.SQL.Add('select cl.cd_classe,cl.ds_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('count(distinct(mt.cd_mat_prima)) as qtde_mt');
+  DataModule5.IBQConsClasse.SQL.Add('from CLASSE_MAT_PRIMA cl');
+  DataModule5.IBQConsClasse.SQL.Add('inner join MATERIA_PRIMA mt on mt.cd_classe = cl.cd_classe');
+  DataModule5.IBQConsClasse.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsClasse.SQL.Add('where mt.fora_linha = ''S'' and');
+  DataModule5.IBQConsClasse.SQL.Add('cl.ds_classe LIKE'+QuotedStr('%'+EdClasse.Text+'%'));
+  DataModule5.IBQConsClasse.SQL.Add('group by cl.cd_classe,cl.ds_classe');
+  DataModule5.IBQConsClasse.SQL.Add('order by cl.ds_classe');
+//----------------------------------------------
+  DataModule5.IBQConsMatPrima.SQL.Clear;
+  DataModule5.IBQConsMatPrima.SQL.Add('select mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max,');
+  DataModule5.IBQConsMatPrima.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_tot');
+  DataModule5.IBQConsMatPrima.SQL.Add('from');
+  DataModule5.IBQConsMatPrima.SQL.Add('MATERIA_PRIMA mt');
+  DataModule5.IBQConsMatPrima.SQL.Add('inner join UNIDADE_MEDIDA un on un.cd_unidade = mt.cd_un_medida');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join PESSOA_JURIDICA pj on pj.cd_pessoa_ju = mt_nf.cd_fornecedor');
+  DataModule5.IBQConsMatPrima.SQL.Add('where');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_classe = :cd_classe and');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.fora_linha = ''S''');
+  DataModule5.IBQConsMatPrima.SQL.Add('group by');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max');
+  DataModule5.IBQConsMatPrima.SQL.Add('order by mt.ds_mat_prima');
+
+  DataModule5.IBQConsClasse.Open;
+  DataModule5.IBQConsMatPrima.Open;
+  //QrMtPrimaSemValor := TQrMtPrimaSemValor.Create(Self);
+  QrMtPrimaSemValor.LEmLinha.Caption := 'Fora de Linha';
+  QrMtPrimaSemValor.Preview;
+  end//7
+else
+if (RbForaLinha.Checked = false) and (RbSemValor.Checked = true)
+      and (RbEmLinha.Checked = true) and (RbClasse.Checked = true)then
+  begin//8
+
+  DataModule5.IBQConsClasse.Close;
+  DataModule5.IBQConsMatPrima.Close;
+  DataModule5.IBQConsClasse.SQL.Clear;
+  DataModule5.IBQConsClasse.SQL.Add('select cl.cd_classe,cl.ds_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('count(distinct(mt.cd_mat_prima)) as qtde_mt');
+  DataModule5.IBQConsClasse.SQL.Add('from CLASSE_MAT_PRIMA cl');
+  DataModule5.IBQConsClasse.SQL.Add('inner join MATERIA_PRIMA mt on mt.cd_classe = cl.cd_classe');
+  DataModule5.IBQConsClasse.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsClasse.SQL.Add('where mt.fora_linha = ''N'' and');
+  DataModule5.IBQConsClasse.SQL.Add('cl.ds_classe LIKE'+QuotedStr('%'+EdClasse.Text+'%'));
+  DataModule5.IBQConsClasse.SQL.Add('group by cl.cd_classe,cl.ds_classe');
+  DataModule5.IBQConsClasse.SQL.Add('order by cl.ds_classe');
+//----------------------------------------------
+  DataModule5.IBQConsMatPrima.SQL.Clear;
+  DataModule5.IBQConsMatPrima.SQL.Add('select mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max,');
+  DataModule5.IBQConsMatPrima.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_tot');
+  DataModule5.IBQConsMatPrima.SQL.Add('from');
+  DataModule5.IBQConsMatPrima.SQL.Add('MATERIA_PRIMA mt');
+  DataModule5.IBQConsMatPrima.SQL.Add('inner join UNIDADE_MEDIDA un on un.cd_unidade = mt.cd_un_medida');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join PESSOA_JURIDICA pj on pj.cd_pessoa_ju = mt_nf.cd_fornecedor');
+  DataModule5.IBQConsMatPrima.SQL.Add('where');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_classe = :cd_classe and');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.fora_linha = ''N''');
+  DataModule5.IBQConsMatPrima.SQL.Add('group by');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max');
+  DataModule5.IBQConsMatPrima.SQL.Add('order by mt.ds_mat_prima');
+
+  DataModule5.IBQConsClasse.Open;
+  DataModule5.IBQConsMatPrima.Open;
+  //QrMtPrimaSemValor := TQrMtPrimaSemValor.Create(Self);
+  QrMtPrimaSemValor.LEmLinha.Caption := 'Em Linha';
+  QrMtPrimaSemValor.Preview;
+  end//8
+  else
+if (RbEmLinha.Checked = true) and (RbComValor.Checked = true)
+  and (RbForaLinha.Checked = true) and (RbClasse.Checked = false)then
+  begin//9
+
+  DataModule5.IBQConsClasse.Close;
+  DataModule5.IBQConsMatPrima.Close;
+
+  DataModule5.IBQConsClasse.SQL.Clear;
+  DataModule5.IBQConsClasse.SQL.Add('select cl.cd_classe,cl.ds_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('count(distinct(mt.cd_mat_prima)) as qtde_mt');
+  DataModule5.IBQConsClasse.SQL.Add('from CLASSE_MAT_PRIMA cl');
+  DataModule5.IBQConsClasse.SQL.Add('inner join MATERIA_PRIMA mt on mt.cd_classe = cl.cd_classe');
+  DataModule5.IBQConsClasse.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsClasse.SQL.Add('group by cl.cd_classe,cl.ds_classe');
+  DataModule5.IBQConsClasse.SQL.Add('order by cl.ds_classe');
+
+//----------------------------------------------
+  DataModule5.IBQConsMatPrima.SQL.Clear;
+  DataModule5.IBQConsMatPrima.SQL.Add('select mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max,');
+  DataModule5.IBQConsMatPrima.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_tot');
+  DataModule5.IBQConsMatPrima.SQL.Add('from');
+  DataModule5.IBQConsMatPrima.SQL.Add('MATERIA_PRIMA mt');
+  DataModule5.IBQConsMatPrima.SQL.Add('inner join UNIDADE_MEDIDA un on un.cd_unidade = mt.cd_un_medida');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join PESSOA_JURIDICA pj on pj.cd_pessoa_ju = mt_nf.cd_fornecedor');
+  DataModule5.IBQConsMatPrima.SQL.Add('where');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_classe = :cd_classe');
+  DataModule5.IBQConsMatPrima.SQL.Add('group by');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max');
+  DataModule5.IBQConsMatPrima.SQL.Add('order by mt.ds_mat_prima');
+
+  DataModule5.IBQConsClasse.Open;
+  DataModule5.IBQConsMatPrima.Open;
+  //QrMtPrimaComValor := TQrMtPrimaComValor.Create(Self);
+  QrMtPrimaComValor.LEmLinha.Caption := 'Geral';
+
+  QrMtPrimaComValor.Preview;
+  end//9
+else
+if (RbEmLinha.Checked = true) and (RbSemValor.Checked = true)
+  and (RbForaLinha.Checked = true) and (RbClasse.Checked = false)then
+  begin//10
+
+  DataModule5.IBQConsClasse.Close;
+  DataModule5.IBQConsMatPrima.Close;
+
+  DataModule5.IBQConsClasse.SQL.Clear;
+  DataModule5.IBQConsClasse.SQL.Add('select cl.cd_classe,cl.ds_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_classe,');
+  DataModule5.IBQConsClasse.SQL.Add('count(distinct(mt.cd_mat_prima)) as qtde_mt');
+  DataModule5.IBQConsClasse.SQL.Add('from CLASSE_MAT_PRIMA cl');
+  DataModule5.IBQConsClasse.SQL.Add('inner join MATERIA_PRIMA mt on mt.cd_classe = cl.cd_classe');
+  DataModule5.IBQConsClasse.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsClasse.SQL.Add('group by cl.cd_classe,cl.ds_classe');
+  DataModule5.IBQConsClasse.SQL.Add('order by cl.ds_classe');
+
+//----------------------------------------------
+  DataModule5.IBQConsMatPrima.SQL.Clear;
+  DataModule5.IBQConsMatPrima.SQL.Add('select mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max,');
+  DataModule5.IBQConsMatPrima.SQL.Add('sum(mt.qtde_estoque * mt_nf.vl_max) as vl_tot');
+  DataModule5.IBQConsMatPrima.SQL.Add('from');
+  DataModule5.IBQConsMatPrima.SQL.Add('MATERIA_PRIMA mt');
+  DataModule5.IBQConsMatPrima.SQL.Add('inner join UNIDADE_MEDIDA un on un.cd_unidade = mt.cd_un_medida');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join MT_PRIMA_NF mt_nf on mt_nf.cd_mat_prima = mt.cd_mat_prima and mt_nf.importancia = ''P''');
+  DataModule5.IBQConsMatPrima.SQL.Add('left join PESSOA_JURIDICA pj on pj.cd_pessoa_ju = mt_nf.cd_fornecedor');
+  DataModule5.IBQConsMatPrima.SQL.Add('where');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_classe = :cd_classe');
+  DataModule5.IBQConsMatPrima.SQL.Add('group by');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt.cd_mat_prima, mt.ds_mat_prima, mt.qtde_estoque,');
+  DataModule5.IBQConsMatPrima.SQL.Add('un.sigla_unidade,');
+  DataModule5.IBQConsMatPrima.SQL.Add('pj.nm_fantazia,');
+  DataModule5.IBQConsMatPrima.SQL.Add('mt_nf.vl_max');
+  DataModule5.IBQConsMatPrima.SQL.Add('order by mt.ds_mat_prima');
+
+  DataModule5.IBQConsClasse.Open;
+  DataModule5.IBQConsMatPrima.Open;
+  //QrMtPrimaSemValor := TQrMtPrimaSemValor.Create(Self);
+  QrMtPrimaSemValor.LEmLinha.Caption := 'Geral';
+
+  QrMtPrimaSemValor.Preview;
+  end;//10
+  end;
+end;
+
+procedure TFRelMateriaPrima.BClasseClick(Sender: TObject);
+begin
+if RbClasse.Checked = true then
+begin
+  Application.CreateForm(TFConsSimpClasse, FConsSimpClasse);
+  if FConsSimpClasse.ShowModal = mrOk then
+    begin
+      EdClasse.Text := DataModule1.IBQConsClasseDS_CLASSE.AsString;
+    end;
+  end;
+end;
+
+procedure TFRelMateriaPrima.EdClasseKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if Key = VK_F5 then
+      BClasseClick(Sender);
+end;
+
+procedure TFRelMateriaPrima.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+    begin
+      key := #0;
+      Perform (Wm_NextDlgCtl,0,0);
+    end;
+if key = #27 then
+  begin
+     Close;
+  end;
+end;
+
+procedure TFRelMateriaPrima.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if key = VK_UP then
+    SelectNext(ActiveControl,false,true);
+  if key = VK_DOWN then
+    SelectNext(ActiveControl, true, true);
+end;
+
+end.

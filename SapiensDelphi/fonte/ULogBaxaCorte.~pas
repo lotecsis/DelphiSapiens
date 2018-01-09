@@ -1,0 +1,235 @@
+unit ULogBaxaCorte;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, Grids, DBGrids, DB, ExtCtrls, StdCtrls, DBCtrls,
+  Buttons, Mask, ToolEdit, ADODB;
+
+type
+  TFLogBaxaCorte = class(TForm)
+    PaginaControle: TPageControl;
+    TbBaxaMov: TTabSheet;
+    TbBaixasPen: TTabSheet;
+    DBGrid: TDBGrid;
+    BExportaBaxas: TBitBtn;
+    DsConsUsu_TLogBaxBax: TDataSource;
+    DsConUsu_TLogBaxBAx: TDataSource;
+    DsConsUsu_TLogBaxPen: TDataSource;
+    DBGrid1: TDBGrid;
+    BConfirma: TBitBtn;
+    BConfTodos: TBitBtn;
+    TbHistorico: TTabSheet;
+    DBGrid2: TDBGrid;
+    Panel1: TPanel;
+    EdTecido: TEdit;
+    EdTipoMov: TComboBox;
+    EdData1: TDateEdit;
+    EdData2: TDateEdit;
+    BMostrar: TSpeedButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    DsConsHistUsu_TLogBax: TDataSource;
+    ValidaCor: TADOQuery;
+    ValidaCorCODPRO: TStringField;
+    procedure FormShow(Sender: TObject);
+    procedure TbBaxaMovShow(Sender: TObject);
+    procedure BExportaBaxasClick(Sender: TObject);
+    procedure TbBaixasPenShow(Sender: TObject);
+    procedure BConfirmaClick(Sender: TObject);
+    procedure BConfTodosClick(Sender: TObject);
+    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure BMostrarClick(Sender: TObject);
+    procedure EdTecidoExit(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FLogBaxaCorte: TFLogBaxaCorte;
+
+implementation
+
+uses UDm1, UPrincipal, UDm;
+
+{$R *.dfm}
+
+procedure TFLogBaxaCorte.FormShow(Sender: TObject);
+begin
+     FPrincipal.GravaTela(FLogBaxaCorte.Name,FPrincipal.vnCodCon);
+
+     PaginaControle.ActivePageIndex := 0;
+end;
+
+procedure TFLogBaxaCorte.TbBaxaMovShow(Sender: TObject);
+begin
+    Dm1.ConsUsu_TLogBaxBax.Close;
+    Dm1.ConsUsu_TLogBaxBax.Open;
+
+end;
+
+procedure TFLogBaxaCorte.BExportaBaxasClick(Sender: TObject);
+begin
+
+if Application.MessageBox('Deseja realmente exportar?', 'Confirmação', MB_ICONQUESTION+MB_YESNO) = idyes then
+   begin
+     Dm1.ConsUsu_TLogBaxBax.First;
+     while not Dm1.ConsUsu_TLogBaxBax.Eof do
+       begin
+          Dm1.ConsUsu_TLogBaxBax.Edit;
+          Dm1.ConsUsu_TLogBaxBaxUSU_SITLOG.Value := 'T';
+          Dm1.ConsUsu_TLogBaxBax.Post;
+
+          Dm1.ConsUsu_TLogBaxBax.Next;
+       end;
+       
+      Dm1.ConsUsu_TLogBaxBax.Close;
+      Dm1.ConsUsu_TLogBaxBax.Open;
+   end;
+end;
+
+procedure TFLogBaxaCorte.TbBaixasPenShow(Sender: TObject);
+begin
+    Dm1.ConsUsu_TLogBaxPen.Close;
+    Dm1.ConsUsu_TLogBaxPen.Open;
+
+end;
+
+procedure TFLogBaxaCorte.BConfirmaClick(Sender: TObject);
+var Hora : String;
+begin
+if not Dm1.ConsUsu_TLogBaxPen.IsEmpty then
+  begin
+    if Application.MessageBox('Deseja realmente confirmar baixa?', 'Confirmação', MB_ICONQUESTION+MB_YESNO) = idyes then
+       begin
+         Dm1.CadUsu_TLogBax.Close;
+         Dm1.CadUsu_TLogBax.Parameters.ParamByName('seqlog').Value := Dm1.ConsUsu_TLogBaxPenUSU_SEQLOG.Value;
+         Dm1.CadUsu_TLogBax.Parameters.ParamByName('codpro').Value := Dm1.ConsUsu_TLogBaxPenUSU_CODPRO.Value;
+         Dm1.CadUsu_TLogBax.Open;
+         Dm1.CadUsu_TLogBax.Edit;
+         Dm1.CadUsu_TLogBaxUSU_SITLOG.Value := 'F';
+         Dm1.CadUsu_TLogBaxUSU_DATFEC.Value := Date;
+         Hora := TimeToStr(Time);
+         Dm1.CadUsu_TLogBaxUSU_HORFEC.Value := (StrToInt(Copy(Hora,1,2))*60) + StrToInt(Copy(Hora,4,2));
+         Dm1.CadUsu_TLogBaxUSU_USUFEC.Value := FPrincipal.cd_usuario;
+         Dm1.CadUsu_TLogBax.Post;
+       end;
+         Dm1.ConsUsu_TLogBaxPen.Close;
+         Dm1.ConsUsu_TLogBaxPen.Open;
+  end;
+end;
+
+procedure TFLogBaxaCorte.BConfTodosClick(Sender: TObject);
+var Hora : String;
+begin
+if not Dm1.ConsUsu_TLogBaxPen.IsEmpty then
+  begin
+    if Application.MessageBox('Deseja realmente confirmar baixa de todos?', 'Confirmação', MB_ICONQUESTION+MB_YESNO) = idyes then
+       begin
+       Dm1.ConsUsu_TLogBaxPen.First;
+       while not Dm1.ConsUsu_TLogBaxPen.Eof do
+          begin
+             Dm1.CadUsu_TLogBax.Close;
+             Dm1.CadUsu_TLogBax.Parameters.ParamByName('seqlog').Value := Dm1.ConsUsu_TLogBaxPenUSU_SEQLOG.Value;
+             Dm1.CadUsu_TLogBax.Parameters.ParamByName('codpro').Value := Dm1.ConsUsu_TLogBaxPenUSU_CODPRO.Value;
+             Dm1.CadUsu_TLogBax.Open;
+             Dm1.CadUsu_TLogBax.Edit;
+             Dm1.CadUsu_TLogBaxUSU_SITLOG.Value := 'F';
+             Dm1.CadUsu_TLogBaxUSU_DATFEC.Value := Date;
+             Hora := TimeToStr(Time);
+             Dm1.CadUsu_TLogBaxUSU_HORFEC.Value := (StrToInt(Copy(Hora,1,2))*60) + StrToInt(Copy(Hora,4,2));
+             Dm1.CadUsu_TLogBaxUSU_USUFEC.Value := FPrincipal.cd_usuario;
+             Dm1.CadUsu_TLogBax.Post;
+             Dm1.ConsUsu_TLogBaxPen.Next;
+          end;
+       end;
+         Dm1.ConsUsu_TLogBaxPen.Close;
+         Dm1.ConsUsu_TLogBaxPen.Open;
+  end;
+end;
+
+procedure TFLogBaxaCorte.DBGrid1KeyPress(Sender: TObject; var Key: Char);
+begin
+    if key = #13 then
+       begin
+         BConfirma.Click;
+       end;
+end;
+
+procedure TFLogBaxaCorte.BMostrarClick(Sender: TObject);
+begin
+if EdData1.Date = 0 then
+       begin//1
+         Application.MessageBox('Informe a Data Inicial.','Aviso', MB_ICONWARNING+MB_OK);
+         EdData1.SetFocus;
+       end//1
+    else if EdData2.Date = 0 then
+            begin//2
+               Application.MessageBox('Informe a Data Final.','Aviso', MB_ICONWARNING+MB_OK);
+               EdData2.SetFocus;
+            end//2
+         else
+            begin//3
+               Dm1.ConsHistUsu_TLogBax.Close;
+               Dm1.ConsHistUsu_TLogBax.SQL.Clear;
+               Dm1.ConsHistUsu_TLogBax.SQL.Add('select usu_tlogbax.*, usu_tr999usu.usu_nomusu');
+               Dm1.ConsHistUsu_TLogBax.SQL.Add('from usu_tlogbax');
+               Dm1.ConsHistUsu_TLogBax.SQL.Add('inner join usu_tr999usu on usu_tr999usu.usu_codusu = usu_tlogbax.usu_usufec');
+               Dm1.ConsHistUsu_TLogBax.SQL.Add('where');
+               Dm1.ConsHistUsu_TLogBax.SQL.Add('usu_tlogbax.usu_datfec between :datfec1 and :datfec2');
+               Dm1.ConsHistUsu_TLogBax.Parameters.ParamByName('datfec1').Value := EdData1.Date;
+               Dm1.ConsHistUsu_TLogBax.Parameters.ParamByName('datfec2').Value := EdData2.Date;
+               if EdTipoMov.ItemIndex = 1 then
+                 begin
+                   Dm1.ConsHistUsu_TLogBax.SQL.Add('and usu_tlogbax.usu_tipmov = :tipmov');
+                   Dm1.ConsHistUsu_TLogBax.Parameters.ParamByName('tipmov').Value := 'S';
+                 end
+               else if EdTipoMov.ItemIndex = 2 then
+                      begin
+                         Dm1.ConsHistUsu_TLogBax.SQL.Add('and usu_tlogbax.usu_tipmov = :tipmov');
+                         Dm1.ConsHistUsu_TLogBax.Parameters.ParamByName('tipmov').Value := 'E';
+                      end;
+               if EdTecido.Text <> '' then
+                  begin
+                      Dm1.ConsHistUsu_TLogBax.SQL.Add('and usu_tlogbax.usu_codpro = :codpro');
+                      Dm1.ConsHistUsu_TLogBax.Parameters.ParamByName('codpro').Value := EdTecido.Text;
+                  end;
+               Dm1.ConsHistUsu_TLogBax.SQL.Add('order by usu_tlogbax.usu_codpro');
+               Dm1.ConsHistUsu_TLogBax.Open;
+
+
+            end;//3
+end;
+
+procedure TFLogBaxaCorte.EdTecidoExit(Sender: TObject);
+var vnCodPro : Integer;
+begin
+if TryStrToInt(EdTecido.Text,vnCodPro) then
+      begin
+         ValidaCor.Close;
+         ValidaCor.Parameters.ParamByName('codpro').Value := vnCodPro;
+         ValidaCor.Open;
+         if ValidaCor.IsEmpty then
+            begin
+               Application.MessageBox('Nº de Cor Inválido','Aviso', MB_ICONWARNING+MB_OK);
+               EdTecido.Clear;
+               EdTecido.SetFocus;
+            end;
+      end;
+end;
+
+procedure TFLogBaxaCorte.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+    begin
+      key := #0;
+      Perform (Wm_NextDlgCtl,0,0);
+    end;
+end;
+
+end.

@@ -1,0 +1,24 @@
+unit UconferenciaPedido;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs;
+
+type
+  TFConferenciaPedido = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FConferenciaPedido: TFConferenciaPedido;
+
+implementation
+
+{$R *.dfm}
+
+end.

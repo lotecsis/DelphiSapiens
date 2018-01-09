@@ -1,0 +1,46 @@
+unit UCompProduto;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, StdCtrls, Mask, DBCtrls, Buttons;
+
+type
+  TFCompProduto = class(TForm)
+    Label1: TLabel;
+    DBECdMatPrima: TDBEdit;
+    DSCompProduto: TDataSource;
+    Label3: TLabel;
+    DBEQuantidade: TDBEdit;
+    SpeedButton1: TSpeedButton;
+    EdDsMatPrima: TEdit;
+    procedure SpeedButton1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCompProduto: TFCompProduto;
+
+implementation
+
+uses UDataModule3, UConsSimpMtPrima, UDataModule1;
+
+{$R *.dfm}
+
+procedure TFCompProduto.SpeedButton1Click(Sender: TObject);
+begin
+Application.CreateForm(TFConsSimpMtPrima, FConsSimpMtPrima);
+  if FConsSimpMtPrima.ShowModal = mrOk then
+    begin
+      DataModule3.IBDCompProdutoCD_MAT_PRIMA.AsInteger :=
+      DataModule1.IBQConsMatPrimaCD_MAT_PRIMA.AsInteger;
+
+      EdDsMatPrima.Text := DataModule1.IBQConsMatPrimaDS_MAT_PRIMA.AsString;
+    end;
+end;
+
+end.

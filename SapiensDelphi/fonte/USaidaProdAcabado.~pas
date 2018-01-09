@@ -1,0 +1,430 @@
+unit USaidaProdAcabado;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ToolEdit, RXDBCtrl, StdCtrls, Mask, DBCtrls, DB, RbDrawCore,
+  RbButton, ExtCtrls, ComCtrls, Buttons, Grids, DBGrids;
+
+type
+  TFSaidaProduto = class(TForm)
+    PaginaControle: TPageControl;
+    TbLancamentos: TTabSheet;
+    TbConsulta: TTabSheet;
+    Panel1: TPanel;
+    BInserir: TRbButton;
+    BCancelar: TRbButton;
+    BConfirmar: TRbButton;
+    BExcluir: TRbButton;
+    BSair: TRbButton;
+    DsSaidaProd: TDataSource;
+    Label2: TLabel;
+    DBECdProduto: TDBEdit;
+    Label3: TLabel;
+    DBECor: TDBEdit;
+    Label5: TLabel;
+    Label6: TLabel;
+    DBEHora: TDBEdit;
+    EdDsProduto: TEdit;
+    DBEData: TDBDateEdit;
+    BAlterar: TRbButton;
+    BProduto: TSpeedButton;
+    RxDBGrid1: TRxDBGrid;
+    DsGridSaidaEspera: TDataSource;
+    BLiberar: TRbButton;
+    RxDBGrid2: TRxDBGrid;
+    DsConsSaidaDiaria: TDataSource;
+    Calendario: TDateEdit;
+    procedure BInserirClick(Sender: TObject);
+    procedure DsSaidaProdStateChange(Sender: TObject);
+    procedure BCancelarClick(Sender: TObject);
+    procedure BConfirmarClick(Sender: TObject);
+    procedure DBECdProdutoExit(Sender: TObject);
+    procedure BSairClick(Sender: TObject);
+    procedure BProdutoClick(Sender: TObject);
+    procedure DBECorExit(Sender: TObject);
+    procedure BAlterarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure BExcluirClick(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure BLiberarClick(Sender: TObject);
+    procedure CalendarioClick(Sender: TObject);
+    procedure TbConsultaShow(Sender: TObject);
+    procedure CalendarioExit(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure CalendarioChange(Sender: TObject);
+    procedure RxDBGrid1Enter(Sender: TObject);
+    procedure RxDBGrid1Exit(Sender: TObject);
+    procedure RxDBGrid2Enter(Sender: TObject);
+    procedure RxDBGrid2Exit(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FSaidaProduto: TFSaidaProduto;
+
+implementation
+
+uses UDataModule4, UPrincipal, UDataModule1, UDataModule3,
+  UConsSimpProduto;
+
+{$R *.dfm}
+
+procedure TFSaidaProduto.BInserirClick(Sender: TObject);
+begin
+
+ EdDsProduto.Clear;
+  DataModule4.IBDSaidaProdEspera.Open;
+  DataModule4.IBDSaidaProdEspera.Insert;
+
+  DataModule4.IBDSaidaProdEsperaDT_SAIDA.AsDateTime := Date;
+  DataModule4.IBDSaidaProdEsperaHORA.AsDateTime := Time;
+
+  ActiveControl := DBECdProduto;
+  
+end;
+
+procedure TFSaidaProduto.DsSaidaProdStateChange(Sender: TObject);
+begin
+if DataModule4.IBDSaidaProdEspera.State in [dsinsert,dsedit]then
+    begin
+      BInserir.Enabled := false;
+      BAlterar.Enabled := false;
+      BExcluir.Enabled := false;
+      BCancelar.Enabled := true;
+      BConfirmar.Enabled := true;
+      TbConsulta.TabVisible := false;
+      BProduto.Enabled := true;
+    end
+  else
+    begin
+      BInserir.Enabled := true;
+      BAlterar.Enabled := true;
+      BExcluir.Enabled := true;
+      BCancelar.Enabled := false;
+      BConfirmar.Enabled := false;
+      TbConsulta.TabVisible := true;
+      BProduto.Enabled := false;
+    end;
+end;
+
+procedure TFSaidaProduto.BCancelarClick(Sender: TObject);
+begin
+if Application.MessageBox('Deseja Cancelar o Registro?', 'Cancelar Registro', MB_ICONQUESTION+MB_YESNO) = idyes then
+ Begin
+  DataModule4.IBDSaidaProdEspera.Cancel;
+  DataModule1.IBTTransacao.RollbackRetaining;
+
+ end;
+end;
+
+procedure TFSaidaProduto.BConfirmarClick(Sender: TObject);
+begin
+
+  if DBECdProduto.Text = '' then
+        begin
+          MessageDlg('Campo Produto é obrigatório.',mtWarning,[mbok],0);
+          DBECdProduto.SetFocus;
+        end
+      else
+        if DBECor.Text = '' then
+          begin
+          MessageDlg('Campo Cor é obrigatório.',mtWarning,[mbok],0);
+          DBECor.SetFocus;
+          end
+        else
+          begin
+            DataModule4.IBDSaidaProdEspera.Post;
+            DataModule1.IBTTransacao.CommitRetaining;
+
+            DataModule4.IBQConsSaidaEspera.Close;
+            DataModule4.IBQConsSaidaEspera.Open;
+
+            ActiveControl := BInserir;
+          end;
+end;
+
+procedure TFSaidaProduto.DBECdProdutoExit(Sender: TObject);
+begin
+  if DBECdProduto.Text <> '' then
+    begin
+            DataModule3.IBQConsProduto.Close;
+            DataModule3.IBQConsProduto.SQL.Clear;
+            DataModule3.IBQConsProduto.SQL.Add('select pd.*, str.ds_situacao, un.ds_unidade, gp.ds_grupo');
+            DataModule3.IBQConsProduto.SQL.Add('from');
+            DataModule3.IBQConsProduto.SQL.Add('PRODUTO pd, UNIDADE_MEDIDA un, SITU_TRIBUTARIA str,');
+            DataModule3.IBQConsProduto.SQL.Add('GRUPO_PRODUTO gp');
+            DataModule3.IBQConsProduto.SQL.Add('where');
+            DataModule3.IBQConsProduto.SQL.Add('pd.cd_situ_tribu = str.cd_situacao and');
+            DataModule3.IBQConsProduto.SQL.Add('pd.cd_un_medida = un.cd_unidade and');
+            DataModule3.IBQConsProduto.SQL.Add('pd.cd_grupo_prod = gp.cd_grupo and');
+            DataModule3.IBQConsProduto.SQL.Add('pd.cd_produto = :pproduto');
+            DataModule3.IBQConsProduto.ParamByName('pproduto').AsInteger := StrToInt(DBECdProduto.Text);
+            DataModule3.IBQConsProduto.Open;
+            if DataModule3.IBQConsProduto.IsEmpty then
+          begin
+            ShowMessage('Produto não encontrado!');
+            DBECdProduto.SetFocus;
+            DBECdProduto.Clear;
+          end
+        else
+          begin
+             EdDsProduto.Text := DataModule3.IBQConsProdutoDS_PRODUTO.AsString;
+          end;
+  end;
+  end;
+
+
+procedure TFSaidaProduto.BSairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFSaidaProduto.BProdutoClick(Sender: TObject);
+begin
+Application.CreateForm(TFConsSimpProduto, FConsSimpProduto);
+  if FConsSimpProduto.ShowModal = mrOk then
+    begin
+      DataModule4.IBDSaidaProdEsperaCD_PRODUTO.AsInteger :=
+      DataModule3.IBQConsProdutoCD_PRODUTO.AsInteger;
+
+      EdDsProduto.Text := DataModule3.IBQConsProdutoDS_PRODUTO.AsString;
+
+     ActiveControl := DBECor;
+
+    end;
+end;
+
+procedure TFSaidaProduto.DBECorExit(Sender: TObject);
+var cor : Integer;
+begin
+if DBECor.Text <> '' then
+  begin
+    cor := StrToInt(DBECor.Text);
+
+    DataModule3.IBQExisteCorP.Close;
+    DataModule3.IBQExisteCorP.ParamByName('pmateria').AsInteger := cor;
+    DataModule3.IBQExisteCorP.Open;
+    if DataModule3.IBQExisteCorP.IsEmpty then
+      begin
+        ShowMessage('Não existe cor com este código');
+        DBECor.SetFocus;
+        DBECor.Clear;
+      end
+end;
+ end;
+procedure TFSaidaProduto.BAlterarClick(Sender: TObject);
+begin
+if DataModule4.IBDSaidaProdEspera.IsEmpty then
+ begin
+  Showmessage ('Saída não pode ser editado vazio');
+ end
+  else
+    begin
+      DataModule4.IBDSaidaProdEspera.Edit;
+      DBECor.SetFocus;
+    end;
+end;
+
+procedure TFSaidaProduto.FormShow(Sender: TObject);
+begin
+
+DataModule4.IBQConsSaidaEspera.Close;
+DataModule4.IBQConsSaidaEspera.Open;
+
+PaginaControle.ActivePageIndex := 0;
+end;
+
+procedure TFSaidaProduto.BExcluirClick(Sender: TObject);
+begin
+if not DataModule4.IBDSaidaProdEspera.IsEmpty then
+  Begin
+   if Application.MessageBox('Deseja Excluir o Registro?', 'Excluir Registro', MB_ICONQUESTION+MB_YESNO) = idyes then
+    Begin
+     DataModule4.IBDSaidaProdEspera.Delete;
+     DataModule1.IBTTransacao.CommitRetaining;
+
+     DataModule4.IBQConsSaidaEspera.Close;
+     DataModule4.IBQConsSaidaEspera.Open;
+
+    end;
+  end
+ else
+  Begin
+   Showmessage('Não existe Registros a serem excluidos ou não foi feita a seleção do registro !');
+  end;
+end;
+
+procedure TFSaidaProduto.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+    begin
+      key := #0;
+      Perform (Wm_NextDlgCtl,0,0);
+    end;
+if key = #27 then
+  begin
+     Close;
+  end;
+end;
+
+procedure TFSaidaProduto.BLiberarClick(Sender: TObject);
+begin
+if Application.MessageBox('Deseja Liberar os Produtos?', 'Liberar Produtos', MB_ICONQUESTION+MB_YESNO) = idyes then
+    Begin
+  //consulta as saidas que ainda nao foram liberadas
+  DataModule4.IBQConsSaidaEspera.Close;
+  DataModule4.IBQConsSaidaEspera.Open;
+
+  DataModule4.IBQConsSaidaEspera.First;
+  while not DataModule4.IBQConsSaidaEspera.Eof do
+    begin
+      //consulta a composicao dos produtos
+      DataModule1.IBQConsComposicaoProduto.Close;
+      DataModule1.IBQConsComposicaoProduto.ParamByName('pproduto').AsInteger :=
+      DataModule4.IBQConsSaidaEsperaCD_PRODUTO.AsInteger;
+      DataModule1.IBQConsComposicaoProduto.Open;
+
+      DataModule1.IBQConsComposicaoProduto.First;
+      while not DataModule1.IBQConsComposicaoProduto.Eof do
+        begin
+           //se for o tecido 999 entra no laço pra dar baixa nos tecidos
+          if DataModule1.IBQConsComposicaoProdutoCD_MAT_PRIMA.AsInteger = 999 then
+            begin //1
+              DataModule3.IBDProcesso.Close;
+              DataModule3.IBDProcesso.ParamByName('pmateria').AsInteger :=
+              DataModule4.IBQConsSaidaEsperaCOR.AsInteger;
+              DataModule3.IBDProcesso.Open;
+
+              DataModule3.IBDProcesso.Edit;
+              DataModule3.IBDProcessoQTDE.AsFloat :=
+              DataModule3.IBDProcessoQTDE.AsFloat - DataModule1.IBQConsComposicaoProdutoQTDE_MAT_PRIMA.AsFloat;
+              DataModule3.IBDProcesso.Post;
+
+
+            end;//1
+
+            DataModule3.IBDProcesso.Close;
+            DataModule3.IBDProcesso.ParamByName('pmateria').AsInteger :=
+            DataModule1.IBQConsComposicaoProdutoCD_MAT_PRIMA.AsInteger;
+            DataModule3.IBDProcesso.Open;
+
+
+             if DataModule1.IBQConsComposicaoProdutoCD_MAT_PRIMA.AsInteger <> 999 then
+             begin
+            DataModule3.IBDProcesso.Edit;
+            DataModule3.IBDProcessoQTDE.AsFloat :=
+            DataModule3.IBDProcessoQTDE.AsFloat - DataModule1.IBQConsComposicaoProdutoQTDE_MAT_PRIMA.AsFloat;
+            DataModule3.IBDProcesso.Post;
+            end;
+            DataModule1.IBQConsComposicaoProduto.Next;
+
+        end;//fim di while da composicao dos produtos
+
+
+      DataModule4.IBQConsSaidaEspera.Next;
+    end;//fim do while IBQConsSaidaEspera
+
+
+     DataModule4.IBQConsSaidaEspera.First;
+      DataModule4.IBDSaidaProdAcabado.Open;
+      while not DataModule4.IBQConsSaidaEspera.Eof do
+        begin//11
+          DataModule4.IBDSaidaProdAcabado.Insert;
+          DataModule4.IBDSaidaProdAcabadoCD_PRODUTO.AsInteger :=
+          DataModule4.IBQConsSaidaEsperaCD_PRODUTO.AsInteger;
+          DataModule4.IBDSaidaProdAcabadoCD_COR.AsInteger :=
+          DataModule4.IBQConsSaidaEsperaCOR.AsInteger;
+          DataModule4.IBDSaidaProdAcabadoDT_SAIDA.AsDateTime :=
+          DataModule4.IBQConsSaidaEsperaDT_SAIDA.AsDateTime;
+          DataModule4.IBDSaidaProdAcabadoHR_SAIDA.AsDateTime :=
+          DataModule4.IBQConsSaidaEsperaHORA.AsDateTime;
+          DataModule4.IBDSaidaProdAcabadoUSUARIOO.AsString :=
+          FPrincipal.usuario;
+          DataModule4.IBDSaidaProdAcabadoQTDE.AsInteger := 1;
+          DataModule4.IBDSaidaProdAcabado.Post;
+
+          DataModule4.IBQConsSaidaEspera.Next;
+
+        end;//11
+
+      DataModule4.IBQApagaSaidaProdEspera.Close;
+      DataModule4.IBQApagaSaidaProdEspera.Open;
+
+     DataModule1.IBTTransacao.CommitRetaining;
+
+     DataModule4.IBQConsSaidaEspera.Close;
+     DataModule4.IBQConsSaidaEspera.Open;
+
+     DBECdProduto.Clear;
+     DBECor.Clear;
+     DBEHora.Clear;
+     DBEData.Clear;
+     EdDsProduto.Clear;
+    end;
+     
+end;
+
+procedure TFSaidaProduto.CalendarioClick(Sender: TObject);
+begin
+  DataModule4.IBQSaidaProdDiaria.Close;
+  DataModule4.IBQSaidaProdDiaria.ParamByName('pdata').AsDate :=
+  Calendario.Date;
+  DataModule4.IBQSaidaProdDiaria.Open;
+end;
+
+procedure TFSaidaProduto.TbConsultaShow(Sender: TObject);
+begin
+
+  Calendario.Date := Date;
+  CalendarioExit(Sender);
+end;
+
+procedure TFSaidaProduto.CalendarioExit(Sender: TObject);
+begin
+  DataModule4.IBQSaidaProdDiaria.Close;
+  DataModule4.IBQSaidaProdDiaria.ParamByName('pdata').AsDate :=
+  Calendario.Date;
+  DataModule4.IBQSaidaProdDiaria.Open;
+end;
+
+procedure TFSaidaProduto.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if key = VK_UP then
+    SelectNext(ActiveControl,false,true);
+  if key = VK_DOWN then
+    SelectNext(ActiveControl, true, true);
+end;
+
+procedure TFSaidaProduto.CalendarioChange(Sender: TObject);
+begin
+CalendarioExit(Sender);
+end;
+
+procedure TFSaidaProduto.RxDBGrid1Enter(Sender: TObject);
+begin
+  KeyPreview := false;
+end;
+
+procedure TFSaidaProduto.RxDBGrid1Exit(Sender: TObject);
+begin
+KeyPreview := true;
+end;
+
+procedure TFSaidaProduto.RxDBGrid2Enter(Sender: TObject);
+begin
+  KeyPreview := false;
+end;
+
+procedure TFSaidaProduto.RxDBGrid2Exit(Sender: TObject);
+begin
+KeyPreview := true;
+end;
+
+end.

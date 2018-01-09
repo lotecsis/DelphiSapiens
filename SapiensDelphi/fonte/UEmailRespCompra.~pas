@@ -1,0 +1,35 @@
+unit UEmailRespCompra;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, StdCtrls, DBCtrls;
+
+type
+  TFEmailRespCompra = class(TForm)
+    DBEEmail: TDBMemo;
+    DSCompra: TDataSource;
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FEmailRespCompra: TFEmailRespCompra;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFEmailRespCompra.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #27 then
+    begin
+       Close;
+    end;
+end;
+
+end.

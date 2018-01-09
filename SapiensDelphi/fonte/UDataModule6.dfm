@@ -1,0 +1,815 @@
+object DataModule6: TDataModule6
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Left = 245
+  Top = 39
+  Height = 484
+  Width = 465
+  object IBDShowTecidos: TIBDataSet
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from SHOW_TECIDOS'
+      'where'
+      '  CD_TECIDO = :OLD_CD_TECIDO')
+    InsertSQL.Strings = (
+      'insert into SHOW_TECIDOS'
+      '  (CD_TECIDO, CD_GRUPO, IMAGEM_PEQ, IMAGEM_GRANDE, '
+      'NM_IMAGEM_PEQ, NM_IMAGEM_GRANDE, '
+      '   DT_CADASTRO, USUARIOO, SITUACAO)'
+      'values'
+      '  (:CD_TECIDO, :CD_GRUPO, :IMAGEM_PEQ, :IMAGEM_GRANDE, '
+      ':NM_IMAGEM_PEQ, '
+      '   :NM_IMAGEM_GRANDE, :DT_CADASTRO, :USUARIOO, :SITUACAO)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  CD_TECIDO,'
+      '  CD_GRUPO,'
+      '  IMAGEM_PEQ,'
+      '  IMAGEM_GRANDE,'
+      '  NM_IMAGEM_PEQ,'
+      '  NM_IMAGEM_GRANDE,'
+      '  DT_CADASTRO,'
+      '  USUARIOO,'
+      '  SITUACAO'
+      'from SHOW_TECIDOS '
+      'where'
+      '  CD_TECIDO = :CD_TECIDO')
+    SelectSQL.Strings = (
+      'select * from SHOW_TECIDOS where'
+      'cd_tecido = :ptecido')
+    ModifySQL.Strings = (
+      'update SHOW_TECIDOS'
+      'set'
+      '  CD_TECIDO = :CD_TECIDO,'
+      '  CD_GRUPO = :CD_GRUPO,'
+      '  IMAGEM_PEQ = :IMAGEM_PEQ,'
+      '  IMAGEM_GRANDE = :IMAGEM_GRANDE,'
+      '  NM_IMAGEM_PEQ = :NM_IMAGEM_PEQ,'
+      '  NM_IMAGEM_GRANDE = :NM_IMAGEM_GRANDE,'
+      '  DT_CADASTRO = :DT_CADASTRO,'
+      '  USUARIOO = :USUARIOO,'
+      '  SITUACAO = :SITUACAO'
+      'where'
+      '  CD_TECIDO = :OLD_CD_TECIDO')
+    Left = 48
+    Top = 24
+    object IBDShowTecidosCD_TECIDO: TIntegerField
+      FieldName = 'CD_TECIDO'
+      Origin = 'SHOW_TECIDOS.CD_TECIDO'
+      Required = True
+    end
+    object IBDShowTecidosCD_GRUPO: TIntegerField
+      FieldName = 'CD_GRUPO'
+      Origin = 'SHOW_TECIDOS.CD_GRUPO'
+      Required = True
+    end
+    object IBDShowTecidosIMAGEM_PEQ: TIBStringField
+      FieldName = 'IMAGEM_PEQ'
+      Origin = 'SHOW_TECIDOS.IMAGEM_PEQ'
+      Size = 500
+    end
+    object IBDShowTecidosIMAGEM_GRANDE: TIBStringField
+      FieldName = 'IMAGEM_GRANDE'
+      Origin = 'SHOW_TECIDOS.IMAGEM_GRANDE'
+      Size = 500
+    end
+    object IBDShowTecidosNM_IMAGEM_PEQ: TIBStringField
+      FieldName = 'NM_IMAGEM_PEQ'
+      Origin = 'SHOW_TECIDOS.NM_IMAGEM_PEQ'
+      Size = 100
+    end
+    object IBDShowTecidosNM_IMAGEM_GRANDE: TIBStringField
+      FieldName = 'NM_IMAGEM_GRANDE'
+      Origin = 'SHOW_TECIDOS.NM_IMAGEM_GRANDE'
+      Size = 100
+    end
+    object IBDShowTecidosDT_CADASTRO: TDateField
+      FieldName = 'DT_CADASTRO'
+      Origin = 'SHOW_TECIDOS.DT_CADASTRO'
+    end
+    object IBDShowTecidosUSUARIOO: TIBStringField
+      FieldName = 'USUARIOO'
+      Origin = 'SHOW_TECIDOS.USUARIOO'
+      Size = 100
+    end
+    object IBDShowTecidosSITUACAO: TIBStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SHOW_TECIDOS.SITUACAO'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object IBQExisteTecido: TIBQuery
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select show_t.cd_tecido'
+      '    from SHOW_TECIDOS show_t'
+      '    where'
+      '    show_t.cd_tecido = :ptecido')
+    Left = 136
+    Top = 24
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'ptecido'
+        ParamType = ptUnknown
+      end>
+    object IBQExisteTecidoCD_TECIDO: TIntegerField
+      FieldName = 'CD_TECIDO'
+      Origin = 'SHOW_TECIDOS.CD_TECIDO'
+      Required = True
+    end
+  end
+  object IBQExisteMtPrima: TIBQuery
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select mt.cd_mat_prima'
+      '    from MATERIA_PRIMA mt'
+      '    where'
+      '    mt.cd_mat_prima = :pmateria')
+    Left = 224
+    Top = 24
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'pmateria'
+        ParamType = ptUnknown
+      end>
+    object IBQExisteMtPrimaCD_MAT_PRIMA: TIntegerField
+      FieldName = 'CD_MAT_PRIMA'
+      Origin = 'MATERIA_PRIMA.CD_MAT_PRIMA'
+      Required = True
+    end
+  end
+  object IBQConsShowTecido: TIBQuery
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select show_t.*,gp_t.ds_grupo'
+      '    from SHOW_TECIDOS show_t'
+      
+        '    inner join GRUPO_TECIDO gp_t on gp_t.cd_grupo = show_t.cd_gr' +
+        'upo')
+    Left = 320
+    Top = 24
+    object IBQConsShowTecidoCD_TECIDO: TIntegerField
+      FieldName = 'CD_TECIDO'
+      Origin = 'SHOW_TECIDOS.CD_TECIDO'
+      Required = True
+    end
+    object IBQConsShowTecidoCD_GRUPO: TIntegerField
+      FieldName = 'CD_GRUPO'
+      Origin = 'SHOW_TECIDOS.CD_GRUPO'
+      Required = True
+    end
+    object IBQConsShowTecidoIMAGEM_PEQ: TIBStringField
+      FieldName = 'IMAGEM_PEQ'
+      Origin = 'SHOW_TECIDOS.IMAGEM_PEQ'
+      Size = 500
+    end
+    object IBQConsShowTecidoIMAGEM_GRANDE: TIBStringField
+      FieldName = 'IMAGEM_GRANDE'
+      Origin = 'SHOW_TECIDOS.IMAGEM_GRANDE'
+      Size = 500
+    end
+    object IBQConsShowTecidoNM_IMAGEM_PEQ: TIBStringField
+      FieldName = 'NM_IMAGEM_PEQ'
+      Origin = 'SHOW_TECIDOS.NM_IMAGEM_PEQ'
+      Size = 100
+    end
+    object IBQConsShowTecidoNM_IMAGEM_GRANDE: TIBStringField
+      FieldName = 'NM_IMAGEM_GRANDE'
+      Origin = 'SHOW_TECIDOS.NM_IMAGEM_GRANDE'
+      Size = 100
+    end
+    object IBQConsShowTecidoDT_CADASTRO: TDateField
+      FieldName = 'DT_CADASTRO'
+      Origin = 'SHOW_TECIDOS.DT_CADASTRO'
+    end
+    object IBQConsShowTecidoUSUARIOO: TIBStringField
+      FieldName = 'USUARIOO'
+      Origin = 'SHOW_TECIDOS.USUARIOO'
+      Size = 100
+    end
+    object IBQConsShowTecidoSITUACAO: TIBStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SHOW_TECIDOS.SITUACAO'
+      FixedChar = True
+      Size = 1
+    end
+    object IBQConsShowTecidoDS_GRUPO: TIBStringField
+      FieldName = 'DS_GRUPO'
+      Origin = 'GRUPO_TECIDO.DS_GRUPO'
+      Size = 100
+    end
+  end
+  object IBDShowProdutos: TIBDataSet
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from SHOW_PRODUTOS'
+      'where'
+      '  CD_PRODUTO = :OLD_CD_PRODUTO')
+    InsertSQL.Strings = (
+      'insert into SHOW_PRODUTOS'
+      '  (CD_PRODUTO, CD_LINHA, IMAGEM_PEQ, IMAGEM_GRANDE, '
+      'NM_IMAGEM_PEQ, NM_IMAGEM_GRANDE, '
+      '   DT_CADASTRO, USUARIOO, SITUACAO)'
+      'values'
+      '  (:CD_PRODUTO, :CD_LINHA, :IMAGEM_PEQ, :IMAGEM_GRANDE, '
+      ':NM_IMAGEM_PEQ, '
+      '   :NM_IMAGEM_GRANDE, :DT_CADASTRO, :USUARIOO, :SITUACAO)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  CD_PRODUTO,'
+      '  CD_LINHA,'
+      '  IMAGEM_PEQ,'
+      '  IMAGEM_GRANDE,'
+      '  NM_IMAGEM_PEQ,'
+      '  NM_IMAGEM_GRANDE,'
+      '  DT_CADASTRO,'
+      '  USUARIOO,'
+      '  SITUACAO'
+      'from SHOW_PRODUTOS '
+      'where'
+      '  CD_PRODUTO = :CD_PRODUTO')
+    SelectSQL.Strings = (
+      'select * from SHOW_PRODUTOS where'
+      'cd_produto = :pproduto')
+    ModifySQL.Strings = (
+      'update SHOW_PRODUTOS'
+      'set'
+      '  CD_PRODUTO = :CD_PRODUTO,'
+      '  CD_LINHA = :CD_LINHA,'
+      '  IMAGEM_PEQ = :IMAGEM_PEQ,'
+      '  IMAGEM_GRANDE = :IMAGEM_GRANDE,'
+      '  NM_IMAGEM_PEQ = :NM_IMAGEM_PEQ,'
+      '  NM_IMAGEM_GRANDE = :NM_IMAGEM_GRANDE,'
+      '  DT_CADASTRO = :DT_CADASTRO,'
+      '  USUARIOO = :USUARIOO,'
+      '  SITUACAO = :SITUACAO'
+      'where'
+      '  CD_PRODUTO = :OLD_CD_PRODUTO')
+    Left = 40
+    Top = 88
+    object IBDShowProdutosCD_PRODUTO: TIntegerField
+      FieldName = 'CD_PRODUTO'
+      Origin = 'SHOW_PRODUTOS.CD_PRODUTO'
+      Required = True
+    end
+    object IBDShowProdutosCD_LINHA: TIntegerField
+      FieldName = 'CD_LINHA'
+      Origin = 'SHOW_PRODUTOS.CD_LINHA'
+      Required = True
+    end
+    object IBDShowProdutosIMAGEM_PEQ: TIBStringField
+      FieldName = 'IMAGEM_PEQ'
+      Origin = 'SHOW_PRODUTOS.IMAGEM_PEQ'
+      Size = 500
+    end
+    object IBDShowProdutosIMAGEM_GRANDE: TIBStringField
+      FieldName = 'IMAGEM_GRANDE'
+      Origin = 'SHOW_PRODUTOS.IMAGEM_GRANDE'
+      Size = 500
+    end
+    object IBDShowProdutosNM_IMAGEM_PEQ: TIBStringField
+      FieldName = 'NM_IMAGEM_PEQ'
+      Origin = 'SHOW_PRODUTOS.NM_IMAGEM_PEQ'
+      Size = 100
+    end
+    object IBDShowProdutosNM_IMAGEM_GRANDE: TIBStringField
+      FieldName = 'NM_IMAGEM_GRANDE'
+      Origin = 'SHOW_PRODUTOS.NM_IMAGEM_GRANDE'
+      Size = 100
+    end
+    object IBDShowProdutosDT_CADASTRO: TDateField
+      FieldName = 'DT_CADASTRO'
+      Origin = 'SHOW_PRODUTOS.DT_CADASTRO'
+    end
+    object IBDShowProdutosUSUARIOO: TIBStringField
+      FieldName = 'USUARIOO'
+      Origin = 'SHOW_PRODUTOS.USUARIOO'
+      Size = 100
+    end
+    object IBDShowProdutosSITUACAO: TIBStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SHOW_PRODUTOS.SITUACAO'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object IBQExisteProduto: TIBQuery
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select show_p.cd_produto'
+      'from SHOW_PRODUTOS show_p'
+      'where'
+      'show_p.cd_produto = :pproduto')
+    Left = 136
+    Top = 88
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'pproduto'
+        ParamType = ptUnknown
+      end>
+    object IBQExisteProdutoCD_PRODUTO: TIntegerField
+      FieldName = 'CD_PRODUTO'
+      Origin = 'SHOW_PRODUTOS.CD_PRODUTO'
+      Required = True
+    end
+  end
+  object IBQExisteProdCadastrado: TIBQuery
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select p.cd_produto,p.ds_produto'
+      '    from PRODUTO p'
+      '    where'
+      '    p.cd_produto = :pproduto')
+    Left = 248
+    Top = 88
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'pproduto'
+        ParamType = ptUnknown
+      end>
+    object IBQExisteProdCadastradoCD_PRODUTO: TIntegerField
+      FieldName = 'CD_PRODUTO'
+      Origin = 'PRODUTO.CD_PRODUTO'
+      Required = True
+    end
+    object IBQExisteProdCadastradoDS_PRODUTO: TIBStringField
+      FieldName = 'DS_PRODUTO'
+      Origin = 'PRODUTO.DS_PRODUTO'
+      Size = 100
+    end
+  end
+  object IBQConsShowProdutos: TIBQuery
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      ' select show_p.*, linha.ds_linha, p.ds_produto'
+      ' from SHOW_PRODUTOS show_p'
+      
+        ' inner join LINHA_PRODUTOS linha on linha.cd_linha = show_p.cd_l' +
+        'inha'
+      ' inner join PRODUTO p on p.cd_produto = show_p.cd_produto')
+    Left = 376
+    Top = 88
+    object IBQConsShowProdutosCD_PRODUTO: TIntegerField
+      FieldName = 'CD_PRODUTO'
+      Origin = 'SHOW_PRODUTOS.CD_PRODUTO'
+      Required = True
+    end
+    object IBQConsShowProdutosCD_LINHA: TIntegerField
+      FieldName = 'CD_LINHA'
+      Origin = 'SHOW_PRODUTOS.CD_LINHA'
+      Required = True
+    end
+    object IBQConsShowProdutosIMAGEM_PEQ: TIBStringField
+      FieldName = 'IMAGEM_PEQ'
+      Origin = 'SHOW_PRODUTOS.IMAGEM_PEQ'
+      Size = 500
+    end
+    object IBQConsShowProdutosIMAGEM_GRANDE: TIBStringField
+      FieldName = 'IMAGEM_GRANDE'
+      Origin = 'SHOW_PRODUTOS.IMAGEM_GRANDE'
+      Size = 500
+    end
+    object IBQConsShowProdutosNM_IMAGEM_PEQ: TIBStringField
+      FieldName = 'NM_IMAGEM_PEQ'
+      Origin = 'SHOW_PRODUTOS.NM_IMAGEM_PEQ'
+      Size = 100
+    end
+    object IBQConsShowProdutosNM_IMAGEM_GRANDE: TIBStringField
+      FieldName = 'NM_IMAGEM_GRANDE'
+      Origin = 'SHOW_PRODUTOS.NM_IMAGEM_GRANDE'
+      Size = 100
+    end
+    object IBQConsShowProdutosDT_CADASTRO: TDateField
+      FieldName = 'DT_CADASTRO'
+      Origin = 'SHOW_PRODUTOS.DT_CADASTRO'
+    end
+    object IBQConsShowProdutosUSUARIOO: TIBStringField
+      FieldName = 'USUARIOO'
+      Origin = 'SHOW_PRODUTOS.USUARIOO'
+      Size = 100
+    end
+    object IBQConsShowProdutosSITUACAO: TIBStringField
+      FieldName = 'SITUACAO'
+      Origin = 'SHOW_PRODUTOS.SITUACAO'
+      FixedChar = True
+      Size = 1
+    end
+    object IBQConsShowProdutosDS_LINHA: TIBStringField
+      FieldName = 'DS_LINHA'
+      Origin = 'LINHA_PRODUTOS.DS_LINHA'
+      Size = 100
+    end
+    object IBQConsShowProdutosDS_PRODUTO: TIBStringField
+      FieldName = 'DS_PRODUTO'
+      Origin = 'PRODUTO.DS_PRODUTO'
+      Size = 100
+    end
+  end
+  object IBQConsFaleConosco: TIBQuery
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select fale.cd_mensagem,fale.mensagem,fale.nome,fale.telefone,'
+      
+        'fale.email,fale.dt_mensagem,fale.situacao,fale.aberta_por,usu.nm' +
+        '_usuario'
+      'from'
+      'FALE_CONOSCO fale'
+      'left join USUARIO usu on usu.cd_usuario = fale.aberta_por')
+    Left = 136
+    Top = 152
+    object IBQConsFaleConoscoCD_MENSAGEM: TIntegerField
+      FieldName = 'CD_MENSAGEM'
+      Origin = 'FALE_CONOSCO.CD_MENSAGEM'
+      Required = True
+    end
+    object IBQConsFaleConoscoMENSAGEM: TIBStringField
+      FieldName = 'MENSAGEM'
+      Origin = 'FALE_CONOSCO.MENSAGEM'
+      Size = 500
+    end
+    object IBQConsFaleConoscoNOME: TIBStringField
+      FieldName = 'NOME'
+      Origin = 'FALE_CONOSCO.NOME'
+      Size = 100
+    end
+    object IBQConsFaleConoscoTELEFONE: TIBStringField
+      FieldName = 'TELEFONE'
+      Origin = 'FALE_CONOSCO.TELEFONE'
+      Size = 50
+    end
+    object IBQConsFaleConoscoEMAIL: TIBStringField
+      FieldName = 'EMAIL'
+      Origin = 'FALE_CONOSCO.EMAIL'
+      Size = 200
+    end
+    object IBQConsFaleConoscoDT_MENSAGEM: TDateField
+      FieldName = 'DT_MENSAGEM'
+      Origin = 'FALE_CONOSCO.DT_MENSAGEM'
+    end
+    object IBQConsFaleConoscoSITUACAO: TIBStringField
+      FieldName = 'SITUACAO'
+      Origin = 'FALE_CONOSCO.SITUACAO'
+      FixedChar = True
+      Size = 1
+    end
+    object IBQConsFaleConoscoABERTA_POR: TIntegerField
+      FieldName = 'ABERTA_POR'
+      Origin = 'FALE_CONOSCO.ABERTA_POR'
+    end
+    object IBQConsFaleConoscoNM_USUARIO: TIBStringField
+      FieldName = 'NM_USUARIO'
+      Origin = 'USUARIO.NM_USUARIO'
+      Size = 100
+    end
+  end
+  object IBDFaleConosco: TIBDataSet
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from FALE_CONOSCO'
+      'where'
+      '  CD_MENSAGEM = :OLD_CD_MENSAGEM')
+    InsertSQL.Strings = (
+      'insert into FALE_CONOSCO'
+      '  (CD_MENSAGEM, MENSAGEM, NOME, TELEFONE, EMAIL, DT_MENSAGEM, '
+      'SITUACAO, '
+      '   ABERTA_POR)'
+      'values'
+      
+        '  (:CD_MENSAGEM, :MENSAGEM, :NOME, :TELEFONE, :EMAIL, :DT_MENSAG' +
+        'EM, '
+      ':SITUACAO, '
+      '   :ABERTA_POR)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  CD_MENSAGEM,'
+      '  MENSAGEM,'
+      '  NOME,'
+      '  TELEFONE,'
+      '  EMAIL,'
+      '  DT_MENSAGEM,'
+      '  SITUACAO,'
+      '  ABERTA_POR'
+      'from FALE_CONOSCO '
+      'where'
+      '  CD_MENSAGEM = :CD_MENSAGEM')
+    SelectSQL.Strings = (
+      'select * from FALE_CONOSCO where'
+      'cd_mensagem = :pmensagem')
+    ModifySQL.Strings = (
+      'update FALE_CONOSCO'
+      'set'
+      '  CD_MENSAGEM = :CD_MENSAGEM,'
+      '  MENSAGEM = :MENSAGEM,'
+      '  NOME = :NOME,'
+      '  TELEFONE = :TELEFONE,'
+      '  EMAIL = :EMAIL,'
+      '  DT_MENSAGEM = :DT_MENSAGEM,'
+      '  SITUACAO = :SITUACAO,'
+      '  ABERTA_POR = :ABERTA_POR'
+      'where'
+      '  CD_MENSAGEM = :OLD_CD_MENSAGEM')
+    Left = 32
+    Top = 152
+    object IBDFaleConoscoCD_MENSAGEM: TIntegerField
+      FieldName = 'CD_MENSAGEM'
+      Origin = 'FALE_CONOSCO.CD_MENSAGEM'
+      Required = True
+    end
+    object IBDFaleConoscoMENSAGEM: TIBStringField
+      FieldName = 'MENSAGEM'
+      Origin = 'FALE_CONOSCO.MENSAGEM'
+      Size = 500
+    end
+    object IBDFaleConoscoNOME: TIBStringField
+      FieldName = 'NOME'
+      Origin = 'FALE_CONOSCO.NOME'
+      Size = 100
+    end
+    object IBDFaleConoscoTELEFONE: TIBStringField
+      FieldName = 'TELEFONE'
+      Origin = 'FALE_CONOSCO.TELEFONE'
+      Size = 50
+    end
+    object IBDFaleConoscoEMAIL: TIBStringField
+      FieldName = 'EMAIL'
+      Origin = 'FALE_CONOSCO.EMAIL'
+      Size = 200
+    end
+    object IBDFaleConoscoDT_MENSAGEM: TDateField
+      FieldName = 'DT_MENSAGEM'
+      Origin = 'FALE_CONOSCO.DT_MENSAGEM'
+    end
+    object IBDFaleConoscoSITUACAO: TIBStringField
+      FieldName = 'SITUACAO'
+      Origin = 'FALE_CONOSCO.SITUACAO'
+      FixedChar = True
+      Size = 1
+    end
+    object IBDFaleConoscoABERTA_POR: TIntegerField
+      FieldName = 'ABERTA_POR'
+      Origin = 'FALE_CONOSCO.ABERTA_POR'
+    end
+  end
+  object IBDLoginErrado: TIBDataSet
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from LOGIN_ERRADO'
+      'where'
+      '  CD_LOGIN = :OLD_CD_LOGIN')
+    InsertSQL.Strings = (
+      'insert into LOGIN_ERRADO'
+      '  (CD_LOGIN, LOGIN, SENHA, DT_LOGIN, HR_LOGIN)'
+      'values'
+      '  (:CD_LOGIN, :LOGIN, :SENHA, :DT_LOGIN, :HR_LOGIN)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  CD_LOGIN,'
+      '  LOGIN,'
+      '  SENHA,'
+      '  DT_LOGIN,'
+      '  HR_LOGIN'
+      'from LOGIN_ERRADO '
+      'where'
+      '  CD_LOGIN = :CD_LOGIN')
+    SelectSQL.Strings = (
+      'select * from LOGIN_ERRADO where'
+      'cd_login = :plogin')
+    ModifySQL.Strings = (
+      'update LOGIN_ERRADO'
+      'set'
+      '  CD_LOGIN = :CD_LOGIN,'
+      '  LOGIN = :LOGIN,'
+      '  SENHA = :SENHA,'
+      '  DT_LOGIN = :DT_LOGIN,'
+      '  HR_LOGIN = :HR_LOGIN'
+      'where'
+      '  CD_LOGIN = :OLD_CD_LOGIN')
+    Left = 32
+    Top = 216
+    object IBDLoginErradoCD_LOGIN: TIntegerField
+      FieldName = 'CD_LOGIN'
+      Origin = 'LOGIN_ERRADO.CD_LOGIN'
+      Required = True
+    end
+    object IBDLoginErradoLOGIN: TIBStringField
+      FieldName = 'LOGIN'
+      Origin = 'LOGIN_ERRADO.LOGIN'
+      Size = 100
+    end
+    object IBDLoginErradoSENHA: TIBStringField
+      FieldName = 'SENHA'
+      Origin = 'LOGIN_ERRADO.SENHA'
+    end
+    object IBDLoginErradoDT_LOGIN: TDateField
+      FieldName = 'DT_LOGIN'
+      Origin = 'LOGIN_ERRADO.DT_LOGIN'
+    end
+    object IBDLoginErradoHR_LOGIN: TTimeField
+      FieldName = 'HR_LOGIN'
+      Origin = 'LOGIN_ERRADO.HR_LOGIN'
+    end
+  end
+  object IBQConsLoginErrado: TIBQuery
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select le.*'
+      '    from LOGIN_ERRADO le')
+    Left = 136
+    Top = 216
+    object IBQConsLoginErradoCD_LOGIN: TIntegerField
+      FieldName = 'CD_LOGIN'
+      Origin = 'LOGIN_ERRADO.CD_LOGIN'
+      Required = True
+    end
+    object IBQConsLoginErradoLOGIN: TIBStringField
+      FieldName = 'LOGIN'
+      Origin = 'LOGIN_ERRADO.LOGIN'
+      Size = 100
+    end
+    object IBQConsLoginErradoSENHA: TIBStringField
+      FieldName = 'SENHA'
+      Origin = 'LOGIN_ERRADO.SENHA'
+    end
+    object IBQConsLoginErradoDT_LOGIN: TDateField
+      FieldName = 'DT_LOGIN'
+      Origin = 'LOGIN_ERRADO.DT_LOGIN'
+    end
+    object IBQConsLoginErradoHR_LOGIN: TTimeField
+      FieldName = 'HR_LOGIN'
+      Origin = 'LOGIN_ERRADO.HR_LOGIN'
+    end
+  end
+  object IBDAcessosUsuario: TIBDataSet
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from ACESSOS_USUARIOS'
+      'where'
+      '  CD_ACESSO = :OLD_CD_ACESSO')
+    InsertSQL.Strings = (
+      'insert into ACESSOS_USUARIOS'
+      '  (CD_ACESSO, CD_USUARIO, DT_ACESSO, HR_ACESSO)'
+      'values'
+      '  (:CD_ACESSO, :CD_USUARIO, :DT_ACESSO, :HR_ACESSO)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  CD_ACESSO,'
+      '  CD_USUARIO,'
+      '  DT_ACESSO,'
+      '  HR_ACESSO'
+      'from ACESSOS_USUARIOS '
+      'where'
+      '  CD_ACESSO = :CD_ACESSO')
+    SelectSQL.Strings = (
+      'select * from ACESSOS_USUARIOS'
+      'where cd_acesso = :pacesso')
+    ModifySQL.Strings = (
+      'update ACESSOS_USUARIOS'
+      'set'
+      '  CD_ACESSO = :CD_ACESSO,'
+      '  CD_USUARIO = :CD_USUARIO,'
+      '  DT_ACESSO = :DT_ACESSO,'
+      '  HR_ACESSO = :HR_ACESSO'
+      'where'
+      '  CD_ACESSO = :OLD_CD_ACESSO')
+    Left = 40
+    Top = 280
+    object IBDAcessosUsuarioCD_ACESSO: TIntegerField
+      FieldName = 'CD_ACESSO'
+      Origin = 'ACESSOS_USUARIOS.CD_ACESSO'
+      Required = True
+    end
+    object IBDAcessosUsuarioCD_USUARIO: TIntegerField
+      FieldName = 'CD_USUARIO'
+      Origin = 'ACESSOS_USUARIOS.CD_USUARIO'
+      Required = True
+    end
+    object IBDAcessosUsuarioDT_ACESSO: TDateField
+      FieldName = 'DT_ACESSO'
+      Origin = 'ACESSOS_USUARIOS.DT_ACESSO'
+    end
+    object IBDAcessosUsuarioHR_ACESSO: TTimeField
+      FieldName = 'HR_ACESSO'
+      Origin = 'ACESSOS_USUARIOS.HR_ACESSO'
+    end
+  end
+  object IBQConsAcessosUsu: TIBQuery
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select ac_usu.*, usu.nm_usuario'
+      '    from ACESSOS_USUARIOS ac_usu'
+      '    inner join USUARIO usu on usu.cd_usuario = ac_usu.cd_usuario')
+    Left = 144
+    Top = 280
+    object IBQConsAcessosUsuCD_ACESSO: TIntegerField
+      FieldName = 'CD_ACESSO'
+      Origin = 'ACESSOS_USUARIOS.CD_ACESSO'
+      Required = True
+    end
+    object IBQConsAcessosUsuCD_USUARIO: TIntegerField
+      FieldName = 'CD_USUARIO'
+      Origin = 'ACESSOS_USUARIOS.CD_USUARIO'
+      Required = True
+    end
+    object IBQConsAcessosUsuDT_ACESSO: TDateField
+      FieldName = 'DT_ACESSO'
+      Origin = 'ACESSOS_USUARIOS.DT_ACESSO'
+    end
+    object IBQConsAcessosUsuHR_ACESSO: TTimeField
+      FieldName = 'HR_ACESSO'
+      Origin = 'ACESSOS_USUARIOS.HR_ACESSO'
+    end
+    object IBQConsAcessosUsuNM_USUARIO: TIBStringField
+      FieldName = 'NM_USUARIO'
+      Origin = 'USUARIO.NM_USUARIO'
+      Required = True
+      Size = 100
+    end
+  end
+  object IBQUltimoAcesso: TIBQuery
+    Database = DataModule1.IBDBanco1
+    Transaction = DataModule1.IBTTransacao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select * from ACESSOS_USUARIOS ac_usu'
+      '    where'
+      
+        '    ac_usu.cd_acesso = (select max(ac_usu.cd_acesso) from ACESSO' +
+        'S_USUARIOS ac_usu'
+      '    where'
+      '    ac_usu.cd_usuario = :pusuario)')
+    Left = 48
+    Top = 344
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'pusuario'
+        ParamType = ptUnknown
+      end>
+    object IBQUltimoAcessoCD_ACESSO: TIntegerField
+      FieldName = 'CD_ACESSO'
+      Origin = 'ACESSOS_USUARIOS.CD_ACESSO'
+      Required = True
+    end
+    object IBQUltimoAcessoCD_USUARIO: TIntegerField
+      FieldName = 'CD_USUARIO'
+      Origin = 'ACESSOS_USUARIOS.CD_USUARIO'
+      Required = True
+    end
+    object IBQUltimoAcessoDT_ACESSO: TDateField
+      FieldName = 'DT_ACESSO'
+      Origin = 'ACESSOS_USUARIOS.DT_ACESSO'
+    end
+    object IBQUltimoAcessoHR_ACESSO: TTimeField
+      FieldName = 'HR_ACESSO'
+      Origin = 'ACESSOS_USUARIOS.HR_ACESSO'
+    end
+  end
+end

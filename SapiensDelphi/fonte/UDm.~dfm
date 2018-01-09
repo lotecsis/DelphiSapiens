@@ -1,0 +1,672 @@
+object Dm: TDm
+  OldCreateOrder = False
+  Left = 204
+  Top = 124
+  Height = 570
+  Width = 786
+  object ADOBanco: TADOConnection
+    ConnectionString = 
+      'Provider=MSDAORA.1;Password=prototipo;User ID=prototipo;Data Sou' +
+      'rce=liderlar'
+    LoginPrompt = False
+    Provider = 'MSDAORA.1'
+    Left = 24
+    Top = 16
+  end
+  object CadFormulario: TADOQuery
+    Connection = ADOBanco
+    BeforePost = CadFormularioBeforePost
+    Parameters = <
+      item
+        Name = 'pcodfor'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tformul where usu_codfor = :pcodfor')
+    Left = 32
+    Top = 88
+    object CadFormularioUSU_CODFOR: TIntegerField
+      FieldName = 'USU_CODFOR'
+    end
+    object CadFormularioUSU_NOMFOR: TStringField
+      FieldName = 'USU_NOMFOR'
+      Size = 50
+    end
+    object CadFormularioUSU_DESFOR: TStringField
+      FieldName = 'USU_DESFOR'
+      Size = 100
+    end
+  end
+  object ConsFormulario: TADOQuery
+    Connection = ADOBanco
+    Parameters = <
+      item
+        Name = 'codfor'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tformul where usu_codfor = :codfor')
+    Left = 112
+    Top = 88
+    object ConsFormularioUSU_CODFOR: TIntegerField
+      FieldName = 'USU_CODFOR'
+    end
+    object ConsFormularioUSU_NOMFOR: TStringField
+      FieldName = 'USU_NOMFOR'
+      Size = 50
+    end
+    object ConsFormularioUSU_DESFOR: TStringField
+      FieldName = 'USU_DESFOR'
+      Size = 100
+    end
+  end
+  object ConsUltimoFormulario: TADOQuery
+    Connection = ADOBanco
+    Parameters = <>
+    SQL.Strings = (
+      'select max(usu_codfor)+1 as ultimo from usu_tformul')
+    Left = 208
+    Top = 88
+    object ConsUltimoFormularioULTIMO: TBCDField
+      FieldName = 'ULTIMO'
+      ReadOnly = True
+      Precision = 32
+      Size = 0
+    end
+  end
+  object CadUsu_TNivAce: TADOQuery
+    Connection = ADOBanco
+    BeforePost = CadUsu_TNivAceBeforePost
+    Parameters = <
+      item
+        Name = 'codniv'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tnivace where usu_codniv = :codniv')
+    Left = 36
+    Top = 152
+    object CadUsu_TNivAceUSU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+    object CadUsu_TNivAceUSU_DESNIV: TStringField
+      FieldName = 'USU_DESNIV'
+      Size = 100
+    end
+  end
+  object ConsUltimoNivAce: TADOQuery
+    Connection = ADOBanco
+    Parameters = <>
+    SQL.Strings = (
+      'select max(usu_codniv)+1 as ultimo from usu_tnivace')
+    Left = 224
+    Top = 152
+    object ConsUltimoNivAceULTIMO: TBCDField
+      FieldName = 'ULTIMO'
+      ReadOnly = True
+      Precision = 32
+      Size = 0
+    end
+  end
+  object ConsUsu_TNivAce: TADOQuery
+    Connection = ADOBanco
+    Parameters = <
+      item
+        Name = 'codniv'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tnivace where usu_codniv = :codniv')
+    Left = 130
+    Top = 152
+    object ConsUsu_TNivAceUSU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+    object ConsUsu_TNivAceUSU_DESNIV: TStringField
+      FieldName = 'USU_DESNIV'
+      Size = 100
+    end
+  end
+  object CadUsu_ForNiv: TADOQuery
+    Connection = ADOBanco
+    BeforePost = CadUsu_ForNivBeforePost
+    Parameters = <
+      item
+        Name = 'codcom'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tforniv where usu_codcom = :codcom')
+    Left = 36
+    Top = 213
+    object CadUsu_ForNivUSU_CODCOM: TIntegerField
+      FieldName = 'USU_CODCOM'
+    end
+    object CadUsu_ForNivUSU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+    object CadUsu_ForNivUSU_CODFOR: TIntegerField
+      FieldName = 'USU_CODFOR'
+    end
+    object CadUsu_ForNivUSU_FORLIB: TStringField
+      FieldName = 'USU_FORLIB'
+      Size = 1
+    end
+  end
+  object ConsUltimoForNiv: TADOQuery
+    Connection = ADOBanco
+    Parameters = <>
+    SQL.Strings = (
+      'select max(usu_codcom)+1 as ultimo from usu_tforniv')
+    Left = 224
+    Top = 208
+    object ConsUltimoForNivULTIMO: TBCDField
+      FieldName = 'ULTIMO'
+      ReadOnly = True
+      Precision = 32
+      Size = 0
+    end
+  end
+  object ApagaUsu_TForNiv: TADOQuery
+    Connection = ADOBanco
+    Parameters = <
+      item
+        Name = 'codfor'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'codniv'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tforniv where usu_codfor = :codfor and'
+      
+        '                                                 usu_codniv = :c' +
+        'odniv')
+    Left = 328
+    Top = 208
+    object ApagaUsu_TForNivUSU_CODCOM: TIntegerField
+      FieldName = 'USU_CODCOM'
+    end
+    object ApagaUsu_TForNivUSU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+    object ApagaUsu_TForNivUSU_CODFOR: TIntegerField
+      FieldName = 'USU_CODFOR'
+    end
+    object ApagaUsu_TForNivUSU_FORLIB: TStringField
+      FieldName = 'USU_FORLIB'
+      Size = 1
+    end
+  end
+  object CadUsu_TR999Usu: TADOQuery
+    Connection = ADOBanco
+    Parameters = <
+      item
+        Name = 'codusu'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tr999usu where usu_codusu = :codusu')
+    Left = 40
+    Top = 272
+    object CadUsu_TR999UsuUSU_CODUSU: TIntegerField
+      FieldName = 'USU_CODUSU'
+    end
+    object CadUsu_TR999UsuUSU_NOMUSU: TStringField
+      FieldName = 'USU_NOMUSU'
+      Size = 50
+    end
+    object CadUsu_TR999UsuUSU_SENUSU: TStringField
+      FieldName = 'USU_SENUSU'
+      Size = 30
+    end
+    object CadUsu_TR999UsuUSU_SITUSU: TStringField
+      FieldName = 'USU_SITUSU'
+      Size = 1
+    end
+    object CadUsu_TR999UsuUSU_LOGUSU: TStringField
+      FieldName = 'USU_LOGUSU'
+      Size = 30
+    end
+    object CadUsu_TR999UsuUSU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+  end
+  object ConsR999Usu: TADOQuery
+    Connection = ADOBanco
+    Parameters = <>
+    SQL.Strings = (
+      'select * from r999usu order by codusu asc')
+    Left = 200
+    Top = 271
+    object ConsR999UsuCODUSU: TBCDField
+      FieldName = 'CODUSU'
+      Precision = 10
+      Size = 0
+    end
+    object ConsR999UsuNOMUSU: TStringField
+      FieldName = 'NOMUSU'
+      Size = 255
+    end
+    object ConsR999UsuTIPCOL: TStringField
+      FieldName = 'TIPCOL'
+      Size = 10
+    end
+    object ConsR999UsuNUMEMP: TStringField
+      FieldName = 'NUMEMP'
+      Size = 255
+    end
+    object ConsR999UsuCODFIL: TStringField
+      FieldName = 'CODFIL'
+      Size = 50
+    end
+    object ConsR999UsuCODLOC: TStringField
+      FieldName = 'CODLOC'
+      Size = 200
+    end
+    object ConsR999UsuNUMCAD: TStringField
+      FieldName = 'NUMCAD'
+      Size = 50
+    end
+  end
+  object ConsUsu_TR999Usu: TADOQuery
+    Connection = ADOBanco
+    Parameters = <
+      item
+        Name = 'codusu'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tr999usu where usu_codusu = :codusu')
+    Left = 296
+    Top = 272
+    object ConsUsu_TR999UsuUSU_CODUSU: TIntegerField
+      FieldName = 'USU_CODUSU'
+    end
+    object ConsUsu_TR999UsuUSU_NOMUSU: TStringField
+      FieldName = 'USU_NOMUSU'
+      Size = 50
+    end
+    object ConsUsu_TR999UsuUSU_SENUSU: TStringField
+      FieldName = 'USU_SENUSU'
+      Size = 30
+    end
+    object ConsUsu_TR999UsuUSU_SITUSU: TStringField
+      FieldName = 'USU_SITUSU'
+      Size = 1
+    end
+    object ConsUsu_TR999UsuUSU_LOGUSU: TStringField
+      FieldName = 'USU_LOGUSU'
+      Size = 30
+    end
+    object ConsUsu_TR999UsuUSU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+  end
+  object Provider_R999Usu: TDataSetProvider
+    DataSet = ConsR999Usu
+    Left = 200
+    Top = 320
+  end
+  object Client_R999Usu: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'Provider_R999Usu'
+    Left = 200
+    Top = 368
+    object Client_R999UsuCODUSU: TBCDField
+      FieldName = 'CODUSU'
+      Precision = 10
+      Size = 0
+    end
+    object Client_R999UsuNOMUSU: TStringField
+      FieldName = 'NOMUSU'
+      Size = 255
+    end
+    object Client_R999UsuTIPCOL: TStringField
+      FieldName = 'TIPCOL'
+      Size = 10
+    end
+    object Client_R999UsuNUMEMP: TStringField
+      FieldName = 'NUMEMP'
+      Size = 255
+    end
+    object Client_R999UsuCODFIL: TStringField
+      FieldName = 'CODFIL'
+      Size = 50
+    end
+    object Client_R999UsuCODLOC: TStringField
+      FieldName = 'CODLOC'
+      Size = 200
+    end
+    object Client_R999UsuNUMCAD: TStringField
+      FieldName = 'NUMCAD'
+      Size = 50
+    end
+  end
+  object ConsUsu_TNivAce2: TADOQuery
+    Connection = ADOBanco
+    AfterScroll = ConsUsu_TNivAce2AfterScroll
+    Parameters = <>
+    SQL.Strings = (
+      'select * from usu_tnivace')
+    Left = 40
+    Top = 424
+    object ConsUsu_TNivAce2USU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+    object ConsUsu_TNivAce2USU_DESNIV: TStringField
+      FieldName = 'USU_DESNIV'
+      Size = 100
+    end
+  end
+  object ConsUsu_TForNiv: TADOQuery
+    Connection = ADOBanco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'codniv'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select usu_tforniv.*, usu_tformul.*'
+      '                                        from usu_tforniv'
+      
+        'inner join usu_tformul on usu_tformul.usu_codfor = usu_tforniv.u' +
+        'su_codfor'
+      
+        '                                        where usu_tforniv.usu_co' +
+        'dniv = :codniv and'
+      
+        '                                                   usu_tforniv.u' +
+        'su_forlib = '#39'S'#39' '
+      
+        '                                                   order by  usu' +
+        '_tformul.usu_desfor asc')
+    Left = 144
+    Top = 424
+    object ConsUsu_TForNivUSU_CODCOM: TIntegerField
+      FieldName = 'USU_CODCOM'
+    end
+    object ConsUsu_TForNivUSU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+    object ConsUsu_TForNivUSU_CODFOR: TIntegerField
+      FieldName = 'USU_CODFOR'
+    end
+    object ConsUsu_TForNivUSU_FORLIB: TStringField
+      FieldName = 'USU_FORLIB'
+      Size = 1
+    end
+    object ConsUsu_TForNivUSU_CODFOR_1: TIntegerField
+      FieldName = 'USU_CODFOR_1'
+    end
+    object ConsUsu_TForNivUSU_NOMFOR: TStringField
+      FieldName = 'USU_NOMFOR'
+      Size = 50
+    end
+    object ConsUsu_TForNivUSU_DESFOR: TStringField
+      FieldName = 'USU_DESFOR'
+      Size = 100
+    end
+  end
+  object ConsUsu_TForNiv2: TADOQuery
+    Connection = ADOBanco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'codniv'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select usu_tforniv.*, usu_tformul.*'
+      '                                        from usu_tforniv'
+      
+        'inner join usu_tformul on usu_tformul.usu_codfor = usu_tforniv.u' +
+        'su_codfor'
+      
+        '                                        where usu_tforniv.usu_fo' +
+        'rlib = '#39'N'#39' and'
+      
+        '                                                   usu_tforniv.u' +
+        'su_codniv = :codniv'
+      '                                                   ')
+    Left = 248
+    Top = 424
+    object ConsUsu_TForNiv2USU_CODCOM: TIntegerField
+      FieldName = 'USU_CODCOM'
+    end
+    object ConsUsu_TForNiv2USU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+    object ConsUsu_TForNiv2USU_CODFOR: TIntegerField
+      FieldName = 'USU_CODFOR'
+    end
+    object ConsUsu_TForNiv2USU_FORLIB: TStringField
+      FieldName = 'USU_FORLIB'
+      Size = 1
+    end
+    object ConsUsu_TForNiv2USU_CODFOR_1: TIntegerField
+      FieldName = 'USU_CODFOR_1'
+    end
+    object ConsUsu_TForNiv2USU_NOMFOR: TStringField
+      FieldName = 'USU_NOMFOR'
+      Size = 50
+    end
+    object ConsUsu_TForNiv2USU_DESFOR: TStringField
+      FieldName = 'USU_DESFOR'
+      Size = 100
+    end
+  end
+  object ProviderUsu_TForNiv2: TDataSetProvider
+    DataSet = ConsUsu_TForNiv2
+    Left = 355
+    Top = 424
+  end
+  object ClientUsu_TForNiv2: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'ProviderUsu_TForNiv2'
+    Left = 464
+    Top = 424
+    object ClientUsu_TForNiv2USU_CODCOM: TIntegerField
+      FieldName = 'USU_CODCOM'
+    end
+    object ClientUsu_TForNiv2USU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+    object ClientUsu_TForNiv2USU_CODFOR: TIntegerField
+      FieldName = 'USU_CODFOR'
+    end
+    object ClientUsu_TForNiv2USU_FORLIB: TStringField
+      FieldName = 'USU_FORLIB'
+      Size = 1
+    end
+    object ClientUsu_TForNiv2USU_CODFOR_1: TIntegerField
+      FieldName = 'USU_CODFOR_1'
+    end
+    object ClientUsu_TForNiv2USU_NOMFOR: TStringField
+      FieldName = 'USU_NOMFOR'
+      Size = 50
+    end
+    object ClientUsu_TForNiv2USU_DESFOR: TStringField
+      FieldName = 'USU_DESFOR'
+      Size = 100
+    end
+  end
+  object ConsUsu_TR999usuNiv: TADOQuery
+    Connection = ADOBanco
+    Parameters = <
+      item
+        Name = 'codniv'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select * from usu_tr999usu where usu_codniv = :codniv'
+      'order by usu_nomusu'
+      '')
+    Left = 376
+    Top = 368
+    object ConsUsu_TR999usuNivUSU_CODUSU: TIntegerField
+      FieldName = 'USU_CODUSU'
+    end
+    object ConsUsu_TR999usuNivUSU_NOMUSU: TStringField
+      FieldName = 'USU_NOMUSU'
+      Size = 50
+    end
+    object ConsUsu_TR999usuNivUSU_SENUSU: TStringField
+      FieldName = 'USU_SENUSU'
+      Size = 30
+    end
+    object ConsUsu_TR999usuNivUSU_SITUSU: TStringField
+      FieldName = 'USU_SITUSU'
+      Size = 1
+    end
+    object ConsUsu_TR999usuNivUSU_LOGUSU: TStringField
+      FieldName = 'USU_LOGUSU'
+      Size = 30
+    end
+    object ConsUsu_TR999usuNivUSU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+  end
+  object ProviderUsu_TR999Usu: TDataSetProvider
+    DataSet = ConsUsu_TR999Usu
+    Left = 424
+    Top = 272
+  end
+  object ClientConsUsu_TR999Usu: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'ProviderUsu_TR999Usu'
+    Left = 568
+    Top = 272
+    object ClientConsUsu_TR999UsuUSU_CODUSU: TIntegerField
+      FieldName = 'USU_CODUSU'
+    end
+    object ClientConsUsu_TR999UsuUSU_NOMUSU: TStringField
+      FieldName = 'USU_NOMUSU'
+      Size = 50
+    end
+    object ClientConsUsu_TR999UsuUSU_SENUSU: TStringField
+      FieldName = 'USU_SENUSU'
+      Size = 30
+    end
+    object ClientConsUsu_TR999UsuUSU_SITUSU: TStringField
+      FieldName = 'USU_SITUSU'
+      Size = 1
+    end
+    object ClientConsUsu_TR999UsuUSU_LOGUSU: TStringField
+      FieldName = 'USU_LOGUSU'
+      Size = 30
+    end
+    object ClientConsUsu_TR999UsuUSU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+  end
+  object ConsUsuarioLogin: TADOQuery
+    Connection = ADOBanco
+    Parameters = <
+      item
+        Name = 'logusu'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'senusu'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select usu_tr999usu.* from usu_tr999usu'
+      '                      where'
+      '                      usu_logusu = :logusu and'
+      '                      usu_senusu = :senusu')
+    Left = 697
+    Top = 272
+    object ConsUsuarioLoginUSU_CODUSU: TIntegerField
+      FieldName = 'USU_CODUSU'
+    end
+    object ConsUsuarioLoginUSU_NOMUSU: TStringField
+      FieldName = 'USU_NOMUSU'
+      Size = 50
+    end
+    object ConsUsuarioLoginUSU_SENUSU: TStringField
+      FieldName = 'USU_SENUSU'
+      Size = 30
+    end
+    object ConsUsuarioLoginUSU_SITUSU: TStringField
+      FieldName = 'USU_SITUSU'
+      Size = 1
+    end
+    object ConsUsuarioLoginUSU_LOGUSU: TStringField
+      FieldName = 'USU_LOGUSU'
+      Size = 30
+    end
+    object ConsUsuarioLoginUSU_CODNIV: TIntegerField
+      FieldName = 'USU_CODNIV'
+    end
+  end
+  object ConsValidaMenu: TADOQuery
+    Connection = ADOBanco
+    Parameters = <
+      item
+        Name = 'codusu'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'nomfor'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select usu_tforniv.usu_forlib from usu_tforniv'
+      
+        'inner join usu_tr999usu on usu_tr999usu.usu_codniv = usu_tforniv' +
+        '.usu_codniv'
+      
+        'inner join usu_tformul on usu_tformul.usu_codfor = usu_tforniv.u' +
+        'su_codfor'
+      '                                where'
+      
+        '                                usu_tr999usu.usu_codusu = :codus' +
+        'u and'
+      '                                usu_tformul.usu_nomfor = :nomfor')
+    Left = 581
+    Top = 424
+    object ConsValidaMenuUSU_FORLIB: TStringField
+      FieldName = 'USU_FORLIB'
+      Size = 1
+    end
+  end
+end

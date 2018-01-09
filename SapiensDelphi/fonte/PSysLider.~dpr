@@ -1,0 +1,228 @@
+program PSysLider;
+
+uses
+  Forms,
+  UPrincipal in 'UPrincipal.pas' {FPrincipal},
+  UDataModule1 in 'UDataModule1.pas' {DataModule1: TDataModule},
+  UFormulario in '..\banco\UFormulario.pas' {FFormulario},
+  UCidade in 'UCidade.pas' {FCidade},
+  UConsSimpCidade in 'UConsSimpCidade.pas' {FConsSimpCidade},
+  UGrupoUsuario in 'UGrupoUsuario.pas' {FGrupoUsuario},
+  UUnidadeMedida in 'UUnidadeMedida.pas' {FUnidadeMedida},
+  UClasseMatPrima in 'UClasseMatPrima.pas' {FClasseMatPrima},
+  UConsSimpClasse in 'UConsSimpClasse.pas' {FConsSimpClasse},
+  UConsSimpUnMedida in 'UConsSimpUnMedida.pas' {FConsSimpUnMedida},
+  USetor in 'USetor.pas' {FSetor},
+  UConsSimpSetor in 'UConsSimpSetor.pas' {FConsSimpSetor},
+  UCondPgto in 'UCondPgto.pas' {FCondicaoPgto},
+  UFones in 'UFones.pas' {FFones},
+  UEmail in 'UEmail.pas' {FEmail},
+  UContatos in 'UContatos.pas' {FContatos},
+  UDataModule2 in 'UDataModule2.pas' {DataModule2: TDataModule},
+  UPessoaJuridica in 'UPessoaJuridica.pas' {FPessoaJu},
+  UAlertaPessoa in 'UAlertaPessoa.pas' {FAlertasPessoa},
+  UPessoaFisica in 'UPessoaFisica.pas' {FPessoaFi},
+  UTpCobranca in 'UTpCobranca.pas' {FTpCobranca},
+  UConsSimpTpCobranca in 'UConsSimpTpCobranca.pas' {FConsSimpTpCobranca},
+  UMateriaPrima in 'UMateriaPrima.pas' {FMateriaPrima},
+  UMtPrimaNf in 'UMtPrimaNf.pas' {FMtPtimaNf},
+  UConsSimpMtPrima in 'UConsSimpMtPrima.pas' {FConsSimpMtPrima},
+  UConsSimpFornecedor in 'UConsSimpFornecedor.pas' {FConsSimpFornecedor},
+  UDataModule3 in 'UDataModule3.pas' {DataModule3: TDataModule},
+  UMovimentoEstoque in 'UMovimentoEstoque.pas' {FMovimentoEstoque},
+  UGrupoProdutos in 'UGrupoProdutos.pas' {FGrupoProdutos},
+  UEntradaMP in 'UEntradaMP.pas' {FEntradaMP},
+  USitTribu in 'USitTribu.pas' {FSitTribu},
+  UProdutos in 'UProdutos.pas' {FProdutos},
+  UConsSimpGrupoProduto in 'UConsSimpGrupoProduto.pas' {FConsSimpGrupoProd},
+  UConsSimpSitTribu in 'UConsSimpSitTribu.pas' {FConsSimpSitTribu},
+  UCompProduto in 'UCompProduto.pas' {FCompProduto},
+  UTabelaPreco in 'UTabelaPreco.pas' {FTabelaPreco},
+  UProdTabela in 'UProdTabela.pas' {FProdTab},
+  UConsSimpProduto in 'UConsSimpProduto.pas' {FConsSimpProduto},
+  URegiao in 'URegiao.pas' {FRegiao},
+  UConsSimpRegiao in 'UConsSimpRegiao.pas' {FConsSimpRegiao},
+  UConsSimpTabPreco in 'UConsSimpTabPreco.pas' {FConsSimpTabPreco},
+  UPedido in 'UPedido.pas' {FPedido},
+  UConsSimpCliente in 'UConsSimpCliente.pas' {FConsSimpCliente},
+  UConsSimpCondPgto in 'UConsSimpCondPgto.pas' {FConsSimpCondPgto},
+  UProdPedido in 'UProdPedido.pas' {FProdPedido},
+  ULocalEntregaPed in 'ULocalEntregaPed.pas' {FLocalEntregaPed},
+  UDataModule4 in 'UDataModule4.pas' {DataModule4: TDataModule},
+  UCompraMt in 'UCompraMt.pas' {FCompraMt},
+  UMtCompra in 'UMtCompra.pas' {FMtCompra},
+  UMtNf in 'UMtNf.pas' {FMtNf},
+  UPedCompAberto in 'UPedCompAberto.pas' {FPodCompraAberto},
+  UNivelAcesso in 'UNivelAcesso.pas' {FNivelAcesso},
+  UFormApres in 'UFormApres.pas' {ApresForm},
+  UUsuario in 'UUsuario.pas' {FUsuario},
+  UConsSimpGrupoUsuario in 'UConsSimpGrupoUsuario.pas' {FConsSimpGrupoUsuario},
+  UConsSimpPJuridica in 'UConsSimpPJuridica.pas' {FConsSimpPJuridica},
+  UConsSimpNivelAcesso in 'UConsSimpNivelAcesso.pas' {FConsSimpNivel},
+  UConsSimpPFisica in 'UConsSimpPFisica.pas' {FConsSimpPFisica},
+  ULogin in 'ULogin.pas' {FLogin},
+  UConferenciaPedido in 'UConferenciaPedido.pas' {FConferenciaPedido},
+  UConsAlertas in 'UConsAlertas.pas' {FConsAlertas},
+  UPedidoCons in 'UPedidoCons.pas' {FPedidoCons},
+  USaidaMP in 'USaidaMP.pas' {FSaidaMt},
+  UConsSimpMtNf in 'UConsSimpMtNf.pas' {FConsSimpMtNf},
+  UOpsaoCodigo in 'UOpsaoCodigo.pas' {FOpsaoCodigo},
+  UQrBarrasMt in 'UQrBarrasMt.pas' {QrBarrasMt: TQuickRep},
+  UEtiquetaMt in 'UEtiquetaMt.pas' {FEtiquetaMt},
+  UQrEtiquetasMtVirtual in 'UQrEtiquetasMtVirtual.pas' {QrEtiquetasMtVirtual: TQuickRep},
+  USaidaProdAcabado in 'USaidaProdAcabado.pas' {FSaidaProduto},
+  UMensagens in 'UMensagens.pas' {FMensagens},
+  UMensagemAberta in 'UMensagemAberta.pas' {FMensagemAberta},
+  UDireitoAcasso in 'UDireitoAcasso.pas' {FDireitosAcesso},
+  UDataModule5 in 'UDataModule5.pas' {DataModule5: TDataModule},
+  URelCompra in 'URelCompra.pas' {FRelCompra},
+  UQrRelacaoCompra in 'UQrRelacaoCompra.pas' {QrRelacaoCompra: TQuickRep},
+  UEtiquetaProd in 'UEtiquetaProd.pas' {FEtiquetasProd},
+  UQrEtiquetasProd in 'UQrEtiquetasProd.pas' {QrEtiquetasProd: TQuickRep},
+  UQrRelMtPrimaComValor in 'UQrRelMtPrimaComValor.pas' {QrMtPrimaComValor: TQuickRep},
+  URelMateriaPrima in 'URelMateriaPrima.pas' {FRelMateriaPrima},
+  UQrRelMtPrimaSemValor in 'UQrRelMtPrimaSemValor.pas' {QrMtPrimaSemValor: TQuickRep},
+  URelEntradaSaida in 'URelEntradaSaida.pas' {FRelEntradaSaida},
+  UQrEntradaSaida in 'UQrEntradaSaida.pas' {QrRelEntradaSaida: TQuickRep},
+  UQrTabelaPreco in 'UQrTabelaPreco.pas' {QrTabelaPreco: TQuickRep},
+  UOpsaoTabela in 'UOpsaoTabela.pas' {FOpsaoTabela},
+  UQrPedidosRecebidos in 'UQrPedidosRecebidos.pas' {QrPedidosRecebidos: TQuickRep},
+  UConsSimpPedido in 'UConsSimpPedido.pas' {FConsSimpPedido},
+  UQrPedido in 'UQrPedido.pas' {QrPedido: TQuickRep},
+  URelSaidaProdAcabado in 'URelSaidaProdAcabado.pas' {FRelSaidaProdAcabado},
+  UQrSaidaProdAcabado in 'UQrSaidaProdAcabado.pas' {QrSaidaProdAcabado: TQuickRep},
+  UImagemGrandMt in 'UImagemGrandMt.pas' {FImagemGrandMt},
+  UConsLogs in 'UConsLogs.pas' {FConsLogs},
+  UConsSimpUsuario in 'UConsSimpUsuario.pas' {FConsSimpUsuarios},
+  UShowroomTecidos in 'UShowroomTecidos.pas' {FShowTecidos},
+  UDataModule6 in 'UDataModule6.pas' {DataModule6: TDataModule},
+  UShowroomProdutos in 'UShowroomProdutos.pas' {FShowProdutos},
+  UFaleConosco in 'UFaleConosco.pas' {FFaleConosco},
+  UFaleConscoVisualiza in 'UFaleConscoVisualiza.pas' {FFaleConoscoVisualiza},
+  UEmailRespCompra in 'UEmailRespCompra.pas' {FEmailRespCompra},
+  ULoginErrado in 'ULoginErrado.pas' {FLoginErrado},
+  UAcessosUsuarios in 'UAcessosUsuarios.pas' {FAcessosUsuarios};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TFPrincipal, FPrincipal);
+  Application.CreateForm(TQrBarrasMt, QrBarrasMt);
+  Application.CreateForm(TQrTabelaPreco, QrTabelaPreco);
+  Application.CreateForm(TQrEtiquetasMtVirtual, QrEtiquetasMtVirtual);
+  Application.CreateForm(TQrRelacaoCompra, QrRelacaoCompra);
+  Application.CreateForm(TQrEtiquetasProd, QrEtiquetasProd);
+  Application.CreateForm(TQrMtPrimaComValor, QrMtPrimaComValor);
+  Application.CreateForm(TQrMtPrimaSemValor, QrMtPrimaSemValor);
+  Application.CreateForm(TQrRelEntradaSaida, QrRelEntradaSaida);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TDataModule2, DataModule2);
+  Application.CreateForm(TDataModule3, DataModule3);
+  Application.CreateForm(TDataModule4, DataModule4);
+  Application.CreateForm(TDataModule5, DataModule5);
+  Application.CreateForm(TDataModule6, DataModule6);
+  Application.CreateForm(TQrPedidosRecebidos, QrPedidosRecebidos);
+  Application.CreateForm(TQrPedido, QrPedido);
+  Application.CreateForm(TQrSaidaProdAcabado, QrSaidaProdAcabado);
+  //Application.CreateForm(TFImagemGrandMt, FImagemGrandMt);
+  //Application.CreateForm(TFConsLogs, FConsLogs);
+  //Application.CreateForm(TFConsSimpUsuarios, FConsSimpUsuarios);
+  //Application.CreateForm(TFShowTecidos, FShowTecidos);
+  //Application.CreateForm(TFShowProdutos, FShowProdutos);
+  //Application.CreateForm(TFFaleConosco, FFaleConosco);
+  //Application.CreateForm(TFFaleConoscoVisualiza, FFaleConoscoVisualiza);
+  //Application.CreateForm(TFEmailRespCompra, FEmailRespCompra);
+  //Application.CreateForm(TFLoginErrado, FLoginErrado);
+  //Application.CreateForm(TFAcessosUsuarios, FAcessosUsuarios);
+  //Application.CreateForm(TFRelSaidaProdAcabado, FRelSaidaProdAcabado);
+  //Application.CreateForm(TFConsSimpPedido, FConsSimpPedido);
+  //Application.ProcessMessages;
+  //Application.ProcessMessages;
+  //ApresForm := TApresForm.Create(Application);
+  //ApresForm.Show;
+  //ApresForm.Update;
+  //ApresForm.ProgressBar1.Position := 1;
+  //Application.CreateForm(TFEtiquetaMt, FEtiquetaMt);
+  //Application.CreateForm(TFSaidaProduto, FSaidaProduto);
+  //Application.CreateForm(TFMensagens, FMensagens);
+  //Application.CreateForm(TFMensagemAberta, FMensagemAberta);
+  //Application.CreateForm(TFDireitosAcesso, FDireitosAcesso);
+  //Application.CreateForm(TFRelCompra, FRelCompra);
+  //Application.CreateForm(TFOpsaoTabela, FOpsaoTabela);
+  //Application.CreateForm(TFEtiquetasProd, FEtiquetasProd);
+  //Application.CreateForm(TFRelMateriaPrima, FRelMateriaPrima);
+  //Application.CreateForm(TFRelEntradaSaida, FRelEntradaSaida);
+  //Application.CreateForm(TFOpsaoCodigo, FOpsaoCodigo);
+  //Application.CreateForm(TFConsSimpMtNf, FConsSimpMtNf);
+  //ApresForm.ProgressBar1.Position := 4;//ApresForm.ProgressBar1.Position + 1;
+  //Application.CreateForm(TFFormulario, FFormulario);
+  //Application.CreateForm(TFCidade, FCidade);
+  //Application.CreateForm(TFPessoaFi, FPessoaFi);
+  //Application.CreateForm(TFTpCobranca, FTpCobranca);
+  //Application.CreateForm(TFLocalEntregaPed, FLocalEntregaPed);
+  //ApresForm.ProgressBar1.Position := 20;//ApresForm.ProgressBar1.Position + 1;
+  //Application.CreateForm(TFCompraMt, FCompraMt);
+  //Application.CreateForm(TFNivelAcesso, FNivelAcesso);
+  //Application.CreateForm(TApresForm, ApresForm);
+  //Application.CreateForm(TFUsuario, FUsuario);
+  //Application.CreateForm(TFConferenciaPedido, FConferenciaPedido);
+  //Application.CreateForm(TFPedidoCons, FPedidoCons);
+  //Application.CreateForm(TFSaidaMt, FSaidaMt);
+  //Application.CreateForm(TFConsAlertas, FConsAlertas);
+  //Application.CreateForm(TFLogin, FLogin);
+  //Application.CreateForm(TFConsSimpPFisica, FConsSimpPFisica);
+  //Application.CreateForm(TFConsSimpNivel, FConsSimpNivel);
+  //Application.CreateForm(TFConsSimpGrupoUsuario, FConsSimpGrupoUsuario);
+  //Application.CreateForm(TFConsSimpPJuridica, FConsSimpPJuridica);
+  //Application.CreateForm(TFPodCompraAberto, FPodCompraAberto);
+  //Application.CreateForm(TFMtNf, FMtNf);
+  //Application.CreateForm(TFMtCompra, FMtCompra);
+  //Application.CreateForm(TFProdPedido, FProdPedido);
+  //Application.CreateForm(TFConsSimpCondPgto, FConsSimpCondPgto);
+  //Application.CreateForm(TFConsSimpTpCobranca, FConsSimpTpCobranca);
+  //Application.CreateForm(TFMateriaPrima, FMateriaPrima);
+  //Application.CreateForm(TFMtPtimaNf, FMtPtimaNf);
+  //Application.CreateForm(TFMovimentoEstoque, FMovimentoEstoque);
+  //Application.CreateForm(TFGrupoProdutos, FGrupoProdutos);
+  //Application.CreateForm(TFEntradaMP, FEntradaMP);
+  //Application.CreateForm(TFSitTribu, FSitTribu);
+  //Application.CreateForm(TFProdutos, FProdutos);
+  //Application.CreateForm(TFCompProduto, FCompProduto);
+  //Application.CreateForm(TFTabelaPreco, FTabelaPreco);
+  //Application.CreateForm(TFRegiao, FRegiao);
+  //Application.CreateForm(TFPedido, FPedido);
+  //ApresForm.ProgressBar1.Position := 60;//ApresForm.ProgressBar1.Position + 1;
+  //Application.CreateForm(TFConsSimpCliente, FConsSimpCliente);
+  //Application.CreateForm(TFConsSimpRegiao, FConsSimpRegiao);
+  //Application.CreateForm(TFConsSimpTabPreco, FConsSimpTabPreco);
+  //Application.CreateForm(TFConsSimpProduto, FConsSimpProduto);
+  //Application.CreateForm(TFProdTab, FProdTab);
+  //Application.CreateForm(TFConsSimpGrupoProd, FConsSimpGrupoProd);
+  //Application.CreateForm(TFConsSimpSitTribu, FConsSimpSitTribu);
+  //Application.CreateForm(TFConsSimpFornecedor, FConsSimpFornecedor);
+  //Application.CreateForm(TFConsSimpMtPrima, FConsSimpMtPrima);
+  //Application.CreateForm(TFAlertasPessoa, FAlertasPessoa);
+  //Application.CreateForm(TFConsSimpCidade, FConsSimpCidade);
+  //Application.CreateForm(TFGrupoUsuario, FGrupoUsuario);
+  //Application.CreateForm(TFUnidadeMedida, FUnidadeMedida);
+  //Application.CreateForm(TFClasseMatPrima, FClasseMatPrima);
+  //Application.CreateForm(TFConsSimpClasse, FConsSimpClasse);
+  //Application.CreateForm(TFConsSimpUnMedida, FConsSimpUnMedida);
+  //Application.CreateForm(TFSetor, FSetor);
+  //Application.CreateForm(TFConsSimpSetor, FConsSimpSetor);
+  //Application.CreateForm(TFCondicaoPgto, FCondicaoPgto);
+  //ApresForm.ProgressBar1.Position := 95;//ApresForm.ProgressBar1.Position + 1;
+  //ApresForm.Invalidate;
+  //Application.ProcessMessages;
+  //Application.CreateForm(TFFones, FFones);
+  //Application.CreateForm(TFEmail, FEmail);
+  //Application.CreateForm(TFContatos, FContatos);
+  //Application.CreateForm(TFPessoaJu, FPessoaJu);
+  //ApresForm.ProgressBar1.Position := 100;
+  //ApresForm.Invalidate;
+  //Application.ProcessMessages;
+  //ApresForm.Hide;   //ApresForm refere-se ao nome da variável para chamar o form UAPRESENTAÇÃO
+  //ApresForm.Free;
+  Application.Run;
+end.

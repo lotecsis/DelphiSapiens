@@ -1,0 +1,117 @@
+unit UConsCores;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, Mask, ToolEdit, CurrEdit, Grids, DBGrids, DB;
+
+type
+  TFConsCores = class(TForm)
+    DBGrid1: TDBGrid;
+    EdPesquisa: TCurrencyEdit;
+    BOk: TBitBtn;
+    BCancela: TBitBtn;
+    DsConsUsu_TDerCor: TDataSource;
+    procedure FormShow(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrid1Enter(Sender: TObject);
+    procedure DBGrid1Exit(Sender: TObject);
+    procedure EdPesquisaChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    vnCodEmp : Integer;
+    vaCodPro, vaCodDer : String;
+    vaTela : string;
+  end;
+
+var
+  FConsCores: TFConsCores;
+
+implementation
+
+uses UDm2, UAltCoresProdPed, UAddProdPed, UAddCoresProdPed;
+
+{$R *.dfm}
+
+procedure TFConsCores.FormShow(Sender: TObject);
+begin
+    Dm2.ConsUsu_TDerCor.Close;
+    Dm2.ConsUsu_TDerCor.SQL.Clear;
+    Dm2.ConsUsu_TDerCor.SQL.Add('select * from usu_tdercor where');
+    Dm2.ConsUsu_TDerCor.SQL.Add('usu_codemp = :codemp and');
+    Dm2.ConsUsu_TDerCor.SQL.Add('usu_codpro = :codpro and');
+    Dm2.ConsUsu_TDerCor.SQL.Add('usu_codder = :codder and');
+    Dm2.ConsUsu_TDerCor.SQL.Add('usu_sittec = ''A''');
+    Dm2.ConsUsu_TDerCor.SQL.Add('order by usu_codtec');
+     if vaTela = 'Add' then
+       begin
+         Dm2.ConsUsu_TDerCor.Parameters.ParamByName('codemp').Value := FAddCoresProdPed.vnCodEmp;
+         Dm2.ConsUsu_TDerCor.Parameters.ParamByName('codpro').Value := FAddCoresProdPed.vaCodPro;
+         Dm2.ConsUsu_TDerCor.Parameters.ParamByName('codder').Value := FAddCoresProdPed.vaCodDer;
+       end
+     else if vaTela = 'Alt' then
+            begin
+              Dm2.ConsUsu_TDerCor.Parameters.ParamByName('codemp').Value := FAltCoresProdPed.vnCodEmp;
+              Dm2.ConsUsu_TDerCor.Parameters.ParamByName('codpro').Value := FAltCoresProdPed.vaCodPro;
+              Dm2.ConsUsu_TDerCor.Parameters.ParamByName('codder').Value := FAltCoresProdPed.vaCodDer;
+            end;
+    Dm2.ConsUsu_TDerCor.Open;
+
+   ActiveControl := EdPesquisa;
+end;
+
+procedure TFConsCores.DBGrid1DblClick(Sender: TObject);
+begin
+BOk.Click;
+end;
+
+procedure TFConsCores.DBGrid1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+    begin
+      BOk.Click;
+    end;
+end;
+
+procedure TFConsCores.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+    begin
+      key := #0;
+      Perform (Wm_NextDlgCtl,0,0);
+    end;
+end;
+
+procedure TFConsCores.DBGrid1Enter(Sender: TObject);
+begin
+KeyPreview := False;
+end;
+
+procedure TFConsCores.DBGrid1Exit(Sender: TObject);
+begin
+KeyPreview := True;
+end;
+
+procedure TFConsCores.EdPesquisaChange(Sender: TObject);
+begin
+    Dm2.ConsUsu_TDerCor.Close;
+    Dm2.ConsUsu_TDerCor.SQL.Clear;
+    Dm2.ConsUsu_TDerCor.SQL.Add('select * from usu_tdercor where');
+    Dm2.ConsUsu_TDerCor.SQL.Add('usu_codemp = :codemp and');
+    Dm2.ConsUsu_TDerCor.SQL.Add('usu_codpro = :codpro and');
+    Dm2.ConsUsu_TDerCor.SQL.Add('usu_codder = :codder and');
+    Dm2.ConsUsu_TDerCor.SQL.Add('usu_sittec = ''A'' and');
+    Dm2.ConsUsu_TDerCor.SQL.Add('usu_codtec like'+QuotedStr('%'+EdPesquisa.Text+'%'));
+    Dm2.ConsUsu_TDerCor.SQL.Add('order by usu_codtec');
+    Dm2.ConsUsu_TDerCor.Parameters.ParamByName('codemp').Value := FAltCoresProdPed.vnCodEmp;
+    Dm2.ConsUsu_TDerCor.Parameters.ParamByName('codpro').Value := FAltCoresProdPed.vaCodPro;
+    Dm2.ConsUsu_TDerCor.Parameters.ParamByName('codder').Value := FAltCoresProdPed.vaCodDer;
+    Dm2.ConsUsu_TDerCor.Open;
+end;
+
+end.

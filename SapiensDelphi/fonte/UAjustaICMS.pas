@@ -1,0 +1,275 @@
+unit UAjustaICMS;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ADODB, Grids, DBGrids, StdCtrls, Mask, rxToolEdit, rxCurrEdit,
+  Buttons;
+
+type
+  TFAjustaICMS = class(TForm)
+    ConsE140IPV: TADOQuery;
+    ConsE140IPVCODEMP: TIntegerField;
+    ConsE140IPVCODFIL: TIntegerField;
+    ConsE140IPVCODSNF: TStringField;
+    ConsE140IPVNUMNFV: TIntegerField;
+    ConsE140IPVSEQIPV: TIntegerField;
+    ConsE140IPVTNSPRO: TStringField;
+    ConsE140IPVNOPPRO: TStringField;
+    ConsE140IPVFILPED: TIntegerField;
+    ConsE140IPVNUMPED: TIntegerField;
+    ConsE140IPVSEQIPD: TIntegerField;
+    ConsE140IPVFILCTR: TIntegerField;
+    ConsE140IPVNUMCTR: TIntegerField;
+    ConsE140IPVDATCPT: TDateTimeField;
+    ConsE140IPVSEQCVP: TIntegerField;
+    ConsE140IPVCODPRO: TStringField;
+    ConsE140IPVCODDER: TStringField;
+    ConsE140IPVCPLIPV: TStringField;
+    ConsE140IPVCODFAM: TStringField;
+    ConsE140IPVCODCLF: TStringField;
+    ConsE140IPVCODSTR: TStringField;
+    ConsE140IPVCODTIC: TStringField;
+    ConsE140IPVCODTRD: TStringField;
+    ConsE140IPVCODTST: TStringField;
+    ConsE140IPVCODSTP: TStringField;
+    ConsE140IPVCODSTC: TStringField;
+    ConsE140IPVCODDEP: TStringField;
+    ConsE140IPVCODLOT: TStringField;
+    ConsE140IPVQTDFAT: TFMTBCDField;
+    ConsE140IPVQTDDEV: TFMTBCDField;
+    ConsE140IPVUNIMED: TStringField;
+    ConsE140IPVUNIEMI: TStringField;
+    ConsE140IPVVLRFUM: TBCDField;
+    ConsE140IPVQTDFRE: TFMTBCDField;
+    ConsE140IPVFORFRE: TIntegerField;
+    ConsE140IPVPESBRU: TFMTBCDField;
+    ConsE140IPVPESLIQ: TFMTBCDField;
+    ConsE140IPVCODTPR: TStringField;
+    ConsE140IPVPREUNI: TFMTBCDField;
+    ConsE140IPVPREBAS: TFMTBCDField;
+    ConsE140IPVPERDSC: TBCDField;
+    ConsE140IPVPEROFE: TBCDField;
+    ConsE140IPVPERACR: TBCDField;
+    ConsE140IPVPERIPI: TBCDField;
+    ConsE140IPVPERICM: TBCDField;
+    ConsE140IPVPERFUN: TBCDField;
+    ConsE140IPVPERCOM: TBCDField;
+    ConsE140IPVSALCAN: TStringField;
+    ConsE140IPVNUMPRJ: TIntegerField;
+    ConsE140IPVCODFPJ: TIntegerField;
+    ConsE140IPVCTAFIN: TIntegerField;
+    ConsE140IPVCTARED: TIntegerField;
+    ConsE140IPVCODCCU: TStringField;
+    ConsE140IPVVLRFRE: TBCDField;
+    ConsE140IPVVLRSEG: TBCDField;
+    ConsE140IPVVLREMB: TBCDField;
+    ConsE140IPVVLRENC: TBCDField;
+    ConsE140IPVVLROUT: TBCDField;
+    ConsE140IPVVLRDAR: TBCDField;
+    ConsE140IPVVLRFRD: TBCDField;
+    ConsE140IPVVLROUD: TBCDField;
+    ConsE140IPVVLRBRU: TBCDField;
+    ConsE140IPVVLRDSC: TBCDField;
+    ConsE140IPVVLRDS1: TBCDField;
+    ConsE140IPVVLRDS2: TBCDField;
+    ConsE140IPVVLRDS3: TBCDField;
+    ConsE140IPVVLRDS4: TBCDField;
+    ConsE140IPVVLROFE: TBCDField;
+    ConsE140IPVVLRDZF: TBCDField;
+    ConsE140IPVVLRBFU: TBCDField;
+    ConsE140IPVVLRFUN: TBCDField;
+    ConsE140IPVVLRBIP: TBCDField;
+    ConsE140IPVVLRIPI: TBCDField;
+    ConsE140IPVVLRBID: TBCDField;
+    ConsE140IPVVLRIPD: TBCDField;
+    ConsE140IPVVLRBIC: TBCDField;
+    ConsE140IPVVLRICM: TBCDField;
+    ConsE140IPVVLRDFA: TBCDField;
+    ConsE140IPVVLRBSI: TBCDField;
+    ConsE140IPVVLRICS: TBCDField;
+    ConsE140IPVVLRBSD: TBCDField;
+    ConsE140IPVVLRISD: TBCDField;
+    ConsE140IPVVLRBSP: TBCDField;
+    ConsE140IPVVLRSTP: TBCDField;
+    ConsE140IPVVLRBSC: TBCDField;
+    ConsE140IPVVLRSTC: TBCDField;
+    ConsE140IPVVLRBCO: TBCDField;
+    ConsE140IPVVLRCOM: TBCDField;
+    ConsE140IPVVLRIIP: TBCDField;
+    ConsE140IPVVLRIIC: TBCDField;
+    ConsE140IPVVLROIP: TBCDField;
+    ConsE140IPVVLROIC: TBCDField;
+    ConsE140IPVVLRLPR: TBCDField;
+    ConsE140IPVVLRLOU: TBCDField;
+    ConsE140IPVVLRLIQ: TBCDField;
+    ConsE140IPVVLRFIN: TBCDField;
+    ConsE140IPVSEQNFI: TIntegerField;
+    ConsE140IPVFILNFC: TIntegerField;
+    ConsE140IPVCODFOR: TIntegerField;
+    ConsE140IPVNUMNFC: TIntegerField;
+    ConsE140IPVSNFNFC: TStringField;
+    ConsE140IPVSEQIPC: TIntegerField;
+    ConsE140IPVNUMFCC: TIntegerField;
+    ConsE140IPVUSUGER: TBCDField;
+    ConsE140IPVDATGER: TDateTimeField;
+    ConsE140IPVHORGER: TIntegerField;
+    ConsE140IPVSERCCL: TStringField;
+    ConsE140IPVNUMCCL: TStringField;
+    ConsE140IPVUNIVEN: TStringField;
+    ConsE140IPVQTDVEN: TFMTBCDField;
+    ConsE140IPVPREVEN: TFMTBCDField;
+    ConsE140IPVVLRBPI: TBCDField;
+    ConsE140IPVVLRPIS: TBCDField;
+    ConsE140IPVPREBRU: TFMTBCDField;
+    ConsE140IPVVLRBCR: TBCDField;
+    ConsE140IPVVLRCOR: TBCDField;
+    ConsE140IPVPERIIM: TBCDField;
+    ConsE140IPVVLRBII: TBCDField;
+    ConsE140IPVVLRIIM: TBCDField;
+    ConsE140IPVCODMAR: TStringField;
+    ConsE140IPVPERDS1: TBCDField;
+    ConsE140IPVPERDS2: TBCDField;
+    ConsE140IPVPERDS3: TBCDField;
+    ConsE140IPVPERDS4: TBCDField;
+    ConsE140IPVVLRRIS: TBCDField;
+    ConsE140IPVCODBEM: TStringField;
+    ConsE140IPVPERPIT: TBCDField;
+    ConsE140IPVVLRBPT: TBCDField;
+    ConsE140IPVVLRPIT: TBCDField;
+    ConsE140IPVPERCRT: TBCDField;
+    ConsE140IPVVLRBCT: TBCDField;
+    ConsE140IPVVLRCRT: TBCDField;
+    ConsE140IPVPERCSL: TBCDField;
+    ConsE140IPVVLRBCL: TBCDField;
+    ConsE140IPVVLRCSL: TBCDField;
+    ConsE140IPVPEROUR: TBCDField;
+    ConsE140IPVVLRBOR: TBCDField;
+    ConsE140IPVVLROUR: TBCDField;
+    ConsE140IPVPERIRF: TBCDField;
+    ConsE140IPVVLRBIR: TBCDField;
+    ConsE140IPVVLRIRF: TBCDField;
+    ConsE140IPVDESIMP: TStringField;
+    ConsE140IPVCPTFAT: TDateTimeField;
+    ConsE140IPVVLRFEI: TBCDField;
+    ConsE140IPVVLRSEI: TBCDField;
+    ConsE140IPVVLROUI: TBCDField;
+    ConsE140IPVBCOIMP: TBCDField;
+    ConsE140IPVCOFIMP: TBCDField;
+    ConsE140IPVBPIIMP: TBCDField;
+    ConsE140IPVPISIMP: TBCDField;
+    ConsE140IPVPEDCPE: TIntegerField;
+    ConsE140IPVIPDCPE: TIntegerField;
+    ConsE140IPVOBSIPV: TStringField;
+    ConsE140IPVVLRBPF: TBCDField;
+    ConsE140IPVPERPIF: TBCDField;
+    ConsE140IPVVLRPIF: TBCDField;
+    ConsE140IPVVLRBCF: TBCDField;
+    ConsE140IPVPERCFF: TBCDField;
+    ConsE140IPVVLRCFF: TBCDField;
+    ConsE140IPVVLRBSF: TBCDField;
+    ConsE140IPVVLRSIF: TBCDField;
+    ConsE140IPVCSTIPI: TStringField;
+    ConsE140IPVCSTPIS: TStringField;
+    ConsE140IPVCSTCOF: TStringField;
+    ConsE140IPVPERDS5: TBCDField;
+    ConsE140IPVVLRDS5: TBCDField;
+    ConsE140IPVCODDFS: TIntegerField;
+    ConsE140IPVVLRAJS: TBCDField;
+    ConsE140IPVPREREP: TFMTBCDField;
+    ConsE140IPVVLRCID: TBCDField;
+    ConsE140IPVTOTCID: TBCDField;
+    ConsE140IPVCODMS1: TIntegerField;
+    ConsE140IPVCODMS2: TIntegerField;
+    ConsE140IPVCODMS3: TIntegerField;
+    ConsE140IPVCODMS4: TIntegerField;
+    ConsE140IPVQTDBPI: TBCDField;
+    ConsE140IPVALIPIS: TBCDField;
+    ConsE140IPVQTDBCO: TBCDField;
+    ConsE140IPVALICOF: TBCDField;
+    ConsE140IPVQTDBIP: TBCDField;
+    ConsE140IPVALIIPI: TBCDField;
+    ConsE140IPVQTDBPF: TBCDField;
+    ConsE140IPVALIPIF: TBCDField;
+    ConsE140IPVQTDBCF: TBCDField;
+    ConsE140IPVALICFF: TBCDField;
+    ConsE140IPVVLRSUB: TBCDField;
+    ConsE140IPVNATPIS: TIntegerField;
+    ConsE140IPVNATCOF: TIntegerField;
+    ConsE140IPVORIMER: TStringField;
+    ConsE140IPVCODREP: TIntegerField;
+    ConsE140IPVNUMCUR: TStringField;
+    ConsE140IPVPROMON: TStringField;
+    ConsE140IPVPROENT: TStringField;
+    ConsE140IPVPERMGC: TFMTBCDField;
+    ConsE140IPVVARSER: TStringField;
+    ConsE140IPVRETMAT: TStringField;
+    ConsE140IPVTIPCUR: TIntegerField;
+    ConsE140IPVEMPCTO: TIntegerField;
+    ConsE140IPVCODPCO: TIntegerField;
+    ConsE140IPVFILCTO: TIntegerField;
+    ConsE140IPVCPTPCO: TDateTimeField;
+    ConsE140IPVCODFIN: TIntegerField;
+    ConsE140IPVMOTDES: TIntegerField;
+    ConsE140IPVVLRICD: TBCDField;
+    ConsE140IPVPERSEN: TBCDField;
+    ConsE140IPVVLRBSN: TBCDField;
+    ConsE140IPVVLRSEN: TBCDField;
+    ConsE140IPVCODFCI: TStringField;
+    ConsE140IPVCODBIC: TStringField;
+    ConsE140IPVVLRIBS: TBCDField;
+    ConsE140IPVVLRISN: TBCDField;
+    ConsE140IPVPERISN: TBCDField;
+    ConsE140IPVNROSEV: TStringField;
+    ConsE140IPVNUMDRB: TStringField;
+    ConsE140IPVNUMRDE: TStringField;
+    ConsE140IPVNATEXP: TStringField;
+    ConsE140IPVCHVNEX: TStringField;
+    ConsE140IPVDTIGAR: TDateTimeField;
+    ConsE140IPVDTFGAR: TDateTimeField;
+    ConsE140IPVVLRAIP: TBCDField;
+    ConsE140IPVPERAIP: TBCDField;
+    ConsE140IPVNUMLAN: TIntegerField;
+    ConsE140IPVVLRIDV: TBCDField;
+    ConsE140IPVCODCNV: TIntegerField;
+    ConsE140IPVVLRPMC: TBCDField;
+    ConsE140IPVPERDCN: TBCDField;
+    ConsE140IPVVLRDCN: TBCDField;
+    ConsE140IPVPERDIF: TBCDField;
+    ConsE140IPVBASIDF: TBCDField;
+    ConsE140IPVPERIDF: TBCDField;
+    ConsE140IPVVLRIDF: TBCDField;
+    dbg1: TDBGrid;
+    dsConsE140IPV: TDataSource;
+    Label1: TLabel;
+    edtNumNfv: TCurrencyEdit;
+    btnMostrar: TBitBtn;
+    procedure btnMostrarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FAjustaICMS: TFAjustaICMS;
+
+implementation
+
+uses UDmOra;
+
+{$R *.dfm}
+
+procedure TFAjustaICMS.btnMostrarClick(Sender: TObject);
+begin
+  ConsE140IPV.Close;
+  ConsE140IPV.Parameters.ParamByName('NUMNFV').Value := edtNumNfv.AsInteger;
+  ConsE140IPV.Open;
+  if ConsE140IPV.IsEmpty then
+     begin
+       Application.MessageBox('NF não encontrada','Aviso',MB_ICONWARNING+MB_OK);
+     end;
+end;
+
+end.

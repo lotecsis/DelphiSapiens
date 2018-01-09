@@ -1,0 +1,600 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{B440B568-020B-409E-922C-363FFD964F53}</ProjectGuid>
+			<MainSource>PSapiensDelphi.dpr</MainSource>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_UsePackage>vcl;rtl;vclx;indy;inet;xmlrtl;vclie;inetdbbde;inetdbxpress;dbrtl;dsnap;dsnapcon;vcldb;soaprtl;VclSmp;dbexpress;dbxcds;inetdb;bdertl;vcldbx;webdsnap;websnap;adortl;ibxpress;teeui;teedb;tee;dss;visualclx;visualdbclx;vclactnband;vclshlctrls;IntrawebDB_50_70;Intraweb_50_70;Rave50CLX;Rave50VCL;dclOfficeXP;rxctl7;rxdb7;rxbde7;qrpt</DCC_UsePackage>
+			<DCC_DependencyCheckOutputName>PSapiensDelphi.exe</DCC_DependencyCheckOutputName>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;WinTypes=Windows;WinProcs=Windows;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Platform>x86</DCC_Platform>
+			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+			<DCC_N>true</DCC_N>
+			<DCC_S>false</DCC_S>
+			<DCC_K>false</DCC_K>
+			<DCC_E>false</DCC_E>
+			<DCC_F>false</DCC_F>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DebugInformation>false</DCC_DebugInformation>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="PSapiensDelphi.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="UPrincipal.pas">
+				<Form>FPrincipal</Form>
+			</DCCReference>
+			<DCCReference Include="UNivelAcesso.pas">
+				<Form>FNivelAcesso</Form>
+			</DCCReference>
+			<DCCReference Include="UFormApres.pas">
+				<Form>ApresForm</Form>
+			</DCCReference>
+			<DCCReference Include="UUsuario.pas">
+				<Form>FUsuario</Form>
+			</DCCReference>
+			<DCCReference Include="UConsSimpNivelAcesso.pas">
+				<Form>FConsSimpNivel</Form>
+			</DCCReference>
+			<DCCReference Include="ULogin.pas">
+				<Form>FLogin</Form>
+			</DCCReference>
+			<DCCReference Include="UConsSimpUsuario.pas">
+				<Form>FConsSimpUsuarios</Form>
+			</DCCReference>
+			<DCCReference Include="UDm.pas">
+				<Form>Dm</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UFormulario.pas">
+				<Form>FFormulario</Form>
+			</DCCReference>
+			<DCCReference Include="UFormNivel.pas">
+				<Form>FFormNivel</Form>
+			</DCCReference>
+			<DCCReference Include="UConsFormularios.pas">
+				<Form>FConsFormularios</Form>
+			</DCCReference>
+			<DCCReference Include="UConsUsuAddNivAce.pas">
+				<Form>FConsUsuAddNivAce</Form>
+			</DCCReference>
+			<DCCReference Include="UCorteTecCarga.pas">
+				<Form>FCorteTecCarga</Form>
+			</DCCReference>
+			<DCCReference Include="UDm1.pas">
+				<Form>Dm1</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UBaixaCorteInd.pas">
+				<Form>FBaixaCorteInd</Form>
+			</DCCReference>
+			<DCCReference Include="UMovBaixaCorte.pas">
+				<Form>FMovBaixaCorte</Form>
+			</DCCReference>
+			<DCCReference Include="ULogBaxaCorte.pas">
+				<Form>FLogBaxaCorte</Form>
+			</DCCReference>
+			<DCCReference Include="UAlteraProdCarCorte.pas">
+				<Form>FAlteraProdCarCorte</Form>
+			</DCCReference>
+			<DCCReference Include="USaldoCor1001_1.pas">
+				<Form>FSaldoCor1001_1</Form>
+			</DCCReference>
+			<DCCReference Include="UGeraIni.pas">
+				<Form>FGeraIni</Form>
+			</DCCReference>
+			<DCCReference Include="UPreCarga.pas">
+				<Form>FPreCarga</Form>
+			</DCCReference>
+			<DCCReference Include="UAddItePreCarga.pas">
+				<Form>FAddItePreCarga</Form>
+			</DCCReference>
+			<DCCReference Include="UAtualizaPreCus.pas">
+				<Form>FAtualizaPreCus</Form>
+			</DCCReference>
+			<DCCReference Include="UAuxPreCus.pas">
+				<Form>FAuxPreCus</Form>
+			</DCCReference>
+			<DCCReference Include="UControleConexcoes.pas">
+				<Form>FControleConexca</Form>
+			</DCCReference>
+			<DCCReference Include="UPedido.pas">
+				<Form>FPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UDm2.pas">
+				<Form>Dm2</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UAlteraProdPedido.pas">
+				<Form>FAlteraProdPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UAltCoresProdPed.pas">
+				<Form>FAltCoresProdPed</Form>
+			</DCCReference>
+			<DCCReference Include="UConsCores.pas">
+				<Form>FConsCores</Form>
+			</DCCReference>
+			<DCCReference Include="UAddProdPed.pas">
+				<Form>FAddProdPred</Form>
+			</DCCReference>
+			<DCCReference Include="UConsDerivacoes.pas">
+				<Form>FConsDerivacoes</Form>
+			</DCCReference>
+			<DCCReference Include="UAddCoresProdPed.pas">
+				<Form>FAddCoresProdPed</Form>
+			</DCCReference>
+			<DCCReference Include="UDescontoPedido.pas">
+				<Form>FDescontoPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UAtualizaPrecoCusto.pas">
+				<Form>FAtualizaPrecoCusto</Form>
+			</DCCReference>
+			<DCCReference Include="UNfEntrada.pas">
+				<Form>FNfEntrada</Form>
+			</DCCReference>
+			<DCCReference Include="UConsGeralNfEnt.pas">
+				<Form>FConsGeralNfEnt</Form>
+			</DCCReference>
+			<DCCReference Include="UAddMtNfEnt.pas">
+				<Form>FAddMtNfEnt</Form>
+			</DCCReference>
+			<DCCReference Include="UCancSaldoOc.pas">
+				<Form>FCancSaldoOc</Form>
+			</DCCReference>
+			<DCCReference Include="UComparaSaidaTecido.pas">
+				<Form>FComparaSaidaTecido</Form>
+			</DCCReference>
+			<DCCReference Include="UDiferencaCorteTecido.pas">
+				<Form>FDiferencaCorteTecido</Form>
+			</DCCReference>
+			<DCCReference Include="UConsPedido.pas">
+				<Form>FConsPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UProdutosConsPedidos.pas">
+				<Form>FProdutosConsPedidos</Form>
+			</DCCReference>
+			<DCCReference Include="UTecidosConsPedido.pas">
+				<Form>FTecidosConsPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UAdicionaPedidoEmPedido.pas">
+				<Form>FAdicionaPedidoEmPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UConsMateriaPrima.pas">
+				<Form>FConsMateriaPrima</Form>
+			</DCCReference>
+			<DCCReference Include="UDm3.pas">
+				<Form>Dm3</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UConsultaTecido.pas">
+				<Form>FConsultaTecido</Form>
+			</DCCReference>
+			<DCCReference Include="UControleConexao.pas">
+				<Form>FControleConexao</Form>
+			</DCCReference>
+			<DCCReference Include="UDmOra.pas">
+				<Form>DmOra</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UDmFire.pas">
+				<Form>DmFire</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UCadUsuSysRep.pas">
+				<Form>FCadUsuSysRep</Form>
+			</DCCReference>
+			<DCCReference Include="UAlteraPerTolTabPreco.pas">
+				<Form>FAlteraPerTolTabPreco</Form>
+			</DCCReference>
+			<DCCReference Include="UValidaXmlNfc.pas">
+				<Form>FValidaXmlNfc</Form>
+			</DCCReference>
+			<DCCReference Include="UMensagensAlertaClientes.pas">
+				<Form>FMensagensAlertaClientes</Form>
+			</DCCReference>
+			<DCCReference Include="UVisuMensgAlertaClientes.pas">
+				<Form>FVisuMensgAlertaClientes</Form>
+			</DCCReference>
+			<DCCReference Include="UProcessaPedidosSysRep.pas">
+				<Form>FProcessaPedidosSysRep</Form>
+			</DCCReference>
+			<DCCReference Include="UVisuAlertaClientes.pas">
+				<Form>FVisuAlertaClientes</Form>
+			</DCCReference>
+			<DCCReference Include="UVisuObsPedido.pas">
+				<Form>FVisuObsPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UFiltroPedRecSysRep.pas">
+				<Form>FFiltroPedRecSysRep</Form>
+			</DCCReference>
+			<DCCReference Include="UAtuzlia_E075Pro_ServerRep.pas">
+				<Form>FAtuzlia_E075Pro_ServerRep</Form>
+			</DCCReference>
+			<DCCReference Include="UPedidoSysRep.pas">
+				<Form>FPedidoSysRep</Form>
+			</DCCReference>
+			<DCCReference Include="UAltDadosGeraisPedSysRep.pas">
+				<Form>FAltDadosGeraisPedSysRep</Form>
+			</DCCReference>
+			<DCCReference Include="UAddProPedSysRep.pas">
+				<Form>FAddProPedSysRep</Form>
+			</DCCReference>
+			<DCCReference Include="UAddCorProdPedSysRep.pas">
+				<Form>FAddCorProdPedSysRep</Form>
+			</DCCReference>
+			<DCCReference Include="ULigProdutos_Cores.pas">
+				<Form>FLigProdutos_Cores</Form>
+			</DCCReference>
+			<DCCReference Include="UDmRave.pas">
+				<Form>DmRave</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UAcompanhamentoCotasRep.pas">
+				<Form>FAcompanhamentoCotasRep</Form>
+			</DCCReference>
+			<DCCReference Include="UComparaComprasClientes.pas">
+				<Form>FComparaComprasClientes</Form>
+			</DCCReference>
+			<DCCReference Include="UProdutosComparaComprasClientes.pas">
+				<Form>FProdutosComparaComprasClientes</Form>
+			</DCCReference>
+			<DCCReference Include="URelatorioViagem.pas">
+				<Form>FRelatorioViagem</Form>
+			</DCCReference>
+			<DCCReference Include="UAssistencia.pas">
+				<Form>FAssistencia</Form>
+			</DCCReference>
+			<DCCReference Include="UObsPedAst.pas">
+				<Form>FObsPedAst</Form>
+			</DCCReference>
+			<DCCReference Include="UPendenciaCarga.pas">
+				<Form>FPendenciaCarga</Form>
+			</DCCReference>
+			<DCCReference Include="UPendenciasPreCarga.pas">
+				<Form>FPendenciasPreCarga</Form>
+			</DCCReference>
+			<DCCReference Include="UConsFaturamento.pas">
+				<Form>FConsFaturamento</Form>
+			</DCCReference>
+			<DCCReference Include="UMovimentaEstoqueCarga.pas">
+				<Form>FMovimentaEstoqueCarga</Form>
+			</DCCReference>
+			<DCCReference Include="UVisuObsPedAst.pas">
+				<Form>FVisuObsPedAst</Form>
+			</DCCReference>
+			<DCCReference Include="UConsClientes.pas">
+				<Form>FConsClientes</Form>
+			</DCCReference>
+			<DCCReference Include="UCidades.pas">
+				<Form>FCidades</Form>
+			</DCCReference>
+			<DCCReference Include="UDmRubi.pas">
+				<Form>DmRubi</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
+			<DCCReference Include="UConsObsPedidos.pas">
+				<Form>FConsObsPedidos</Form>
+			</DCCReference>
+			<DCCReference Include="UAcertoViagem.pas">
+				<Form>FAcertoViagem</Form>
+			</DCCReference>
+			<DCCReference Include="UGerenciaFuncionario.pas">
+				<Form>FGerenciaFuncionario</Form>
+			</DCCReference>
+			<DCCReference Include="ULancaServConvenio.pas">
+				<Form>FLancaServConvenio</Form>
+			</DCCReference>
+			<DCCReference Include="UConsFuncionarios.pas">
+				<Form>FConsFuncionarios</Form>
+			</DCCReference>
+			<DCCReference Include="UFechamentoConvenio.pas">
+				<Form>FFechamentoConvenio</Form>
+			</DCCReference>
+			<DCCReference Include="URelatoriosConvenio.pas">
+				<Form>FRelatoriosConvenio</Form>
+			</DCCReference>
+			<DCCReference Include="ULancaAdiantamentosFuncionarios.pas">
+				<Form>FLancaAdiantamentosFuncionarios</Form>
+			</DCCReference>
+			<DCCReference Include="UReceberAdiantamentosFuncionario.pas">
+				<Form>FReceberAdiantamentosFuncionario</Form>
+			</DCCReference>
+			<DCCReference Include="UImprimiReciboAdtFunc.pas">
+				<Form>FImprimiReciboAdtFunc</Form>
+			</DCCReference>
+			<DCCReference Include="UConsMensgAlertaClientes.pas">
+				<Form>FConsMensgAlertaClientes</Form>
+			</DCCReference>
+			<DCCReference Include="UClientesPedidos10D.pas">
+				<Form>FClientesPedidos10D</Form>
+			</DCCReference>
+			<DCCReference Include="UConsPedidos10D.pas">
+				<Form>FConsPedidos10D</Form>
+			</DCCReference>
+			<DCCReference Include="UConsCoresPorProdutos.pas">
+				<Form>FConsCoresPorProdutos</Form>
+			</DCCReference>
+			<DCCReference Include="UEtiquetasPesBox.pas">
+				<Form>FEtiquetasPesBox</Form>
+			</DCCReference>
+			<DCCReference Include="UTransfereTecPedido.pas">
+				<Form>FTransfereTecPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UCorteTecEstof.pas">
+				<Form>FCorteTecEstof</Form>
+			</DCCReference>
+			<DCCReference Include="UBaixaCorteTecEstof.pas">
+				<Form>FBaixaCorteTecEstof</Form>
+			</DCCReference>
+			<DCCReference Include="UCoresPedido.pas">
+				<Form>FCoresPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UAltProdCargaCorteEstof.pas">
+				<Form>FAltProdCargaCorteEstof</Form>
+			</DCCReference>
+			<DCCReference Include="UAtualizaSaldoTecidos.pas">
+				<Form>FAtualizaSaldoTecidos</Form>
+			</DCCReference>
+			<DCCReference Include="UConsTecido.pas">
+				<Form>FConsTecido</Form>
+			</DCCReference>
+			<DCCReference Include="UAtualizaSaldoReservaTecidos.pas">
+				<Form>FAtualizaSaldoReservaTecidos</Form>
+			</DCCReference>
+			<DCCReference Include="UGraficosVendas.pas">
+				<Form>FGraficosVendas</Form>
+			</DCCReference>
+			<DCCReference Include="UAtualizaTecidosEstofados.pas">
+				<Form>FAtualizaTecidosEstofados</Form>
+			</DCCReference>
+			<DCCReference Include="FVoltarPedidoParaOriginal.pas">
+				<Form>VoltarPedidoParaOriginal</Form>
+			</DCCReference>
+			<DCCReference Include="UValidarPedidos.pas">
+				<Form>FValidarPedidos</Form>
+			</DCCReference>
+			<DCCReference Include="FImprimirEtiquetaColchao.pas">
+				<Form>ImprimirEtiquetaColchao</Form>
+			</DCCReference>
+			<DCCReference Include="UImprimirEtiqMM.pas">
+				<Form>FImprimirEtiqMM</Form>
+			</DCCReference>
+			<DCCReference Include="UTempoMedioPedidos.pas">
+				<Form>FTempoMedioPedidos</Form>
+			</DCCReference>
+			<DCCReference Include="UConsMateriaPrimaMediaCons.pas">
+				<Form>FConsMateriaPrimaMediaCons</Form>
+			</DCCReference>
+			<DCCReference Include="UContatosFornecedor.pas">
+				<Form>FContatosFornecedor</Form>
+			</DCCReference>
+			<DCCReference Include="UObsOC.pas">
+				<Form>FObsOC</Form>
+			</DCCReference>
+			<DCCReference Include="UHistoricoConsumoMP.pas">
+				<Form>FHistoricoConsumoMP</Form>
+			</DCCReference>
+			<DCCReference Include="UValorMaxCotacao.pas">
+				<Form>FValorMaxCotacao</Form>
+			</DCCReference>
+			<DCCReference Include="UAtualizaEstMin.pas">
+				<Form>FAtualizaEstMin</Form>
+			</DCCReference>
+			<DCCReference Include="UAjustaVlrEstoque.pas">
+				<Form>FAjustaVlrEstoque</Form>
+			</DCCReference>
+			<DCCReference Include="UComposicaoMpProdutos.pas">
+				<Form>FComposicaoMpProdutos</Form>
+			</DCCReference>
+			<DCCReference Include="UDuplicaComposicaoMpProdutos.pas">
+				<Form>FDuplicaComposicaoMpProdutos</Form>
+			</DCCReference>
+			<DCCReference Include="UConsComposicaoMpProdutos.pas">
+				<Form>FConsComposicaoMpProdutos</Form>
+			</DCCReference>
+			<DCCReference Include="UDividirPedidos.pas">
+				<Form>FDividirPedidos</Form>
+			</DCCReference>
+			<DCCReference Include="UAdvertenciaDividirPedido.pas">
+				<Form>FAdvertenciaDividirPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UControleConexaoTelas.pas">
+				<Form>FControleConexaoTelas</Form>
+			</DCCReference>
+			<DCCReference Include="UCalculoAjusteComissoesAgru.pas">
+				<Form>FCalculoAjusteComissoesAgru</Form>
+			</DCCReference>
+			<DCCReference Include="UAjustaComissoes.pas">
+				<Form>FAjustaComissoes</Form>
+			</DCCReference>
+			<DCCReference Include="UProdutosNf.pas">
+				<Form>FProdutosNf</Form>
+			</DCCReference>
+			<DCCReference Include="UAplicarAjusteComissao.pas">
+				<Form>FAplicarAjusteComissao</Form>
+			</DCCReference>
+			<DCCReference Include="UCadRoteiroManifestoUF.pas">
+				<Form>FCadRoteiroManifestoUF</Form>
+			</DCCReference>
+			<DCCReference Include="UConsCEP.pas">
+				<Form>FConsCEP</Form>
+			</DCCReference>
+			<DCCReference Include="UConsRota.pas">
+				<Form>FConsRota</Form>
+			</DCCReference>
+			<DCCReference Include="UFormarManifesto.pas">
+				<Form>FFormarManifesto</Form>
+			</DCCReference>
+			<DCCReference Include="UEtiquetaPeApoio.pas">
+				<Form>FEtiquetaPeApoio</Form>
+			</DCCReference>
+			<DCCReference Include="UImportaExcelCidades.pas">
+				<Form>FImportaExcelCidades</Form>
+			</DCCReference>
+			<DCCReference Include="UPainelControleRep.pas">
+				<Form>FPainelControleRep</Form>
+			</DCCReference>
+			<DCCReference Include="UGerenciamentoCidades.pas">
+				<Form>FGerenciamentoCidades</Form>
+			</DCCReference>
+			<DCCReference Include="UAddCliMonitoramento.pas">
+				<Form>FAddCliMonitoramento</Form>
+			</DCCReference>
+			<DCCReference Include="UMoniCliente.pas">
+				<Form>FMoniCliente</Form>
+			</DCCReference>
+			<DCCReference Include="UMotivoFimMon.pas">
+				<Form>FMotivoFimMon</Form>
+			</DCCReference>
+			<DCCReference Include="UAvaliaSerasa.pas">
+				<Form>FAvaliaSerasa</Form>
+			</DCCReference>
+			<DCCReference Include="UAlteraSitSerasa.pas">
+				<Form>FAlteraSitSerasa</Form>
+			</DCCReference>
+			<DCCReference Include="UIntegracaoSerasa.pas">
+				<Form>FIntegracaoSerasa</Form>
+			</DCCReference>
+			<DCCReference Include="UApelidosProdSapiens.pas">
+				<Form>FApelidosProdSapiens</Form>
+			</DCCReference>
+			<DCCReference Include="UAjustaICMS.pas">
+				<Form>FAjustaICMS</Form>
+			</DCCReference>
+			<DCCReference Include="USaldoAdtFun.pas">
+				<Form>FSaldoAdtFun</Form>
+			</DCCReference>
+			<DCCReference Include="UDescontosPorRep.pas">
+				<Form>FDescontosPorRep</Form>
+			</DCCReference>
+			<DCCReference Include="UValidaDescPed.pas">
+				<Form>FValidaDescPed</Form>
+			</DCCReference>
+			<DCCReference Include="UHistoricoValidaDescPed.pas">
+				<Form>FHistoricoValidaDescPed</Form>
+			</DCCReference>
+			<DCCReference Include="UTotalizadorDescontos.pas">
+				<Form>FTotalizadorDescontos</Form>
+			</DCCReference>
+			<DCCReference Include="UInfoDescontosPorRep.pas">
+				<Form>FInfoDescontosPorRep</Form>
+			</DCCReference>
+			<DCCReference Include="UListaOnlineSERASA.pas">
+				<Form>FListaOnlineSERASA</Form>
+			</DCCReference>
+			<DCCReference Include="UObsPro.pas">
+				<Form>FObsPro</Form>
+			</DCCReference>
+			<DCCReference Include="UAnalizaConsumoMpPorFilial.pas">
+				<Form>FAnalizaConsumoMpPorFilial</Form>
+			</DCCReference>
+			<DCCReference Include="UCadFormaCompraMP.pas">
+				<Form>FCadFormaCompraMP</Form>
+			</DCCReference>
+			<DCCReference Include="UImpressoraPadrao.pas">
+				<Form>FImpressoraPadrao</Form>
+			</DCCReference>
+			<DCCReference Include="UAjustaConsumoMateriaPrima.pas">
+				<Form>FAjustaConsumoMateriaPrima</Form>
+			</DCCReference>
+			<DCCReference Include="UPreCargas.pas">
+				<Form>FPreCargas</Form>
+			</DCCReference>
+			<DCCReference Include="UAnalizeConsumoMPProduzir.pas">
+				<Form>FAnaliseConsumoMPProduzir</Form>
+			</DCCReference>
+			<DCCReference Include="UZeraEst3000.pas">
+				<Form>FZeraEst3000</Form>
+			</DCCReference>
+			<DCCReference Include="UGraficoConsumoMP.pas">
+				<Form>FGraficoConsumoMP</Form>
+			</DCCReference>
+			<DCCReference Include="UEtiquetaCabeceira.pas">
+				<Form>FEtiquetaCabeceira</Form>
+			</DCCReference>
+			<DCCReference Include="UfrmValidaXmlEntrada.pas">
+				<Form>frmValidaXmlEntrada</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType>VCLApplication</Borland.ProjectType>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Source>
+						<Source Name="MainSource">PSapiensDelphi.dpr</Source>
+					</Source>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">2</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1046</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">2.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+				</Delphi.Personality>
+				<ModelSupport>False</ModelSupport>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

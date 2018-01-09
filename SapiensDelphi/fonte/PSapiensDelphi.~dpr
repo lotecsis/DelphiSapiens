@@ -1,0 +1,78 @@
+program PSapiensDelphi;
+
+
+
+uses
+  Forms,
+  UPrincipal in 'UPrincipal.pas' {FPrincipal},
+  UNivelAcesso in 'UNivelAcesso.pas' {FNivelAcesso},
+  UFormApres in 'UFormApres.pas' {ApresForm},
+  UUsuario in 'UUsuario.pas' {FUsuario},
+  UConsSimpNivelAcesso in 'UConsSimpNivelAcesso.pas' {FConsSimpNivel},
+  ULogin in 'ULogin.pas' {FLogin},
+  UConsSimpUsuario in 'UConsSimpUsuario.pas' {FConsSimpUsuarios},
+  UDm in 'UDm.pas' {Dm: TDataModule},
+  UFormulario in 'UFormulario.pas' {FFormulario},
+  UFormNivel in 'UFormNivel.pas' {FFormNivel},
+  UConsFormularios in 'UConsFormularios.pas' {FConsFormularios},
+  UConsUsuAddNivAce in 'UConsUsuAddNivAce.pas' {FConsUsuAddNivAce},
+  UCorteTecCarga in 'UCorteTecCarga.pas' {FCorteTecCarga},
+  UDm1 in 'UDm1.pas' {Dm1: TDataModule},
+  UBaixaCorteInd in 'UBaixaCorteInd.pas' {FBaixaCorteInd},
+  UMovBaixaCorte in 'UMovBaixaCorte.pas' {FMovBaixaCorte},
+  ULogBaxaCorte in 'ULogBaxaCorte.pas' {FLogBaxaCorte},
+  UAlteraProdCarCorte in 'UAlteraProdCarCorte.pas' {FAlteraProdCarCorte},
+  USaldoCor1001_1 in 'USaldoCor1001_1.pas' {FSaldoCor1001_1},
+  UQrSaldoTecido1001_1 in 'UQrSaldoTecido1001_1.pas' {QrSaldoTecido1001_1: TQuickRep},
+  UGeraIni in 'UGeraIni.pas' {FGeraIni},
+  UPreCarga in 'UPreCarga.pas' {FPreCarga},
+  UAddItePreCarga in 'UAddItePreCarga.pas' {FAddItePreCarga},
+  UAtualizaPreCus in 'UAtualizaPreCus.pas' {FAtualizaPreCus},
+  UAuxPreCus in 'UAuxPreCus.pas' {FAuxPreCus},
+  UQrAtualizaPreCus in 'UQrAtualizaPreCus.pas' {QrAtualizaPreCus: TQuickRep},
+  UControleConexcoes in 'UControleConexcoes.pas' {FControleConexca},
+  UPedido in 'UPedido.pas' {FPedido},
+  UDm2 in 'UDm2.pas' {Dm2: TDataModule},
+  UAlteraProdPedido in 'UAlteraProdPedido.pas' {FAlteraProdPedido},
+  UAltCoresProdPed in 'UAltCoresProdPed.pas' {FAltCoresProdPed},
+  UConsCores in 'UConsCores.pas' {FConsCores},
+  UAddProdPed in 'UAddProdPed.pas' {FAddProdPred},
+  UConsDerivacoes in 'UConsDerivacoes.pas' {FConsDerivacoes},
+  UAddCoresProdPed in 'UAddCoresProdPed.pas' {FAddCoresProdPed};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.Title := 'Sapiens Lider';
+  Application.CreateForm(TFPrincipal, FPrincipal);
+  Application.CreateForm(TDm, Dm);
+  Application.CreateForm(TFFormulario, FFormulario);
+  Application.CreateForm(TFFormNivel, FFormNivel);
+  Application.CreateForm(TFConsFormularios, FConsFormularios);
+  Application.CreateForm(TFConsUsuAddNivAce, FConsUsuAddNivAce);
+  Application.CreateForm(TFCorteTecCarga, FCorteTecCarga);
+  Application.CreateForm(TDm1, Dm1);
+  Application.CreateForm(TFBaixaCorteInd, FBaixaCorteInd);
+  Application.CreateForm(TFMovBaixaCorte, FMovBaixaCorte);
+  Application.CreateForm(TFLogBaxaCorte, FLogBaxaCorte);
+  Application.CreateForm(TFAlteraProdCarCorte, FAlteraProdCarCorte);
+  Application.CreateForm(TFSaldoCor1001_1, FSaldoCor1001_1);
+  Application.CreateForm(TQrSaldoTecido1001_1, QrSaldoTecido1001_1);
+  Application.CreateForm(TFGeraIni, FGeraIni);
+  Application.CreateForm(TFPreCarga, FPreCarga);
+  Application.CreateForm(TFAddItePreCarga, FAddItePreCarga);
+  Application.CreateForm(TFAtualizaPreCus, FAtualizaPreCus);
+  Application.CreateForm(TFAuxPreCus, FAuxPreCus);
+  Application.CreateForm(TQrAtualizaPreCus, QrAtualizaPreCus);
+  Application.CreateForm(TFControleConexca, FControleConexca);
+  Application.CreateForm(TFPedido, FPedido);
+  Application.CreateForm(TDm2, Dm2);
+  Application.CreateForm(TFAlteraProdPedido, FAlteraProdPedido);
+  Application.CreateForm(TFAltCoresProdPed, FAltCoresProdPed);
+  Application.CreateForm(TFConsCores, FConsCores);
+  Application.CreateForm(TFAddProdPred, FAddProdPred);
+  Application.CreateForm(TFConsDerivacoes, FConsDerivacoes);
+  Application.CreateForm(TFAddCoresProdPed, FAddCoresProdPed);
+  Application.Run;
+end.

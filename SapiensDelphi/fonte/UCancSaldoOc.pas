@@ -1,0 +1,693 @@
+unit UCancSaldoOc;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, DB, ADODB, Provider, DBClient, StdCtrls, Buttons;
+
+type
+  TFCancSaldoOc = class(TForm)
+    DBGrid1: TDBGrid;
+    ConsUsu_TCanSal: TADOQuery;
+    ConsUsu_TCanSalUSU_CODEMP: TIntegerField;
+    ConsUsu_TCanSalUSU_CODFIL: TIntegerField;
+    ConsUsu_TCanSalUSU_NUMOCP: TIntegerField;
+    ConsUsu_TCanSalUSU_SEQIPO: TIntegerField;
+    ConsUsu_TCanSalUSU_DATCAN: TDateTimeField;
+    ConsUsu_TCanSalUSU_SALCAN: TStringField;
+    ConsUsu_TCanSalUSU_USUCAN: TBCDField;
+    ClientUsu_TCanSal: TClientDataSet;
+    ProviderUsu_TCanSal: TDataSetProvider;
+    ClientUsu_TCanSalUSU_CODEMP: TIntegerField;
+    ClientUsu_TCanSalUSU_CODFIL: TIntegerField;
+    ClientUsu_TCanSalUSU_NUMOCP: TIntegerField;
+    ClientUsu_TCanSalUSU_SEQIPO: TIntegerField;
+    ClientUsu_TCanSalUSU_DATCAN: TDateTimeField;
+    ClientUsu_TCanSalUSU_SALCAN: TStringField;
+    ClientUsu_TCanSalUSU_USUCAN: TBCDField;
+    DsClientUsu_TCanSal: TDataSource;
+    ConsUsu_TCanSal2: TADOQuery;
+    ConsUsu_TCanSal2USU_CODEMP: TIntegerField;
+    ConsUsu_TCanSal2USU_CODFIL: TIntegerField;
+    ConsUsu_TCanSal2USU_NUMOCP: TIntegerField;
+    ConsUsu_TCanSal2USU_SEQIPO: TIntegerField;
+    ConsUsu_TCanSal2USU_DATCAN: TDateTimeField;
+    ConsUsu_TCanSal2USU_SALCAN: TStringField;
+    ConsUsu_TCanSal2USU_USUCAN: TBCDField;
+    ConsE420Ipo: TADOQuery;
+    ConsE420IpoCODEMP: TIntegerField;
+    ConsE420IpoCODFIL: TIntegerField;
+    ConsE420IpoNUMOCP: TIntegerField;
+    ConsE420IpoSEQIPO: TIntegerField;
+    ConsE420IpoTNSPRO: TStringField;
+    ConsE420IpoCODPRO: TStringField;
+    ConsE420IpoCODDER: TStringField;
+    ConsE420IpoCPLIPO: TStringField;
+    ConsE420IpoPROFOR: TStringField;
+    ConsE420IpoDESFOR: TStringField;
+    ConsE420IpoUNIFOR: TStringField;
+    ConsE420IpoCODFAM: TStringField;
+    ConsE420IpoCODTIC: TStringField;
+    ConsE420IpoCODTRD: TStringField;
+    ConsE420IpoCODTST: TStringField;
+    ConsE420IpoCODSTP: TStringField;
+    ConsE420IpoCODSTC: TStringField;
+    ConsE420IpoCODDEP: TStringField;
+    ConsE420IpoCODLOT: TStringField;
+    ConsE420IpoQTDPED: TFMTBCDField;
+    ConsE420IpoQTDREC: TFMTBCDField;
+    ConsE420IpoQTDCAN: TFMTBCDField;
+    ConsE420IpoQTDABE: TFMTBCDField;
+    ConsE420IpoUNIMED: TStringField;
+    ConsE420IpoCODTPR: TStringField;
+    ConsE420IpoPREUNI: TFMTBCDField;
+    ConsE420IpoPREFIX: TStringField;
+    ConsE420IpoPERDSC: TBCDField;
+    ConsE420IpoPERDS3: TBCDField;
+    ConsE420IpoPERDS4: TBCDField;
+    ConsE420IpoPERDS5: TBCDField;
+    ConsE420IpoPERIPI: TBCDField;
+    ConsE420IpoPERICM: TBCDField;
+    ConsE420IpoPERFUN: TBCDField;
+    ConsE420IpoDATENT: TDateTimeField;
+    ConsE420IpoCODPVP: TStringField;
+    ConsE420IpoNUMPRJ: TIntegerField;
+    ConsE420IpoCODFPJ: TIntegerField;
+    ConsE420IpoCTAFIN: TIntegerField;
+    ConsE420IpoCTARED: TIntegerField;
+    ConsE420IpoCODCCU: TStringField;
+    ConsE420IpoVLRFRE: TBCDField;
+    ConsE420IpoVLRSEG: TBCDField;
+    ConsE420IpoVLREMB: TBCDField;
+    ConsE420IpoVLRENC: TBCDField;
+    ConsE420IpoVLROUT: TBCDField;
+    ConsE420IpoVLRDAR: TBCDField;
+    ConsE420IpoVLRFRD: TBCDField;
+    ConsE420IpoVLROUD: TBCDField;
+    ConsE420IpoVLRBRU: TBCDField;
+    ConsE420IpoVLRDSC: TBCDField;
+    ConsE420IpoVLRDS1: TBCDField;
+    ConsE420IpoVLRDS2: TBCDField;
+    ConsE420IpoVLRDS3: TBCDField;
+    ConsE420IpoVLRDS4: TBCDField;
+    ConsE420IpoVLRDS5: TBCDField;
+    ConsE420IpoVLRDZF: TBCDField;
+    ConsE420IpoVLRBFU: TBCDField;
+    ConsE420IpoVLRFUN: TBCDField;
+    ConsE420IpoVLRBIP: TBCDField;
+    ConsE420IpoVLRIPI: TBCDField;
+    ConsE420IpoVLRBIC: TBCDField;
+    ConsE420IpoVLRICM: TBCDField;
+    ConsE420IpoVLRBSI: TBCDField;
+    ConsE420IpoVLRICS: TBCDField;
+    ConsE420IpoVLRBSP: TBCDField;
+    ConsE420IpoVLRSTP: TBCDField;
+    ConsE420IpoVLRBSC: TBCDField;
+    ConsE420IpoVLRSTC: TBCDField;
+    ConsE420IpoVLRLPR: TBCDField;
+    ConsE420IpoVLRLOU: TBCDField;
+    ConsE420IpoVLRLIQ: TBCDField;
+    ConsE420IpoVLRFIN: TBCDField;
+    ConsE420IpoACRFIN: TBCDField;
+    ConsE420IpoSITIPO: TIntegerField;
+    ConsE420IpoCODMOT: TIntegerField;
+    ConsE420IpoOBSMOT: TStringField;
+    ConsE420IpoSEQIPD: TIntegerField;
+    ConsE420IpoFILCTR: TIntegerField;
+    ConsE420IpoNUMCTR: TIntegerField;
+    ConsE420IpoDATCPT: TDateTimeField;
+    ConsE420IpoSEQCCP: TIntegerField;
+    ConsE420IpoINDEQI: TStringField;
+    ConsE420IpoUSUGER: TBCDField;
+    ConsE420IpoDATGER: TDateTimeField;
+    ConsE420IpoHORGER: TIntegerField;
+    ConsE420IpoFILPED: TIntegerField;
+    ConsE420IpoNUMPED: TIntegerField;
+    ConsE420IpoDATVLT: TDateTimeField;
+    ConsE420IpoQTDFOR: TFMTBCDField;
+    ConsE420IpoPREFOR: TFMTBCDField;
+    ConsE420IpoCODMOE: TStringField;
+    ConsE420IpoDATMOE: TDateTimeField;
+    ConsE420IpoCOTMOE: TFMTBCDField;
+    ConsE420IpoFECMOE: TStringField;
+    ConsE420IpoPERIIM: TBCDField;
+    ConsE420IpoVLRBII: TBCDField;
+    ConsE420IpoVLRIIM: TBCDField;
+    ConsE420IpoVLRRIS: TBCDField;
+    ConsE420IpoSEQIOR: TIntegerField;
+    ConsE420IpoVLRBPI: TBCDField;
+    ConsE420IpoVLRPIS: TBCDField;
+    ConsE420IpoVLRBCR: TBCDField;
+    ConsE420IpoVLRCOR: TBCDField;
+    ConsE420IpoCODFXA: TStringField;
+    ConsE420IpoIDXGRD: TIntegerField;
+    ConsE420IpoPERPIT: TBCDField;
+    ConsE420IpoVLRBPT: TBCDField;
+    ConsE420IpoVLRPIT: TBCDField;
+    ConsE420IpoPERCRT: TBCDField;
+    ConsE420IpoVLRBCT: TBCDField;
+    ConsE420IpoVLRCRT: TBCDField;
+    ConsE420IpoPERCSL: TBCDField;
+    ConsE420IpoVLRBCL: TBCDField;
+    ConsE420IpoVLRCSL: TBCDField;
+    ConsE420IpoPEROUR: TBCDField;
+    ConsE420IpoVLRBOR: TBCDField;
+    ConsE420IpoVLROUR: TBCDField;
+    ConsE420IpoPERIRF: TBCDField;
+    ConsE420IpoVLRBIR: TBCDField;
+    ConsE420IpoVLRIRF: TBCDField;
+    ConsE420IpoFILCES: TIntegerField;
+    ConsE420IpoDATCES: TDateTimeField;
+    ConsE420IpoSEQCES: TIntegerField;
+    ConsE420IpoPERDS1: TBCDField;
+    ConsE420IpoPERDS2: TBCDField;
+    ConsE420IpoVLRORI: TBCDField;
+    ConsE420IpoQTDORI: TFMTBCDField;
+    ConsE420IpoVLRFEI: TBCDField;
+    ConsE420IpoVLRSEI: TBCDField;
+    ConsE420IpoVLROUI: TBCDField;
+    ConsE420IpoBCOIMP: TBCDField;
+    ConsE420IpoCOFIMP: TBCDField;
+    ConsE420IpoBPIIMP: TBCDField;
+    ConsE420IpoPISIMP: TBCDField;
+    ConsE420IpoSEQCPK: TIntegerField;
+    ConsE420IpoVLRDM1: TFMTBCDField;
+    ConsE420IpoVLRDM2: TFMTBCDField;
+    ConsE420IpoVLRDM3: TFMTBCDField;
+    ConsE420IpoVLRDM4: TFMTBCDField;
+    ConsE420IpoVLRDM5: TFMTBCDField;
+    ConsE420IpoVLRDM6: TFMTBCDField;
+    ConsE420IpoBEMPRI: TStringField;
+    ConsE420IpoEMPPED: TIntegerField;
+    ConsE420IpoEMPNFV: TIntegerField;
+    ConsE420IpoFILNFV: TIntegerField;
+    ConsE420IpoSNFNFV: TStringField;
+    ConsE420IpoNUMNFV: TIntegerField;
+    ConsE420IpoSEQIPV: TIntegerField;
+    ConsE420IpoCODTRG: TStringField;
+    ConsE420IpoPERBON: TBCDField;
+    ConsE420IpoUSU_VLRMAX: TBCDField;
+    ConsE420IpoUSU_VLRMED: TBCDField;
+    BCancelaSaldo: TBitBtn;
+    CadE420Ipo: TADOQuery;
+    CadE420IpoCODEMP: TIntegerField;
+    CadE420IpoCODFIL: TIntegerField;
+    CadE420IpoNUMOCP: TIntegerField;
+    CadE420IpoSEQIPO: TIntegerField;
+    CadE420IpoTNSPRO: TStringField;
+    CadE420IpoCODPRO: TStringField;
+    CadE420IpoCODDER: TStringField;
+    CadE420IpoCPLIPO: TStringField;
+    CadE420IpoPROFOR: TStringField;
+    CadE420IpoDESFOR: TStringField;
+    CadE420IpoUNIFOR: TStringField;
+    CadE420IpoCODFAM: TStringField;
+    CadE420IpoCODTIC: TStringField;
+    CadE420IpoCODTRD: TStringField;
+    CadE420IpoCODTST: TStringField;
+    CadE420IpoCODSTP: TStringField;
+    CadE420IpoCODSTC: TStringField;
+    CadE420IpoCODDEP: TStringField;
+    CadE420IpoCODLOT: TStringField;
+    CadE420IpoQTDPED: TFMTBCDField;
+    CadE420IpoQTDREC: TFMTBCDField;
+    CadE420IpoQTDCAN: TFMTBCDField;
+    CadE420IpoQTDABE: TFMTBCDField;
+    CadE420IpoUNIMED: TStringField;
+    CadE420IpoCODTPR: TStringField;
+    CadE420IpoPREUNI: TFMTBCDField;
+    CadE420IpoPREFIX: TStringField;
+    CadE420IpoPERDSC: TBCDField;
+    CadE420IpoPERDS3: TBCDField;
+    CadE420IpoPERDS4: TBCDField;
+    CadE420IpoPERDS5: TBCDField;
+    CadE420IpoPERIPI: TBCDField;
+    CadE420IpoPERICM: TBCDField;
+    CadE420IpoPERFUN: TBCDField;
+    CadE420IpoDATENT: TDateTimeField;
+    CadE420IpoCODPVP: TStringField;
+    CadE420IpoNUMPRJ: TIntegerField;
+    CadE420IpoCODFPJ: TIntegerField;
+    CadE420IpoCTAFIN: TIntegerField;
+    CadE420IpoCTARED: TIntegerField;
+    CadE420IpoCODCCU: TStringField;
+    CadE420IpoVLRFRE: TBCDField;
+    CadE420IpoVLRSEG: TBCDField;
+    CadE420IpoVLREMB: TBCDField;
+    CadE420IpoVLRENC: TBCDField;
+    CadE420IpoVLROUT: TBCDField;
+    CadE420IpoVLRDAR: TBCDField;
+    CadE420IpoVLRFRD: TBCDField;
+    CadE420IpoVLROUD: TBCDField;
+    CadE420IpoVLRBRU: TBCDField;
+    CadE420IpoVLRDSC: TBCDField;
+    CadE420IpoVLRDS1: TBCDField;
+    CadE420IpoVLRDS2: TBCDField;
+    CadE420IpoVLRDS3: TBCDField;
+    CadE420IpoVLRDS4: TBCDField;
+    CadE420IpoVLRDS5: TBCDField;
+    CadE420IpoVLRDZF: TBCDField;
+    CadE420IpoVLRBFU: TBCDField;
+    CadE420IpoVLRFUN: TBCDField;
+    CadE420IpoVLRBIP: TBCDField;
+    CadE420IpoVLRIPI: TBCDField;
+    CadE420IpoVLRBIC: TBCDField;
+    CadE420IpoVLRICM: TBCDField;
+    CadE420IpoVLRBSI: TBCDField;
+    CadE420IpoVLRICS: TBCDField;
+    CadE420IpoVLRBSP: TBCDField;
+    CadE420IpoVLRSTP: TBCDField;
+    CadE420IpoVLRBSC: TBCDField;
+    CadE420IpoVLRSTC: TBCDField;
+    CadE420IpoVLRLPR: TBCDField;
+    CadE420IpoVLRLOU: TBCDField;
+    CadE420IpoVLRLIQ: TBCDField;
+    CadE420IpoVLRFIN: TBCDField;
+    CadE420IpoACRFIN: TBCDField;
+    CadE420IpoSITIPO: TIntegerField;
+    CadE420IpoCODMOT: TIntegerField;
+    CadE420IpoOBSMOT: TStringField;
+    CadE420IpoSEQIPD: TIntegerField;
+    CadE420IpoFILCTR: TIntegerField;
+    CadE420IpoNUMCTR: TIntegerField;
+    CadE420IpoDATCPT: TDateTimeField;
+    CadE420IpoSEQCCP: TIntegerField;
+    CadE420IpoINDEQI: TStringField;
+    CadE420IpoUSUGER: TBCDField;
+    CadE420IpoDATGER: TDateTimeField;
+    CadE420IpoHORGER: TIntegerField;
+    CadE420IpoFILPED: TIntegerField;
+    CadE420IpoNUMPED: TIntegerField;
+    CadE420IpoDATVLT: TDateTimeField;
+    CadE420IpoQTDFOR: TFMTBCDField;
+    CadE420IpoPREFOR: TFMTBCDField;
+    CadE420IpoCODMOE: TStringField;
+    CadE420IpoDATMOE: TDateTimeField;
+    CadE420IpoCOTMOE: TFMTBCDField;
+    CadE420IpoFECMOE: TStringField;
+    CadE420IpoPERIIM: TBCDField;
+    CadE420IpoVLRBII: TBCDField;
+    CadE420IpoVLRIIM: TBCDField;
+    CadE420IpoVLRRIS: TBCDField;
+    CadE420IpoSEQIOR: TIntegerField;
+    CadE420IpoVLRBPI: TBCDField;
+    CadE420IpoVLRPIS: TBCDField;
+    CadE420IpoVLRBCR: TBCDField;
+    CadE420IpoVLRCOR: TBCDField;
+    CadE420IpoCODFXA: TStringField;
+    CadE420IpoIDXGRD: TIntegerField;
+    CadE420IpoPERPIT: TBCDField;
+    CadE420IpoVLRBPT: TBCDField;
+    CadE420IpoVLRPIT: TBCDField;
+    CadE420IpoPERCRT: TBCDField;
+    CadE420IpoVLRBCT: TBCDField;
+    CadE420IpoVLRCRT: TBCDField;
+    CadE420IpoPERCSL: TBCDField;
+    CadE420IpoVLRBCL: TBCDField;
+    CadE420IpoVLRCSL: TBCDField;
+    CadE420IpoPEROUR: TBCDField;
+    CadE420IpoVLRBOR: TBCDField;
+    CadE420IpoVLROUR: TBCDField;
+    CadE420IpoPERIRF: TBCDField;
+    CadE420IpoVLRBIR: TBCDField;
+    CadE420IpoVLRIRF: TBCDField;
+    CadE420IpoFILCES: TIntegerField;
+    CadE420IpoDATCES: TDateTimeField;
+    CadE420IpoSEQCES: TIntegerField;
+    CadE420IpoPERDS1: TBCDField;
+    CadE420IpoPERDS2: TBCDField;
+    CadE420IpoVLRORI: TBCDField;
+    CadE420IpoQTDORI: TFMTBCDField;
+    CadE420IpoVLRFEI: TBCDField;
+    CadE420IpoVLRSEI: TBCDField;
+    CadE420IpoVLROUI: TBCDField;
+    CadE420IpoBCOIMP: TBCDField;
+    CadE420IpoCOFIMP: TBCDField;
+    CadE420IpoBPIIMP: TBCDField;
+    CadE420IpoPISIMP: TBCDField;
+    CadE420IpoSEQCPK: TIntegerField;
+    CadE420IpoVLRDM1: TFMTBCDField;
+    CadE420IpoVLRDM2: TFMTBCDField;
+    CadE420IpoVLRDM3: TFMTBCDField;
+    CadE420IpoVLRDM4: TFMTBCDField;
+    CadE420IpoVLRDM5: TFMTBCDField;
+    CadE420IpoVLRDM6: TFMTBCDField;
+    CadE420IpoBEMPRI: TStringField;
+    CadE420IpoEMPPED: TIntegerField;
+    CadE420IpoEMPNFV: TIntegerField;
+    CadE420IpoFILNFV: TIntegerField;
+    CadE420IpoSNFNFV: TStringField;
+    CadE420IpoNUMNFV: TIntegerField;
+    CadE420IpoSEQIPV: TIntegerField;
+    CadE420IpoCODTRG: TStringField;
+    CadE420IpoPERBON: TBCDField;
+    CadE420IpoUSU_VLRMAX: TBCDField;
+    CadE420IpoUSU_VLRMED: TBCDField;
+    CadE420Ocp: TADOQuery;
+    CadE420OcpCODEMP: TIntegerField;
+    CadE420OcpCODFIL: TIntegerField;
+    CadE420OcpNUMOCP: TIntegerField;
+    CadE420OcpTNSPRO: TStringField;
+    CadE420OcpTNSSER: TStringField;
+    CadE420OcpDATEMI: TDateTimeField;
+    CadE420OcpCODUSU: TBCDField;
+    CadE420OcpCODFOR: TIntegerField;
+    CadE420OcpSEQCTO: TIntegerField;
+    CadE420OcpPEDFOR: TStringField;
+    CadE420OcpOBSOCP: TStringField;
+    CadE420OcpCODCPG: TStringField;
+    CadE420OcpCODFPG: TIntegerField;
+    CadE420OcpCODMOE: TStringField;
+    CadE420OcpDATMOE: TDateTimeField;
+    CadE420OcpCOTMOE: TFMTBCDField;
+    CadE420OcpFECMOE: TStringField;
+    CadE420OcpCODFCR: TStringField;
+    CadE420OcpDATFCR: TDateTimeField;
+    CadE420OcpQTDABE: TFMTBCDField;
+    CadE420OcpCODTRA: TIntegerField;
+    CadE420OcpCODRED: TIntegerField;
+    CadE420OcpVLRFUM: TBCDField;
+    CadE420OcpQTDFRE: TFMTBCDField;
+    CadE420OcpFORFRE: TIntegerField;
+    CadE420OcpPERDS1: TBCDField;
+    CadE420OcpPERDS2: TBCDField;
+    CadE420OcpPERFIN: TBCDField;
+    CadE420OcpVLRFRE: TBCDField;
+    CadE420OcpCIFFOB: TStringField;
+    CadE420OcpVLRSEG: TBCDField;
+    CadE420OcpVLREMB: TBCDField;
+    CadE420OcpVLRENC: TBCDField;
+    CadE420OcpVLROUT: TBCDField;
+    CadE420OcpVLRDAR: TBCDField;
+    CadE420OcpVLRFRD: TBCDField;
+    CadE420OcpVLROUD: TBCDField;
+    CadE420OcpVLRBPR: TBCDField;
+    CadE420OcpVLRDPR: TBCDField;
+    CadE420OcpVLRBSE: TBCDField;
+    CadE420OcpVLRDSE: TBCDField;
+    CadE420OcpVLRDS1: TBCDField;
+    CadE420OcpVLRDS2: TBCDField;
+    CadE420OcpVLRDZF: TBCDField;
+    CadE420OcpVLRBFU: TBCDField;
+    CadE420OcpVLRFUN: TBCDField;
+    CadE420OcpVLRBIP: TBCDField;
+    CadE420OcpVLRIPI: TBCDField;
+    CadE420OcpVLRBIC: TBCDField;
+    CadE420OcpVLRICM: TBCDField;
+    CadE420OcpVLRBSI: TBCDField;
+    CadE420OcpVLRSIC: TBCDField;
+    CadE420OcpVLRBSP: TBCDField;
+    CadE420OcpVLRSTP: TBCDField;
+    CadE420OcpVLRBSC: TBCDField;
+    CadE420OcpVLRSTC: TBCDField;
+    CadE420OcpVLRBIS: TBCDField;
+    CadE420OcpVLRISS: TBCDField;
+    CadE420OcpVLRBIR: TBCDField;
+    CadE420OcpVLRIRF: TBCDField;
+    CadE420OcpVLRBIN: TBCDField;
+    CadE420OcpVLRINS: TBCDField;
+    CadE420OcpVLRLPR: TBCDField;
+    CadE420OcpVLRLSE: TBCDField;
+    CadE420OcpVLRLOU: TBCDField;
+    CadE420OcpVLRLIQ: TBCDField;
+    CadE420OcpVLRFIN: TBCDField;
+    CadE420OcpTEMPAR: TStringField;
+    CadE420OcpCODPOR: TStringField;
+    CadE420OcpCODCRT: TStringField;
+    CadE420OcpROTNAP: TIntegerField;
+    CadE420OcpFILAPR: TIntegerField;
+    CadE420OcpNUMAPR: TBCDField;
+    CadE420OcpSITAPR: TStringField;
+    CadE420OcpSITOCP: TIntegerField;
+    CadE420OcpCODMOT: TIntegerField;
+    CadE420OcpOBSMOT: TStringField;
+    CadE420OcpFILPED: TIntegerField;
+    CadE420OcpNUMPED: TIntegerField;
+    CadE420OcpVERCAL: TIntegerField;
+    CadE420OcpUSUGER: TBCDField;
+    CadE420OcpDATGER: TDateTimeField;
+    CadE420OcpHORGER: TIntegerField;
+    CadE420OcpPRCOCP: TIntegerField;
+    CadE420OcpPERPRG: TIntegerField;
+    CadE420OcpPERFRE: TBCDField;
+    CadE420OcpPERSEG: TBCDField;
+    CadE420OcpPEREMB: TBCDField;
+    CadE420OcpPERENC: TBCDField;
+    CadE420OcpPEROUT: TBCDField;
+    CadE420OcpSEQORM: TIntegerField;
+    CadE420OcpUSUFEC: TBCDField;
+    CadE420OcpDATFEC: TDateTimeField;
+    CadE420OcpHORFEC: TIntegerField;
+    CadE420OcpTIPINT: TIntegerField;
+    CadE420OcpVLRBCL: TBCDField;
+    CadE420OcpVLRCSL: TBCDField;
+    CadE420OcpVLRBPT: TBCDField;
+    CadE420OcpVLRPIT: TBCDField;
+    CadE420OcpVLRBCT: TBCDField;
+    CadE420OcpVLRCRT: TBCDField;
+    CadE420OcpVLRBOR: TBCDField;
+    CadE420OcpVLROUR: TBCDField;
+    CadE420OcpCODMFR: TStringField;
+    CadE420OcpDATMFR: TDateTimeField;
+    CadE420OcpCOTMFR: TFMTBCDField;
+    CadE420OcpVLRBII: TBCDField;
+    CadE420OcpVLRIIM: TBCDField;
+    CadE420OcpVLRRIS: TBCDField;
+    CadE420OcpVLRBPI: TBCDField;
+    CadE420OcpVLRPIS: TBCDField;
+    CadE420OcpVLRBCR: TBCDField;
+    CadE420OcpVLRCOR: TBCDField;
+    CadE420OcpPERDS3: TBCDField;
+    CadE420OcpPERDS4: TBCDField;
+    CadE420OcpPERDS5: TBCDField;
+    CadE420OcpVLRDS3: TBCDField;
+    CadE420OcpVLRDS4: TBCDField;
+    CadE420OcpVLRDS5: TBCDField;
+    CadE420OcpVLRORI: TBCDField;
+    CadE420OcpQTDORI: TFMTBCDField;
+    CadE420OcpVLRFEI: TBCDField;
+    CadE420OcpMOEFEI: TStringField;
+    CadE420OcpDATFEI: TDateTimeField;
+    CadE420OcpCOTFEI: TFMTBCDField;
+    CadE420OcpVLRSEI: TBCDField;
+    CadE420OcpMOESEI: TStringField;
+    CadE420OcpDATSEI: TDateTimeField;
+    CadE420OcpCOTSEI: TFMTBCDField;
+    CadE420OcpVLROUI: TBCDField;
+    CadE420OcpMOEOUI: TStringField;
+    CadE420OcpDATOUI: TDateTimeField;
+    CadE420OcpCOTOUI: TFMTBCDField;
+    CadE420OcpBCOIMP: TBCDField;
+    CadE420OcpCOFIMP: TBCDField;
+    CadE420OcpBPIIMP: TBCDField;
+    CadE420OcpPISIMP: TBCDField;
+    CadE420OcpSOMFRE: TStringField;
+    CadE420OcpCODSAF: TStringField;
+    CadE420OcpSALCAN: TStringField;
+    CadE420OcpOBRCTR: TStringField;
+    CadUsu_TCanSal: TADOQuery;
+    CadUsu_TCanSalUSU_CODEMP: TIntegerField;
+    CadUsu_TCanSalUSU_CODFIL: TIntegerField;
+    CadUsu_TCanSalUSU_NUMOCP: TIntegerField;
+    CadUsu_TCanSalUSU_SEQIPO: TIntegerField;
+    CadUsu_TCanSalUSU_DATCAN: TDateTimeField;
+    CadUsu_TCanSalUSU_SALCAN: TStringField;
+    CadUsu_TCanSalUSU_USUCAN: TBCDField;
+    Label1: TLabel;
+    ConsUsu_TCanSalUSU_CODPRO: TStringField;
+    ConsUsu_TCanSalUSU_QTDPED: TBCDField;
+    ConsUsu_TCanSalUSU_QTDREC: TBCDField;
+    ConsUsu_TCanSalUSU_QTDCAN: TBCDField;
+    ClientUsu_TCanSalUSU_CODPRO: TStringField;
+    ClientUsu_TCanSalUSU_QTDPED: TBCDField;
+    ClientUsu_TCanSalUSU_QTDREC: TBCDField;
+    ClientUsu_TCanSalUSU_QTDCAN: TBCDField;
+    ConsUsu_TCanSal2USU_CODPRO: TStringField;
+    ConsUsu_TCanSal2USU_QTDPED: TBCDField;
+    ConsUsu_TCanSal2USU_QTDREC: TBCDField;
+    ConsUsu_TCanSal2USU_QTDCAN: TBCDField;
+    procedure FormShow(Sender: TObject);
+    procedure BCancelaSaldoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCancSaldoOc: TFCancSaldoOc;
+
+implementation
+
+uses
+   UDm,UPrincipal;
+{$R *.dfm}
+
+procedure TFCancSaldoOc.BCancelaSaldoClick(Sender: TObject);
+begin
+if not ClientUsu_TCanSal.IsEmpty then
+begin//3
+if Application.MessageBox('Deseja Cancelar o Saldo?', 'Cancelar Saldo', MB_ICONQUESTION+MB_YESNO) = idyes then
+    Begin//2
+      ClientUsu_TCanSal.First;
+      while not ClientUsu_TCanSal.Eof do
+        begin//1
+          //consulta o item na order de compra
+          ConsE420Ipo.Close;
+          ConsE420Ipo.Parameters.ParamByName('codemp').Value := ClientUsu_TCanSalUSU_CODEMP.Value;
+          ConsE420Ipo.Parameters.ParamByName('codfil').Value := ClientUsu_TCanSalUSU_CODFIL.Value;
+          ConsE420Ipo.Parameters.ParamByName('numocp').Value := ClientUsu_TCanSalUSU_NUMOCP.Value;
+          ConsE420Ipo.Parameters.ParamByName('seqipo').Value := ClientUsu_TCanSalUSU_SEQIPO.Value;
+          ConsE420Ipo.Open;
+
+          CadE420Ipo.Close;
+          CadE420Ipo.Parameters.ParamByName('codemp').Value := ClientUsu_TCanSalUSU_CODEMP.Value;
+          CadE420Ipo.Parameters.ParamByName('codfil').Value := ClientUsu_TCanSalUSU_CODFIL.Value;
+          CadE420Ipo.Parameters.ParamByName('numocp').Value := ClientUsu_TCanSalUSU_NUMOCP.Value;
+          CadE420Ipo.Parameters.ParamByName('seqipo').Value := ClientUsu_TCanSalUSU_SEQIPO.Value;
+          CadE420Ipo.Open;
+
+          CadE420Ocp.Close;
+          CadE420Ocp.Parameters.ParamByName('codemp').Value := ClientUsu_TCanSalUSU_CODEMP.Value;
+          CadE420Ocp.Parameters.ParamByName('codfil').Value := ClientUsu_TCanSalUSU_CODFIL.Value;
+          CadE420Ocp.Parameters.ParamByName('numocp').Value := ClientUsu_TCanSalUSU_NUMOCP.Value;
+          CadE420Ocp.Open;
+          CadE420Ocp.Edit;
+
+          //atualiza os dados gerais da ordem de compra
+          CadE420OcpQTDABE.AsCurrency := CadE420OcpQTDABE.AsCurrency - CadE420IpoQTDABE.AsCurrency;
+          CadE420OcpQTDFRE.AsCurrency := CadE420OcpQTDFRE.AsCurrency - CadE420IpoQTDABE.AsCurrency;
+          CadE420OcpVLRSEG.AsCurrency := CadE420OcpVLRSEG.AsCurrency - CadE420IpoVLRSEG.AsCurrency;
+          CadE420OcpVLREMB.AsCurrency := CadE420OcpVLREMB.AsCurrency - CadE420IpoVLREMB.AsCurrency;
+          CadE420OcpVLRENC.AsCurrency := CadE420OcpVLRENC.AsCurrency - CadE420IpoVLRENC.AsCurrency;
+          CadE420OcpVLROUT.AsCurrency := CadE420OcpVLROUT.AsCurrency - CadE420IpoVLROUT.AsCurrency;
+          CadE420OcpVLRDAR.AsCurrency := CadE420OcpVLRDAR.AsCurrency - CadE420IpoVLRDAR.AsCurrency;
+          CadE420OcpVLRFRD.AsCurrency := CadE420OcpVLRFRD.AsCurrency - CadE420IpoVLRFRD.AsCurrency;
+          CadE420OcpVLROUD.AsCurrency := CadE420OcpVLROUD.AsCurrency - CadE420IpoVLROUD.AsCurrency;
+          CadE420OcpVLRBPR.AsCurrency := CadE420OcpVLRBPR.AsCurrency - (CadE420IpoQTDABE.AsCurrency * CadE420IpoPREUNI.AsCurrency);
+          CadE420OcpVLRBFU.AsCurrency := CadE420OcpVLRBFU.AsCurrency - CadE420IpoVLRBFU.AsCurrency;
+          CadE420OcpVLRFUN.AsCurrency := CadE420OcpVLRFUN.AsCurrency - CadE420IpoVLRFUN.AsCurrency;
+          CadE420OcpVLRBIP.AsCurrency := CadE420OcpVLRBIP.AsCurrency - CadE420IpoVLRBIP.AsCurrency;
+          CadE420OcpVLRIPI.AsCurrency := CadE420OcpVLRIPI.AsCurrency - CadE420IpoVLRIPI.AsCurrency;
+          CadE420OcpVLRBIC.AsCurrency := CadE420OcpVLRBIC.AsCurrency - CadE420IpoVLRBIC.AsCurrency;
+          CadE420OcpVLRICM.AsCurrency := CadE420OcpVLRICM.AsCurrency - CadE420IpoVLRICM.AsCurrency;
+          CadE420OcpVLRBSI.AsCurrency := CadE420OcpVLRBSI.AsCurrency - CadE420IpoVLRBSI.AsCurrency;
+          CadE420OcpVLRBSP.AsCurrency := CadE420OcpVLRBSP.AsCurrency - CadE420IpoVLRBSP.AsCurrency;
+          CadE420OcpVLRSTP.AsCurrency := CadE420OcpVLRSTP.AsCurrency - CadE420IpoVLRSTP.AsCurrency;
+          CadE420OcpVLRBSC.AsCurrency := CadE420OcpVLRBSC.AsCurrency - CadE420IpoVLRBSC.AsCurrency;
+          CadE420OcpVLRSTC.AsCurrency := CadE420OcpVLRSTC.AsCurrency - CadE420IpoVLRSTC.AsCurrency;
+          CadE420OcpVLRLPR.AsCurrency := CadE420OcpVLRLPR.AsCurrency - CadE420IpoVLRLPR.AsCurrency;
+          CadE420OcpVLRLOU.AsCurrency := CadE420OcpVLRLOU.AsCurrency - CadE420IpoVLRLOU.AsCurrency;
+          CadE420OcpVLRLIQ.AsCurrency := CadE420OcpVLRLIQ.AsCurrency - CadE420IpoVLRLIQ.AsCurrency;
+          CadE420OcpVLRFIN.AsCurrency := CadE420OcpVLRFIN.AsCurrency - CadE420IpoVLRFIN.AsCurrency;
+          if CadE420OcpQTDABE.AsCurrency = 0 then
+             CadE420OcpSITOCP.Value := 4;
+          CadE420Ocp.Post;
+
+          //cancela o sado do produto na ordem de compra
+          CadE420Ipo.Edit;
+          //CadE420IpoQTDCAN.AsCurrency := CadE420IpoQTDABE.AsCurrency;
+          CadE420IpoQTDABE.AsCurrency := 0;
+          CadE420IpoVLRSEG.AsCurrency := 0;
+          CadE420IpoVLREMB.AsCurrency := 0;
+          CadE420IpoVLRENC.AsCurrency := 0;
+          CadE420IpoVLROUT.AsCurrency := 0;
+          CadE420IpoVLRDAR.AsCurrency := 0;
+          CadE420IpoVLRFRD.AsCurrency := 0;
+          CadE420IpoVLROUD.AsCurrency := 0;
+          CadE420IpoVLRBFU.AsCurrency := 0;
+          CadE420IpoVLRFUN.AsCurrency := 0;
+          CadE420IpoVLRBIP.AsCurrency := 0;
+          CadE420IpoVLRIPI.AsCurrency := 0;
+          CadE420IpoVLRBIC.AsCurrency := 0;
+          CadE420IpoVLRICM.AsCurrency := 0;
+          CadE420IpoVLRBSI.AsCurrency := 0;
+          CadE420IpoVLRBSP.AsCurrency := 0;
+          CadE420IpoVLRSTP.AsCurrency := 0;
+          CadE420IpoVLRBSC.AsCurrency := 0;
+          CadE420IpoVLRSTC.AsCurrency := 0;
+          CadE420IpoVLRLPR.AsCurrency := 0;
+          CadE420IpoVLRLOU.AsCurrency := 0;
+          CadE420IpoVLRLIQ.AsCurrency := 0;
+          CadE420IpoVLRFIN.AsCurrency := 0;
+          CadE420IpoSITIPO.Value := 4;
+          CadE420Ipo.Post;
+
+          CadUsu_TCanSal.Close;
+          CadUsu_TCanSal.Parameters.ParamByName('codemp').Value := ClientUsu_TCanSalUSU_CODEMP.Value;
+          CadUsu_TCanSal.Parameters.ParamByName('codfil').Value := ClientUsu_TCanSalUSU_CODFIL.Value;
+          CadUsu_TCanSal.Parameters.ParamByName('numocp').Value := ClientUsu_TCanSalUSU_NUMOCP.Value;
+          CadUsu_TCanSal.Parameters.ParamByName('seqipo').Value := ClientUsu_TCanSalUSU_SEQIPO.Value;
+          CadUsu_TCanSal.Open;
+          CadUsu_TCanSal.Edit;
+          CadUsu_TCanSalUSU_DATCAN.Value := Date;
+          CadUsu_TCanSalUSU_SALCAN.Value := 'S';
+          CadUsu_TCanSalUSU_USUCAN.Value := FPrincipal.cd_usuario;
+          CadUsu_TCanSal.Post;
+
+          ClientUsu_TCanSal.Next;
+        end;//1
+
+       //limpra a grid
+      ClientUsu_TCanSal.First;
+      while not ClientUsu_TCanSal.Eof do
+        begin
+          ClientUsu_TCanSal.Delete;
+        end;
+    End;//2
+
+end;//3
+
+end;
+
+procedure TFCancSaldoOc.FormShow(Sender: TObject);
+begin
+ConsUsu_TCanSal.Close;
+ClientUsu_TCanSal.Close;
+ClientUsu_TCanSal.Open;
+while not ClientUsu_TCanSal.Eof do
+  begin
+    ClientUsu_TCanSal.Delete;
+  end;
+
+
+   //consulta os produtos que aida nao foram cancelado o saldo na
+   //tabela usu_tcansal
+    ConsUsu_TCanSal2.Close;
+    ConsUsu_TCanSal2.Open;
+    ConsUsu_TCanSal2.First;
+    while not ConsUsu_TCanSal2.Eof do
+       begin//1
+         //consulta o item na order de compra
+         ConsE420Ipo.Close;
+         ConsE420Ipo.Parameters.ParamByName('codemp').Value := ConsUsu_TCanSal2USU_CODEMP.Value;
+         ConsE420Ipo.Parameters.ParamByName('codfil').Value := ConsUsu_TCanSal2USU_CODFIL.Value;
+         ConsE420Ipo.Parameters.ParamByName('numocp').Value := ConsUsu_TCanSal2USU_NUMOCP.Value;
+         ConsE420Ipo.Parameters.ParamByName('seqipo').Value := ConsUsu_TCanSal2USU_SEQIPO.Value;
+         ConsE420Ipo.Open;
+         if not ConsE420Ipo.IsEmpty then
+            begin//2
+              if ConsE420IpoSITIPO.Value = 2 then
+                 begin//3
+                    ClientUsu_TCanSal.Open;
+                    ClientUsu_TCanSal.Insert;
+                    ClientUsu_TCanSalUSU_CODEMP.Value := ConsUsu_TCanSal2USU_CODEMP.Value;
+                    ClientUsu_TCanSalUSU_CODFIL.Value := ConsUsu_TCanSal2USU_CODFIL.Value;
+                    ClientUsu_TCanSalUSU_NUMOCP.Value := ConsUsu_TCanSal2USU_NUMOCP.Value;
+                    ClientUsu_TCanSalUSU_SEQIPO.Value := ConsUsu_TCanSal2USU_SEQIPO.Value;
+                    ClientUsu_TCanSalUSU_SALCAN.Value := ConsUsu_TCanSal2USU_SALCAN.Value;
+                    ClientUsu_TCanSalUSU_CODPRO.Value := ConsUsu_TCanSal2USU_CODPRO.Value;
+                    ClientUsu_TCanSalUSU_QTDPED.Value := ConsUsu_TCanSal2USU_QTDPED.Value;
+                    ClientUsu_TCanSalUSU_QTDREC.Value := ConsUsu_TCanSal2USU_QTDREC.Value;
+                    ClientUsu_TCanSalUSU_QTDCAN.Value := ConsUsu_TCanSal2USU_QTDCAN.Value;
+
+                    ClientUsu_TCanSal.Post;
+                 end;//3
+            end;//2
+
+         ConsUsu_TCanSal2.Next;
+       end;//1
+end;
+
+end.

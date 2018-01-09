@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2010/10/21 09:42:21.795.pas,D:\RAD Studio\Projects\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UPrincipal.pas</Transaction>
+    <Transaction>2010/10/21 09:42:21.795.dfm,D:\RAD Studio\Projects\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UPrincipal.dfm</Transaction>
+    <Transaction>2010/10/21 09:42:31.822.dproj,D:\RAD Studio\Projects\Project1.dproj=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\PServerRep.dproj</Transaction>
+    <Transaction>2010/10/21 09:44:04.738.pas,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmOra.pas</Transaction>
+    <Transaction>2010/10/21 09:44:04.738.dfm,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmOra.dfm</Transaction>
+    <Transaction>2010/10/21 09:54:21.065.pas,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmFire.pas</Transaction>
+    <Transaction>2010/10/21 09:54:21.065.dfm,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmFire.dfm</Transaction>
+    <Transaction>2010/10/22 14:51:05.534.pas,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UCadUsuarios.pas</Transaction>
+    <Transaction>2010/10/22 14:51:05.534.dfm,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UCadUsuarios.dfm</Transaction>
+    <Transaction>2012/09/28 09:08:52.372.pas,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmMySql.pas</Transaction>
+    <Transaction>2012/09/28 09:08:52.372.dfm,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmMySql.dfm</Transaction>
+    <Transaction>2014/01/22 16:38:22.655.pas,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmOraSysRep.pas</Transaction>
+    <Transaction>2014/01/22 16:38:22.655.dfm,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmOraSysRep.dfm</Transaction>
+    <Transaction>2014/01/22 16:47:05.707.pas,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmOraSysRep.pas=</Transaction>
+    <Transaction>2014/01/22 16:47:05.707.dfm,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmOraSysRep.dfm=</Transaction>
+    <Transaction>2014/01/23 08:59:33.537.pas,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmFireRep.pas</Transaction>
+    <Transaction>2014/01/23 08:59:33.537.dfm,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmFireRep.dfm</Transaction>
+    <Transaction>2017/12/14 10:27:53.189.pas,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmMySql.pas=</Transaction>
+    <Transaction>2017/12/14 10:27:53.189.dfm,C:\DelphiSapiens\SapiensDelphi\ServerRep\FONTE\UDmMySql.dfm=</Transaction>
+  </Transactions>
+</BorlandProject>

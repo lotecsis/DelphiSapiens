@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2013/06/14 15:20:59.287.pas,D:\Meus Documentos\Documents\RAD Studio\Projects\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UPrincipal.pas</Transaction>
+    <Transaction>2013/06/14 15:20:59.287.dfm,D:\Meus Documentos\Documents\RAD Studio\Projects\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UPrincipal.dfm</Transaction>
+    <Transaction>2013/06/14 15:21:18.562.dproj,D:\Meus Documentos\Documents\RAD Studio\Projects\Project1.dproj=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\GerenciaWeb.dproj</Transaction>
+    <Transaction>2013/06/14 15:31:46.652.pas,C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UDmFire.pas</Transaction>
+    <Transaction>2013/06/14 15:31:46.652.dfm,C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UDmFire.dfm</Transaction>
+    <Transaction>2013/06/14 15:32:06.569.pas,C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UDmMySql.pas</Transaction>
+    <Transaction>2013/06/14 15:32:06.569.dfm,C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UDmMySql.dfm</Transaction>
+    <Transaction>2013/06/14 15:58:39.059.pas,C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UProcessaPedidos.pas</Transaction>
+    <Transaction>2013/06/14 15:58:39.059.dfm,C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UProcessaPedidos.dfm</Transaction>
+    <Transaction>2014/01/27 17:07:14.418.pas,C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UDmFireRep.pas</Transaction>
+    <Transaction>2014/01/27 17:07:14.418.dfm,C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UDmFireRep.dfm</Transaction>
+    <Transaction>2017/12/27 11:17:47.820.pas,C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UDmMySql.pas=</Transaction>
+    <Transaction>2017/12/27 11:17:47.820.dfm,C:\DelphiSapiens\SapiensDelphi\GerenciaWeb\UDmMySql.dfm=</Transaction>
+  </Transactions>
+</BorlandProject>

@@ -685,7 +685,7 @@ begin
     FConsGeralNfEnt := TFConsGeralNfEnt.Create(Self);
     FConsGeralNfEnt.vaSql := 'select e075pro.codpro,e075pro.despro,e075pro.codfam,e075pro.codori';
     FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' from e075pro';
-    FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' where codori = 01';
+    FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' where codori in (''1'',''2'')';
     FConsGeralNfEnt.vbWhere := true;
     FConsGeralNfEnt.vaCampo := 'CodPro';
     FConsGeralNfEnt.vnColuna := 1;
@@ -1718,7 +1718,7 @@ end;
 procedure TFAssistencia.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
 
-with application do
+{with application do
  if not (Dm2.ConsE120PedA.IsEmpty) then
   begin
      canClose := False;
@@ -1731,7 +1731,7 @@ with application do
        begin
          canclose := true;
        end;
-  end;
+  end; }
 
 
 end;

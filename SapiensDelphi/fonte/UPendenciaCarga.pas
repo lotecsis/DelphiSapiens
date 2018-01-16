@@ -259,7 +259,7 @@ if vaStatusUsu_T097Ppen in [dsInsert,dsEdit] then
           FConsGeralNfEnt := TFConsGeralNfEnt.Create(Self);
           FConsGeralNfEnt.vaSql := 'select e075pro.codpro,e075pro.despro,e075pro.codfam,e075pro.codori';
           FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' from e075pro';
-          FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' where codori = 01';
+          FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' where codori in (''1'',''2'')';
           FConsGeralNfEnt.vbWhere := true;
           FConsGeralNfEnt.vaCampo := 'CodPro';
           FConsGeralNfEnt.vnColuna := 1;
@@ -291,9 +291,9 @@ if vaStatusUsu_T097Ppen in [dsInsert,dsEdit] then
           FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' from e081itp';
           FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' inner join e081tab on e081tab.codemp = e081itp.codemp and';
           FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' e081tab.codtpr = e081itp.codtpr';
-          FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' where e081itp.codpro = '+DmOra.CadUsu_T097PpenUSU_CODPRO.AsString + '  and';
-          FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' e081itp.codder = '+ DmOra.CadUsu_T097PpenUSU_CODDER.AsString + ' and';
-          FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' e081itp.codtpr in (0001,0002,0004)';
+          FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' where e081itp.codpro = '+QuotedStr(DmOra.CadUsu_T097PpenUSU_CODPRO.AsString) + '  and';
+          FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' e081itp.codder = '+ QuotedStr(DmOra.CadUsu_T097PpenUSU_CODDER.AsString) + ' and';
+          FConsGeralNfEnt.vaSql := FConsGeralNfEnt.vaSql +' e081itp.codtpr in (1000)';
           FConsGeralNfEnt.vbWhere := true;
           FConsGeralNfEnt.vaCampo := 'VlrPro';
           FConsGeralNfEnt.vnColuna := 1;

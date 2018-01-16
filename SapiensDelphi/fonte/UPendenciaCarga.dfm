@@ -201,7 +201,6 @@ object FPendenciaCarga: TFPendenciaCarga
       Align = alRight
       BevelOuter = bvLowered
       TabOrder = 6
-      ExplicitHeight = 111
       object BConfirma: TBitBtn
         Left = 4
         Top = 3
@@ -356,8 +355,6 @@ object FPendenciaCarga: TFPendenciaCarga
     Height = 337
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 113
-    ExplicitHeight = 327
     object Panel4: TPanel
       Left = 1
       Top = 1
@@ -454,24 +451,6 @@ object FPendenciaCarga: TFPendenciaCarga
           Visible = True
         end
         item
-          Alignment = taCenter
-          Expanded = False
-          FieldName = 'USU_COR01'
-          Title.Alignment = taCenter
-          Title.Caption = 'Cor 01'
-          Width = 80
-          Visible = True
-        end
-        item
-          Alignment = taCenter
-          Expanded = False
-          FieldName = 'USU_COR02'
-          Title.Alignment = taCenter
-          Title.Caption = 'Cor 02'
-          Width = 80
-          Visible = True
-        end
-        item
           Expanded = False
           FieldName = 'USU_OBSPRO'
           Title.Alignment = taCenter
@@ -508,7 +487,6 @@ object FPendenciaCarga: TFPendenciaCarga
     Height = 29
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 451
     object DBT_DESPRO: TDBText
       Left = 68
       Top = 8

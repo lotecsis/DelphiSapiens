@@ -5,7 +5,7 @@
   Align = alClient
   Caption = 'Sapiens Lider'
   ClientHeight = 742
-  ClientWidth = 1115
+  ClientWidth = 1106
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -153,7 +153,7 @@
   object StatusBar1: TStatusBar
     Left = 0
     Top = 718
-    Width = 1115
+    Width = 1106
     Height = 24
     CustomHint = BalloonHint1
     Panels = <
@@ -181,11 +181,12 @@
       end>
     ParentShowHint = False
     ShowHint = False
+    ExplicitWidth = 1115
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 1115
+    Width = 1106
     Height = 49
     CustomHint = BalloonHint1
     ButtonHeight = 45
@@ -196,6 +197,7 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 1
+    ExplicitWidth = 1115
     object BPreCarga: TToolButton
       Left = 0
       Top = 0

@@ -77,10 +77,6 @@ type
     LDsCodPro: TLabel;
     EdVlrAst: TCurrencyEdit;
     Label11: TLabel;
-    Label15: TLabel;
-    Label16: TLabel;
-    EdCor01: TEdit;
-    EdCor02: TEdit;
     BConsCodPro: TBitBtn;
     BFechar: TBitBtn;
     BObsNf: TBitBtn;
@@ -111,8 +107,6 @@ type
     procedure BConfProdClick(Sender: TObject);
     procedure EdTnsProIExit(Sender: TObject);
     procedure EdCodProExit(Sender: TObject);
-    procedure EdCor01Exit(Sender: TObject);
-    procedure EdCor02Exit(Sender: TObject);
     procedure BConsCodProClick(Sender: TObject);
     procedure BFecharClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -348,19 +342,7 @@ begin
      Abort;
    end;
 
-   if trim(EdCor01.Text) = '' then // a vania pediu pra obrigar informar a cor, dia 28/04/2016
-      begin
-        MessageDlg('Informe a cor!',mtWarning,[mbOK],0);
-        ActiveControl := EdCor01;
-        Abort
-      end;
-
-   if ((trim(EdTnsProI.Text) = '90111') or (trim(EdTnsProI.Text) = '90121')) and (trim(EdCor01.Text) = '') then
-      begin
-        MessageDlg('Para a transação 90111 ou 90121 - TROCA, é necessario informar a cor do produto!',mtWarning,[mbOK],0);
-        ActiveControl := EdCor01;
-        Abort
-      end;
+ 
 
     if (EdInDev.ItemIndex = 2) and (EdVlrAst.Value = 0) then
        begin
@@ -470,64 +452,6 @@ begin
           raise Exception.Create('Não foi possível gravar na tabela Usu_T120IpdA');
        end;
 
-       //se for uma troca 90111 grava a cor do produto na tabela usu_t120Ipd
-       if trim(EdCor01.Text) <> '' then
-          begin
-            dm2.ConsGeral.Close;
-            dm2.ConsGeral.SQL.Clear;
-            dm2.ConsGeral.SQL.Add('select * from usu_t120ipd where usu_codemp = :codemp and');
-            dm2.ConsGeral.SQL.Add('usu_codfil = :codfil and');
-            dm2.ConsGeral.SQL.Add('usu_numped = :numped and');
-            dm2.ConsGeral.SQL.Add('usu_seqipd = :seqipd');
-            dm2.ConsGeral.SQL.Add('order by usu_seqite desc');
-            dm2.ConsGeral.Parameters.ParamByName('codemp').Value := Dm2.ConsE120PedACODEMP.Value;
-            dm2.ConsGeral.Parameters.ParamByName('codfil').Value := Dm2.ConsE120PedACODFIL.Value;
-            dm2.ConsGeral.Parameters.ParamByName('numped').Value := Dm2.ConsE120PedANUMPED.Value;
-            dm2.ConsGeral.Parameters.ParamByName('seqipd').Value := vnSeqIpd;
-            dm2.ConsGeral.Open;
-            if not dm2.ConsGeral.IsEmpty then
-               begin
-                  //se tiver alguma cor apaga pq para assistencia só pode ter uma cor no produto
-                  Dm2.CadUsu_T120Ipd.Close;
-                  Dm2.CadUsu_T120Ipd.Parameters.ParamByName('codemp').Value := Dm2.ConsGeral.FieldByName('usu_codemp').Value;
-                  Dm2.CadUsu_T120Ipd.Parameters.ParamByName('codfil').Value := Dm2.ConsGeral.FieldByName('usu_codfil').Value;
-                  Dm2.CadUsu_T120Ipd.Parameters.ParamByName('numped').Value := Dm2.ConsGeral.FieldByName('usu_numped').Value;
-                  Dm2.CadUsu_T120Ipd.Parameters.ParamByName('seqipd').Value := Dm2.ConsGeral.FieldByName('usu_seqipd').Value;
-                  Dm2.CadUsu_T120Ipd.Parameters.ParamByName('seqite').Value := Dm2.ConsGeral.FieldByName('usu_seqite').Value;
-                  Dm2.CadUsu_T120Ipd.Open;
-                  if not Dm2.CadUsu_T120Ipd.IsEmpty then
-                     Dm2.CadUsu_T120Ipd.Delete;
-               end;
-            Dm2.CadUsu_T120Ipd.Open;
-            Dm2.CadUsu_T120Ipd.Insert;
-            Dm2.CadUsu_T120IpdUSU_CODEMP.Value := Dm2.ConsE120PedACODEMP.Value;
-            Dm2.CadUsu_T120IpdUSU_CODFIL.Value := Dm2.ConsE120PedACODFIL.Value;
-            Dm2.CadUsu_T120IpdUSU_NUMPED.Value := Dm2.ConsE120PedANUMPED.Value;
-            Dm2.CadUsu_T120IpdUSU_SEQIPD.Value := vnSeqIpd;
-            Dm2.CadUsu_T120IpdUSU_SEQITE.Value := 1;
-            Dm2.CadUsu_T120IpdUSU_QTDCOR.Value := 1;
-            if trim(EdCor02.Text) <> '' then
-               begin
-                 Dm2.CadUsu_T120IpdUSU_TIPCMB.Value := 2;
-                 Dm2.CadUsu_T120IpdUSU_COR002.Value := trim(EdCor02.Text);
-               end
-            else
-               begin
-                 Dm2.CadUsu_T120IpdUSU_TIPCMB.Value := 1;
-                 Dm2.CadUsu_T120IpdUSU_COR002.Value := ' ';
-               end;
-           Dm2.CadUsu_T120IpdUSU_COR001.Value := trim(EdCor01.Text);
-           Dm2.CadUsu_T120IpdUSU_CODPRO.Value := trim(EdCodPro.Text);
-           Dm2.CadUsu_T120IpdUSU_CODDER.Value := trim(EdCodDer.Text);
-           Dm2.CadUsu_T120IpdUSU_TECTRA.Value := 'N';
-           Dm2.CadUsu_T120IpdUSU_QTDABE.Value := 1;
-           Dm2.CadUsu_T120IpdUSU_QTDCAN.Value := 0;
-           Dm2.CadUsu_T120IpdUSU_NUMANE.Value := 0;
-           Dm2.CadUsu_T120IpdUSU_PRECAR.Value := 0;
-           Dm2.CadUsu_T120IpdUSU_NUMCOM.Value := 0;
-           Dm2.CadUsu_T120Ipd.Post;
-          end;
-
 
           //se ja tiver argumento da solicitaçao grava uma observaçao no pedido
           vaSitObs := 'G';
@@ -630,50 +554,6 @@ begin
                except
                   raise Exception.Create('Não foi possível gravar na tabela Usu_T120IpdA');
                end;
-
-               //se tiver cor altera coloca em edição
-                dm2.ConsGeral.Close;
-                dm2.ConsGeral.SQL.Clear;
-                dm2.ConsGeral.SQL.Add('select * from usu_t120ipd where usu_codemp = :codemp and');
-                dm2.ConsGeral.SQL.Add('usu_codfil = :codfil and');
-                dm2.ConsGeral.SQL.Add('usu_numped = :numped and');
-                dm2.ConsGeral.SQL.Add('usu_seqipd = :seqipd');
-                dm2.ConsGeral.SQL.Add('order by usu_seqite desc');
-                dm2.ConsGeral.Parameters.ParamByName('codemp').Value := Dm2.ConsE120IpdACODEMP.Value;
-                dm2.ConsGeral.Parameters.ParamByName('codfil').Value := Dm2.ConsE120IpdACODFIL.Value;
-                dm2.ConsGeral.Parameters.ParamByName('numped').Value := Dm2.ConsE120IpdANUMPED.Value;
-                dm2.ConsGeral.Parameters.ParamByName('seqipd').Value := Dm2.ConsE120IpdASEQIPD.Value;
-                dm2.ConsGeral.Open;
-                if not dm2.ConsGeral.IsEmpty then
-                   begin
-                     Dm2.CadUsu_T120Ipd.Close;
-                     Dm2.CadUsu_T120Ipd.Parameters.ParamByName('codemp').Value := Dm2.ConsGeral.FieldByName('usu_codemp').Value;
-                     Dm2.CadUsu_T120Ipd.Parameters.ParamByName('codfil').Value := Dm2.ConsGeral.FieldByName('usu_codfil').Value;
-                     Dm2.CadUsu_T120Ipd.Parameters.ParamByName('numped').Value := Dm2.ConsGeral.FieldByName('usu_numped').Value;
-                     Dm2.CadUsu_T120Ipd.Parameters.ParamByName('seqipd').Value := Dm2.ConsGeral.FieldByName('usu_seqipd').Value;
-                     Dm2.CadUsu_T120Ipd.Parameters.ParamByName('seqite').Value := Dm2.ConsGeral.FieldByName('usu_seqite').Value;
-                     Dm2.CadUsu_T120Ipd.Open;
-                     if not Dm2.CadUsu_T120Ipd.IsEmpty then
-                        begin
-                          Dm2.CadUsu_T120Ipd.Edit;
-
-                          if trim(EdCor02.Text) <> '' then
-                             begin
-                               Dm2.CadUsu_T120IpdUSU_TIPCMB.Value := 2;
-                               Dm2.CadUsu_T120IpdUSU_COR002.Value := trim(EdCor02.Text);
-                             end
-                          else
-                             begin
-                               Dm2.CadUsu_T120IpdUSU_TIPCMB.Value := 1;
-                               Dm2.CadUsu_T120IpdUSU_COR002.Value := ' ';
-                             end;
-                          Dm2.CadUsu_T120IpdUSU_COR001.Value := trim(EdCor01.Text);
-                          Dm2.CadUsu_T120IpdUSU_CODPRO.Value := trim(EdCodPro.Text);
-                          Dm2.CadUsu_T120IpdUSU_CODDER.Value := trim(EdCodDer.Text);
-
-                          Dm2.CadUsu_T120Ipd.Post;
-                        end;
-                   end;
         end;//6
 
         EdNumPedExit(Sender);
@@ -1026,8 +906,6 @@ begin
        MMatUti.Clear;
        LDsCodPro.Caption := '';
        EdInDev.ItemIndex := 0;
-       EdCor01.Clear;
-       EdCor02.Clear;
        EdVlrAst.Clear;
 
        Dm2.CadE120IpdA.Open;
@@ -1137,8 +1015,6 @@ begin
        MDesPer.ReadOnly := false;
        MMatUti.ReadOnly := false;
        EdVlrAst.ReadOnly := false;
-       EdCor01.ReadOnly := false;
-       EdCor02.ReadOnly := false;
      end
   else
      begin
@@ -1161,8 +1037,6 @@ begin
        MDesPer.ReadOnly := true;
        MMatUti.ReadOnly := true;
        EdVlrAst.ReadOnly := true;
-       EdCor01.ReadOnly := true;
-       EdCor02.ReadOnly := true;
      end;
 
 end;
@@ -1287,46 +1161,6 @@ procedure TFAssistencia.EdCodRepKeyDown(Sender: TObject; var Key: Word;
 begin
 if key = VK_F3 then
      BCodRep.Click;
-end;
-
-procedure TFAssistencia.EdCor01Exit(Sender: TObject);
-begin
-if trim(EdCor01.Text) <> '' then
-     begin
-       dm2.ConsGeral.Close;
-            dm2.ConsGeral.SQL.Clear;
-            dm2.ConsGeral.SQL.Add('select codpro,despro,codfam from e075pro where codemp = :codemp and');
-            dm2.ConsGeral.SQL.Add('codpro = :codpro');
-            dm2.ConsGeral.Parameters.ParamByName('codemp').Value := 1;
-            dm2.ConsGeral.Parameters.ParamByName('codpro').Value := trim(EdCor01.Text);
-            dm2.ConsGeral.Open;
-            if Dm2.ConsGeral.IsEmpty then
-               begin
-                  Application.MessageBox('Cor não encontrada','Aviso', MB_ICONWARNING+MB_OK);
-                  EdCor01.Clear;
-                  ActiveControl := EdCor01;
-               end;
-     end;
-end;
-
-procedure TFAssistencia.EdCor02Exit(Sender: TObject);
-begin
-if trim(EdCor02.Text) <> '' then
-     begin
-       dm2.ConsGeral.Close;
-            dm2.ConsGeral.SQL.Clear;
-            dm2.ConsGeral.SQL.Add('select codpro,despro,codfam from e075pro where codemp = :codemp and');
-            dm2.ConsGeral.SQL.Add('codpro = :codpro');
-            dm2.ConsGeral.Parameters.ParamByName('codemp').Value := 1;
-            dm2.ConsGeral.Parameters.ParamByName('codpro').Value := trim(EdCor02.Text);
-            dm2.ConsGeral.Open;
-            if Dm2.ConsGeral.IsEmpty then
-               begin
-                  Application.MessageBox('Cor não encontrada','Aviso', MB_ICONWARNING+MB_OK);
-                  EdCor02.Clear;
-                  ActiveControl := EdCor02;
-               end;
-     end;
 end;
 
 procedure TFAssistencia.EdDatEmiExit(Sender: TObject);

@@ -2344,8 +2344,7 @@ begin
   ConsGeral.Parameters.ParamByName('numped').Value := ConsE120IpdANUMPED.Value;
   ConsGeral.Parameters.ParamByName('seqipd').Value := ConsE120IpdASEQIPD.Value;
   ConsGeral.Open;
-  FAssistencia.EdCor01.Text := ConsGeral.FieldByName('usu_cor001').AsString;
-  FAssistencia.EdCor02.Text := ConsGeral.FieldByName('usu_cor002').AsString;
+  
 end;
 
 procedure TDm2.ConsE120IpdAfterScroll(DataSet: TDataSet);

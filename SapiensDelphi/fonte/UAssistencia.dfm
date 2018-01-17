@@ -765,32 +765,6 @@ object FAssistencia: TFAssistencia
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label15: TLabel
-      Left = 36
-      Top = 388
-      Width = 54
-      Height = 13
-      Caption = 'Cor 01..:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label16: TLabel
-      Left = 35
-      Top = 415
-      Width = 54
-      Height = 13
-      Caption = 'Cor 02..:'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
     object Panel5: TPanel
       Left = 1
       Top = 1
@@ -798,7 +772,7 @@ object FAssistencia: TFAssistencia
       Height = 21
       Align = alTop
       BevelOuter = bvNone
-      TabOrder = 14
+      TabOrder = 12
       object LEndCli: TLabel
         Left = 16
         Top = 3
@@ -815,7 +789,7 @@ object FAssistencia: TFAssistencia
       Align = alTop
       DataSource = DsConsE120IpdA
       ReadOnly = True
-      TabOrder = 15
+      TabOrder = 13
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clBlack
       TitleFont.Height = -11
@@ -1146,7 +1120,7 @@ object FAssistencia: TFAssistencia
       MaxLength = 285
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 8
     end
     object MMatUti: TMemo
       Left = 277
@@ -1165,7 +1139,7 @@ object FAssistencia: TFAssistencia
       MaxLength = 160
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 9
     end
     object EdInDev: TComboBox
       Left = 714
@@ -1183,7 +1157,7 @@ object FAssistencia: TFAssistencia
       Font.Style = [fsBold]
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 12
+      TabOrder = 10
       Items.Strings = (
         ''
         'DEVIDA'
@@ -1206,7 +1180,7 @@ object FAssistencia: TFAssistencia
       MaxLength = 235
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 7
     end
     object EdVlrPro: TCurrencyEdit
       Left = 97
@@ -1242,39 +1216,7 @@ object FAssistencia: TFAssistencia
       Font.Style = [fsBold]
       ParentCtl3D = False
       ParentFont = False
-      TabOrder = 13
-    end
-    object EdCor01: TEdit
-      Left = 95
-      Top = 380
-      Width = 100
-      Height = 21
-      Ctl3D = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = []
-      ParentCtl3D = False
-      ParentFont = False
-      TabOrder = 7
-      OnExit = EdCor01Exit
-    end
-    object EdCor02: TEdit
-      Left = 95
-      Top = 407
-      Width = 100
-      Height = 21
-      Ctl3D = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clNavy
-      Font.Height = -11
-      Font.Name = 'Verdana'
-      Font.Style = []
-      ParentCtl3D = False
-      ParentFont = False
-      TabOrder = 8
-      OnExit = EdCor02Exit
+      TabOrder = 11
     end
     object BConsCodPro: TBitBtn
       Left = 178
@@ -1284,7 +1226,7 @@ object FAssistencia: TFAssistencia
       Caption = '...'
       DoubleBuffered = True
       ParentDoubleBuffered = False
-      TabOrder = 16
+      TabOrder = 14
       TabStop = False
       OnClick = BConsCodProClick
     end
@@ -1296,7 +1238,7 @@ object FAssistencia: TFAssistencia
       Caption = '...'
       DoubleBuffered = True
       ParentDoubleBuffered = False
-      TabOrder = 17
+      TabOrder = 15
       TabStop = False
       OnClick = BConsDerivacaoClick
     end

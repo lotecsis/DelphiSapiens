@@ -4,8 +4,8 @@
   CustomHint = BalloonHint1
   Align = alClient
   Caption = 'Sapiens Lider'
-  ClientHeight = 742
-  ClientWidth = 1106
+  ClientHeight = 554
+  ClientWidth = 796
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -152,8 +152,8 @@
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 718
-    Width = 1106
+    Top = 530
+    Width = 796
     Height = 24
     CustomHint = BalloonHint1
     Panels = <
@@ -181,12 +181,11 @@
       end>
     ParentShowHint = False
     ShowHint = False
-    ExplicitWidth = 1115
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 1106
+    Width = 796
     Height = 49
     CustomHint = BalloonHint1
     ButtonHeight = 45
@@ -197,7 +196,6 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 1
-    ExplicitWidth = 1115
     object BPreCarga: TToolButton
       Left = 0
       Top = 0
@@ -278,36 +276,37 @@
       CustomHint = BalloonHint1
       Action = actConsMateriaPrimaMediaCons
       ImageIndex = 26
+      Wrap = True
     end
     object btnControleAcessoTelas: TToolButton
-      Left = 540
-      Top = 0
+      Left = 0
+      Top = 45
       CustomHint = BalloonHint1
       Action = actControleConexaoTelas
     end
     object BControleAcesso: TToolButton
-      Left = 600
-      Top = 0
+      Left = 60
+      Top = 45
       CustomHint = BalloonHint1
       Action = AcControleConexao
       ImageIndex = 11
     end
     object btnCidades: TToolButton
-      Left = 660
-      Top = 0
+      Left = 120
+      Top = 45
       CustomHint = BalloonHint1
       Action = AcCidades
       ImageIndex = 23
     end
     object ToolButton2: TToolButton
-      Left = 720
-      Top = 0
+      Left = 180
+      Top = 45
       CustomHint = BalloonHint1
       Action = AcGeraIni
     end
     object Bsair: TToolButton
-      Left = 780
-      Top = 0
+      Left = 240
+      Top = 45
       Hint = 'Fechar'
       CustomHint = BalloonHint1
       Caption = 'Bsair'
@@ -317,20 +316,20 @@
       OnClick = BsairClick
     end
     object ToolButton7: TToolButton
-      Left = 840
-      Top = 0
+      Left = 300
+      Top = 45
       CustomHint = BalloonHint1
       Action = AcClientesPedidos10D
     end
     object btnAcCadUsuSysRep: TToolButton
-      Left = 900
-      Top = 0
+      Left = 360
+      Top = 45
       CustomHint = BalloonHint1
       Action = AcCadUsuSysRep
     end
     object btn3: TToolButton
-      Left = 960
-      Top = 0
+      Left = 420
+      Top = 45
       CustomHint = BalloonHint1
       Caption = 'btn3'
       OnClick = btn3Click
@@ -339,8 +338,8 @@
   object ToolBar2: TToolBar
     Left = 0
     Top = 49
-    Width = 62
-    Height = 669
+    Width = 122
+    Height = 481
     CustomHint = BalloonHint1
     Align = alLeft
     AutoSize = True
@@ -358,11 +357,10 @@
       CustomHint = BalloonHint1
       Action = AcComparaComprasClientes
       ImageIndex = 16
-      Wrap = True
     end
     object BAlertaClientes: TToolButton
-      Left = 0
-      Top = 45
+      Left = 60
+      Top = 0
       CustomHint = BalloonHint1
       Caption = 'BAlertaClientes'
       ImageIndex = 12
@@ -372,15 +370,14 @@
     end
     object BValidaXmlNfc: TToolButton
       Left = 0
-      Top = 90
+      Top = 45
       CustomHint = BalloonHint1
       Action = AcValidaXmlNfc
       ImageIndex = 13
-      Wrap = True
     end
     object btn12: TToolButton
-      Left = 0
-      Top = 135
+      Left = 60
+      Top = 45
       CustomHint = BalloonHint1
       Caption = 'btn12'
       ImageIndex = 0
@@ -388,30 +385,28 @@
     end
     object BProcessaPedidos: TToolButton
       Left = 0
-      Top = 180
+      Top = 90
       CustomHint = BalloonHint1
       Action = AcProcessaPedidosSysRep
       ImageIndex = 14
-      Wrap = True
     end
     object btnfrmValidaXmlEntrega: TToolButton
-      Left = 0
-      Top = 225
+      Left = 60
+      Top = 90
       CustomHint = BalloonHint1
       Action = actfrmValidaXmlEntrega
       Wrap = True
     end
     object bCadUsuSysRepWeb: TToolButton
       Left = 0
-      Top = 270
+      Top = 135
       CustomHint = BalloonHint1
       Action = actCadUsuSysRepWeb
       ImageIndex = 15
-      Wrap = True
     end
     object BAssistencia: TToolButton
-      Left = 0
-      Top = 315
+      Left = 60
+      Top = 135
       CustomHint = BalloonHint1
       Action = AcAssistencia
       ImageIndex = 18
@@ -419,15 +414,14 @@
     end
     object btnPendenciaCarga: TToolButton
       Left = 0
-      Top = 360
+      Top = 180
       CustomHint = BalloonHint1
       Action = AcPendenciaCarga
       ImageIndex = 20
-      Wrap = True
     end
     object BConsFaturamento: TToolButton
-      Left = 0
-      Top = 405
+      Left = 60
+      Top = 180
       CustomHint = BalloonHint1
       Action = AcConsFaturamento
       ImageIndex = 21
@@ -435,15 +429,14 @@
     end
     object BAcertoViagem: TToolButton
       Left = 0
-      Top = 450
+      Top = 225
       CustomHint = BalloonHint1
       Action = AcAcertoViagem
       ImageIndex = 24
-      Wrap = True
     end
     object btnGraficosVendas: TToolButton
-      Left = 0
-      Top = 495
+      Left = 60
+      Top = 225
       CustomHint = BalloonHint1
       Action = actGraficosVendas
       ImageIndex = 32
@@ -451,23 +444,22 @@
     end
     object ToolButton6: TToolButton
       Left = 0
-      Top = 540
+      Top = 270
       CustomHint = BalloonHint1
       Action = AcAtualiza_E075Pro_ServerRep
-      Wrap = True
     end
     object ToolButton4: TToolButton
-      Left = 0
-      Top = 585
+      Left = 60
+      Top = 270
       CustomHint = BalloonHint1
       Action = AcConsObsPed
     end
   end
   object tlb1: TToolBar
-    Left = 62
+    Left = 122
     Top = 49
     Width = 62
-    Height = 669
+    Height = 481
     CustomHint = BalloonHint1
     Align = alLeft
     ButtonHeight = 45

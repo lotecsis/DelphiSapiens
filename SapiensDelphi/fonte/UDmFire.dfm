@@ -3,6 +3,7 @@ object DmFire: TDmFire
   Height = 636
   Width = 938
   object IBDBanco: TIBDatabase
+    Connected = True
     DatabaseName = 
       '192.168.10.44:C:\DelphiSapiens\SapiensDelphi\ServerRep\BANCO\BAN' +
       'CO.FDB'
@@ -1656,7 +1657,7 @@ object DmFire: TDmFire
     SQL.Strings = (
       'select e120ipd.*,e075pro.despro'
       '                       from e120ipd'
-      'inner join e075pro on e075pro.codemp = e120ipd.codemp and'
+      'left join e075pro on e075pro.codemp = e120ipd.codemp and'
       '                      e075pro.codpro = e120ipd.codpro'
       '                      where'
       '                      e120ipd.codemp = :codemp and'

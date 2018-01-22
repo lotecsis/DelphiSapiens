@@ -50,7 +50,7 @@ object FAtuzlia_E075Pro_ServerRep: TFAtuzlia_E075Pro_ServerRep
     SQL.Strings = (
       'select e075pro.codemp,e075pro.codpro,e075pro.despro from e075pro'
       '                          where'
-      '                          e075pro.codori = 01 and'
+      '                          e075pro.codori in ('#39'1'#39','#39'2'#39') and'
       '                          e075pro.sitpro = '#39'A'#39
       '                          order by e075pro.codpro')
     Left = 304

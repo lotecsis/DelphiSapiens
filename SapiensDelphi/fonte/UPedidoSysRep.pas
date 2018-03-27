@@ -166,27 +166,6 @@ begin
               DmFire.CadE120Ipd.Open;
               if not DmFire.CadE120Ipd.IsEmpty then
                  begin//2
-                   //primeiro apaga as cores do produto
-                   DmFire.ConsUsu120Ipd.First;
-                   while not DmFire.ConsUsu120Ipd.Eof do
-                      begin
-                         DmFire.CadUsu120Ipd.Close;
-                         DmFire.CadUsu120Ipd.ParamByName('codemp').Value := DmFire.ConsUsu120IpdCODEMP.Value;
-                         DmFire.CadUsu120Ipd.ParamByName('codfil').Value := DmFire.ConsUsu120IpdCODFIL.Value;
-                         DmFire.CadUsu120Ipd.ParamByName('numcon').Value := DmFire.ConsUsu120IpdNUMCON.Value;
-                         DmFire.CadUsu120Ipd.ParamByName('codrep').Value := DmFire.ConsUsu120IpdCODREP.Value;
-                         DmFire.CadUsu120Ipd.ParamByName('seqipd').Value := DmFire.ConsUsu120IpdSEQIPD.Value;
-                         DmFire.CadUsu120Ipd.ParamByName('seqite').Value := DmFire.ConsUsu120IpdSEQITE.Value;
-                         DmFire.CadUsu120Ipd.Open;
-                         if not DmFire.CadUsu120Ipd.IsEmpty then
-                            begin
-                              DmFire.CadUsu120Ipd.Delete;
-                            end;
-
-                         DmFire.ConsUsu120Ipd.Next;
-                      end;
-
-
                    DmFire.CadE120Ipd.Delete;
                    DmFire.IBTransacao.CommitRetaining;
 

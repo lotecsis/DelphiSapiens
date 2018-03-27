@@ -70,7 +70,32 @@ begin
     ConsFuncionariosAtivos.Close;
     ConsFuncionariosAtivos.Open;
     while not ConsFuncionariosAtivos.Eof do
-       begin//1
+       begin
+           {************************************************
+           FAZ O TRATAMENTO DOS LANÇAMENTOS QUE DEVEM SER DESCONTADOS O VALOR INTEGRAL DO FUNCIONARIO
+           *************************************************}
+           ConsSerMov.Close;
+           ConsSerMov.Parameters.ParamByName('ANOSER').Value := StrToInt(TRIM(EdAno.Text));
+           ConsSerMov.Parameters.ParamByName('MESSER').Value := CbMes.ItemIndex;
+           ConsSerMov.Parameters.ParamByName('NUMCAD').Value := ConsFuncionariosAtivosUSU_NUMCAD.Value;
+           ConsSerMov.Parameters.ParamByName('CODSER').Value := 'DESCONTO_INTEGRAL';
+           ConsSerMov.Open;
+           while not ConsSerMov.Eof do
+             begin
+               DmOra.CadUsu_TRhSerMov.Close;
+               DmOra.CadUsu_TRhSerMov.Parameters.ParamByName('SEQSER').Value := ConsSerMovUSU_SEQSER.Value;
+               DmOra.CadUsu_TRhSerMov.Parameters.ParamByName('CODSER').Value := ConsSerMovUSU_CODSER.Value;
+               DmOra.CadUsu_TRhSerMov.Open;
+               if not DmOra.CadUsu_TRhSerMov.IsEmpty then
+                  begin
+                     DmOra.CadUsu_TRhSerMov.Edit;
+                     DmOra.CadUsu_TRhSerMovUSU_VLRCOB.Value := ConsSerMovUSU_PREUNI.Value * ConsSerMovUSU_QTDSER.Value;
+                     DmOra.CadUsu_TRhSerMov.Post;
+                  end;
+               ConsSerMov.Next;
+             end;
+
+
          {***************************************************************************
           FAZ A ATUALIZAÇAO DAS    CONSULTAS    A PRIMEIRA PAGA TAXA DE 20,00 DEPOIS
           A SEGUNDA É METADE DO VALOR E DA TERCEIRA EM DIANTE É COBRADO TUDO

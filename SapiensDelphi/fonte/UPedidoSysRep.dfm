@@ -286,7 +286,6 @@ object FPedidoSysRep: TFPedidoSysRep
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitWidth = 678
       object DBGrid2: TDBGrid
         Left = 0
         Top = 0
@@ -442,7 +441,6 @@ object FPedidoSysRep: TFPedidoSysRep
         Align = alRight
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitLeft = 406
         object BExcProd: TBitBtn
           Left = 198
           Top = 3

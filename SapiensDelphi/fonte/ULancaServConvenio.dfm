@@ -42,7 +42,6 @@ object FLancaServConvenio: TFLancaServConvenio
     Font.Height = -13
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
-    ItemIndex = 0
     ParentFont = False
     TabOrder = 0
     Text = 'CONSULTA'
@@ -54,7 +53,8 @@ object FLancaServConvenio: TFLancaServConvenio
       'FISIOTERAPIA'
       'AMBULATORIO'
       'CIRURGIA'
-      'CESARIANA')
+      'CESARIANA'
+      'DESCONTO_INTEGRAL')
   end
   object DBGrid1: TDBGrid
     Left = -1

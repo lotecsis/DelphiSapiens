@@ -1146,7 +1146,6 @@ object FPedido: TFPedido
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitWidth = 589
           object Panel10: TPanel
             Left = 0
             Top = 289
@@ -1155,7 +1154,6 @@ object FPedido: TFPedido
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 0
-            ExplicitWidth = 589
             object Panel13: TPanel
               Left = 781
               Top = 0
@@ -1164,7 +1162,6 @@ object FPedido: TFPedido
               Align = alRight
               BevelOuter = bvNone
               TabOrder = 0
-              ExplicitLeft = 402
               object BRemoveProd: TBitBtn
                 Left = 77
                 Top = 1

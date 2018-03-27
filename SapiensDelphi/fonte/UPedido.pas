@@ -2162,10 +2162,11 @@ if not (Dm2.ConsE120Ipd.IsEmpty) and (trim(EdCodFil.Text) = '1') then
 
             // Verificar retorno
             if (xRetorno <> 'OK') then
-               raise Exception.Create(xRetorno)
+              // raise Exception.Create(xRetorno)
+              ShowMessage(xRetorno)
             else
                begin
-                   EdNumPedExit(Sender);
+                 EdNumPedExit(Sender);
                end;
          end;
    end;

@@ -230,7 +230,7 @@ begin
               ConsFaturamento.Parameters.ParamByName('CODREP').Value := TRIM(EdCodRep.Text);
             end;
 
-        ConsFaturamento.SQL.Add(' AND E075PRO.CODAGP = ''ESTOF''');//PEGA OS ETOFADOS .
+        ConsFaturamento.SQL.Add(' AND E075PRO.CODAGC = ''ESTOF''');//PEGA OS ETOFADOS .
         ConsFaturamento.Open;
         if ConsFaturamento.IsEmpty then
            BEGIN
@@ -283,7 +283,7 @@ begin
               ConsFaturamento.Parameters.ParamByName('CODREP').Value := TRIM(EdCodRep.Text);
             end;
 
-        ConsFaturamento.SQL.Add(' AND E075PRO.CODAGP = ''COLCH''');//PEGA OS ETOFADOS .
+        ConsFaturamento.SQL.Add(' AND E075PRO.CODAGC = ''COLCH''');//PEGA OS ETOFADOS .
         ConsFaturamento.Open;
         if ConsFaturamento.IsEmpty then
            BEGIN
@@ -337,7 +337,7 @@ begin
               ConsFaturamento.Parameters.ParamByName('CODREP').Value := TRIM(EdCodRep.Text);
             end;
 
-        ConsFaturamento.SQL.Add(' AND E075PRO.CODAGP = ''DIVER''');//PEGA OS ETOFADOS .
+        ConsFaturamento.SQL.Add(' AND E075PRO.CODAGC = ''DIVER''');//PEGA OS ETOFADOS .
         ConsFaturamento.Open;
         if ConsFaturamento.IsEmpty then
            BEGIN

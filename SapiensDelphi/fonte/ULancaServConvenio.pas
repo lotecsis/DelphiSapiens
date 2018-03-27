@@ -56,10 +56,10 @@ var Ano,Mes,Dia : word;
 begin
 
     if not TempServ.IsEmpty then
-       begin//1
+       begin
          TempServ.First;
          while not TempServ.Eof do
-            begin//2
+            begin
                DmOra.CadUsu_TRhSerMov.Open;
                DmOra.CadUsu_TRhSerMov.Insert;
                DmOra.CadUsu_TRhSerMovUSU_CODSER.Value := TempServCodSer.AsString;

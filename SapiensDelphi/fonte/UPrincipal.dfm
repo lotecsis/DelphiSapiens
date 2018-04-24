@@ -181,8 +181,6 @@
       end>
     ParentShowHint = False
     ShowHint = False
-    ExplicitTop = 530
-    ExplicitWidth = 796
   end
   object ToolBar1: TToolBar
     Left = 0
@@ -198,7 +196,6 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 1
-    ExplicitWidth = 796
     object BPreCarga: TToolButton
       Left = 0
       Top = 0
@@ -354,8 +351,6 @@
     HideClippedButtons = True
     Images = ImageList2
     TabOrder = 2
-    ExplicitWidth = 122
-    ExplicitHeight = 481
     object BComparaComprasClientes: TToolButton
       Left = 0
       Top = 0
@@ -481,8 +476,6 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 3
-    ExplicitLeft = 122
-    ExplicitHeight = 481
     object btnTransfereTecPedido: TToolButton
       Left = 0
       Top = 0
@@ -1277,6 +1270,10 @@
           Action = actCorteTecEstof
         end
       end
+      object mnuControleFaixaBord: TMenuItem
+        Caption = 'Controle de Faixa Bordada'
+        OnClick = mnuControleFaixaBordClick
+      end
     end
     object mnuSeguranca: TMenuItem
       Caption = '&Seguran'#231'a'
@@ -1388,7 +1385,7 @@
     Left = 640
     Top = 328
     Bitmap = {
-      494C010125009C005C0223002300EBE9ED00FF10FFFFFFFFFFFFFFFF424D3600
+      494C010125009C00640223002300EBE9ED00FF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008C0000005E0100000100200000000000A0FD
       020000000000000000000000000000000000EDE9EB00EDE9EB00EDE9EB00EDE9
       EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9
@@ -7984,8 +7981,8 @@
     Top = 192
   end
   object PopAlertaClientes: TPopupMenu
-    Left = 240
-    Top = 280
+    Left = 248
+    Top = 336
     object AcMensagensAlertaClientes1: TMenuItem
       Action = AcMensagensAlertaClientes
       Caption = 'Cad. Msg Alerta Clientes'

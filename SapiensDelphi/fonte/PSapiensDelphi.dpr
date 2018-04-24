@@ -165,7 +165,8 @@ uses
   UZeraEst3000 in 'UZeraEst3000.pas' {FZeraEst3000},
   UGraficoConsumoMP in 'UGraficoConsumoMP.pas' {FGraficoConsumoMP},
   UEtiquetaCabeceira in 'UEtiquetaCabeceira.pas' {FEtiquetaCabeceira},
-  UfrmValidaXmlEntrada in 'UfrmValidaXmlEntrada.pas' {frmValidaXmlEntrada};
+  UfrmValidaXmlEntrada in 'UfrmValidaXmlEntrada.pas' {frmValidaXmlEntrada},
+  UfrmControleFaixa in 'UfrmControleFaixa.pas' {frmControleFaixa};
 
 {$R *.res}
 
@@ -280,6 +281,7 @@ begin
   Application.CreateForm(TFGraficoConsumoMP, FGraficoConsumoMP);
   Application.CreateForm(TFEtiquetaCabeceira, FEtiquetaCabeceira);
   Application.CreateForm(TfrmValidaXmlEntrada, frmValidaXmlEntrada);
+  Application.CreateForm(TfrmControleFaixa, frmControleFaixa);
   //  Application.CreateForm(TFConsultaTecido, FConsultaTecido);
  // Application.CreateForm(TFControleConexao, FControleConexao);
   Application.Run;

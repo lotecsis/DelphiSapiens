@@ -295,6 +295,7 @@ type
     btn12: TToolButton;
     btnfrmValidaXmlEntrega: TToolButton;
     actfrmValidaXmlEntrega: TAction;
+    mnuControleFaixaBord: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
     procedure Formularios1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -414,6 +415,7 @@ type
     procedure mnuEtiquetaCabeceiraClick(Sender: TObject);
     procedure btnSelecionaPastaClick(Sender: TObject);
     procedure actfrmValidaXmlEntregaExecute(Sender: TObject);
+    procedure mnuControleFaixaBordClick(Sender: TObject);
   private
     { Private declarations }
     vaSistemaEmUso : string;
@@ -476,7 +478,7 @@ uses UFormulario, {UCidade, UConsSimpCidade, UGrupoUsuario,
   UListaOnlineSERASA, UAnalizaConsumoMpPorFilial, UCadFormaCompraMP,
   UImpressoraPadrao, UAjustaConsumoMateriaPrima, UPreCargas,
   UAnalizeConsumoMPProduzir, UZeraEst3000, ULimpaCancelados, UEtiquetaCabeceira,
-  UfrmValidaXmlEntrada;
+  UfrmValidaXmlEntrada, UfrmControleFaixa;
 
 {$R *.dfm}
 
@@ -1267,6 +1269,13 @@ begin
   FAjustaICMS := TFAjustaICMS.Create(Self);
   FAjustaICMS.ShowModal;
   FreeAndNil(FAjustaICMS);
+end;
+
+procedure TFPrincipal.mnuControleFaixaBordClick(Sender: TObject);
+begin
+  frmControleFaixa := TfrmControleFaixa.Create(Self);
+  frmControleFaixa.ShowModal;
+  FreeAndNil(frmControleFaixa);
 end;
 
 procedure TFPrincipal.mnuEtiquetaCabeceiraClick(Sender: TObject);

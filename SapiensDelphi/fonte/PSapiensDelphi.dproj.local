@@ -227,5 +227,7 @@
     <Transaction>2017/09/13 10:18:40.595.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\UQrSaldoTecido1001_1.dfm=</Transaction>
     <Transaction>2017/09/26 13:49:57.196.pas,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmValidaXmlEntrada.pas</Transaction>
     <Transaction>2017/09/26 13:49:57.196.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmValidaXmlEntrada.dfm</Transaction>
+    <Transaction>2018/04/23 09:02:33.978.pas,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmControleFaixa.pas</Transaction>
+    <Transaction>2018/04/23 09:02:33.978.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmControleFaixa.dfm</Transaction>
   </Transactions>
 </BorlandProject>

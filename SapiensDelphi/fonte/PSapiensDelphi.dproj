@@ -539,6 +539,9 @@
 			<DCCReference Include="UfrmValidaXmlEntrada.pas">
 				<Form>frmValidaXmlEntrada</Form>
 			</DCCReference>
+			<DCCReference Include="UfrmControleFaixa.pas">
+				<Form>frmControleFaixa</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

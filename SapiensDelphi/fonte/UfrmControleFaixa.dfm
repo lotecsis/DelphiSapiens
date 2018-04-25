@@ -10,6 +10,7 @@ object frmControleFaixa: TfrmControleFaixa
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
   OnShow = FormShow
@@ -49,6 +50,13 @@ object frmControleFaixa: TfrmControleFaixa
     Width = 24
     Height = 13
     Caption = 'Total'
+  end
+  object lblCarga: TLabel
+    Left = 352
+    Top = 14
+    Width = 29
+    Height = 13
+    Caption = 'Carga'
   end
   object dbgrd1: TDBGrid
     Left = 0
@@ -132,15 +140,15 @@ object frmControleFaixa: TfrmControleFaixa
       end
       item
         Expanded = False
-        FieldName = 'NOMCLI'
+        FieldName = 'USU_PRECAR'
         Title.Alignment = taCenter
-        Title.Caption = 'Cliente'
-        Width = 150
+        Title.Caption = 'Carga'
+        Width = 75
         Visible = True
       end>
   end
   object edtFiltro: TEdit
-    Left = 359
+    Left = 839
     Top = 8
     Width = 41
     Height = 21
@@ -170,14 +178,14 @@ object frmControleFaixa: TfrmControleFaixa
     OnChange = edtDesProChange
   end
   object rgGrupo: TRadioGroup
-    Left = 454
+    Left = 519
     Top = 4
     Width = 302
     Height = 37
     TabOrder = 4
   end
   object rbTodos: TRadioButton
-    Left = 699
+    Left = 764
     Top = 16
     Width = 49
     Height = 17
@@ -188,7 +196,7 @@ object frmControleFaixa: TfrmControleFaixa
     OnClick = rbTodosClick
   end
   object rbEnviado: TRadioButton
-    Left = 560
+    Left = 625
     Top = 16
     Width = 58
     Height = 17
@@ -197,7 +205,7 @@ object frmControleFaixa: TfrmControleFaixa
     OnClick = rbEnviadoClick
   end
   object rbBordado: TRadioButton
-    Left = 629
+    Left = 694
     Top = 16
     Width = 60
     Height = 17
@@ -250,13 +258,22 @@ object frmControleFaixa: TfrmControleFaixa
     TabOrder = 11
   end
   object rbNaoEnv: TRadioButton
-    Left = 468
+    Left = 533
     Top = 16
     Width = 79
     Height = 17
     Caption = 'N'#227'o Enviado'
     TabOrder = 12
     OnClick = rbNaoEnvClick
+  end
+  object edtPreCar: TEdit
+    Left = 386
+    Top = 11
+    Width = 110
+    Height = 21
+    TabOrder = 13
+    OnChange = edtPreCarChange
+    OnKeyPress = edtPreCarKeyPress
   end
   object ConsE120Ipd: TADOQuery
     Connection = DmOra.ADOBanco
@@ -268,7 +285,9 @@ object frmControleFaixa: TfrmControleFaixa
         '       E120IPD.CODPRO, E120IPD.CODDER, E120IPD.QTDPED, E120IPD.Q' +
         'TDABE, E120IPD.SITIPD, E120IPD.USU_SITFAI, E120IPD.USU_DATSITFAI' +
         ','
-      '       E120PED.NUMPED, E120PED.CODCLI, E120PED.DATEMI,'
+      
+        '       E120PED.NUMPED, E120PED.CODCLI, E120PED.DATEMI, E120PED.U' +
+        'SU_PRECAR,'
       '       E085CLI.NOMCLI,'
       '       E075PRO.DESPRO'
       '  FROM E120IPD'
@@ -344,6 +363,9 @@ object frmControleFaixa: TfrmControleFaixa
     object ConsE120IpdSEQIPD: TIntegerField
       FieldName = 'SEQIPD'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object ConsE120IpdUSU_PRECAR: TIntegerField
+      FieldName = 'USU_PRECAR'
     end
   end
   object dsClientConsE120Ipd: TDataSource
@@ -450,6 +472,10 @@ object frmControleFaixa: TfrmControleFaixa
     object ClientConsE120IpdvnQtdBord: TFloatField
       FieldKind = fkInternalCalc
       FieldName = 'vnQtdBord'
+    end
+    object ClientConsE120IpdUSU_PRECAR: TIntegerField
+      Alignment = taCenter
+      FieldName = 'USU_PRECAR'
     end
     object ClientConsE120IpdTQtdNaoEnv: TAggregateField
       Alignment = taCenter

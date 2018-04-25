@@ -79,6 +79,10 @@ type
     Label3: TLabel;
     Label4: TLabel;
     rbNaoEnv: TRadioButton;
+    ConsE120IpdUSU_PRECAR: TIntegerField;
+    ClientConsE120IpdUSU_PRECAR: TIntegerField;
+    lblCarga: TLabel;
+    edtPreCar: TEdit;
     procedure ClientConsE120IpdCalcFields(DataSet: TDataSet);
     procedure dbgrd1DblClick(Sender: TObject);
     procedure dbgrd1DrawColumnCell(Sender: TObject; const Rect: TRect;
@@ -93,6 +97,8 @@ type
     procedure mnuFiltrarClick(Sender: TObject);
     procedure mnuResetarClick(Sender: TObject);
     procedure rbNaoEnvClick(Sender: TObject);
+    procedure edtPreCarChange(Sender: TObject);
+    procedure edtPreCarKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -213,7 +219,7 @@ begin
   ConsE120Ipd.SQL.Clear;
   ConsE120Ipd.SQL.Add(' SELECT E120IPD.CODEMP, E120IPD.CODFIL, E120IPD.SEQIPD,');
   ConsE120Ipd.SQL.Add('       E120IPD.CODPRO, E120IPD.CODDER, E120IPD.QTDPED, E120IPD.QTDABE, E120IPD.SITIPD, E120IPD.USU_SITFAI, E120IPD.USU_DATSITFAI,');
-  ConsE120Ipd.SQL.Add('       E120PED.NUMPED, E120PED.CODCLI, E120PED.DATEMI,');
+  ConsE120Ipd.SQL.Add('       E120PED.NUMPED, E120PED.CODCLI, E120PED.DATEMI, E120PED.USU_PRECAR,');
   ConsE120Ipd.SQL.Add('       E085CLI.NOMCLI,');
   ConsE120Ipd.SQL.Add('       E075PRO.DESPRO');
   ConsE120Ipd.SQL.Add('  FROM E120IPD');
@@ -247,9 +253,26 @@ begin
        ConsE120Ipd.SQL.Add(' AND E120IPD.USU_SITFAI = '' ''');
      end;
 
+  if Trim(edtPreCar.Text) <> '' then
+     begin
+       ConsE120Ipd.SQL.Add(' AND E120PED.USU_PRECAR = '+edtPreCar.Text);
+     end;
+
   ConsE120Ipd.SQL.Add('   ORDER BY E120IPD.DATGER DESC, E120IPD.NUMPED DESC, E120IPD.QTDABE DESC');
   ConsE120Ipd.Open;
   ClientConsE120Ipd.Open
+end;
+
+procedure TfrmControleFaixa.edtPreCarChange(Sender: TObject);
+begin
+ edtFiltroChange(Sender);
+end;
+
+procedure TfrmControleFaixa.edtPreCarKeyPress(Sender: TObject; var Key: Char);
+begin
+if not (key in [#48..#57]) and not (key in [#8])
+      and not (key in [#240]) then
+      key := #0;
 end;
 
 procedure TfrmControleFaixa.FormShow(Sender: TObject);

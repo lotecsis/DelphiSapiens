@@ -447,6 +447,7 @@ begin
                                      xPostQuery.Add('&CodPro='+vaCodPro);
                                      xPostQuery.Add('&CodDer='+vaCodDer);
                                      xPostQuery.Add('&QtdPed='+vaQtdPed);
+                                     xPostQuery.Add('&CodTpr='+vaCodTpr);
                                      xPostQuery.Add('&PreUni='+vaPreUni);
 
                                      // Executar ação  Alterar Pedido

@@ -281,6 +281,7 @@ begin
   Dm3.MateriaPrimaMediaCons.SQL.Add(' e075pro.codori <> 01 and');
   Dm3.MateriaPrimaMediaCons.SQL.Add(' e075pro.sitpro = ''A''');
 
+
   if cbbMostrarTecido.Text = 'NAO' then
      begin
        Dm3.MateriaPrimaMediaCons.SQL.Add(' and e075pro.codfam not in (''1001'',''1002'',''1003'',''1004'')');
@@ -319,7 +320,6 @@ begin
        Dm3.MateriaPrimaMediaCons.SQL.Add(' where e210mvp.datmov between :DatIniC and :DatFimC and');
        Dm3.MateriaPrimaMediaCons.SQL.Add('       e210mvp.esteos = ''S'' and');
        Dm3.MateriaPrimaMediaCons.SQL.Add('       e210mvp.codtns in (''90250'',''90251'') and');
-       //Dm3.MateriaPrimaMediaCons.SQL.Add('       e210mvp.codtns in (''90259'') and');
        Dm3.MateriaPrimaMediaCons.SQL.Add(' e210mvp.codpro = e210est.codpro and');
        Dm3.MateriaPrimaMediaCons.SQL.Add(' e210mvp.coddep = e210est.coddep) > e210est.qtdest');
        Dm3.MateriaPrimaMediaCons.Parameters.ParamByName('DatIniC').Value := EdDatIni.Date;

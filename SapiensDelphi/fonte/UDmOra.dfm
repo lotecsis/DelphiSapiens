@@ -3,6 +3,7 @@ object DmOra: TDmOra
   Height = 1361
   Width = 1441
   object ADOBanco: TADOConnection
+    Connected = True
     ConnectionString = 
       'Provider=MSDAORA.1;Password=saplider;User ID=saplider;Data Sourc' +
       'e=liderlar;Persist Security Info=True'
@@ -4566,8 +4567,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/01/2011'#39 +
-        ' and '#39'31/01/2011'#39') as TotJaneiroAnt,'
+        '                             e140nfv.datemi between '#39'01/01/2017'#39 +
+        ' and '#39'31/01/2017'#39') as TotJaneiroAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4586,8 +4587,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/01/2012'#39 +
-        ' and '#39'31/01/2012'#39') as TotJaneiroAtu,'
+        '                             e140nfv.datemi between '#39'01/01/2018'#39 +
+        ' and '#39'31/01/2018'#39') as TotJaneiroAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4606,8 +4607,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/02/2011'#39 +
-        ' and '#39'28/02/2011'#39') as TotFevereiroAnt,'
+        '                             e140nfv.datemi between '#39'01/02/2017'#39 +
+        ' and '#39'28/02/2017'#39') as TotFevereiroAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4626,8 +4627,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/02/2012'#39 +
-        ' and '#39'28/02/2012'#39') as TotFevereiroAtu,'
+        '                             e140nfv.datemi between '#39'01/02/2018'#39 +
+        ' and '#39'28/02/2018'#39') as TotFevereiroAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4646,8 +4647,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/03/2011'#39 +
-        ' and '#39'31/03/2011'#39') as TotMarcoAnt,'
+        '                             e140nfv.datemi between '#39'01/03/2017'#39 +
+        ' and '#39'31/03/2017'#39') as TotMarcoAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4666,8 +4667,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/03/2012'#39 +
-        ' and '#39'31/03/2012'#39') as TotMarcoAtu,'
+        '                             e140nfv.datemi between '#39'01/03/2018'#39 +
+        ' and '#39'31/03/2018'#39') as TotMarcoAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4686,8 +4687,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/04/2011'#39 +
-        ' and '#39'30/04/2011'#39') as TotAbrilAnt,'
+        '                             e140nfv.datemi between '#39'01/04/2017'#39 +
+        ' and '#39'30/04/2017'#39') as TotAbrilAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4706,8 +4707,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/04/2012'#39 +
-        ' and '#39'30/04/2012'#39') as TotAbrilAtu,'
+        '                             e140nfv.datemi between '#39'01/04/2018'#39 +
+        ' and '#39'30/04/2018'#39') as TotAbrilAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4726,8 +4727,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/05/2011'#39 +
-        ' and '#39'31/05/2011'#39') as TotMaioAnt,'
+        '                             e140nfv.datemi between '#39'01/05/2017'#39 +
+        ' and '#39'31/05/2017'#39') as TotMaioAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4746,8 +4747,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/05/2012'#39 +
-        ' and '#39'31/05/2012'#39') as TotMaioAtu,'
+        '                             e140nfv.datemi between '#39'01/05/2018'#39 +
+        ' and '#39'31/05/2018'#39') as TotMaioAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4766,8 +4767,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/06/2011'#39 +
-        ' and '#39'30/06/2011'#39') as TotJunhoAnt,'
+        '                             e140nfv.datemi between '#39'01/06/2017'#39 +
+        ' and '#39'30/06/2017'#39') as TotJunhoAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4786,8 +4787,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/06/2012'#39 +
-        ' and '#39'30/06/2012'#39') as TotJunhoAtu,'
+        '                             e140nfv.datemi between '#39'01/06/2018'#39 +
+        ' and '#39'30/06/2018'#39') as TotJunhoAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4806,8 +4807,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/07/2011'#39 +
-        ' and '#39'31/07/2011'#39') as TotJulhoAnt,'
+        '                             e140nfv.datemi between '#39'01/07/2017'#39 +
+        ' and '#39'31/07/2017'#39') as TotJulhoAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4826,8 +4827,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/07/2012'#39 +
-        ' and '#39'31/07/2012'#39') as TotJulhoAtu,'
+        '                             e140nfv.datemi between '#39'01/07/2018'#39 +
+        ' and '#39'31/07/2018'#39') as TotJulhoAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4846,8 +4847,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/08/2011'#39 +
-        ' and '#39'31/08/2011'#39') as TotAgostoAnt,'
+        '                             e140nfv.datemi between '#39'01/08/2017'#39 +
+        ' and '#39'31/08/2017'#39') as TotAgostoAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4866,8 +4867,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/08/2012'#39 +
-        ' and '#39'31/08/2012'#39') as TotAgostoAtu,'
+        '                             e140nfv.datemi between '#39'01/08/2018'#39 +
+        ' and '#39'31/08/2018'#39') as TotAgostoAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4886,8 +4887,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/09/2011'#39 +
-        ' and '#39'30/09/2011'#39') as TotSetembroAnt,'
+        '                             e140nfv.datemi between '#39'01/09/2017'#39 +
+        ' and '#39'30/09/2017'#39') as TotSetembroAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4906,8 +4907,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/09/2012'#39 +
-        ' and '#39'30/09/2012'#39') as TotSetembroAtu,'
+        '                             e140nfv.datemi between '#39'01/09/2018'#39 +
+        ' and '#39'30/09/2018'#39') as TotSetembroAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4926,8 +4927,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/10/2011'#39 +
-        ' and '#39'31/10/2011'#39') as TotOutubroAnt,'
+        '                             e140nfv.datemi between '#39'01/10/2017'#39 +
+        ' and '#39'31/10/2017'#39') as TotOutubroAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4946,8 +4947,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/10/2012'#39 +
-        ' and '#39'31/10/2012'#39') as TotOutubroAtu,'
+        '                             e140nfv.datemi between '#39'01/10/2018'#39 +
+        ' and '#39'31/10/2018'#39') as TotOutubroAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4966,8 +4967,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/11/2011'#39 +
-        ' and '#39'30/11/2011'#39') as TotNovembroAnt,'
+        '                             e140nfv.datemi between '#39'01/11/2017'#39 +
+        ' and '#39'30/11/2017'#39') as TotNovembroAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -4986,8 +4987,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/11/2012'#39 +
-        ' and '#39'30/11/2012'#39') as TotNovembroAtu,'
+        '                             e140nfv.datemi between '#39'01/11/2018'#39 +
+        ' and '#39'30/11/2018'#39') as TotNovembroAtu,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -5006,8 +5007,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/12/2011'#39 +
-        ' and '#39'31/12/2011'#39') as TotDezembroAnt,'
+        '                             e140nfv.datemi between '#39'01/12/2017'#39 +
+        ' and '#39'31/12/2017'#39') as TotDezembroAnt,'
       '       (select sum(e140ipv.vlrbru) from e140ipv'
       
         '        inner join e140nfv on e140nfv.codemp = e140ipv.codemp an' +
@@ -5026,8 +5027,8 @@ object DmOra: TDmOra
         #39','#39'6949R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5' +
         '916R'#39','#39'6916R'#39') and'
       
-        '                             e140nfv.datemi between '#39'01/12/2012'#39 +
-        ' and '#39'31/12/2012'#39') as TotdezembroAtu'
+        '                             e140nfv.datemi between '#39'01/12/2018'#39 +
+        ' and '#39'31/12/2018'#39') as TotdezembroAtu'
       '                    from e085cli'
       '                    where'
       '                    e085cli.codcli = :codcli'
@@ -5315,7 +5316,7 @@ object DmOra: TDmOra
         '                      e140ipv.tnspro not in ('#39'6949'#39','#39'5949'#39','#39'6949' +
         'R'#39','#39'5949R'#39','#39'6910'#39','#39'5910'#39','#39'6910R'#39','#39'5910R'#39','#39'5916'#39','#39'6916'#39','#39'5916R'#39','#39 +
         '6916R'#39') and'
-      '                      e075pro.codagp = :codagp'
+      '                      e075pro.codagc = :codagp'
       '                      group by e140ipv.codpro,e075pro.despro'
       '                      order by e140ipv.codpro')
     Left = 440

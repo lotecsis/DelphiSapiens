@@ -193,7 +193,7 @@ begin
           DmOra.ComparativoComprasCli.SQL.Add('where');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.codcli = e085cli.codcli and');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.sitnfv = ''2'' and');
-          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagp = ''ESTOF'' and');
+          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagc = ''ESTOF'' and');
           DmOra.ComparativoComprasCli.SQL.Add('e140ipv.tnspro not in (''6949'',''5949'',''6949R'',''5949R'',''6910'',''5910'',''6910R'',''5910R'',''5916'',''6916'',''5916R'',''6916R'') and');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.datemi between :DatEstofIAnt and :DatEstofFAnt) as TotEstofAnt,');
           DmOra.ComparativoComprasCli.SQL.Add('(select sum(e140ipv.vlrbru) from e140ipv');
@@ -206,7 +206,7 @@ begin
           DmOra.ComparativoComprasCli.SQL.Add('where');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.codcli = e085cli.codcli and');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.sitnfv = ''2'' and');
-          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagp = ''ESTOF'' and');
+          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagc = ''ESTOF'' and');
           DmOra.ComparativoComprasCli.SQL.Add('e140ipv.tnspro not in (''6949'',''5949'',''6949R'',''5949R'',''6910'',''5910'',''6910R'',''5910R'',''5916'',''6916'',''5916R'',''6916R'') and');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.datemi between :DatEstofIAtu and :DatEstofFAtu)');
           DmOra.ComparativoComprasCli.SQL.Add('as TotEstofAtu,');
@@ -220,7 +220,7 @@ begin
           DmOra.ComparativoComprasCli.SQL.Add('where');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.codcli = e085cli.codcli and');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.sitnfv = ''2'' and');
-          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagp = ''COLCH'' and');
+          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagc = ''COLCH'' and');
           DmOra.ComparativoComprasCli.SQL.Add('e140ipv.tnspro not in (''6949'',''5949'',''6949R'',''5949R'',''6910'',''5910'',''6910R'',''5910R'',''5916'',''6916'',''5916R'',''6916R'') and');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.datemi between :DatColchIAnt and :DatColchFAnt) as TotColchAnt,');
           DmOra.ComparativoComprasCli.SQL.Add('(select sum(e140ipv.vlrbru) from e140ipv');
@@ -233,7 +233,7 @@ begin
           DmOra.ComparativoComprasCli.SQL.Add('where');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.codcli = e085cli.codcli and');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.sitnfv = ''2'' and');
-          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagp = ''COLCH'' and');
+          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagc = ''COLCH'' and');
           DmOra.ComparativoComprasCli.SQL.Add('e140ipv.tnspro not in (''6949'',''5949'',''6949R'',''5949R'',''6910'',''5910'',''6910R'',''5910R'',''5916'',''6916'',''5916R'',''6916R'') and');
           DmOra.ComparativoComprasCli.SQL.Add('e140nfv.datemi between :DatColchIAtu and :DatColchFAtu)');
           DmOra.ComparativoComprasCli.SQL.Add('as TotColchAtu,');
@@ -247,7 +247,7 @@ begin
           DmOra.ComparativoComprasCli.SQL.Add('e120ipd.tnspro in (''90100'',''90106'',''90160'') and');
           DmOra.ComparativoComprasCli.SQL.Add('e120ped.sitped in (1,2,3) and');
           DmOra.ComparativoComprasCli.SQL.Add('e120ped.codcli = e085cli.codcli and');
-          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagp = ''ESTOF'') as TotPedAbeEstof,');
+          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagc = ''ESTOF'') as TotPedAbeEstof,');
           DmOra.ComparativoComprasCli.SQL.Add('(select sum(e120ipd.vlrbru) from e120ipd');
           DmOra.ComparativoComprasCli.SQL.Add('inner join e120ped on e120ped.codemp = e120ipd.codemp and');
           DmOra.ComparativoComprasCli.SQL.Add('e120ped.codfil = e120ipd.codfil and');
@@ -258,7 +258,7 @@ begin
           DmOra.ComparativoComprasCli.SQL.Add('e120ipd.tnspro in (''90100'',''90106'',''90160'') and');
           DmOra.ComparativoComprasCli.SQL.Add('e120ped.sitped in (1,2,3) and');
           DmOra.ComparativoComprasCli.SQL.Add('e120ped.codcli = e085cli.codcli and');
-          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagp = ''COLCH'') as TotPedAbeColch');
+          DmOra.ComparativoComprasCli.SQL.Add('e075pro.codagc = ''COLCH'') as TotPedAbeColch');
           DmOra.ComparativoComprasCli.SQL.Add('from e085cli');
           DmOra.ComparativoComprasCli.SQL.Add('inner join e085hcl on e085hcl.codcli = e085cli.codcli');
           DmOra.ComparativoComprasCli.SQL.Add('inner join e090rep on e090rep.codrep = e085hcl.codrep');

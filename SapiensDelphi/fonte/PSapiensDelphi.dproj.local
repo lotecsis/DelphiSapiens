@@ -229,5 +229,7 @@
     <Transaction>2017/09/26 13:49:57.196.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmValidaXmlEntrada.dfm</Transaction>
     <Transaction>2018/04/23 09:02:33.978.pas,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmControleFaixa.pas</Transaction>
     <Transaction>2018/04/23 09:02:33.978.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmControleFaixa.dfm</Transaction>
+    <Transaction>2018/05/22 10:40:07.617.pas,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmAlteraTipoIso.pas</Transaction>
+    <Transaction>2018/05/22 10:40:07.617.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmAlteraTipoIso.dfm</Transaction>
   </Transactions>
 </BorlandProject>

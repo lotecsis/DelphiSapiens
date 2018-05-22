@@ -166,7 +166,8 @@ uses
   UGraficoConsumoMP in 'UGraficoConsumoMP.pas' {FGraficoConsumoMP},
   UEtiquetaCabeceira in 'UEtiquetaCabeceira.pas' {FEtiquetaCabeceira},
   UfrmValidaXmlEntrada in 'UfrmValidaXmlEntrada.pas' {frmValidaXmlEntrada},
-  UfrmControleFaixa in 'UfrmControleFaixa.pas' {frmControleFaixa};
+  UfrmControleFaixa in 'UfrmControleFaixa.pas' {frmControleFaixa},
+  UfrmAlteraTipoIso in 'UfrmAlteraTipoIso.pas' {frmAlteraTipoIso};
 
 {$R *.res}
 
@@ -282,6 +283,7 @@ begin
   Application.CreateForm(TFEtiquetaCabeceira, FEtiquetaCabeceira);
   Application.CreateForm(TfrmValidaXmlEntrada, frmValidaXmlEntrada);
   Application.CreateForm(TfrmControleFaixa, frmControleFaixa);
+  Application.CreateForm(TfrmAlteraTipoIso, frmAlteraTipoIso);
   //  Application.CreateForm(TFConsultaTecido, FConsultaTecido);
  // Application.CreateForm(TFControleConexao, FControleConexao);
   Application.Run;

@@ -542,6 +542,9 @@
 			<DCCReference Include="UfrmControleFaixa.pas">
 				<Form>frmControleFaixa</Form>
 			</DCCReference>
+			<DCCReference Include="UfrmAlteraTipoIso.pas">
+				<Form>frmAlteraTipoIso</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

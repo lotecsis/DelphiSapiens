@@ -150,8 +150,8 @@ begin
                        Dm2.ConsE081Itp.Close;
                        Dm2.ConsE081Itp.Parameters.ParamByName('codpro').Value := dm2.ConsE210MvpCODPRO.AsString;
                        Dm2.ConsE081Itp.Parameters.ParamByName('codder').Value := dm2.ConsE210MvpCODDER.AsString;
-                       Dm2.ConsE081Itp.Parameters.ParamByName('codtpr').Value := '0001';
-                       Dm2.ConsE081Itp.Parameters.ParamByName('datini').Value := '01/07/2009';
+                       Dm2.ConsE081Itp.Parameters.ParamByName('codtpr').Value := '1000';
+                       Dm2.ConsE081Itp.Parameters.ParamByName('datini').Value := '04/10/2017';
                        Dm2.ConsE081Itp.Open;
                        if not Dm2.ConsE081Itp.IsEmpty then
                          begin

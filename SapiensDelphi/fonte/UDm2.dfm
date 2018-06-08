@@ -3575,7 +3575,7 @@ object Dm2: TDm2
       
         '                    e210mvp.datmov between :DatIni and :DatFim a' +
         'nd'
-      '                    e075pro.codori = 01 and'
+      '                    e075pro.codori in ( '#39'1'#39','#39'2'#39') and'
       '                    e210mvp.coddep <> '#39'9999999'#39'  and'
       '                    e210mvp.fildep <> 101 '
       '                    order by e210mvp.codpro,e210mvp.codder')

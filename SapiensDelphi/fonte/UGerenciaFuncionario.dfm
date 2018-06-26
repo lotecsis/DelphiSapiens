@@ -23,7 +23,7 @@ object FGerenciaFuncionario: TFGerenciaFuncionario
     Top = 49
     Width = 946
     Height = 599
-    ActivePage = TbConvenio
+    ActivePage = TbGeral
     Align = alClient
     TabOrder = 0
     object TbGeral: TTabSheet
@@ -226,6 +226,7 @@ object FGerenciaFuncionario: TFGerenciaFuncionario
         DataSource = DsConsUsu_TRhFun
         Items.Strings = (
           'VALE SUPERMERCADO FAMA'
+          'VALE SUPERMERCADO S'#195'O PAULO'
           'CESTA DE ALIMENTOS'
           'CESTA DE MATERIAL LIMPEZA')
         TabOrder = 6

@@ -226,7 +226,7 @@ object FGerenciaFuncionario: TFGerenciaFuncionario
         DataSource = DsConsUsu_TRhFun
         Items.Strings = (
           'VALE SUPERMERCADO FAMA'
-          'VALE SUPERMERCADO S'#195'O PAULO'
+          'VALE SUP. S'#195'O PAULO'
           'CESTA DE ALIMENTOS'
           'CESTA DE MATERIAL LIMPEZA')
         TabOrder = 6

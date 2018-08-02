@@ -545,6 +545,9 @@
 			<DCCReference Include="UfrmAlteraTipoIso.pas">
 				<Form>frmAlteraTipoIso</Form>
 			</DCCReference>
+			<DCCReference Include="UfrmPercentual.pas">
+				<Form>frmPercentual</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

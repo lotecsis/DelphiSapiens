@@ -231,5 +231,7 @@
     <Transaction>2018/04/23 09:02:33.978.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmControleFaixa.dfm</Transaction>
     <Transaction>2018/05/22 10:40:07.617.pas,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmAlteraTipoIso.pas</Transaction>
     <Transaction>2018/05/22 10:40:07.617.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmAlteraTipoIso.dfm</Transaction>
+    <Transaction>2018/08/02 08:33:06.253.pas,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmPercentual.pas</Transaction>
+    <Transaction>2018/08/02 08:33:06.253.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmPercentual.dfm</Transaction>
   </Transactions>
 </BorlandProject>

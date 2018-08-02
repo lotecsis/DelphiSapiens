@@ -681,6 +681,18 @@
     Visible = False
     OnClick = btnSelecionaPastaClick
   end
+  object btnfrmPercentual: TBitBtn
+    Left = 376
+    Top = 328
+    Width = 155
+    Height = 25
+    CustomHint = BalloonHint1
+    Caption = 'btnfrmPercentual'
+    DoubleBuffered = True
+    ParentDoubleBuffered = False
+    TabOrder = 15
+    OnClick = btnfrmPercentualClick
+  end
   object Timer1: TTimer
     Enabled = False
     OnTimer = Timer1Timer
@@ -1385,7 +1397,7 @@
     Left = 640
     Top = 328
     Bitmap = {
-      494C010125009C00640223002300EBE9ED00FF10FFFFFFFFFFFFFFFF424D3600
+      494C010125009C00680223002300EBE9ED00FF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008C0000005E0100000100200000000000A0FD
       020000000000000000000000000000000000EDE9EB00EDE9EB00EDE9EB00EDE9
       EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9

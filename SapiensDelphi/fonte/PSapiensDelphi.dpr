@@ -167,7 +167,8 @@ uses
   UEtiquetaCabeceira in 'UEtiquetaCabeceira.pas' {FEtiquetaCabeceira},
   UfrmValidaXmlEntrada in 'UfrmValidaXmlEntrada.pas' {frmValidaXmlEntrada},
   UfrmControleFaixa in 'UfrmControleFaixa.pas' {frmControleFaixa},
-  UfrmAlteraTipoIso in 'UfrmAlteraTipoIso.pas' {frmAlteraTipoIso};
+  UfrmAlteraTipoIso in 'UfrmAlteraTipoIso.pas' {frmAlteraTipoIso},
+  UfrmPercentual in 'UfrmPercentual.pas' {frmPercentual};
 
 {$R *.res}
 
@@ -284,6 +285,7 @@ begin
   Application.CreateForm(TfrmValidaXmlEntrada, frmValidaXmlEntrada);
   Application.CreateForm(TfrmControleFaixa, frmControleFaixa);
   Application.CreateForm(TfrmAlteraTipoIso, frmAlteraTipoIso);
+  Application.CreateForm(TfrmPercentual, frmPercentual);
   //  Application.CreateForm(TFConsultaTecido, FConsultaTecido);
  // Application.CreateForm(TFControleConexao, FControleConexao);
   Application.Run;

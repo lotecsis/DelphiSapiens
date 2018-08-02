@@ -296,6 +296,7 @@ type
     btnfrmValidaXmlEntrega: TToolButton;
     actfrmValidaXmlEntrega: TAction;
     mnuControleFaixaBord: TMenuItem;
+    btnfrmPercentual: TBitBtn;
     procedure Timer1Timer(Sender: TObject);
     procedure Formularios1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -416,6 +417,7 @@ type
     procedure btnSelecionaPastaClick(Sender: TObject);
     procedure actfrmValidaXmlEntregaExecute(Sender: TObject);
     procedure mnuControleFaixaBordClick(Sender: TObject);
+    procedure btnfrmPercentualClick(Sender: TObject);
   private
     { Private declarations }
     vaSistemaEmUso : string;
@@ -478,7 +480,7 @@ uses UFormulario, {UCidade, UConsSimpCidade, UGrupoUsuario,
   UListaOnlineSERASA, UAnalizaConsumoMpPorFilial, UCadFormaCompraMP,
   UImpressoraPadrao, UAjustaConsumoMateriaPrima, UPreCargas,
   UAnalizeConsumoMPProduzir, UZeraEst3000, ULimpaCancelados, UEtiquetaCabeceira,
-  UfrmValidaXmlEntrada, UfrmControleFaixa;
+  UfrmValidaXmlEntrada, UfrmControleFaixa, UfrmPercentual;
 
 {$R *.dfm}
 
@@ -1503,6 +1505,13 @@ begin
   FIntegracaoSerasa := TFIntegracaoSerasa.Create(Self);
   FIntegracaoSerasa.ShowModal;
   FreeAndNil(FIntegracaoSerasa);
+end;
+
+procedure TFPrincipal.btnfrmPercentualClick(Sender: TObject);
+begin
+  frmPercentual := TfrmPercentual.Create(Self);
+  frmPercentual.ShowModal;
+  FreeAndNil(frmPercentual);
 end;
 
 procedure TFPrincipal.btnImpressorasClick(Sender: TObject);

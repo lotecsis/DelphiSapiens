@@ -296,7 +296,9 @@ type
     btnfrmValidaXmlEntrega: TToolButton;
     actfrmValidaXmlEntrega: TAction;
     mnuControleFaixaBord: TMenuItem;
-    btnfrmPercentual: TBitBtn;
+    btnPercentual: TToolButton;
+    actfrmPercentual: TAction;
+    mnuPercentual: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
     procedure Formularios1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -417,7 +419,9 @@ type
     procedure btnSelecionaPastaClick(Sender: TObject);
     procedure actfrmValidaXmlEntregaExecute(Sender: TObject);
     procedure mnuControleFaixaBordClick(Sender: TObject);
-    procedure btnfrmPercentualClick(Sender: TObject);
+    procedure btn13Click(Sender: TObject);
+    procedure actfrmPercentualExecute(Sender: TObject);
+    procedure mnuPercentualClick(Sender: TObject);
   private
     { Private declarations }
     vaSistemaEmUso : string;
@@ -811,6 +815,7 @@ if vdChamaLogin = true then
     btnConsMateriaPrimaMediaCons.Enabled := mnuConsMateriaPrimaMediaCons.Enabled;
     btnControleAcessoTelas.Enabled := mnuControleConexaoTelas.Enabled;
     btnApelidosProdSapiens.Enabled := mnuApelidosparaProdutosSapiens.Enabled;
+    btnPercentual.Enabled := mnuPercentual.Enabled;
  end;
  //end;
 
@@ -1158,6 +1163,13 @@ begin
   FreeAndNil(FFormarManifesto);
 end;
 
+procedure TFPrincipal.actfrmPercentualExecute(Sender: TObject);
+begin
+  frmPercentual := TfrmPercentual.Create(Self);
+  frmPercentual.ShowModal;
+  FreeAndNil(frmPercentual);
+end;
+
 procedure TFPrincipal.actfrmValidaXmlEntregaExecute(Sender: TObject);
 begin
 frmValidaXmlEntrada := TfrmValidaXmlEntrada.Create(Self);
@@ -1287,6 +1299,13 @@ begin
   FreeAndNil(FEtiquetaCabeceira);
 end;
 
+procedure TFPrincipal.mnuPercentualClick(Sender: TObject);
+begin
+  frmPercentual := TfrmPercentual.Create(Self);
+  frmPercentual.ShowModal;
+  FreeAndNil(frmPercentual);
+end;
+
 procedure TFPrincipal.mnuSairClick(Sender: TObject);
 begin
 //  Application.Terminate;
@@ -1394,6 +1413,13 @@ begin
   FZeraEst3000 := TFZeraEst3000.Create(Self);
   FZeraEst3000.ShowModal;
   FreeAndNil(FZeraEst3000);
+end;
+
+procedure TFPrincipal.btn13Click(Sender: TObject);
+begin
+  frmPercentual := TfrmPercentual.Create(Self);
+  frmPercentual.ShowModal;
+  FreeAndNil(frmPercentual);
 end;
 
 procedure TFPrincipal.btn2Click(Sender: TObject);
@@ -1505,13 +1531,6 @@ begin
   FIntegracaoSerasa := TFIntegracaoSerasa.Create(Self);
   FIntegracaoSerasa.ShowModal;
   FreeAndNil(FIntegracaoSerasa);
-end;
-
-procedure TFPrincipal.btnfrmPercentualClick(Sender: TObject);
-begin
-  frmPercentual := TfrmPercentual.Create(Self);
-  frmPercentual.ShowModal;
-  FreeAndNil(frmPercentual);
 end;
 
 procedure TFPrincipal.btnImpressorasClick(Sender: TObject);

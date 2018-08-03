@@ -4,8 +4,8 @@
   CustomHint = BalloonHint1
   Align = alClient
   Caption = 'Sapiens Lider'
-  ClientHeight = 742
-  ClientWidth = 1008
+  ClientHeight = 782
+  ClientWidth = 1281
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -152,8 +152,8 @@
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 718
-    Width = 1008
+    Top = 758
+    Width = 1281
     Height = 24
     CustomHint = BalloonHint1
     Panels = <
@@ -181,11 +181,13 @@
       end>
     ParentShowHint = False
     ShowHint = False
+    ExplicitTop = 718
+    ExplicitWidth = 1008
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 1008
+    Width = 1281
     Height = 49
     CustomHint = BalloonHint1
     ButtonHeight = 45
@@ -196,6 +198,8 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 1
+    ExplicitLeft = -8
+    ExplicitWidth = 1183
     object BPreCarga: TToolButton
       Left = 0
       Top = 0
@@ -270,43 +274,49 @@
       ParentShowHint = False
       ShowHint = False
     end
-    object btnConsMateriaPrimaMediaCons: TToolButton
+    object btnControleAcessoTelas: TToolButton
       Left = 480
       Top = 0
-      CustomHint = BalloonHint1
-      Action = actConsMateriaPrimaMediaCons
-      ImageIndex = 26
-      Wrap = True
-    end
-    object btnControleAcessoTelas: TToolButton
-      Left = 0
-      Top = 45
       CustomHint = BalloonHint1
       Action = actControleConexaoTelas
     end
     object BControleAcesso: TToolButton
-      Left = 60
-      Top = 45
+      Left = 540
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcControleConexao
       ImageIndex = 11
     end
     object btnCidades: TToolButton
-      Left = 120
-      Top = 45
+      Left = 600
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcCidades
       ImageIndex = 23
     end
+    object btnConsMateriaPrimaMediaCons: TToolButton
+      Left = 660
+      Top = 0
+      CustomHint = BalloonHint1
+      Action = actConsMateriaPrimaMediaCons
+      ImageIndex = 26
+    end
+    object btnPercentual: TToolButton
+      Left = 720
+      Top = 0
+      CustomHint = BalloonHint1
+      Action = actfrmPercentual
+      ImageIndex = 21
+    end
     object ToolButton2: TToolButton
-      Left = 180
-      Top = 45
+      Left = 780
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcGeraIni
     end
     object Bsair: TToolButton
-      Left = 240
-      Top = 45
+      Left = 840
+      Top = 0
       Hint = 'Fechar'
       CustomHint = BalloonHint1
       Caption = 'Bsair'
@@ -316,20 +326,20 @@
       OnClick = BsairClick
     end
     object ToolButton7: TToolButton
-      Left = 300
-      Top = 45
+      Left = 900
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcClientesPedidos10D
     end
     object btnAcCadUsuSysRep: TToolButton
-      Left = 360
-      Top = 45
+      Left = 960
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcCadUsuSysRep
     end
     object btn3: TToolButton
-      Left = 420
-      Top = 45
+      Left = 1020
+      Top = 0
       CustomHint = BalloonHint1
       Caption = 'btn3'
       OnClick = btn3Click
@@ -339,7 +349,7 @@
     Left = 0
     Top = 49
     Width = 62
-    Height = 669
+    Height = 709
     CustomHint = BalloonHint1
     Align = alLeft
     AutoSize = True
@@ -351,6 +361,7 @@
     HideClippedButtons = True
     Images = ImageList2
     TabOrder = 2
+    ExplicitHeight = 669
     object BComparaComprasClientes: TToolButton
       Left = 0
       Top = 0
@@ -466,7 +477,7 @@
     Left = 62
     Top = 49
     Width = 62
-    Height = 669
+    Height = 709
     CustomHint = BalloonHint1
     Align = alLeft
     ButtonHeight = 45
@@ -476,6 +487,7 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 3
+    ExplicitHeight = 669
     object btnTransfereTecPedido: TToolButton
       Left = 0
       Top = 0
@@ -680,18 +692,6 @@
     TabOrder = 14
     Visible = False
     OnClick = btnSelecionaPastaClick
-  end
-  object btnfrmPercentual: TBitBtn
-    Left = 376
-    Top = 328
-    Width = 155
-    Height = 25
-    CustomHint = BalloonHint1
-    Caption = 'btnfrmPercentual'
-    DoubleBuffered = True
-    ParentDoubleBuffered = False
-    TabOrder = 15
-    OnClick = btnfrmPercentualClick
   end
   object Timer1: TTimer
     Enabled = False
@@ -1030,6 +1030,10 @@
       ImageIndex = 14
       OnExecute = actfrmValidaXmlEntregaExecute
     end
+    object actfrmPercentual: TAction
+      Caption = 'Percentual'
+      OnExecute = actfrmPercentualExecute
+    end
   end
   object MainMenu1: TMainMenu
     Left = 480
@@ -1202,6 +1206,10 @@
           object mnuListaOnlineSERASA: TMenuItem
             Action = actListaOnlineSERASA
           end
+        end
+        object mnuPercentual: TMenuItem
+          Caption = 'Percentual'
+          OnClick = mnuPercentualClick
         end
       end
       object mnuSuprimentos: TMenuItem
@@ -1397,7 +1405,7 @@
     Left = 640
     Top = 328
     Bitmap = {
-      494C010125009C00680223002300EBE9ED00FF10FFFFFFFFFFFFFFFF424D3600
+      494C010125009C006C0223002300EBE9ED00FF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008C0000005E0100000100200000000000A0FD
       020000000000000000000000000000000000EDE9EB00EDE9EB00EDE9EB00EDE9
       EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9

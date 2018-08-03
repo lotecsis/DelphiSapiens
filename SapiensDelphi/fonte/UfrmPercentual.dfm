@@ -34,9 +34,9 @@ object frmPercentual: TfrmPercentual
     Caption = #224
   end
   object lblPer1: TLabel
-    Left = 137
+    Left = 156
     Top = 104
-    Width = 100
+    Width = 81
     Height = 33
     Alignment = taRightJustify
     Caption = 'lblPer1'
@@ -49,9 +49,9 @@ object frmPercentual: TfrmPercentual
     OnClick = lblPer1Click
   end
   object lblPer101: TLabel
-    Left = 289
+    Left = 278
     Top = 104
-    Width = 100
+    Width = 111
     Height = 33
     Alignment = taRightJustify
     Caption = 'lblPer101'
@@ -90,9 +90,9 @@ object frmPercentual: TfrmPercentual
     ParentFont = False
   end
   object lblPerEstof1: TLabel
-    Left = 137
+    Left = 96
     Top = 190
-    Width = 100
+    Width = 141
     Height = 33
     Alignment = taRightJustify
     Caption = 'lblPerEstof1'
@@ -104,9 +104,9 @@ object frmPercentual: TfrmPercentual
     ParentFont = False
   end
   object lblPerEstof101: TLabel
-    Left = 289
+    Left = 218
     Top = 190
-    Width = 100
+    Width = 171
     Height = 33
     Alignment = taRightJustify
     Caption = 'lblPerEstof101'
@@ -131,9 +131,9 @@ object frmPercentual: TfrmPercentual
     ParentFont = False
   end
   object lblPerColch1: TLabel
-    Left = 137
+    Left = 92
     Top = 284
-    Width = 100
+    Width = 145
     Height = 33
     Alignment = taRightJustify
     Caption = 'lblPerColch1'
@@ -145,9 +145,9 @@ object frmPercentual: TfrmPercentual
     ParentFont = False
   end
   object lblPerColch101: TLabel
-    Left = 289
+    Left = 214
     Top = 284
-    Width = 100
+    Width = 175
     Height = 33
     Alignment = taRightJustify
     Caption = 'lblPerColch101'
@@ -272,6 +272,13 @@ object frmPercentual: TfrmPercentual
       
         '                                     e001tns.codtns = e140ipv.tn' +
         'spro'
+      '  inner join e140nfv on E140NFV.CODFIL = E140IPV.CODFIL AND'
+      
+        '                                     E140NFV.NUMNFV = E140IPV.NU' +
+        'MNFV AND'
+      
+        '                                     E140NFV.CODSNF = E140IPV.CO' +
+        'DSNF'
       '    where'
       '      e140ipv.datger between :datini and :datfim and'
       '      e140ipv.codfil = 101 and'
@@ -314,11 +321,20 @@ object frmPercentual: TfrmPercentual
       
         '                                     e001tns.codtns = e140ipv.tn' +
         'spro'
+      '  inner join e140nfv on E140NFV.CODFIL = E140IPV.CODFIL AND'
+      
+        '                                     E140NFV.NUMNFV = E140IPV.NU' +
+        'MNFV AND'
+      
+        '                                     E140NFV.CODSNF = E140IPV.CO' +
+        'DSNF'
       '    where'
       '      e140ipv.datger between :datini and :datfim and'
       '      e140ipv.codfil = 1 and'
       '      e075pro.codagc = '#39'ESTOF'#39' and'
-      '      e001tns.venfat = '#39'S'#39
+      '      e001tns.venfat = '#39'S'#39' and'
+      '      E140NFV.SITNFV = 2 and'
+      '      E140NFV.TIPNFS IN (10,1)'
       'group by 1')
     Left = 312
     Top = 50
@@ -356,6 +372,13 @@ object frmPercentual: TfrmPercentual
       
         '                                     e001tns.codtns = e140ipv.tn' +
         'spro'
+      '  inner join e140nfv on E140NFV.CODFIL = E140IPV.CODFIL AND'
+      
+        '                                     E140NFV.NUMNFV = E140IPV.NU' +
+        'MNFV AND'
+      
+        '                                     E140NFV.CODSNF = E140IPV.CO' +
+        'DSNF'
       '    where'
       '      e140ipv.datger between :datini and :datfim and'
       '      e140ipv.codfil = 101 and'
@@ -398,11 +421,20 @@ object frmPercentual: TfrmPercentual
       
         '                                     e001tns.codtns = e140ipv.tn' +
         'spro'
+      '  inner join e140nfv on E140NFV.CODFIL = E140IPV.CODFIL AND'
+      
+        '                                     E140NFV.NUMNFV = E140IPV.NU' +
+        'MNFV AND'
+      
+        '                                     E140NFV.CODSNF = E140IPV.CO' +
+        'DSNF'
       '    where'
       '      e140ipv.datger between :datini and :datfim and'
       '      e140ipv.codfil = 1 and'
       '      e075pro.codagc = '#39'COLCH'#39' and'
-      '      e001tns.venfat = '#39'S'#39
+      '      e001tns.venfat = '#39'S'#39' and'
+      '      E140NFV.SITNFV = 2 and'
+      '      E140NFV.TIPNFS IN (10,1)'
       'group by 1')
     Left = 368
     Top = 50
@@ -440,10 +472,19 @@ object frmPercentual: TfrmPercentual
       
         '                                     e001tns.codtns = e140ipv.tn' +
         'spro'
+      '  inner join e140nfv on E140NFV.CODFIL = E140IPV.CODFIL AND'
+      
+        '                                     E140NFV.NUMNFV = E140IPV.NU' +
+        'MNFV AND'
+      
+        '                                     E140NFV.CODSNF = E140IPV.CO' +
+        'DSNF'
       '    where'
       '      e140ipv.datger between :datini and :datfim and'
       '      e140ipv.codfil = 1 and'
-      '      e001tns.venfat = '#39'S'#39
+      '      e001tns.venfat = '#39'S'#39' and'
+      '      E140NFV.SITNFV = 2 and'
+      '      E140NFV.TIPNFS IN (10,1)'
       'group by 1')
     Left = 32
     Top = 46
@@ -483,8 +524,7 @@ object frmPercentual: TfrmPercentual
         'spro'
       '    where'
       '      e140ipv.datger between :datini and :datfim and'
-      '      e140ipv.codfil = 101 and'
-      '      e001tns.venfat = '#39'S'#39
+      '      e140ipv.codfil = 101'
       'group by 1')
     Left = 88
     Top = 46

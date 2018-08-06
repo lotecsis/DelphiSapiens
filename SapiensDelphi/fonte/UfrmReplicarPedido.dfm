@@ -41,9 +41,9 @@ object frmReplicarPedido: TfrmReplicarPedido
     OnClick = btnMostrarClick
   end
   object dbgrd1: TDBGrid
-    Left = 56
+    Left = 9
     Top = 49
-    Width = 842
+    Width = 888
     Height = 61
     DataSource = dsConsE120Ped
     Options = [dgTitles, dgColumnResize, dgColLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -55,10 +55,10 @@ object frmReplicarPedido: TfrmReplicarPedido
     TitleFont.Style = []
   end
   object dbgrd2: TDBGrid
-    Left = 56
+    Left = 9
     Top = 116
-    Width = 842
-    Height = 445
+    Width = 888
+    Height = 446
     DataSource = dsConsE120Ipd
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 3

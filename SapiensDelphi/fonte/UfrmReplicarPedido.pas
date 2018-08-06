@@ -114,6 +114,8 @@ begin
 
                 ConsE120Ipd.Next;
               end;
+
+              Application.MessageBox('Processado com sucesso!!','Confirmação',MB_ICONWARNING+MB_OK);
          end
       else
          begin

@@ -299,6 +299,7 @@ type
     btnPercentual: TToolButton;
     actfrmPercentual: TAction;
     mnuPercentual: TMenuItem;
+    btn14: TBitBtn;
     procedure Timer1Timer(Sender: TObject);
     procedure Formularios1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -419,9 +420,9 @@ type
     procedure btnSelecionaPastaClick(Sender: TObject);
     procedure actfrmValidaXmlEntregaExecute(Sender: TObject);
     procedure mnuControleFaixaBordClick(Sender: TObject);
-    procedure btn13Click(Sender: TObject);
     procedure actfrmPercentualExecute(Sender: TObject);
     procedure mnuPercentualClick(Sender: TObject);
+    procedure btn14Click(Sender: TObject);
   private
     { Private declarations }
     vaSistemaEmUso : string;
@@ -484,7 +485,7 @@ uses UFormulario, {UCidade, UConsSimpCidade, UGrupoUsuario,
   UListaOnlineSERASA, UAnalizaConsumoMpPorFilial, UCadFormaCompraMP,
   UImpressoraPadrao, UAjustaConsumoMateriaPrima, UPreCargas,
   UAnalizeConsumoMPProduzir, UZeraEst3000, ULimpaCancelados, UEtiquetaCabeceira,
-  UfrmValidaXmlEntrada, UfrmControleFaixa, UfrmPercentual;
+  UfrmValidaXmlEntrada, UfrmControleFaixa, UfrmPercentual, UfrmReplicarPedido;
 
 {$R *.dfm}
 
@@ -1415,11 +1416,11 @@ begin
   FreeAndNil(FZeraEst3000);
 end;
 
-procedure TFPrincipal.btn13Click(Sender: TObject);
+procedure TFPrincipal.btn14Click(Sender: TObject);
 begin
-  frmPercentual := TfrmPercentual.Create(Self);
-  frmPercentual.ShowModal;
-  FreeAndNil(frmPercentual);
+frmReplicarPedido := TfrmReplicarPedido.Create(Self);
+frmReplicarPedido.ShowModal;
+FreeAndNil(frmReplicarPedido);
 end;
 
 procedure TFPrincipal.btn2Click(Sender: TObject);

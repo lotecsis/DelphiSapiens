@@ -168,7 +168,9 @@ uses
   UfrmValidaXmlEntrada in 'UfrmValidaXmlEntrada.pas' {frmValidaXmlEntrada},
   UfrmControleFaixa in 'UfrmControleFaixa.pas' {frmControleFaixa},
   UfrmAlteraTipoIso in 'UfrmAlteraTipoIso.pas' {frmAlteraTipoIso},
-  UfrmPercentual in 'UfrmPercentual.pas' {frmPercentual};
+  UfrmPercentual in 'UfrmPercentual.pas' {frmPercentual},
+  UfrmReplicarPedido in 'UfrmReplicarPedido.pas' {frmReplicarPedido},
+  UdmPrototipo in 'UdmPrototipo.pas' {dmPrototipo: TDataModule};
 
 {$R *.res}
 
@@ -286,6 +288,8 @@ begin
   Application.CreateForm(TfrmControleFaixa, frmControleFaixa);
   Application.CreateForm(TfrmAlteraTipoIso, frmAlteraTipoIso);
   Application.CreateForm(TfrmPercentual, frmPercentual);
+  Application.CreateForm(TfrmReplicarPedido, frmReplicarPedido);
+  Application.CreateForm(TdmPrototipo, dmPrototipo);
   //  Application.CreateForm(TFConsultaTecido, FConsultaTecido);
  // Application.CreateForm(TFControleConexao, FControleConexao);
   Application.Run;

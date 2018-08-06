@@ -548,6 +548,13 @@
 			<DCCReference Include="UfrmPercentual.pas">
 				<Form>frmPercentual</Form>
 			</DCCReference>
+			<DCCReference Include="UfrmReplicarPedido.pas">
+				<Form>frmReplicarPedido</Form>
+			</DCCReference>
+			<DCCReference Include="UdmPrototipo.pas">
+				<Form>dmPrototipo</Form>
+				<DesignClass>TDataModule</DesignClass>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

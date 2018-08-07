@@ -129,7 +129,7 @@ object FPrincipal: TFPrincipal
     Top = 498
     Width = 145
     Height = 13
-    Caption = 'Vers'#227'o: 4.0    Em: 04/01/2018'
+    Caption = 'Vers'#227'o: 4.1    Em: 07/08/2018'
   end
   object lblTotalCondCpgLig: TLabel
     Left = 242

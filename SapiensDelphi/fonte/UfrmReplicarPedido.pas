@@ -23,6 +23,7 @@ type
     procedure btnMostrarClick(Sender: TObject);
     procedure btnProcessarClick(Sender: TObject);
     procedure edtNumPedKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -205,6 +206,15 @@ begin
 if not (key in [#48..#57]) and not (key in [#8])
       and not (key in [#240]) then
       key := #0;
+end;
+
+procedure TfrmReplicarPedido.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+    begin
+      key := #0;
+      Perform (Wm_NextDlgCtl,0,0);
+    end;
 end;
 
 end.

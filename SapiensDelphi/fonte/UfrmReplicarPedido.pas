@@ -163,7 +163,7 @@ begin
                   ConsE120Rat.Next;
               end;
 
-              //--------------observações---------------
+              //--------------observações----------------
             ConsE120Obs.Close;
             ConsE120Obs.Parameters.ParamByName('NUMPED').Value := StrToInt(edtNumPed.Text);
             ConsE120Obs.Open;

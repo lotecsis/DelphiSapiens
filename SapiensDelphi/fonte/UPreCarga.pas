@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls, StdCtrls, Grids, DBGrids, ExtCtrls, DB, Mask, DBCtrls,
-  Buttons, ADODB, rxToolEdit, rxCurrEdit, ImgList;
+  Buttons, ADODB, rxToolEdit, rxCurrEdit, ImgList, Clipbrd;
 
 type
   TFPreCarga = class(TForm)
@@ -91,6 +91,7 @@ type
     BitBtn1: TBitBtn;
     DsReserva: TDataSource;
     BPendencias: TBitBtn;
+    btnCopy: TBitBtn;
     procedure EdPreCargaExit(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BAdicionaClick(Sender: TObject);
@@ -111,6 +112,7 @@ type
     procedure BPendenciasClick(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnCopyClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -680,6 +682,26 @@ begin
 
          end;
     end;
+end;
+
+procedure TFPreCarga.btnCopyClick(Sender: TObject);
+var vaCargas : string;
+begin
+  vaCargas := '';
+  Dm1.ConsUsu_TIteCar.First;
+  while not Dm1.ConsUsu_TIteCar.Eof do
+    begin
+      if vaCargas = '' then
+         vaCargas := IntToStr(Dm1.ConsUsu_TIteCarUSU_NUMPED.AsInteger)
+      else
+         vaCargas := vaCargas + ','+IntToStr(Dm1.ConsUsu_TIteCarUSU_NUMPED.AsInteger);
+
+      Dm1.ConsUsu_TIteCar.Next;
+    end;
+
+   Clipboard.AsText := vaCargas;
+
+   Dm1.ConsUsu_TIteCar.First;
 end;
 
 procedure TFPreCarga.BDeceClick(Sender: TObject);

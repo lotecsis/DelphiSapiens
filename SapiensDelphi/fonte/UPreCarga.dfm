@@ -633,6 +633,17 @@ object FPreCarga: TFPreCarga
         TabOrder = 10
         OnClick = BPendenciasClick
       end
+      object btnCopy: TBitBtn
+        Left = 907
+        Top = 188
+        Width = 90
+        Height = 25
+        Caption = 'Copy'
+        DoubleBuffered = True
+        ParentDoubleBuffered = False
+        TabOrder = 11
+        OnClick = btnCopyClick
+      end
     end
     object TbConsulta: TTabSheet
       Caption = 'Consulta'
@@ -700,12 +711,12 @@ object FPreCarga: TFPreCarga
     AutoEdit = False
     DataSet = Dm1.CadUsu_TPreCar
     Left = 949
-    Top = 320
+    Top = 349
   end
   object DsConsUsu_TIteCar: TDataSource
     DataSet = Dm1.ConsUsu_TIteCar
     Left = 949
-    Top = 288
+    Top = 317
   end
   object ConsVolPro: TADOQuery
     Connection = Dm.ADOBanco
@@ -728,7 +739,7 @@ object FPreCarga: TFPreCarga
         ' and'
       '                            codder = :codder')
     Left = 950
-    Top = 256
+    Top = 285
     object ConsVolProCODPRO: TStringField
       FieldName = 'CODPRO'
       Size = 14
@@ -757,7 +768,7 @@ object FPreCarga: TFPreCarga
         'select * from usu_titecar where usu_precar = :precar order by us' +
         'u_seqite desc')
     Left = 949
-    Top = 224
+    Top = 253
     object UltimoUsu_SeqIteUSU_PRECAR: TIntegerField
       FieldName = 'USU_PRECAR'
     end
@@ -825,7 +836,7 @@ object FPreCarga: TFPreCarga
       '                     usu_codcor1 = :codcor1 and'
       '                     usu_codcor2 = :codcor2')
     Left = 955
-    Top = 480
+    Top = 509
     object SeExisteUsu_TCorCarUSU_NUMANE: TIntegerField
       FieldName = 'USU_NUMANE'
     end
@@ -903,7 +914,7 @@ object FPreCarga: TFPreCarga
         '                                    order by usu_tprecar.usu_pre' +
         'car desc')
     Left = 949
-    Top = 392
+    Top = 421
     object ConsUsuTPreCarNLibUSU_PRECAR: TIntegerField
       FieldName = 'USU_PRECAR'
     end
@@ -941,7 +952,7 @@ object FPreCarga: TFPreCarga
   object DsConsUsuTPreCarNLib: TDataSource
     DataSet = ConsUsuTPreCarNLib
     Left = 949
-    Top = 352
+    Top = 381
   end
   object ValidaPreCarga: TADOQuery
     Connection = Dm.ADOBanco
@@ -955,7 +966,7 @@ object FPreCarga: TFPreCarga
     SQL.Strings = (
       'select * from usu_tprecar where usu_precar = :precar')
     Left = 949
-    Top = 432
+    Top = 461
     object ValidaPreCargaUSU_PRECAR: TIntegerField
       FieldName = 'USU_PRECAR'
     end

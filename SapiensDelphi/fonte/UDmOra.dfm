@@ -3,6 +3,7 @@ object DmOra: TDmOra
   Height = 1361
   Width = 1441
   object ADOBanco: TADOConnection
+    Connected = True
     ConnectionString = 
       'Provider=MSDAORA.1;Password=saplider;User ID=saplider;Data Sourc' +
       'e=liderlar;Persist Security Info=True'

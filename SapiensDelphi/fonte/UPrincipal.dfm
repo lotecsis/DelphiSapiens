@@ -4,8 +4,8 @@
   CustomHint = BalloonHint1
   Align = alClient
   Caption = 'Sapiens Lider'
-  ClientHeight = 554
-  ClientWidth = 796
+  ClientHeight = 574
+  ClientWidth = 1160
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -152,8 +152,8 @@
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 530
-    Width = 796
+    Top = 550
+    Width = 1160
     Height = 24
     CustomHint = BalloonHint1
     Panels = <
@@ -181,11 +181,13 @@
       end>
     ParentShowHint = False
     ShowHint = False
+    ExplicitTop = 530
+    ExplicitWidth = 796
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 796
+    Width = 1160
     Height = 49
     CustomHint = BalloonHint1
     ButtonHeight = 45
@@ -196,6 +198,7 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 1
+    ExplicitWidth = 1292
     object BPreCarga: TToolButton
       Left = 0
       Top = 0
@@ -275,45 +278,52 @@
       Top = 0
       CustomHint = BalloonHint1
       Action = actControleConexaoTelas
-      Wrap = True
     end
     object BControleAcesso: TToolButton
-      Left = 0
-      Top = 45
+      Left = 540
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcControleConexao
       ImageIndex = 11
     end
     object btnCidades: TToolButton
-      Left = 60
-      Top = 45
+      Left = 600
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcCidades
       ImageIndex = 23
     end
     object btnConsMateriaPrimaMediaCons: TToolButton
-      Left = 120
-      Top = 45
+      Left = 660
+      Top = 0
       CustomHint = BalloonHint1
       Action = actConsMateriaPrimaMediaCons
       ImageIndex = 26
     end
     object btnPercentual: TToolButton
-      Left = 180
-      Top = 45
+      Left = 720
+      Top = 0
       CustomHint = BalloonHint1
       Action = actfrmPercentual
       ImageIndex = 21
     end
+    object btnReplicarPedidos: TToolButton
+      Left = 780
+      Top = 0
+      CustomHint = BalloonHint1
+      Caption = 'btnReplicarPedidos'
+      ImageIndex = 27
+      OnClick = btnReplicarPedidosClick
+    end
     object ToolButton2: TToolButton
-      Left = 240
-      Top = 45
+      Left = 840
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcGeraIni
     end
     object Bsair: TToolButton
-      Left = 300
-      Top = 45
+      Left = 900
+      Top = 0
       Hint = 'Fechar'
       CustomHint = BalloonHint1
       Caption = 'Bsair'
@@ -323,20 +333,20 @@
       OnClick = BsairClick
     end
     object ToolButton7: TToolButton
-      Left = 360
-      Top = 45
+      Left = 960
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcClientesPedidos10D
     end
     object btnAcCadUsuSysRep: TToolButton
-      Left = 420
-      Top = 45
+      Left = 1020
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcCadUsuSysRep
     end
     object btn3: TToolButton
-      Left = 480
-      Top = 45
+      Left = 1080
+      Top = 0
       CustomHint = BalloonHint1
       Caption = 'btn3'
       OnClick = btn3Click
@@ -346,7 +356,7 @@
     Left = 0
     Top = 49
     Width = 122
-    Height = 481
+    Height = 501
     CustomHint = BalloonHint1
     Align = alLeft
     AutoSize = True
@@ -358,6 +368,7 @@
     HideClippedButtons = True
     Images = ImageList2
     TabOrder = 2
+    ExplicitHeight = 481
     object BComparaComprasClientes: TToolButton
       Left = 0
       Top = 0
@@ -466,7 +477,7 @@
     Left = 122
     Top = 49
     Width = 62
-    Height = 481
+    Height = 501
     CustomHint = BalloonHint1
     Align = alLeft
     ButtonHeight = 45
@@ -476,6 +487,7 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 3
+    ExplicitHeight = 481
     object btnTransfereTecPedido: TToolButton
       Left = 0
       Top = 0
@@ -680,18 +692,6 @@
     TabOrder = 14
     Visible = False
     OnClick = btnSelecionaPastaClick
-  end
-  object btn14: TBitBtn
-    Left = 288
-    Top = 256
-    Width = 75
-    Height = 25
-    CustomHint = BalloonHint1
-    Caption = 'btn14'
-    DoubleBuffered = True
-    ParentDoubleBuffered = False
-    TabOrder = 15
-    OnClick = btn14Click
   end
   object Timer1: TTimer
     Enabled = False
@@ -1210,6 +1210,10 @@
         object mnuPercentual: TMenuItem
           Caption = 'Percentual'
           OnClick = mnuPercentualClick
+        end
+        object mnuReplicarPedido: TMenuItem
+          Caption = 'Replicar Pedido'
+          OnClick = mnuReplicarPedidoClick
         end
       end
       object mnuSuprimentos: TMenuItem

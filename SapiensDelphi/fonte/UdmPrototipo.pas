@@ -10,6 +10,8 @@ type
     Banco: TADOConnection;
     CadE120Ped: TADOQuery;
     CadE120Ipd: TADOQuery;
+    CadE120Rat: TADOQuery;
+    CadE120Obs: TADOQuery;
   private
     { Private declarations }
   public

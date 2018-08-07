@@ -299,7 +299,8 @@ type
     btnPercentual: TToolButton;
     actfrmPercentual: TAction;
     mnuPercentual: TMenuItem;
-    btn14: TBitBtn;
+    mnuReplicarPedido: TMenuItem;
+    btnReplicarPedidos: TToolButton;
     procedure Timer1Timer(Sender: TObject);
     procedure Formularios1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -422,7 +423,8 @@ type
     procedure mnuControleFaixaBordClick(Sender: TObject);
     procedure actfrmPercentualExecute(Sender: TObject);
     procedure mnuPercentualClick(Sender: TObject);
-    procedure btn14Click(Sender: TObject);
+    procedure mnuReplicarPedidoClick(Sender: TObject);
+    procedure btnReplicarPedidosClick(Sender: TObject);
   private
     { Private declarations }
     vaSistemaEmUso : string;
@@ -817,6 +819,7 @@ if vdChamaLogin = true then
     btnControleAcessoTelas.Enabled := mnuControleConexaoTelas.Enabled;
     btnApelidosProdSapiens.Enabled := mnuApelidosparaProdutosSapiens.Enabled;
     btnPercentual.Enabled := mnuPercentual.Enabled;
+    btnReplicarPedidos.Enabled := mnuReplicarPedido.Enabled;
  end;
  //end;
 
@@ -1307,6 +1310,13 @@ begin
   FreeAndNil(frmPercentual);
 end;
 
+procedure TFPrincipal.mnuReplicarPedidoClick(Sender: TObject);
+begin
+  frmReplicarPedido := TfrmReplicarPedido.Create(Self);
+  frmReplicarPedido.ShowModal;
+  FreeAndNil(frmReplicarPedido);
+end;
+
 procedure TFPrincipal.mnuSairClick(Sender: TObject);
 begin
 //  Application.Terminate;
@@ -1414,13 +1424,6 @@ begin
   FZeraEst3000 := TFZeraEst3000.Create(Self);
   FZeraEst3000.ShowModal;
   FreeAndNil(FZeraEst3000);
-end;
-
-procedure TFPrincipal.btn14Click(Sender: TObject);
-begin
-frmReplicarPedido := TfrmReplicarPedido.Create(Self);
-frmReplicarPedido.ShowModal;
-FreeAndNil(frmReplicarPedido);
 end;
 
 procedure TFPrincipal.btn2Click(Sender: TObject);
@@ -1539,6 +1542,13 @@ begin
 FImpressoraPadrao := TFImpressoraPadrao.Create(Self);
 FImpressoraPadrao.ShowModal;
 FreeAndNil(FImpressoraPadrao);
+end;
+
+procedure TFPrincipal.btnReplicarPedidosClick(Sender: TObject);
+begin
+  frmReplicarPedido := TfrmReplicarPedido.Create(Self);
+  frmReplicarPedido.ShowModal;
+  FreeAndNil(frmReplicarPedido);
 end;
 
 procedure TFPrincipal.btnSelecionaPastaClick(Sender: TObject);

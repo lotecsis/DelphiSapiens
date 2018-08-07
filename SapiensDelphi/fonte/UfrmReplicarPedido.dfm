@@ -131,4 +131,44 @@ object frmReplicarPedido: TfrmReplicarPedido
     Left = 712
     Top = 184
   end
+  object ConsE120Rat: TADOQuery
+    Connection = DmOra.ADOBanco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'numped'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select e120rat.*'
+      '  from e120rat'
+      '   where numped = :numped and'
+      '         codemp = 1 and'
+      '         codfil = 1'
+      '   order by seqrat')
+    Left = 624
+    Top = 240
+  end
+  object ConsE120Obs: TADOQuery
+    Connection = DmOra.ADOBanco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'numped'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select e120Obs.*'
+      '  from e120Obs'
+      '   where numped = :numped and'
+      '         codemp = 1 and'
+      '         codfil = 1'
+      '   order by seqobs')
+    Left = 624
+    Top = 296
+  end
 end

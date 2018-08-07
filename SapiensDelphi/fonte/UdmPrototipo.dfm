@@ -55,7 +55,61 @@ object dmPrototipo: TdmPrototipo
       '    e120ipd.seqipd = :seqipd and'
       '    e120ipd.codemp = 1 and'
       '    e120ipd.codfil = 1')
-    Left = 112
+    Left = 104
     Top = 192
+  end
+  object CadE120Rat: TADOQuery
+    Connection = Banco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'numped'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'seqrat'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select e120rat.*'
+      '  from e120rat'
+      '   where numped = :numped and'
+      '              seqrat = :seqrat and'
+      '         codemp = 1 and'
+      '         codfil = 1'
+      '   order by seqrat')
+    Left = 104
+    Top = 248
+  end
+  object CadE120Obs: TADOQuery
+    Connection = Banco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'numped'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end
+      item
+        Name = 'seqobs'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select e120Obs.*'
+      '  from e120Obs'
+      '   where numped = :numped and'
+      '              seqobs = :seqobs and'
+      '              codemp = 1 and'
+      '              codfil = 1'
+      '   order by seqobs')
+    Left = 104
+    Top = 304
   end
 end

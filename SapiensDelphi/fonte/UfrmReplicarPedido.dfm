@@ -2,7 +2,7 @@ object frmReplicarPedido: TfrmReplicarPedido
   Left = 0
   Top = 0
   Caption = 'Replicar pedido para prot'#243'tipo'
-  ClientHeight = 569
+  ClientHeight = 570
   ClientWidth = 906
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

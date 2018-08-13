@@ -112,4 +112,29 @@ object dmPrototipo: TdmPrototipo
     Left = 104
     Top = 304
   end
+  object ConsE085Cli: TADOQuery
+    Connection = Banco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'codcli'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select codcli, nomcli'
+      '  from e085cli'
+      '  where'
+      '    codcli = :codcli')
+    Left = 208
+    Top = 144
+    object ConsE085CliCODCLI: TIntegerField
+      FieldName = 'CODCLI'
+    end
+    object ConsE085CliNOMCLI: TStringField
+      FieldName = 'NOMCLI'
+      Size = 100
+    end
+  end
 end

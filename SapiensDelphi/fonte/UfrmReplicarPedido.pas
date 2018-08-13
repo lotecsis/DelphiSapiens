@@ -114,6 +114,23 @@ begin
                       dmPrototipo.CadE120Ped.FieldByName(ConsE120Ped.Fields[i].FieldName).Value := ConsE120Ped.Fields[i].Value;
                     end;
               end;
+
+           dmPrototipo.ConsE085Cli.Close;
+           dmPrototipo.ConsE085Cli.Parameters.ParamByName('CODCLI').Value := dmPrototipo.CadE120Ped.FieldByName('CODCLI').Value;
+           dmPrototipo.ConsE085Cli.Open;
+           if dmPrototipo.ConsE085Cli.IsEmpty then
+              begin
+                dmPrototipo.CadE120Ped.FieldByName('CODCLI').Value := 1;
+              end;
+           try
+             dmPrototipo.CadE120Ped.Post;
+           except
+              on E : Exception do
+                 ShowMessage(E.ClassName+'  '+E.Message);
+           end;
+
+           dmPrototipo.CadE120Ped.Edit;
+           dmPrototipo.CadE120Ped.FieldByName('USU_PRECAR').Value := 0;
            dmPrototipo.CadE120Ped.Post;
 
             //------------itens do pedido------------

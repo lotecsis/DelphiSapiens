@@ -12,6 +12,9 @@ type
     CadE120Ipd: TADOQuery;
     CadE120Rat: TADOQuery;
     CadE120Obs: TADOQuery;
+    ConsE085Cli: TADOQuery;
+    ConsE085CliCODCLI: TIntegerField;
+    ConsE085CliNOMCLI: TStringField;
   private
     { Private declarations }
   public

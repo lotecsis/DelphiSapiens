@@ -122,6 +122,15 @@ begin
               begin
                 dmPrototipo.CadE120Ped.FieldByName('CODCLI').Value := 1;
               end;
+
+           dmPrototipo.ConsE028Cpg.Close;
+           dmPrototipo.ConsE028Cpg.Parameters.ParamByName('CODCPG').Value := dmPrototipo.CadE120Ped.FieldByName('CODCPG').Value;
+           dmPrototipo.ConsE028Cpg.Open;
+           if dmPrototipo.ConsE028Cpg.IsEmpty then
+              begin
+                dmPrototipo.CadE120Ped.FieldByName('CODCPG').Value := '001';
+              end;
+
            try
              dmPrototipo.CadE120Ped.Post;
            except

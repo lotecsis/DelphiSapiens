@@ -15,6 +15,8 @@ type
     ConsE085Cli: TADOQuery;
     ConsE085CliCODCLI: TIntegerField;
     ConsE085CliNOMCLI: TStringField;
+    ConsE028Cpg: TADOQuery;
+    ConsE028CpgCODCPG: TStringField;
   private
     { Private declarations }
   public

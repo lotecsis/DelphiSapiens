@@ -137,4 +137,26 @@ object dmPrototipo: TdmPrototipo
       Size = 100
     end
   end
+  object ConsE028Cpg: TADOQuery
+    Connection = Banco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'codcpg'
+        DataType = ftString
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select codcpg'
+      '  from e028cpg'
+      '   where'
+      '     codcpg = :codcpg')
+    Left = 208
+    Top = 208
+    object ConsE028CpgCODCPG: TStringField
+      FieldName = 'CODCPG'
+      Size = 6
+    end
+  end
 end

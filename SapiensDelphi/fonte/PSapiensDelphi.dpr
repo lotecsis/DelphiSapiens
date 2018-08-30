@@ -170,7 +170,8 @@ uses
   UfrmAlteraTipoIso in 'UfrmAlteraTipoIso.pas' {frmAlteraTipoIso},
   UfrmPercentual in 'UfrmPercentual.pas' {frmPercentual},
   UfrmReplicarPedido in 'UfrmReplicarPedido.pas' {frmReplicarPedido},
-  UdmPrototipo in 'UdmPrototipo.pas' {dmPrototipo: TDataModule};
+  UdmPrototipo in 'UdmPrototipo.pas' {dmPrototipo: TDataModule},
+  UfrmDividirPedido in 'UfrmDividirPedido.pas' {frmDividirPedido};
 
 {$R *.res}
 
@@ -290,6 +291,7 @@ begin
   Application.CreateForm(TfrmPercentual, frmPercentual);
   Application.CreateForm(TfrmReplicarPedido, frmReplicarPedido);
   Application.CreateForm(TdmPrototipo, dmPrototipo);
+  Application.CreateForm(TfrmDividirPedido, frmDividirPedido);
   //  Application.CreateForm(TFConsultaTecido, FConsultaTecido);
  // Application.CreateForm(TFControleConexao, FControleConexao);
   Application.Run;

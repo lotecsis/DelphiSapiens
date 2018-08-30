@@ -555,6 +555,9 @@
 				<Form>dmPrototipo</Form>
 				<DesignClass>TDataModule</DesignClass>
 			</DCCReference>
+			<DCCReference Include="UfrmDividirPedido.pas">
+				<Form>frmDividirPedido</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

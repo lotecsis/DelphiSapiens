@@ -491,6 +491,8 @@ object FConsPedido: TFConsPedido
         Width = 97
         Height = 17
         Caption = 'Aberto Total'
+        Checked = True
+        State = cbChecked
         TabOrder = 2
       end
       object ChLiquidado: TCheckBox
@@ -545,29 +547,13 @@ object FConsPedido: TFConsPedido
         Height = 13
         Caption = 'Dias em que o pedido est'#225' em aberto:'
       end
-      object ChComTecTrans: TCheckBox
-        Left = 5
-        Top = 53
-        Width = 332
-        Height = 17
-        Caption = 'Aberto Total/Parcial C/Tecido transferido de dep'#243'sito'
-        TabOrder = 0
-      end
-      object ChSemTecTrans: TCheckBox
-        Left = 5
-        Top = 71
-        Width = 277
-        Height = 17
-        Caption = 'Aberto Total/Parcial S/Tecido transferido de dep'#243'sito'
-        TabOrder = 1
-      end
       object ChComPreCar: TCheckBox
         Left = 5
         Top = 34
         Width = 301
         Height = 17
         Caption = 'Aberto Total/Parcial que est'#225' em pr'#233'-carga '
-        TabOrder = 2
+        TabOrder = 0
       end
       object ChSemPreCar: TCheckBox
         Left = 5
@@ -575,14 +561,14 @@ object FConsPedido: TFConsPedido
         Width = 260
         Height = 17
         Caption = 'Aberto Total/Parcial que n'#227'o est'#225' em pr'#233'-carga '
-        TabOrder = 3
+        TabOrder = 1
       end
       object EdDiasAberto: TEdit
         Left = 193
         Top = 88
         Width = 82
         Height = 21
-        TabOrder = 4
+        TabOrder = 2
         OnKeyPress = EdDiasAbertoKeyPress
       end
     end

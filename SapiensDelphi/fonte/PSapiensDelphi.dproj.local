@@ -237,5 +237,7 @@
     <Transaction>2018/08/06 08:56:35.663.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmReplicarPedido.dfm</Transaction>
     <Transaction>2018/08/06 10:29:19.348.pas,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\fonte\UdmPrototipo.pas</Transaction>
     <Transaction>2018/08/06 10:29:19.348.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UdmPrototipo.dfm</Transaction>
+    <Transaction>2018/08/30 08:16:26.527.pas,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.pas=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmDividirPedido.pas</Transaction>
+    <Transaction>2018/08/30 08:16:26.527.dfm,C:\DelphiSapiens\SapiensDelphi\fonte\Unit1.dfm=C:\DelphiSapiens\SapiensDelphi\fonte\UfrmDividirPedido.dfm</Transaction>
   </Transactions>
 </BorlandProject>

@@ -181,8 +181,6 @@
       end>
     ParentShowHint = False
     ShowHint = False
-    ExplicitTop = 530
-    ExplicitWidth = 796
   end
   object ToolBar1: TToolBar
     Left = 0
@@ -198,7 +196,6 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 1
-    ExplicitWidth = 1292
     object BPreCarga: TToolButton
       Left = 0
       Top = 0
@@ -368,7 +365,6 @@
     HideClippedButtons = True
     Images = ImageList2
     TabOrder = 2
-    ExplicitHeight = 481
     object BComparaComprasClientes: TToolButton
       Left = 0
       Top = 0
@@ -487,7 +483,6 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 3
-    ExplicitHeight = 481
     object btnTransfereTecPedido: TToolButton
       Left = 0
       Top = 0
@@ -692,6 +687,18 @@
     TabOrder = 14
     Visible = False
     OnClick = btnSelecionaPastaClick
+  end
+  object btn13: TBitBtn
+    Left = 264
+    Top = 264
+    Width = 113
+    Height = 25
+    CustomHint = BalloonHint1
+    Caption = 'Dividir'
+    DoubleBuffered = True
+    ParentDoubleBuffered = False
+    TabOrder = 15
+    OnClick = btn13Click
   end
   object Timer1: TTimer
     Enabled = False

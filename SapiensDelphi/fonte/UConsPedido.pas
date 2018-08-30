@@ -40,8 +40,6 @@ type
     ChLiquidado: TCheckBox;
     ChCancelado: TCheckBox;
     ChNaoFechado: TCheckBox;
-    ChComTecTrans: TCheckBox;
-    ChSemTecTrans: TCheckBox;
     ChComPreCar: TCheckBox;
     Panel4: TPanel;
     Panel5: TPanel;
@@ -456,7 +454,7 @@ var
 implementation
 
 uses UDm, UConsGeralNfEnt, UPedido, UProdutosConsPedidos, UDm2,
-  UTecidosConsPedido;
+  UTecidosConsPedido, UfrmDividirPedido;
 
 {$R *.dfm}
 
@@ -1062,7 +1060,7 @@ begin
              valida condiçao pré definida
   ****************************************************}
   vaCondPreDefSql := '';
-  if (ChComPreCar.Checked) or (ChSemPreCar.Checked) or (ChComTecTrans.Checked) or (ChSemTecTrans.Checked) or (trim(EdDiasAberto.Text) <> '') then
+  if (ChComPreCar.Checked) or (ChSemPreCar.Checked) or (trim(EdDiasAberto.Text) <> '') then
      begin
        vaCondPreDefSql := ' and e120ped.sitped in (1,2,3)';
      end;
@@ -1075,14 +1073,7 @@ begin
       begin//2
             vaCondPreDefSql := vaCondPreDefSql + ' and e120ped.usu_precar = 0';
       end;//2
-  if ChComTecTrans.Checked = true then
-      begin//3
-            vaCondPreDefSql := vaCondPreDefSql + ' and e120ped.usu_pedtra = ''S''';
-      end;//3
-  if ChSemTecTrans.Checked = true then
-      begin//4
-            vaCondPreDefSql := vaCondPreDefSql + ' and e120ped.usu_pedtra = ''N''';
-      end;//4
+  
   if trim(EdDiasAberto.Text) <> '' then
      begin//5
           vaCondPreDefSql := vaCondPreDefSql + ' and e120ped.datemi <= :datini';
@@ -1379,8 +1370,7 @@ begin
        se tiver alguma condição pré definida marcada ignora o
        restante dos filtros e olha só para cliente,representante e filial
      **********************************************************************}
-    if (ChComPreCar.Checked) or (ChSemPreCar.Checked) or (ChComTecTrans.Checked) or
-       (ChSemTecTrans.Checked)  or (trim(EdDiasAberto.Text) <> '') then
+    if (ChComPreCar.Checked) or (ChSemPreCar.Checked) or (trim(EdDiasAberto.Text) <> '') then
        begin//1
 
            Conse120ped.SQL.Add(vaCondPreDefSql);
@@ -1517,14 +1507,6 @@ begin
                            begin//104
                               vaSitPedCorTec := vaSitPedCorTec + ' and e120ped.usu_precar = 0';
                            end;//104
-                        if ChComTecTrans.Checked = true then
-                           begin//105
-                               vaSitPedCorTec := vaSitPedCorTec + ' and e120ped.usu_pedtra = ''S''';
-                           end;//105
-                        if ChSemTecTrans.Checked = true then
-                           begin//106
-                               vaSitPedCorTec := vaSitPedCorTec + ' and e120ped.usu_pedtra = ''N''';
-                           end;//106
                         if trim(EdDiasAberto.Text) <> '' then
                            begin//
                               vaSitPedCorTec := vaSitPedCorTec + ' and e120ped.datemi <= :datini';
@@ -1771,6 +1753,13 @@ begin
       begin
         FPedido.EdNumPed.Text := IntToStr(ConsE120pedNUMPED.Value);
         FPedido.ActiveControl := FPedido.EdNumPed;
+        Close;
+      end
+   else
+   if vaTelaOrigem = 'DIVIDE_PEDIDO' then
+      begin
+        frmDividirPedido.edtNumPed.Text := IntToStr(ConsE120pedNUMPED.Value);
+        frmDividirPedido.ActiveControl := frmDividirPedido.edtNumPed;
         Close;
       end;
 end;

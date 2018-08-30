@@ -301,6 +301,7 @@ type
     mnuPercentual: TMenuItem;
     mnuReplicarPedido: TMenuItem;
     btnReplicarPedidos: TToolButton;
+    btn13: TBitBtn;
     procedure Timer1Timer(Sender: TObject);
     procedure Formularios1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -425,6 +426,7 @@ type
     procedure mnuPercentualClick(Sender: TObject);
     procedure mnuReplicarPedidoClick(Sender: TObject);
     procedure btnReplicarPedidosClick(Sender: TObject);
+    procedure btn13Click(Sender: TObject);
   private
     { Private declarations }
     vaSistemaEmUso : string;
@@ -487,7 +489,8 @@ uses UFormulario, {UCidade, UConsSimpCidade, UGrupoUsuario,
   UListaOnlineSERASA, UAnalizaConsumoMpPorFilial, UCadFormaCompraMP,
   UImpressoraPadrao, UAjustaConsumoMateriaPrima, UPreCargas,
   UAnalizeConsumoMPProduzir, UZeraEst3000, ULimpaCancelados, UEtiquetaCabeceira,
-  UfrmValidaXmlEntrada, UfrmControleFaixa, UfrmPercentual, UfrmReplicarPedido;
+  UfrmValidaXmlEntrada, UfrmControleFaixa, UfrmPercentual, UfrmReplicarPedido,
+  UfrmDividirPedido;
 
 {$R *.dfm}
 
@@ -1424,6 +1427,13 @@ begin
   FZeraEst3000 := TFZeraEst3000.Create(Self);
   FZeraEst3000.ShowModal;
   FreeAndNil(FZeraEst3000);
+end;
+
+procedure TFPrincipal.btn13Click(Sender: TObject);
+begin
+  frmDividirPedido := TfrmDividirPedido.Create(Self);
+  frmDividirPedido.ShowModal;
+  FreeAndNil(frmDividirPedido);
 end;
 
 procedure TFPrincipal.btn2Click(Sender: TObject);

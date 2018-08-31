@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, DB, ADODB, Mask, DBCtrls, Grids, DBGrids, Provider,
-  DBClient;
+  DBClient, ExtCtrls, IdBaseComponent, IdComponent, IdTCPConnection,
+  IdTCPClient, IdHTTP;
 
 type
   TfrmDividirPedido = class(TForm)
@@ -84,6 +85,26 @@ type
     ClientConsE120IPDvnVlr101: TFloatField;
     ClientConsE120IPDTvnVlr101: TAggregateField;
     dbedtTvnVlr101: TDBEdit;
+    lbl6: TLabel;
+    ClientConsE120IPDTVlrBru: TAggregateField;
+    dbedtTVlrBru: TDBEdit;
+    lbl7: TLabel;
+    ClientConsE120IPDvnVlr1: TFloatField;
+    ClientConsE120IPDTvnVlr1: TAggregateField;
+    dbedtTvnVlr1: TDBEdit;
+    lbl8: TLabel;
+    dbedtTPer1: TDBEdit;
+    ClientConsE120IPDTPer1: TAggregateField;
+    ClientConsE120IPDTPer101: TAggregateField;
+    lbl9: TLabel;
+    dbedtTPer101: TDBEdit;
+    lbl10: TLabel;
+    btnProcessar: TBitBtn;
+    SapSid: TIdHTTP;
+    ConsE120PedCODCPG: TStringField;
+    ConsE120PedTNSPRO: TStringField;
+    lblStatus: TLabel;
+    ConsE120PedUSU_PRECAR: TIntegerField;
     procedure edtNumPedKeyPress(Sender: TObject; var Key: Char);
     procedure edtNumPedKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -92,6 +113,10 @@ type
     procedure edtNumPedExit(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure ClientConsE120IPDCalcFields(DataSet: TDataSet);
+    procedure ClientConsE120IPDBeforePost(DataSet: TDataSet);
+    procedure dbedtTvnVlr1Change(Sender: TObject);
+    procedure dbedtTvnVlr101Change(Sender: TObject);
+    procedure btnProcessarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -103,7 +128,7 @@ var
 
 implementation
 
-uses UDmOra, UConsPedido;
+uses UDmOra, UConsPedido, UDm2;
 
 {$R *.dfm}
 
@@ -114,18 +139,181 @@ begin
     FConsPedido.ShowModal;
 end;
 
+procedure TfrmDividirPedido.btnProcessarClick(Sender: TObject);
+var vaCodCli, vaDatEmi, vaCodRep, vaCodCpg, vaTnsPro, vaSeqCob,
+    vaSeqEnt, vaNumPed, vaPreCar : string;
+    vnNumPed : Integer;
+    xPostQuery		              : TStringList;
+    vA_URL, vA_BasQry, xRetorno : String;
+begin
+  if not ClientConsE120IPD.IsEmpty then
+     begin
+        vaCodCli := IntToStr(ConsE120PedCODCLI.AsInteger);
+        vaDatEmi := DateToStr(ConsE120PedDATEMI.AsDateTime);
+        vaDatEmi := FormatDateTime('DD/MM/YYYY',StrToDate(vaDatEmi));
+        vaCodrep := IntToStr(ConsE120PedCODREP.AsInteger);
+        vaCodCpg := ConsE120PedCODCPG.AsString;
+        vaTnsPro := ConsE120PedTNSPRO.AsString;
+        vaNumPed := IntToStr(ConsE120PedNUMPED.AsInteger);
+        vaPreCar := IntToStr(ConsE120PedUSU_PRECAR.AsInteger);
+
+        //consulta se o cliente tem endereço de cobrança ou entrega cadastrado
+        vaSeqCob := '';
+        Dm2.ConsGeral.Close;
+        Dm2.ConsGeral.SQL.Clear;
+        Dm2.ConsGeral.SQL.Add('SELECT * FROM E085COB WHERE CODCLI = :CODCLI');
+        Dm2.ConsGeral.Parameters.ParamByName('CODCLI').Value := ConsE120PedCODCLI.AsInteger;
+        Dm2.ConsGeral.Open;
+        if not dm2.ConsGeral.IsEmpty then
+           vaSeqCob := IntToStr(Dm2.ConsGeral.FieldByName('SEQCOB').AsInteger)
+        else
+           vaSeqCob := '';
+
+        vaSeqEnt := '';
+        Dm2.ConsGeral.Close;
+        Dm2.ConsGeral.SQL.Clear;
+        Dm2.ConsGeral.SQL.Add('SELECT * FROM E085ENT WHERE CODCLI = :CODCLI');
+        Dm2.ConsGeral.Parameters.ParamByName('CODCLI').Value := ConsE120PedCODCLI.AsInteger;
+        Dm2.ConsGeral.Open;
+        if not dm2.ConsGeral.IsEmpty then
+           vaSeqEnt := IntToStr(Dm2.ConsGeral.FieldByName('SEQENT').AsInteger)
+        else
+           vaSeqEnt := '';
+
+        xPostQuery := TStringList.Create;
+
+        Dm2.ADOUsuT000sis.Close;
+        Dm2.ADOUsuT000sis.Open;
+        vA_URL := Dm2.ADOUsuT000sisUSU_URLSRV.Value;
+        vA_BasQry := Dm2.ADOUsuT000sisUSU_BASQRY.Value;
+
+        xPostQuery.Add('ACAO=EXESENHA');
+        xPostQuery.Add('&NOMUSU=sapienssid');
+        xPostQuery.Add('&SENUSU=sapienssid');
+
+        lblStatus.Caption := 'Conectando ao Sid..';
+        Application.ProcessMessages;
+        // Executar ação de autenticação no Sapiens SID
+        xRetorno := Trim(SapSID.Post(vA_URL, xPostQuery));
+
+        // Verificar se a ação executou com sucesso
+        if (StrToIntDef(Copy(xRetorno, 1, 5), 0)) = 0 then
+            raise Exception.Create('ERRO - Conexão SID não foi estabelecida: ' + xRetorno)
+        else
+            vA_URL := vA_URL + '&USER=sapienssid&CONNECTION=' + xRetorno;
+
+        lblStatus.Caption := 'Logando na filial..101';
+        Application.ProcessMessages;
+        //loga na filial
+        xPostQuery.Clear;
+        xPostQuery.Add('ACAO=SID.Srv.AltEmpFil');
+        xPostQuery.Add('&CodEmp='+'1');
+        xPostQuery.Add('&CodFil='+'101');
+        xRetorno := Trim(SapSID.Post(vA_URL, xPostQuery));
+
+        if xRetorno = 'OK' then
+           begin
+              // grava cabeçalho do pedido
+              lblStatus.Caption := 'Gravando cabeçalho do pedido..';
+              xPostQuery.Clear;
+              xPostQuery.Add('ACAO=SID.Ped.Gravar');
+              xPostQuery.Add('&NumPed='+vaNumPed);
+              xPostQuery.Add('&CodCli='+vaCodCli);
+              xPostQuery.Add('&DatEmi='+vaDatEmi);
+              xPostQuery.Add('&TnsPro='+vaTnsPro);
+              xPostQuery.Add('&CodRep='+vaCodRep);
+              xPostQuery.Add('&CodCpg='+vaCodCpg);
+
+              if vaSeqCob <> '' then
+                 xPostQuery.Add('&SeqCob='+vaSeqCob);
+              if vaSeqEnt <> '' then
+                 xPostQuery.Add('&SeqEnt='+vaSeqEnt);
+
+              xPostQuery.Add('&Usu_PreCar='+vaPreCar);
+              xPostQuery.Add('&Usu_PedTra='+'S');
+
+              Application.ProcessMessages;
+              // Executar ação  Inserir o pedido
+              xRetorno := Trim(SapSID.Post(vA_URL, xPostQuery));
+              //ShowMessage(xRetorno);
+
+              try
+                vnNumPed := StrToInt(xRetorno);
+              except
+                  //raise Exception.Create(xRetorno);
+                  lblStatus.Caption := '';
+                  Application.MessageBox(Pchar(xRetorno),'Aviso',MB_ICONWARNING+MB_OK);
+                  Abort;
+                 //Close;
+              end;
+                 lblStatus.Caption := 'Pedido '+IntToStr(vnNumPed)+ '  gerado';
+                 Application.ProcessMessages;
+
+           end;
+
+     end;
+end;
+
+procedure TfrmDividirPedido.ClientConsE120IPDBeforePost(DataSet: TDataSet);
+begin
+  if ClientConsE120IPDQtd101.AsInteger > ClientConsE120IPDQTDABE.AsInteger then
+     begin
+       Application.MessageBox('Quantidade inválida','Aviso',MB_ICONWARNING+MB_OK);
+       Abort;
+     end;
+
+  if ClientConsE120IPDQtd101.AsInteger < 0 then
+     begin
+       Application.MessageBox('Quantidade inválida','Aviso',MB_ICONWARNING+MB_OK);
+       Abort;
+     end;
+end;
+
 procedure TfrmDividirPedido.ClientConsE120IPDCalcFields(DataSet: TDataSet);
 begin
   if ClientConsE120IPDQtd101.AsInteger > 0 then
      ClientConsE120IPDvnVlr101.AsFloat := ClientConsE120IPDQtd101.AsInteger * ClientConsE120IPDPREUNI.AsFloat
   else
      ClientConsE120IPDvnVlr101.AsFloat := 0;
+
+  ClientConsE120IPDvnVlr1.AsFloat := (ClientConsE120IPDQTDABE.AsInteger - ClientConsE120IPDQtd101.AsInteger) * ClientConsE120IPDPREUNI.AsFloat;
+
+  
 end;
 
 procedure TfrmDividirPedido.ConsE120PedCalcFields(DataSet: TDataSet);
 begin
   ConsE120PedvaDesCli.AsString := IntToStr(ConsE120PedCODCLI.AsInteger)+'   -   '+ConsE120PedNOMCLI.AsString+'   -   '+ConsE120PedCIDCLI.AsString+'   -   '+ConsE120PedSIGUFS.AsString;
   ConsE120PedvaDesRep.AsString := IntToStr(ConsE120PedCODREP.AsInteger)+'   -   '+ConsE120PedNOMREP.AsString;
+
+end;
+
+procedure TfrmDividirPedido.dbedtTvnVlr101Change(Sender: TObject);
+begin
+if dbedtTvnVlr101.Text = '0,00' then
+   begin
+     dbedtTvnVlr101.Color := clWhite;
+     dbedtTPer101.Color := clWhite;
+   end
+else
+   begin
+     dbedtTvnVlr101.Color := $009D9DFF;
+     dbedtTPer101.Color := $009D9DFF;
+   end
+end;
+
+procedure TfrmDividirPedido.dbedtTvnVlr1Change(Sender: TObject);
+begin
+if dbedtTvnVlr1.Text = '0,00' then
+   begin
+     dbedtTvnVlr1.Color := clWhite;
+     dbedtTPer1.Color := clWhite;
+   end
+else
+   begin
+     dbedtTvnVlr1.Color := $0091FF91;
+     dbedtTPer1.Color := $0091FF91;
+   end
 
 end;
 
@@ -152,6 +340,8 @@ begin
      end
   else
      begin
+       Application.MessageBox('Pedido não encontrado','Aviso',MB_ICONWARNING+MB_OK);
+
        ConsE120Ped.Close;
        ClientConsE120IPD.Close;
        ConsE120IPD.Close;

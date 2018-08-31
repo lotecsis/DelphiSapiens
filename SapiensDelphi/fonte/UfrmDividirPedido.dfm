@@ -83,6 +83,47 @@ object frmDividirPedido: TfrmDividirPedido
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object lbl6: TLabel
+    Left = 257
+    Top = 633
+    Width = 45
+    Height = 13
+    Caption = 'Total 101'
+  end
+  object lbl7: TLabel
+    Left = 818
+    Top = 633
+    Width = 24
+    Height = 13
+    Caption = 'Total'
+  end
+  object lbl8: TLabel
+    Left = 17
+    Top = 633
+    Width = 33
+    Height = 13
+    Caption = 'Total 1'
+  end
+  object lbl9: TLabel
+    Left = 208
+    Top = 633
+    Width = 11
+    Height = 13
+    Caption = '%'
+  end
+  object lbl10: TLabel
+    Left = 460
+    Top = 633
+    Width = 11
+    Height = 13
+    Caption = '%'
+  end
+  object lblStatus: TLabel
+    Left = 680
+    Top = 138
+    Width = 3
+    Height = 13
+  end
   object edtNumPed: TEdit
     Left = 99
     Top = 14
@@ -221,8 +262,18 @@ object frmDividirPedido: TfrmDividirPedido
       item
         Expanded = False
         FieldName = 'Qtd101'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
         Title.Alignment = taCenter
         Title.Caption = '101'
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -11
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
         Width = 80
         Visible = True
       end
@@ -292,13 +343,113 @@ object frmDividirPedido: TfrmDividirPedido
       end>
   end
   object dbedtTvnVlr101: TDBEdit
-    Left = 816
-    Top = 624
-    Width = 121
-    Height = 21
+    Left = 308
+    Top = 630
+    Width = 100
+    Height = 19
+    TabStop = False
+    Ctl3D = False
     DataField = 'TvnVlr101'
     DataSource = dsClientConsE120IPD
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
     TabOrder = 7
+    OnChange = dbedtTvnVlr101Change
+  end
+  object dbedtTVlrBru: TDBEdit
+    Left = 848
+    Top = 630
+    Width = 100
+    Height = 19
+    TabStop = False
+    Ctl3D = False
+    DataField = 'TVlrBru'
+    DataSource = dsClientConsE120IPD
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 8
+  end
+  object dbedtTvnVlr1: TDBEdit
+    Left = 56
+    Top = 630
+    Width = 100
+    Height = 19
+    TabStop = False
+    Color = clWhite
+    Ctl3D = False
+    DataField = 'TvnVlr1'
+    DataSource = dsClientConsE120IPD
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 9
+    OnChange = dbedtTvnVlr1Change
+  end
+  object dbedtTPer1: TDBEdit
+    Left = 156
+    Top = 630
+    Width = 50
+    Height = 19
+    TabStop = False
+    Ctl3D = False
+    DataField = 'TPer1'
+    DataSource = dsClientConsE120IPD
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 10
+  end
+  object dbedtTPer101: TDBEdit
+    Left = 408
+    Top = 630
+    Width = 50
+    Height = 19
+    TabStop = False
+    Ctl3D = False
+    DataField = 'TPer101'
+    DataSource = dsClientConsE120IPD
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 11
+  end
+  object btnProcessar: TBitBtn
+    Left = 886
+    Top = 8
+    Width = 100
+    Height = 25
+    Caption = 'Processar'
+    DoubleBuffered = True
+    ParentDoubleBuffered = False
+    TabOrder = 12
+    OnClick = btnProcessarClick
   end
   object ConsE120Ped: TADOQuery
     Connection = DmOra.ADOBanco
@@ -314,7 +465,10 @@ object frmDividirPedido: TfrmDividirPedido
     SQL.Strings = (
       
         'SELECT E120PED.CODEMP, E120PED.CODFIL, E120PED.NUMPED, E120PED.C' +
-        'ODCLI, E120PED.DATEMI, E120PED.SITPED, E120PED.CODREP,'
+        'ODCLI, E120PED.DATEMI, E120PED.SITPED,'
+      
+        '             E120PED.CODREP, E120PED.CODCPG, E120PED.TNSPRO, E12' +
+        '0PED.USU_PRECAR,'
       '       E085CLI.NOMCLI, E085CLI.CIDCLI, E085CLI.SIGUFS,'
       '       E090REP.NOMREP, E090REP.APEREP,'
       '       DECODE(E120PED.SITPED,'
@@ -335,8 +489,8 @@ object frmDividirPedido: TfrmDividirPedido
       '      E120PED.CODEMP = 1 AND'
       '      E120PED.CODFIL = 1 AND'
       '      E120PED.NUMPED = :NUMPED')
-    Left = 272
-    Top = 8
+    Left = 240
+    Top = 16
     object ConsE120PedCODEMP: TIntegerField
       FieldName = 'CODEMP'
     end
@@ -396,6 +550,17 @@ object frmDividirPedido: TfrmDividirPedido
       FieldName = 'vaDesRep'
       Size = 150
       Calculated = True
+    end
+    object ConsE120PedCODCPG: TStringField
+      FieldName = 'CODCPG'
+      Size = 6
+    end
+    object ConsE120PedTNSPRO: TStringField
+      FieldName = 'TNSPRO'
+      Size = 5
+    end
+    object ConsE120PedUSU_PRECAR: TIntegerField
+      FieldName = 'USU_PRECAR'
     end
   end
   object dsConsE120Ped: TDataSource
@@ -538,6 +703,7 @@ object frmDividirPedido: TfrmDividirPedido
     AggregatesActive = True
     Params = <>
     ProviderName = 'ProviderConsE120IPD'
+    BeforePost = ClientConsE120IPDBeforePost
     OnCalcFields = ClientConsE120IPDCalcFields
     Left = 224
     Top = 352
@@ -650,6 +816,10 @@ object frmDividirPedido: TfrmDividirPedido
       FieldKind = fkInternalCalc
       FieldName = 'vnVlr101'
     end
+    object ClientConsE120IPDvnVlr1: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'vnVlr1'
+    end
     object ClientConsE120IPDTvnVlr101: TAggregateField
       Alignment = taCenter
       FieldName = 'TvnVlr101'
@@ -657,10 +827,50 @@ object frmDividirPedido: TfrmDividirPedido
       DisplayFormat = ',0.00'
       Expression = 'sum(vnVlr101)'
     end
+    object ClientConsE120IPDTVlrBru: TAggregateField
+      Alignment = taCenter
+      FieldName = 'TVlrBru'
+      Active = True
+      DisplayFormat = ',0.00'
+      Expression = 'sum(VLRBRU)'
+    end
+    object ClientConsE120IPDTvnVlr1: TAggregateField
+      Alignment = taCenter
+      FieldName = 'TvnVlr1'
+      Active = True
+      DisplayFormat = ',0.00'
+      Expression = 'sum(vnVlr1)'
+    end
+    object ClientConsE120IPDTPer1: TAggregateField
+      Alignment = taCenter
+      FieldName = 'TPer1'
+      Active = True
+      DisplayFormat = ',0.00'
+      Expression = '(SUM(vnVlr1) * 100) / SUM(VLRBRU)'
+    end
+    object ClientConsE120IPDTPer101: TAggregateField
+      Alignment = taCenter
+      FieldName = 'TPer101'
+      Active = True
+      DisplayFormat = ',0.00'
+      Expression = '(SUM(vnVlr101) * 100) / SUM(VLRBRU)'
+    end
   end
   object dsClientConsE120IPD: TDataSource
     DataSet = ClientConsE120IPD
     Left = 224
     Top = 408
+  end
+  object SapSid: TIdHTTP
+    AllowCookies = True
+    ProxyParams.BasicAuthentication = False
+    ProxyParams.ProxyPort = 0
+    Request.ContentLength = -1
+    Request.Accept = 'text/html, */*'
+    Request.BasicAuthentication = False
+    Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
+    HTTPOptions = [hoForceEncodeParams]
+    Left = 432
+    Top = 224
   end
 end

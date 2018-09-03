@@ -119,9 +119,9 @@ object frmDividirPedido: TfrmDividirPedido
     Caption = '%'
   end
   object lblStatus: TLabel
-    Left = 680
-    Top = 138
-    Width = 3
+    Left = 8
+    Top = 656
+    Width = 57
     Height = 13
   end
   object edtNumPed: TEdit
@@ -468,7 +468,7 @@ object frmDividirPedido: TfrmDividirPedido
         'ODCLI, E120PED.DATEMI, E120PED.SITPED,'
       
         '             E120PED.CODREP, E120PED.CODCPG, E120PED.TNSPRO, E12' +
-        '0PED.USU_PRECAR,'
+        '0PED.USU_PRECAR, E120PED.USU_NUMCOM,'
       '       E085CLI.NOMCLI, E085CLI.CIDCLI, E085CLI.SIGUFS,'
       '       E090REP.NOMREP, E090REP.APEREP,'
       '       DECODE(E120PED.SITPED,'
@@ -562,6 +562,9 @@ object frmDividirPedido: TfrmDividirPedido
     object ConsE120PedUSU_PRECAR: TIntegerField
       FieldName = 'USU_PRECAR'
     end
+    object ConsE120PedUSU_NUMCOM: TIntegerField
+      FieldName = 'USU_NUMCOM'
+    end
   end
   object dsConsE120Ped: TDataSource
     DataSet = ConsE120Ped
@@ -591,7 +594,9 @@ object frmDividirPedido: TfrmDividirPedido
       
         '       E120IPD.QTDABE, E120IPD.CODTPR, E120IPD.PREUNI, E120IPD.V' +
         'LRBRU,'
-      '       E120IPD.VLRLIQ, E120IPD.SITIPD,'
+      
+        '       E120IPD.VLRLIQ, E120IPD.SITIPD, E120IPD.CODDEP, E120IPD.U' +
+        'SU_NUMCOM,'
       '       DECODE(E120IPD.SITIPD,'
       '              1, '#39'Aberto Total'#39','
       '              2, '#39'Aberto Parcial'#39','
@@ -691,6 +696,13 @@ object frmDividirPedido: TfrmDividirPedido
       FieldName = 'VA_SITIPD'
       ReadOnly = True
       Size = 40
+    end
+    object ConsE120IPDCODDEP: TStringField
+      FieldName = 'CODDEP'
+      Size = 10
+    end
+    object ConsE120IPDUSU_NUMCOM: TIntegerField
+      FieldName = 'USU_NUMCOM'
     end
   end
   object ProviderConsE120IPD: TDataSetProvider
@@ -820,6 +832,13 @@ object frmDividirPedido: TfrmDividirPedido
       FieldKind = fkInternalCalc
       FieldName = 'vnVlr1'
     end
+    object ClientConsE120IPDCODDEP: TStringField
+      FieldName = 'CODDEP'
+      Size = 10
+    end
+    object ClientConsE120IPDUSU_NUMCOM: TIntegerField
+      FieldName = 'USU_NUMCOM'
+    end
     object ClientConsE120IPDTvnVlr101: TAggregateField
       Alignment = taCenter
       FieldName = 'TvnVlr101'
@@ -854,6 +873,12 @@ object frmDividirPedido: TfrmDividirPedido
       Active = True
       DisplayFormat = ',0.00'
       Expression = '(SUM(vnVlr101) * 100) / SUM(VLRBRU)'
+    end
+    object ClientConsE120IPDTQtd101: TAggregateField
+      Alignment = taCenter
+      FieldName = 'TQtd101'
+      Active = True
+      Expression = 'sum(Qtd101)'
     end
   end
   object dsClientConsE120IPD: TDataSource

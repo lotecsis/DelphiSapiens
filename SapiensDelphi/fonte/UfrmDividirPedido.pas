@@ -105,6 +105,12 @@ type
     ConsE120PedTNSPRO: TStringField;
     lblStatus: TLabel;
     ConsE120PedUSU_PRECAR: TIntegerField;
+    ConsE120IPDCODDEP: TStringField;
+    ClientConsE120IPDCODDEP: TStringField;
+    ConsE120IPDUSU_NUMCOM: TIntegerField;
+    ClientConsE120IPDUSU_NUMCOM: TIntegerField;
+    ConsE120PedUSU_NUMCOM: TIntegerField;
+    ClientConsE120IPDTQtd101: TAggregateField;
     procedure edtNumPedKeyPress(Sender: TObject; var Key: Char);
     procedure edtNumPedKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -141,12 +147,13 @@ end;
 
 procedure TfrmDividirPedido.btnProcessarClick(Sender: TObject);
 var vaCodCli, vaDatEmi, vaCodRep, vaCodCpg, vaTnsPro, vaSeqCob,
-    vaSeqEnt, vaNumPed, vaPreCar : string;
+    vaSeqEnt, vaNumPed, vaPreCar, vaQtdCan : string;
     vnNumPed : Integer;
     xPostQuery		              : TStringList;
     vA_URL, vA_BasQry, xRetorno : String;
+    vaDatEnt, vaSeqIpd, vaCodPro, vaCodDer, vaCodDep, vaPreUni, vaQtdPed, vaCodTpr, vaNumCom : string;
 begin
-  if not ClientConsE120IPD.IsEmpty then
+  if (not ClientConsE120IPD.IsEmpty) and (ClientConsE120IPDTQtd101.Value > 0) then
      begin
         vaCodCli := IntToStr(ConsE120PedCODCLI.AsInteger);
         vaDatEmi := DateToStr(ConsE120PedDATEMI.AsDateTime);
@@ -156,6 +163,7 @@ begin
         vaTnsPro := ConsE120PedTNSPRO.AsString;
         vaNumPed := IntToStr(ConsE120PedNUMPED.AsInteger);
         vaPreCar := IntToStr(ConsE120PedUSU_PRECAR.AsInteger);
+        vaNumCom := IntToStr(ConsE120PedUSU_NUMCOM.AsInteger);
 
         //consulta se o cliente tem endereço de cobrança ou entrega cadastrado
         vaSeqCob := '';
@@ -231,6 +239,7 @@ begin
 
               xPostQuery.Add('&Usu_PreCar='+vaPreCar);
               xPostQuery.Add('&Usu_PedTra='+'S');
+              xPostQuery.Add('&Usu_NumCom='+vaNumCom);
 
               Application.ProcessMessages;
               // Executar ação  Inserir o pedido
@@ -244,13 +253,145 @@ begin
                   lblStatus.Caption := '';
                   Application.MessageBox(Pchar(xRetorno),'Aviso',MB_ICONWARNING+MB_OK);
                   Abort;
-                 //Close;
               end;
                  lblStatus.Caption := 'Pedido '+IntToStr(vnNumPed)+ '  gerado';
                  Application.ProcessMessages;
 
-           end;
+             {***************************************************
+                         GRAVA OS PRODUTOS DO PEDIDO
+             ****************************************************}
+             ClientConsE120IPD.First;
+             while not ClientConsE120IPD.Eof do
+               begin
+                   if ClientConsE120IPDQtd101.AsInteger > 0 then
+                      begin
+                         lblStatus.Caption := 'Gravando produto: '+ClientConsE120IPDCODPRO.AsString+ '  '+ClientConsE120IPDCPLIPD.AsString+ '  derivação: '+ClientConsE120IPDCODDER.AsString;
+                         Application.ProcessMessages;
+                         vaDatEnt := DateToStr(Date);
+                         vaDatEnt := FormatDateTime('DD/MM/YYYY',StrToDate(vaDatEnt));
+                        // vaNumPed := IntToStr(vnNumPed);
+                         vaSeqIpd := IntToStr(ClientConsE120IPDSEQIPD.AsInteger);
+                         vaCodPro := ClientConsE120IPDCODPRO.AsString;
+                         vaCodDer := ClientConsE120IPDCODDER.AsString;
+                         //vaCodDep := ClientConsE120IPDCODDEP.AsString;
+                         vaCodDep := '101';
+                         vaTnsPro := ClientConsE120IPDTNSPRO.AsString;
+                         vaPreUni := FloatToStr(ClientConsE120IPDPREUNI.AsFloat);
+                         vaQtdPed := IntToStr(ClientConsE120IPDQtd101.AsInteger);
+                         vaCodTpr := ClientConsE120IPDCODTPR.Value;
+                         //vaTotDsc := FloatToStr(DmFire.ConsE120IpdTOTDESC.Value);
 
+                         if vaTnsPro = '90100' then
+                            vaTnsPro := '90150'
+                         else
+                        if vaTnsPro = '90106' then
+                           vaTnsPro := '90156';
+
+                        // Transação de Assistencia Técnica / Troca  / Bonificaçao/Brinde
+                        if vaTnsPro = '90110' then
+                           vaTnsPro := '90170'
+                        else
+                        if vaTnsPro = '90111' then
+                           vaTnsPro := '90171'
+                        else
+                        if vaTnsPro = '90112' then
+                           vaTnsPro := '90172'
+                        else
+                        if vaTnsPro = '90122' then
+                           vaTnsPro := '90172';
+
+                         // grava produtos do pedido
+                         xPostQuery.Clear;
+                         xPostQuery.Add('ACAO=SID.Ped.GravarProduto');
+                         xPostQuery.Add('&NumPed='+vaNumPed);
+                         xPostQuery.Add('&SeqIpd='+vaSeqIpd);
+                         xPostQuery.Add('&CodPro='+vaCodPro);
+                         xPostQuery.Add('&CodDer='+vaCodDer);
+                         xPostQuery.Add('&QtdPed='+vaQtdPed);
+                         xPostQuery.Add('&CodTpr='+vaCodTpr);
+                         xPostQuery.Add('&TnsPro='+vaTnsPro);
+                         xPostQuery.Add('&CodDep='+vaCodDep);
+                         xPostQuery.Add('&DatEnt='+vaDatEnt);
+                         xPostQuery.Add('&Usu_NumCom='+vaNumCom);
+
+                         // Executar ação  gravar itens Pedido
+                         xRetorno := Trim(SapSid.Post(vA_URL, xPostQuery));
+                         lblStatus.Caption := '';
+                         Application.ProcessMessages;
+
+                      end;
+                 ClientConsE120IPD.Next;
+               end;
+
+             lblStatus.Caption := 'Fechando pedido..';
+             Application.ProcessMessages;
+             xPostQuery.Clear;
+             xPostQuery.Add('ACAO=SID.Ped.Fechar');
+             xPostQuery.Add('&NumPed='+vaNumPed);
+             xPostQuery.Add('&RecPed='+'0');
+             xRetorno := Trim(SapSid.Post(vA_URL, xPostQuery));
+             if xRetorno = 'OK' then
+                begin
+                  //Application.MessageBox('Processamento realizado com sucesso!','Confirmação',MB_ICONINFORMATION+MB_OK);
+                  lblStatus.Caption := xRetorno;
+                  Application.ProcessMessages;
+                end
+             else
+                begin
+                  Application.MessageBox(PChar(xRetorno),'Erro',MB_ICONWARNING+MB_OK);
+                  Abort;
+                end;
+
+              //percorro pra cancelar os itens na filial 1
+              lblStatus.Caption := 'Logando na filial..1';
+              Application.ProcessMessages;
+              //loga na filial
+              xPostQuery.Clear;
+              xPostQuery.Add('ACAO=SID.Srv.AltEmpFil');
+              xPostQuery.Add('&CodEmp='+'1');
+              xPostQuery.Add('&CodFil='+'1');
+              xRetorno := Trim(SapSID.Post(vA_URL, xPostQuery));
+              lblStatus.Caption := xRetorno;
+
+             if xRetorno = 'OK' then
+                begin
+                   ClientConsE120IPD.First;
+                   while not ClientConsE120IPD.Eof do
+                     begin
+                       if ClientConsE120IPDQtd101.AsInteger > 0 then
+                          begin
+                             vaSeqIpd := IntToStr(ClientConsE120IPDSEQIPD.AsInteger);
+                             vaQtdCan := IntToStr(ClientConsE120IPDQtd101.AsInteger);
+
+                             xPostQuery.Clear;
+                             xPostQuery.Add('ACAO=SID.Ped.GravarProduto');
+                             xPostQuery.Add('&NumPed='+vaNumPed);
+                             xPostQuery.Add('&SeqIpd='+vaSeqIpd);
+                             xPostQuery.Add('&QtdCan='+vaQtdCan);
+                             // Executar ação  gravar itens Pedido
+                             xRetorno := Trim(SapSid.Post(vA_URL, xPostQuery));
+
+                             if xRetorno <> vaSeqIpd then
+                                begin
+                                  Application.MessageBox(PChar(xRetorno),'Erro',MB_ICONWARNING+MB_OK);
+                                  Abort;
+                                end;
+                          end;
+                       ClientConsE120IPD.Next;
+                     end;
+                   ClientConsE120IPD.First;
+
+                   Application.MessageBox('Processamento realizado com sucesso!','Confirmação',MB_ICONINFORMATION+MB_OK);
+                   lblStatus.Caption := '';
+                end;
+           end;
+     end
+  else
+     begin
+       if ClientConsE120IPDTQtd101.Value <= 0 then
+          begin
+            Application.MessageBox('Informe a quantidade para divisão','Erro',MB_ICONWARNING+MB_OK);
+          end;
      end;
 end;
 

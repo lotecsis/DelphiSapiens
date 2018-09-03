@@ -360,6 +360,9 @@ begin
                      begin
                        if ClientConsE120IPDQtd101.AsInteger > 0 then
                           begin
+                             lblStatus.Caption := 'CANCELANDO: '+ClientConsE120IPDCODPRO.AsString+ '  '+ClientConsE120IPDCPLIPD.AsString+ '  derivação: '+ClientConsE120IPDCODDER.AsString;
+                             Application.ProcessMessages;
+
                              vaSeqIpd := IntToStr(ClientConsE120IPDSEQIPD.AsInteger);
                              vaQtdCan := IntToStr(ClientConsE120IPDQtd101.AsInteger);
 

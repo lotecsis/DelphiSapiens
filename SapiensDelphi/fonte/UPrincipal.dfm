@@ -5,7 +5,7 @@
   Align = alClient
   Caption = 'Sapiens Lider'
   ClientHeight = 594
-  ClientWidth = 1160
+  ClientWidth = 1214
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -153,7 +153,7 @@
   object StatusBar1: TStatusBar
     Left = 0
     Top = 570
-    Width = 1160
+    Width = 1214
     Height = 24
     CustomHint = BalloonHint1
     Panels = <
@@ -182,11 +182,12 @@
     ParentShowHint = False
     ShowHint = False
     ExplicitTop = 550
+    ExplicitWidth = 1160
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 1160
+    Width = 1214
     Height = 49
     CustomHint = BalloonHint1
     ButtonHeight = 45
@@ -197,6 +198,7 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 1
+    ExplicitWidth = 1160
     object BPreCarga: TToolButton
       Left = 0
       Top = 0
@@ -257,18 +259,8 @@
       ParentShowHint = False
       ShowHint = False
     end
-    object BAtualizaPreCus: TToolButton
-      Left = 420
-      Top = 0
-      Hint = 'Atualiza Pre'#231'o de Custo'
-      CustomHint = BalloonHint1
-      Action = AcAtualizaPrecoCusto
-      ImageIndex = 4
-      ParentShowHint = False
-      ShowHint = False
-    end
     object BConsMateriaPrima: TToolButton
-      Left = 480
+      Left = 420
       Top = 0
       Hint = 'Consulta de Mat'#233'ria Prima'
       CustomHint = BalloonHint1
@@ -278,17 +270,27 @@
       ShowHint = False
     end
     object btnControleAcessoTelas: TToolButton
-      Left = 540
+      Left = 480
       Top = 0
       CustomHint = BalloonHint1
       Action = actControleConexaoTelas
     end
     object BControleAcesso: TToolButton
-      Left = 600
+      Left = 540
       Top = 0
       CustomHint = BalloonHint1
       Action = AcControleConexao
       ImageIndex = 11
+    end
+    object BAtualizaPreCus: TToolButton
+      Left = 600
+      Top = 0
+      Hint = 'Atualiza Pre'#231'o de Custo'
+      CustomHint = BalloonHint1
+      Action = AcAtualizaPrecoCusto
+      ImageIndex = 4
+      ParentShowHint = False
+      ShowHint = False
     end
     object btnCidades: TToolButton
       Left = 660
@@ -372,7 +374,6 @@
     HideClippedButtons = True
     Images = ImageList2
     TabOrder = 2
-    ExplicitHeight = 501
     object BComparaComprasClientes: TToolButton
       Left = 0
       Top = 0
@@ -491,7 +492,6 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 3
-    ExplicitHeight = 501
     object btnCorteTecEstof: TToolButton
       Left = 0
       Top = 0
@@ -613,7 +613,7 @@
     OnClick = btn9Click
   end
   object btn10: TBitBtn
-    Left = 130
+    Left = 190
     Top = 55
     Width = 170
     Height = 25

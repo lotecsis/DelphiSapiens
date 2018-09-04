@@ -898,4 +898,27 @@ object frmDividirPedido: TfrmDividirPedido
     Left = 432
     Top = 224
   end
+  object ExistePed101: TADOQuery
+    Connection = DmOra.ADOBanco
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'NUMPED'
+        DataType = ftInteger
+        Size = -1
+        Value = Null
+      end>
+    SQL.Strings = (
+      'SELECT NUMPED'
+      '  FROM E120PED'
+      '  WHERE'
+      '    CODEMP = 1 AND'
+      '    CODFIL = 101 AND'
+      '    NUMPED = :NUMPED')
+    Left = 480
+    Top = 32
+    object ExistePed101NUMPED: TIntegerField
+      FieldName = 'NUMPED'
+    end
+  end
 end

@@ -188,7 +188,6 @@ type
     actAtualizaSaldoReservaTecidos: TAction;
     tlb1: TToolBar;
     btnCorteTecEstof: TToolButton;
-    btnTransfereTecPedido: TToolButton;
     btnAtualizaSaldoTecidos: TToolButton;
     btnConsTecidos: TToolButton;
     btnAtualizaSaldoReservaTecidos: TToolButton;
@@ -301,7 +300,9 @@ type
     mnuPercentual: TMenuItem;
     mnuReplicarPedido: TMenuItem;
     btnReplicarPedidos: TToolButton;
-    btn13: TBitBtn;
+    mnufrmDividirPedido: TMenuItem;
+    actfrmDividirPedido: TAction;
+    btnfrmDividirPedido: TToolButton;
     procedure Timer1Timer(Sender: TObject);
     procedure Formularios1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -426,7 +427,9 @@ type
     procedure mnuPercentualClick(Sender: TObject);
     procedure mnuReplicarPedidoClick(Sender: TObject);
     procedure btnReplicarPedidosClick(Sender: TObject);
-    procedure btn13Click(Sender: TObject);
+    procedure mnufrmDividirPedidoClick(Sender: TObject);
+    procedure btnDivisaoPedidosClick(Sender: TObject);
+    procedure actfrmDividirPedidoExecute(Sender: TObject);
   private
     { Private declarations }
     vaSistemaEmUso : string;
@@ -812,7 +815,6 @@ if vdChamaLogin = true then
     btnAtualizaSaldoReservaTecidos.Enabled := mnuAtualizaSaldoReservaTecidos.Enabled;
     btnAtualizaSaldoTecidos.Enabled := mnuAtualizaSaldoTecidos.Enabled;
     btnConsTecidos.Enabled := mnuConsTecido.Enabled;
-    btnTransfereTecPedido.Enabled := mnuTransfereTecPedido.Enabled;
     btnPendenciaCarga.Enabled := mnuPendenciaCarga.Enabled;
     BProcessaPedidos.Enabled := mnuProcessaPedidosSysRep.Enabled;
     btnCidades.Enabled := mnuCadCidades.Enabled;
@@ -823,6 +825,7 @@ if vdChamaLogin = true then
     btnApelidosProdSapiens.Enabled := mnuApelidosparaProdutosSapiens.Enabled;
     btnPercentual.Enabled := mnuPercentual.Enabled;
     btnReplicarPedidos.Enabled := mnuReplicarPedido.Enabled;
+    btnfrmDividirPedido.Enabled := mnufrmDividirPedido.Enabled;
  end;
  //end;
 
@@ -1170,6 +1173,13 @@ begin
   FreeAndNil(FFormarManifesto);
 end;
 
+procedure TFPrincipal.actfrmDividirPedidoExecute(Sender: TObject);
+begin
+  frmDividirPedido := TfrmDividirPedido.Create(Self);
+  frmDividirPedido.ShowModal;
+  FreeAndNil(frmDividirPedido);
+end;
+
 procedure TFPrincipal.actfrmPercentualExecute(Sender: TObject);
 begin
   frmPercentual := TfrmPercentual.Create(Self);
@@ -1306,6 +1316,13 @@ begin
   FreeAndNil(FEtiquetaCabeceira);
 end;
 
+procedure TFPrincipal.mnufrmDividirPedidoClick(Sender: TObject);
+begin
+  frmDividirPedido := TfrmDividirPedido.Create(Self);
+  frmDividirPedido.ShowModal;
+  FreeAndNil(frmDividirPedido);
+end;
+
 procedure TFPrincipal.mnuPercentualClick(Sender: TObject);
 begin
   frmPercentual := TfrmPercentual.Create(Self);
@@ -1429,13 +1446,6 @@ begin
   FreeAndNil(FZeraEst3000);
 end;
 
-procedure TFPrincipal.btn13Click(Sender: TObject);
-begin
-  frmDividirPedido := TfrmDividirPedido.Create(Self);
-  frmDividirPedido.ShowModal;
-  FreeAndNil(frmDividirPedido);
-end;
-
 procedure TFPrincipal.btn2Click(Sender: TObject);
 begin
   FImportaExcelCidades := TFImportaExcelCidades.Create(Self);
@@ -1545,6 +1555,13 @@ begin
   FIntegracaoSerasa := TFIntegracaoSerasa.Create(Self);
   FIntegracaoSerasa.ShowModal;
   FreeAndNil(FIntegracaoSerasa);
+end;
+
+procedure TFPrincipal.btnDivisaoPedidosClick(Sender: TObject);
+begin
+  frmDividirPedido := TfrmDividirPedido.Create(Self);
+  frmDividirPedido.ShowModal;
+  FreeAndNil(frmDividirPedido);
 end;
 
 procedure TFPrincipal.btnImpressorasClick(Sender: TObject);

@@ -111,6 +111,8 @@ type
     ClientConsE120IPDUSU_NUMCOM: TIntegerField;
     ConsE120PedUSU_NUMCOM: TIntegerField;
     ClientConsE120IPDTQtd101: TAggregateField;
+    ExistePed101: TADOQuery;
+    ExistePed101NUMPED: TIntegerField;
     procedure edtNumPedKeyPress(Sender: TObject; var Key: Char);
     procedure edtNumPedKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -155,6 +157,17 @@ var vaCodCli, vaDatEmi, vaCodRep, vaCodCpg, vaTnsPro, vaSeqCob,
 begin
   if (not ClientConsE120IPD.IsEmpty) and (ClientConsE120IPDTQtd101.Value > 0) then
      begin
+
+         ExistePed101.Close;
+         ExistePed101.Parameters.ParamByName('NUMPED').Value := ConsE120PedNUMPED.AsInteger;
+         ExistePed101.Open;
+         if not ExistePed101.IsEmpty then
+            begin
+              Application.MessageBox('Este pedido já se encontra na filial 101, não é possível processar novamente!','Atenção',MB_ICONINFORMATION+MB_OK);
+              Abort;
+            end;
+
+
         vaCodCli := IntToStr(ConsE120PedCODCLI.AsInteger);
         vaDatEmi := DateToStr(ConsE120PedDATEMI.AsDateTime);
         vaDatEmi := FormatDateTime('DD/MM/YYYY',StrToDate(vaDatEmi));
@@ -364,7 +377,7 @@ begin
                              Application.ProcessMessages;
 
                              vaSeqIpd := IntToStr(ClientConsE120IPDSEQIPD.AsInteger);
-                             vaQtdCan := IntToStr(ClientConsE120IPDQtd101.AsInteger);
+                             vaQtdCan := IntToStr(ClientConsE120IPDQtd101.AsInteger + ClientConsE120IPDQTDCAN.AsInteger);
 
                              xPostQuery.Clear;
                              xPostQuery.Add('ACAO=SID.Ped.GravarProduto');
@@ -386,6 +399,7 @@ begin
 
                    Application.MessageBox('Processamento realizado com sucesso!','Confirmação',MB_ICONINFORMATION+MB_OK);
                    lblStatus.Caption := '';
+                   edtNumPedExit(Sender);
                 end;
            end;
      end

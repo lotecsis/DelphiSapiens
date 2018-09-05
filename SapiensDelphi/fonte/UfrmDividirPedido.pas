@@ -326,6 +326,7 @@ begin
                          xPostQuery.Add('&CodDep='+vaCodDep);
                          xPostQuery.Add('&DatEnt='+vaDatEnt);
                          xPostQuery.Add('&Usu_NumCom='+vaNumCom);
+                         xPostQuery.Add('&PreUni='+vaPreUni);
 
                          // Executar ação  gravar itens Pedido
                          xRetorno := Trim(SapSid.Post(vA_URL, xPostQuery));

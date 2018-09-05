@@ -4,8 +4,8 @@
   CustomHint = BalloonHint1
   Align = alClient
   Caption = 'Sapiens Lider'
-  ClientHeight = 594
-  ClientWidth = 1214
+  ClientHeight = 554
+  ClientWidth = 796
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -152,8 +152,8 @@
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 570
-    Width = 1214
+    Top = 530
+    Width = 796
     Height = 24
     CustomHint = BalloonHint1
     Panels = <
@@ -181,13 +181,11 @@
       end>
     ParentShowHint = False
     ShowHint = False
-    ExplicitTop = 550
-    ExplicitWidth = 1160
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 1214
+    Width = 796
     Height = 49
     CustomHint = BalloonHint1
     ButtonHeight = 45
@@ -198,7 +196,6 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 1
-    ExplicitWidth = 1160
     object BPreCarga: TToolButton
       Left = 0
       Top = 0
@@ -281,10 +278,11 @@
       CustomHint = BalloonHint1
       Action = AcControleConexao
       ImageIndex = 11
+      Wrap = True
     end
     object BAtualizaPreCus: TToolButton
-      Left = 600
-      Top = 0
+      Left = 0
+      Top = 45
       Hint = 'Atualiza Pre'#231'o de Custo'
       CustomHint = BalloonHint1
       Action = AcAtualizaPrecoCusto
@@ -293,43 +291,43 @@
       ShowHint = False
     end
     object btnCidades: TToolButton
-      Left = 660
-      Top = 0
+      Left = 60
+      Top = 45
       CustomHint = BalloonHint1
       Action = AcCidades
       ImageIndex = 23
     end
     object btnConsMateriaPrimaMediaCons: TToolButton
-      Left = 720
-      Top = 0
+      Left = 120
+      Top = 45
       CustomHint = BalloonHint1
       Action = actConsMateriaPrimaMediaCons
       ImageIndex = 26
     end
     object btnPercentual: TToolButton
-      Left = 780
-      Top = 0
+      Left = 180
+      Top = 45
       CustomHint = BalloonHint1
       Action = actfrmPercentual
       ImageIndex = 21
     end
     object btnReplicarPedidos: TToolButton
-      Left = 840
-      Top = 0
+      Left = 240
+      Top = 45
       CustomHint = BalloonHint1
       Caption = 'btnReplicarPedidos'
       ImageIndex = 27
       OnClick = btnReplicarPedidosClick
     end
     object ToolButton2: TToolButton
-      Left = 900
-      Top = 0
+      Left = 300
+      Top = 45
       CustomHint = BalloonHint1
       Action = AcGeraIni
     end
     object Bsair: TToolButton
-      Left = 960
-      Top = 0
+      Left = 360
+      Top = 45
       Hint = 'Fechar'
       CustomHint = BalloonHint1
       Caption = 'Bsair'
@@ -339,20 +337,20 @@
       OnClick = BsairClick
     end
     object ToolButton7: TToolButton
-      Left = 1020
-      Top = 0
+      Left = 420
+      Top = 45
       CustomHint = BalloonHint1
       Action = AcClientesPedidos10D
     end
     object btnAcCadUsuSysRep: TToolButton
-      Left = 1080
-      Top = 0
+      Left = 480
+      Top = 45
       CustomHint = BalloonHint1
       Action = AcCadUsuSysRep
     end
     object btn3: TToolButton
-      Left = 1140
-      Top = 0
+      Left = 540
+      Top = 45
       CustomHint = BalloonHint1
       Caption = 'btn3'
       OnClick = btn3Click
@@ -362,7 +360,7 @@
     Left = 0
     Top = 49
     Width = 122
-    Height = 521
+    Height = 481
     CustomHint = BalloonHint1
     Align = alLeft
     AutoSize = True
@@ -482,7 +480,7 @@
     Left = 122
     Top = 49
     Width = 62
-    Height = 521
+    Height = 481
     CustomHint = BalloonHint1
     Align = alLeft
     ButtonHeight = 45

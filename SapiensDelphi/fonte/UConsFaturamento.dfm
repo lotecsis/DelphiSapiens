@@ -94,17 +94,16 @@ object FConsFaturamento: TFConsFaturamento
       Style = csOwnerDrawFixed
       TabOrder = 0
       Items.Strings = (
-        '2010'
-        '2011'
-        '2012'
-        '2013'
-        '2014'
-        '2015'
-        '2016'
-        '2017'
-        '2018'
         '2019'
-        '2020')
+        '2018'
+        '2017'
+        '2016'
+        '2015'
+        '2014'
+        '2013'
+        '2012'
+        '2011'
+        '2010')
     end
     object cbAnoFim: TComboBox
       Left = 334
@@ -114,17 +113,16 @@ object FConsFaturamento: TFConsFaturamento
       Style = csOwnerDrawFixed
       TabOrder = 1
       Items.Strings = (
-        '2010'
-        '2011'
-        '2012'
-        '2013'
-        '2014'
-        '2015'
-        '2016'
-        '2017'
-        '2018'
         '2019'
-        '2020')
+        '2018'
+        '2017'
+        '2016'
+        '2015'
+        '2014'
+        '2013'
+        '2012'
+        '2011'
+        '2010')
     end
     object DBGrid1: TDBGrid
       Left = 5
@@ -291,6 +289,28 @@ object FConsFaturamento: TFConsFaturamento
       ParentDoubleBuffered = False
       TabOrder = 10
       OnClick = BImprimirClick
+    end
+    object btn1: TBitBtn
+      Left = 236
+      Top = 61
+      Width = 25
+      Height = 36
+      Caption = 'S'
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 11
+      OnClick = btn1Click
+    end
+    object btn2: TBitBtn
+      Left = 236
+      Top = 115
+      Width = 25
+      Height = 25
+      Caption = 'L'
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 12
+      OnClick = btn2Click
     end
   end
   object Panel2: TPanel

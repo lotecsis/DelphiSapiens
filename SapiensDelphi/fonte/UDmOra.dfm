@@ -3,6 +3,7 @@ object DmOra: TDmOra
   Height = 1361
   Width = 1441
   object ADOBanco: TADOConnection
+    Connected = True
     ConnectionString = 
       'Provider=MSDAORA.1;Password=saplider;User ID=saplider;Data Sourc' +
       'e=liderlar;Persist Security Info=True'
@@ -6203,7 +6204,9 @@ object DmOra: TDmOra
       '                           from e440nfc'
       'inner join e095for on e095for.codfor = e440nfc.codfor'
       '                           where e440nfc.CHVNEL = '#39' '#39' and'
-      '                                 e440nfc.codsnf = '#39'NFE'#39' and'
+      
+        '                                ( (e440nfc.codsnf = '#39'NFE'#39') or  (' +
+        'e440nfc.codsnf = '#39'CTE'#39')) and'
       '                                 e440nfc.tipnfe not in (3,7)'
       
         '                                 order by e095for.codfor,e440nfc' +

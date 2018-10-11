@@ -1057,7 +1057,7 @@ object FValidaXmlNfc: TFValidaXmlNfc
   end
   object BValidar: TBitBtn
     Left = 266
-    Top = 596
+    Top = 601
     Width = 383
     Height = 40
     Caption = 'Validar'

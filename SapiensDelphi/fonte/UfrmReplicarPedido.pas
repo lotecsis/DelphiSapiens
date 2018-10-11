@@ -95,7 +95,7 @@ begin
       Abort;
     end;
 
- ConsE120Ped.Close;
+ ConsE120Ped.Close;  //
  ConsE120Ped.Parameters.ParamByName('NUMPED').Value := StrToInt(edtNumPed.Text);
  ConsE120Ped.Open;
  if NOT ConsE120Ped.IsEmpty then

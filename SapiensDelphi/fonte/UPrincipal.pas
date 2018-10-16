@@ -1490,7 +1490,7 @@ begin
             Printer.EndDoc;
 
             Inc(I);
-       end; teste}
+       end; teste teste}
 
        I := 1;  //para armstrong dia 22/07/2014
      while I <= 5 do

@@ -66,9 +66,9 @@ object FValidaXmlNfc: TFValidaXmlNfc
   end
   object BImprimir: TSpeedButton
     Left = 536
-    Top = 570
+    Top = 574
     Width = 113
-    Height = 31
+    Height = 67
     Caption = 'Imprimir'
     Glyph.Data = {
       0E030000424D0E030000000000003600000028000000110000000E0000000100
@@ -146,51 +146,61 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'CODSNF'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'CODEDC'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'CODTRI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'TNSPRO'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'TNSSER'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOPPRO'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NOPSER'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DATEMI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'UFSCIC'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'CODCPG'
+        Width = 64
         Visible = True
       end
       item
@@ -201,31 +211,37 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'CODMOE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DATMOE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'COTMOE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'FECMOE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'CODFCR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DATFCR'
+        Width = 64
         Visible = True
       end
       item
@@ -251,6 +267,7 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'NUMEMB'
+        Width = 64
         Visible = True
       end
       item
@@ -276,256 +293,307 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'OBSNFC'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PESBRU'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PESLIQ'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PERDS1'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PERDS2'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PERFIN'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRDZF'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRFRE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'CIFFOB'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRSEG'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLREMB'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRENC'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLROUT'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRDAR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRFRD'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLROUD'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBPR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRDPR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBSE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRDSE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRDS1'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRDS2'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBFU'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRFUN'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBIP'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRIPI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBID'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRIPD'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBIC'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRICM'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBSI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRSIC'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBSD'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRISD'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBSP'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRSTP'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBSC'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRSTC'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBIS'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRISS'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBIR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRIRF'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBIN'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRINS'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRLPR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRLSE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRLOU'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRLIQ'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRINF'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRFIN'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'SITNFC'
+        Width = 64
         Visible = True
       end
       item
@@ -541,6 +609,7 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'INTIMP'
+        Width = 64
         Visible = True
       end
       item
@@ -556,16 +625,19 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'INDSIG'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'USUGER'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DATGER'
+        Width = 64
         Visible = True
       end
       item
@@ -576,26 +648,31 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'PERFRE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PERSEG'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PEREMB'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PERENC'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PEROUT'
+        Width = 64
         Visible = True
       end
       item
@@ -606,11 +683,13 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'VLRBPI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRPIS'
+        Width = 64
         Visible = True
       end
       item
@@ -621,6 +700,7 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'INDSIN'
+        Width = 64
         Visible = True
       end
       item
@@ -631,206 +711,247 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'VLRBCR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRCOR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBCL'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRCSL'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBPT'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRPIT'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBCT'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRCRT'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBOR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLROUR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBII'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRIIM'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NUMDOI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DATDOI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'INTPAT'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRRIS'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLROCL'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLROPT'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLROCT'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLROOR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'CODSEL'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'CODSSL'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PERDS3'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PERDS4'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PERDS5'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRDS3'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRDS4'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRDS5'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'BECIPI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VECIPI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'BECICM'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VECICM'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBIE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRIEM'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRFEI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRSEI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLROUI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'BCOIMP'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'COFIMP'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'BPIIMP'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PISIMP'
+        Width = 64
         Visible = True
       end
       item
@@ -841,6 +962,7 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'IDENFC'
+        Width = 64
         Visible = True
       end
       item
@@ -861,21 +983,25 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'NUMAPR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'SITAPR'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'PERICF'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'ICMFRE'
+        Width = 64
         Visible = True
       end
       item
@@ -886,21 +1012,25 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'VLRBPF'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRPIF'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRBCF'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'VLRCFF'
+        Width = 64
         Visible = True
       end
       item
@@ -911,6 +1041,7 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'NUMANX'
+        Width = 64
         Visible = True
       end
       item
@@ -921,26 +1052,31 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'CODVIA'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'CHVNEL'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'SOMFRE'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'UFSVEI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'NUMINT'
+        Width = 64
         Visible = True
       end
       item
@@ -981,21 +1117,25 @@ object FValidaXmlNfc: TFValidaXmlNfc
       item
         Expanded = False
         FieldName = 'TIPNDI'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'LOCDES'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'DATDES'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'UFSDES'
+        Width = 64
         Visible = True
       end
       item
@@ -1005,8 +1145,8 @@ object FValidaXmlNfc: TFValidaXmlNfc
       end>
   end
   object BValida: TBitBtn
-    Left = 288
-    Top = 575
+    Left = 168
+    Top = 580
     Width = 33
     Height = 15
     Caption = 'Validar'
@@ -1057,10 +1197,10 @@ object FValidaXmlNfc: TFValidaXmlNfc
   end
   object BValidar: TBitBtn
     Left = 266
-    Top = 601
-    Width = 383
-    Height = 40
-    Caption = 'Validar'
+    Top = 611
+    Width = 264
+    Height = 30
+    Caption = 'Validar NFe'
     DoubleBuffered = True
     Glyph.Data = {
       76010000424D7601000000000000760000002800000020000000100000000100
@@ -1104,6 +1244,31 @@ object FValidaXmlNfc: TFValidaXmlNfc
     ParentDoubleBuffered = False
     TabOrder = 4
     OnClick = BLogClick
+  end
+  object btnValidarCTe: TBitBtn
+    Left = 266
+    Top = 575
+    Width = 264
+    Height = 30
+    Caption = 'Validar CTe'
+    DoubleBuffered = True
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+      333333333333333FF3FF3333333333CC30003333333333773777333333333C33
+      3000333FF33337F33777339933333C3333333377F33337F3333F339933333C33
+      33003377333337F33377333333333C333300333F333337F33377339333333C33
+      3333337FF3333733333F33993333C33333003377FF33733333773339933C3333
+      330033377FF73F33337733339933C33333333FF377F373F3333F993399333C33
+      330077F377F337F33377993399333C33330077FF773337F33377399993333C33
+      33333777733337F333FF333333333C33300033333333373FF7773333333333CC
+      3000333333333377377733333333333333333333333333333333}
+    NumGlyphs = 2
+    ParentDoubleBuffered = False
+    TabOrder = 5
+    OnClick = btnValidarCTeClick
   end
   object DsConsE440Nfc: TDataSource
     DataSet = DmOra.ConsE440Nfc
@@ -1946,7 +2111,9 @@ object FValidaXmlNfc: TFValidaXmlNfc
       'select count(e440nfc.numnfc) as total'
       '                           from e440nfc'
       '                           where e440nfc.CHVNEL = '#39' '#39' and'
-      '                                 e440nfc.codsnf = '#39'NFE'#39' and'
+      
+        '                                 ((e440nfc.codsnf = '#39'NFE'#39') or (e' +
+        '440nfc.codsnf = '#39'CTE'#39'))  and'
       '                                 e440nfc.tipnfe not in (3,7)  ')
     Left = 144
     Top = 224
@@ -1961,6 +2128,11 @@ object FValidaXmlNfc: TFValidaXmlNfc
     Connection = DmOra.ADOBanco
     CursorType = ctStatic
     Parameters = <
+      item
+        Name = 'codsnf'
+        Size = -1
+        Value = Null
+      end
       item
         Name = 'numnfc'
         DataType = ftString
@@ -1978,7 +2150,7 @@ object FValidaXmlNfc: TFValidaXmlNfc
       '                           from e440nfc'
       'inner join e095for on e095for.codfor = e440nfc.codfor'
       '                           where e440nfc.CHVNEL = '#39' '#39' and'
-      '                                 e440nfc.codsnf = '#39'NFE'#39' and '
+      '                                 e440nfc.codsnf = :codsnf and '
       '                                 e440nfc.numnfc = :numnfc and'
       '                                  e095for.cgccpf = :cgccpf'
       
@@ -2770,6 +2942,11 @@ object FValidaXmlNfc: TFValidaXmlNfc
     CursorType = ctStatic
     Parameters = <
       item
+        Name = 'codsnf'
+        Size = -1
+        Value = Null
+      end
+      item
         Name = 'numnfc'
         DataType = ftString
         Size = -1
@@ -2786,7 +2963,7 @@ object FValidaXmlNfc: TFValidaXmlNfc
       '                           from e440nfc'
       'inner join e095for on e095for.codfor = e440nfc.codfor'
       '                           where e440nfc.CHVNEL <> '#39' '#39' and'
-      '                                 e440nfc.codsnf = '#39'NFE'#39' and'
+      '                                 e440nfc.codsnf = :codsnf and'
       '                                 e440nfc.numnfc = :numnfc and'
       '                                  e095for.cgccpf = :cgccpf'
       
@@ -3572,5 +3749,20 @@ object FValidaXmlNfc: TFValidaXmlNfc
       Precision = 14
       Size = 0
     end
+  end
+  object xmlProviderCte: TXMLTransformProvider
+    TransformRead.TransformationFile = '\\senior\DelphiSapiens\SapiensDelphi\MapaXml\cte.xtr'
+    XMLDataFile = 
+      '\\senior\Senior\Sapiens\XML_NFE\Temp\CTe351805787471360002385700' +
+      '10001995281573191138_15.xml'
+    Left = 496
+    Top = 280
+  end
+  object ClientDadosGeraisCte: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'xmlProviderCte'
+    Left = 392
+    Top = 280
   end
 end

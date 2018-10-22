@@ -1,0 +1,801 @@
+<XmlTransformation Version="1.0"><Transform Direction="ToCds" DataEncoding="utf-8"><SelectEach dest="DATAPACKET\ROWDATA\ROW" from="\cteProc\CTe\infCte"><Select dest="@Id" from="@Id"/><Select dest="@cUF" from="\ide\cUF"/><Select dest="@cCT" from="\ide\cCT"/><Select dest="@CFOP" from="\ide\CFOP"/><Select dest="@natOp" from="\ide\natOp"/><Select dest="@mod" from="\ide\mod"/><Select dest="@serie" from="\ide\serie"/><Select dest="@nCT" from="\ide\nCT"/><Select dest="@dhEmi" from="\ide\dhEmi"/><Select dest="@tpImp" from="\ide\tpImp"/><Select dest="@tpEmis" from="\ide\tpEmis"/><Select dest="@cDV" from="\ide\cDV"/><Select dest="@tpAmb" from="\ide\tpAmb"/><Select dest="@tpCTe" from="\ide\tpCTe"/><Select dest="@procEmi" from="\ide\procEmi"/><Select dest="@verProc" from="\ide\verProc"/><Select dest="@cMunEnv" from="\ide\cMunEnv"/><Select dest="@xMunEnv" from="\ide\xMunEnv"/><Select dest="@UFEnv" from="\ide\UFEnv"/><Select dest="@modal" from="\ide\modal"/><Select dest="@tpServ" from="\ide\tpServ"/><Select dest="@cMunIni" from="\ide\cMunIni"/><Select dest="@xMunIni" from="\ide\xMunIni"/><Select dest="@UFIni" from="\ide\UFIni"/><Select dest="@cMunFim" from="\ide\cMunFim"/><Select dest="@xMunFim" from="\ide\xMunFim"/><Select dest="@UFFim" from="\ide\UFFim"/><Select dest="@retira" from="\ide\retira"/><Select dest="@indIEToma" from="\ide\indIEToma"/><Select dest="@toma" from="\ide\toma3\toma"/><Select dest="@CNPJ" from="\emit\CNPJ"/><Select dest="@IE" from="\emit\IE"/><Select dest="@xNome" from="\emit\xNome"/><Select dest="@xFant" from="\emit\xFant"/><Select dest="@xLgr" from="\emit\enderEmit\xLgr"/><Select dest="@nro" from="\emit\enderEmit\nro"/><Select dest="@xBairro" from="\emit\enderEmit\xBairro"/><Select dest="@cMun" from="\emit\enderEmit\cMun"/><Select dest="@xMun" from="\emit\enderEmit\xMun"/><Select dest="@CEP" from="\emit\enderEmit\CEP"/><Select dest="@UF" from="\emit\enderEmit\UF"/><Select dest="@fone" from="\emit\enderEmit\fone"/></SelectEach></Transform><XmlSchema RootName="cteProc"><![CDATA[<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="cteProc" type="cteProcType"/>
+  <xs:complexType name="cteProcType">
+    <xs:sequence>
+      <xs:element name="CTe" type="CTeType"/>
+      <xs:element name="protCTe" type="protCTeType"/>
+    </xs:sequence>
+    <xs:attribute name="xmlns:ds" type="xs:string"/>
+    <xs:attribute name="versao" type="xs:string"/>
+    <xs:attribute name="xmlns" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="CTe" type="CTeType"/>
+  <xs:complexType name="CTeType">
+    <xs:sequence>
+      <xs:element name="infCte" type="infCteType"/>
+      <xs:element name="Signature" type="SignatureType"/>
+    </xs:sequence>
+    <xs:attribute name="xmlns" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="infCte" type="infCteType"/>
+  <xs:complexType name="infCteType">
+    <xs:sequence>
+      <xs:element name="ide" type="ideType"/>
+      <xs:element name="compl" type="complType"/>
+      <xs:element name="emit" type="emitType"/>
+      <xs:element name="rem" type="remType"/>
+      <xs:element name="receb" type="recebType"/>
+      <xs:element name="dest" type="destType"/>
+      <xs:element name="vPrest" type="vPrestType"/>
+      <xs:element name="imp" type="impType"/>
+      <xs:element name="infCTeNorm" type="infCTeNormType"/>
+    </xs:sequence>
+    <xs:attribute name="versao" type="xs:string"/>
+    <xs:attribute name="Id" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="ide" type="ideType"/>
+  <xs:complexType name="ideType">
+    <xs:sequence>
+      <xs:element name="cUF" type="cUFType"/>
+      <xs:element name="cCT" type="cCTType"/>
+      <xs:element name="CFOP" type="CFOPType"/>
+      <xs:element name="natOp" type="natOpType"/>
+      <xs:element name="mod" type="modType"/>
+      <xs:element name="serie" type="serieType"/>
+      <xs:element name="nCT" type="nCTType"/>
+      <xs:element name="dhEmi" type="dhEmiType"/>
+      <xs:element name="tpImp" type="tpImpType"/>
+      <xs:element name="tpEmis" type="tpEmisType"/>
+      <xs:element name="cDV" type="cDVType"/>
+      <xs:element name="tpAmb" type="tpAmbType"/>
+      <xs:element name="tpCTe" type="tpCTeType"/>
+      <xs:element name="procEmi" type="procEmiType"/>
+      <xs:element name="verProc" type="verProcType"/>
+      <xs:element name="cMunEnv" type="cMunEnvType"/>
+      <xs:element name="xMunEnv" type="xMunEnvType"/>
+      <xs:element name="UFEnv" type="UFEnvType"/>
+      <xs:element name="modal" type="modalType"/>
+      <xs:element name="tpServ" type="tpServType"/>
+      <xs:element name="cMunIni" type="cMunIniType"/>
+      <xs:element name="xMunIni" type="xMunIniType"/>
+      <xs:element name="UFIni" type="UFIniType"/>
+      <xs:element name="cMunFim" type="cMunFimType"/>
+      <xs:element name="xMunFim" type="xMunFimType"/>
+      <xs:element name="UFFim" type="UFFimType"/>
+      <xs:element name="retira" type="retiraType"/>
+      <xs:element name="indIEToma" type="indIETomaType"/>
+      <xs:element name="toma3" type="toma3Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cUF" type="cUFType"/>
+  <xs:simpleType name="cUFType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cCT" type="cCTType"/>
+  <xs:simpleType name="cCTType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="CFOP" type="CFOPType"/>
+  <xs:simpleType name="CFOPType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="natOp" type="natOpType"/>
+  <xs:simpleType name="natOpType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="mod" type="modType"/>
+  <xs:simpleType name="modType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="serie" type="serieType"/>
+  <xs:simpleType name="serieType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="nCT" type="nCTType"/>
+  <xs:simpleType name="nCTType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="dhEmi" type="dhEmiType"/>
+  <xs:simpleType name="dhEmiType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="tpImp" type="tpImpType"/>
+  <xs:simpleType name="tpImpType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="tpEmis" type="tpEmisType"/>
+  <xs:simpleType name="tpEmisType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cDV" type="cDVType"/>
+  <xs:simpleType name="cDVType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="tpAmb" type="tpAmbType"/>
+  <xs:simpleType name="tpAmbType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="tpCTe" type="tpCTeType"/>
+  <xs:simpleType name="tpCTeType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="procEmi" type="procEmiType"/>
+  <xs:simpleType name="procEmiType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="verProc" type="verProcType"/>
+  <xs:simpleType name="verProcType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cMunEnv" type="cMunEnvType"/>
+  <xs:simpleType name="cMunEnvType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xMunEnv" type="xMunEnvType"/>
+  <xs:simpleType name="xMunEnvType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="UFEnv" type="UFEnvType"/>
+  <xs:simpleType name="UFEnvType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="modal" type="modalType"/>
+  <xs:simpleType name="modalType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="tpServ" type="tpServType"/>
+  <xs:simpleType name="tpServType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cMunIni" type="cMunIniType"/>
+  <xs:simpleType name="cMunIniType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xMunIni" type="xMunIniType"/>
+  <xs:simpleType name="xMunIniType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="UFIni" type="UFIniType"/>
+  <xs:simpleType name="UFIniType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cMunFim" type="cMunFimType"/>
+  <xs:simpleType name="cMunFimType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xMunFim" type="xMunFimType"/>
+  <xs:simpleType name="xMunFimType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="UFFim" type="UFFimType"/>
+  <xs:simpleType name="UFFimType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="retira" type="retiraType"/>
+  <xs:simpleType name="retiraType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="indIEToma" type="indIETomaType"/>
+  <xs:simpleType name="indIETomaType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="toma3" type="toma3Type"/>
+  <xs:complexType name="toma3Type">
+    <xs:sequence>
+      <xs:element name="toma" type="tomaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="toma" type="tomaType"/>
+  <xs:simpleType name="tomaType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="compl" type="complType"/>
+  <xs:complexType name="complType">
+    <xs:sequence>
+      <xs:element name="xCaracAd" type="xCaracAdType"/>
+      <xs:element name="xEmi" type="xEmiType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="xCaracAd" type="xCaracAdType"/>
+  <xs:simpleType name="xCaracAdType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xEmi" type="xEmiType"/>
+  <xs:simpleType name="xEmiType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="emit" type="emitType"/>
+  <xs:complexType name="emitType">
+    <xs:sequence>
+      <xs:element name="CNPJ" type="CNPJType"/>
+      <xs:element name="IE" type="IEType"/>
+      <xs:element name="xNome" type="xNomeType"/>
+      <xs:element name="xFant" type="xFantType"/>
+      <xs:element name="enderEmit" type="enderEmitType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CNPJ" type="CNPJType"/>
+  <xs:simpleType name="CNPJType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="IE" type="IEType"/>
+  <xs:simpleType name="IEType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xNome" type="xNomeType"/>
+  <xs:simpleType name="xNomeType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xFant" type="xFantType"/>
+  <xs:simpleType name="xFantType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="enderEmit" type="enderEmitType"/>
+  <xs:complexType name="enderEmitType">
+    <xs:sequence>
+      <xs:element name="xLgr" type="xLgrType"/>
+      <xs:element name="nro" type="nroType"/>
+      <xs:element name="xBairro" type="xBairroType"/>
+      <xs:element name="cMun" type="cMunType"/>
+      <xs:element name="xMun" type="xMunType"/>
+      <xs:element name="CEP" type="CEPType"/>
+      <xs:element name="UF" type="UFType"/>
+      <xs:element name="fone" type="foneType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="xLgr" type="xLgrType"/>
+  <xs:simpleType name="xLgrType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="nro" type="nroType"/>
+  <xs:simpleType name="nroType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xBairro" type="xBairroType"/>
+  <xs:simpleType name="xBairroType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cMun" type="cMunType"/>
+  <xs:simpleType name="cMunType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xMun" type="xMunType"/>
+  <xs:simpleType name="xMunType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="CEP" type="CEPType"/>
+  <xs:simpleType name="CEPType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="UF" type="UFType"/>
+  <xs:simpleType name="UFType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="fone" type="foneType"/>
+  <xs:simpleType name="foneType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="rem" type="remType"/>
+  <xs:complexType name="remType">
+    <xs:sequence>
+      <xs:element name="CNPJ" type="CNPJType"/>
+      <xs:element name="IE" type="IEType"/>
+      <xs:element name="xNome" type="xNomeType"/>
+      <xs:element name="xFant" type="xFantType"/>
+      <xs:element name="fone" type="foneType"/>
+      <xs:element name="enderReme" type="enderRemeType"/>
+      <xs:element name="email" type="emailType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CNPJ" type="CNPJType"/>
+  <xs:simpleType name="CNPJType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="IE" type="IEType"/>
+  <xs:simpleType name="IEType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xNome" type="xNomeType"/>
+  <xs:simpleType name="xNomeType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xFant" type="xFantType"/>
+  <xs:simpleType name="xFantType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="fone" type="foneType"/>
+  <xs:simpleType name="foneType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="enderReme" type="enderRemeType"/>
+  <xs:complexType name="enderRemeType">
+    <xs:sequence>
+      <xs:element name="xLgr" type="xLgrType"/>
+      <xs:element name="nro" type="nroType"/>
+      <xs:element name="xBairro" type="xBairroType"/>
+      <xs:element name="cMun" type="cMunType"/>
+      <xs:element name="xMun" type="xMunType"/>
+      <xs:element name="CEP" type="CEPType"/>
+      <xs:element name="UF" type="UFType"/>
+      <xs:element name="cPais" type="cPaisType"/>
+      <xs:element name="xPais" type="xPaisType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="xLgr" type="xLgrType"/>
+  <xs:simpleType name="xLgrType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="nro" type="nroType"/>
+  <xs:simpleType name="nroType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xBairro" type="xBairroType"/>
+  <xs:simpleType name="xBairroType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cMun" type="cMunType"/>
+  <xs:simpleType name="cMunType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xMun" type="xMunType"/>
+  <xs:simpleType name="xMunType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="CEP" type="CEPType"/>
+  <xs:simpleType name="CEPType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="UF" type="UFType"/>
+  <xs:simpleType name="UFType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cPais" type="cPaisType"/>
+  <xs:simpleType name="cPaisType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xPais" type="xPaisType"/>
+  <xs:simpleType name="xPaisType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="email" type="emailType"/>
+  <xs:simpleType name="emailType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="receb" type="recebType"/>
+  <xs:complexType name="recebType">
+    <xs:sequence>
+      <xs:element name="CNPJ" type="CNPJType"/>
+      <xs:element name="IE" type="IEType"/>
+      <xs:element name="xNome" type="xNomeType"/>
+      <xs:element name="enderReceb" type="enderRecebType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CNPJ" type="CNPJType"/>
+  <xs:simpleType name="CNPJType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="IE" type="IEType"/>
+  <xs:simpleType name="IEType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xNome" type="xNomeType"/>
+  <xs:simpleType name="xNomeType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="enderReceb" type="enderRecebType"/>
+  <xs:complexType name="enderRecebType">
+    <xs:sequence>
+      <xs:element name="xLgr" type="xLgrType"/>
+      <xs:element name="nro" type="nroType"/>
+      <xs:element name="xBairro" type="xBairroType"/>
+      <xs:element name="cMun" type="cMunType"/>
+      <xs:element name="xMun" type="xMunType"/>
+      <xs:element name="CEP" type="CEPType"/>
+      <xs:element name="UF" type="UFType"/>
+      <xs:element name="cPais" type="cPaisType"/>
+      <xs:element name="xPais" type="xPaisType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="xLgr" type="xLgrType"/>
+  <xs:simpleType name="xLgrType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="nro" type="nroType"/>
+  <xs:simpleType name="nroType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xBairro" type="xBairroType"/>
+  <xs:simpleType name="xBairroType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cMun" type="cMunType"/>
+  <xs:simpleType name="cMunType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xMun" type="xMunType"/>
+  <xs:simpleType name="xMunType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="CEP" type="CEPType"/>
+  <xs:simpleType name="CEPType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="UF" type="UFType"/>
+  <xs:simpleType name="UFType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cPais" type="cPaisType"/>
+  <xs:simpleType name="cPaisType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xPais" type="xPaisType"/>
+  <xs:simpleType name="xPaisType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="dest" type="destType"/>
+  <xs:complexType name="destType">
+    <xs:sequence>
+      <xs:element name="CNPJ" type="CNPJType"/>
+      <xs:element name="IE" type="IEType"/>
+      <xs:element name="xNome" type="xNomeType"/>
+      <xs:element name="fone" type="foneType"/>
+      <xs:element name="enderDest" type="enderDestType"/>
+      <xs:element name="email" type="emailType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CNPJ" type="CNPJType"/>
+  <xs:simpleType name="CNPJType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="IE" type="IEType"/>
+  <xs:simpleType name="IEType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xNome" type="xNomeType"/>
+  <xs:simpleType name="xNomeType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="fone" type="foneType"/>
+  <xs:simpleType name="foneType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="enderDest" type="enderDestType"/>
+  <xs:complexType name="enderDestType">
+    <xs:sequence>
+      <xs:element name="xLgr" type="xLgrType"/>
+      <xs:element name="nro" type="nroType"/>
+      <xs:element name="xCpl" type="xCplType"/>
+      <xs:element name="xBairro" type="xBairroType"/>
+      <xs:element name="cMun" type="cMunType"/>
+      <xs:element name="xMun" type="xMunType"/>
+      <xs:element name="CEP" type="CEPType"/>
+      <xs:element name="UF" type="UFType"/>
+      <xs:element name="cPais" type="cPaisType"/>
+      <xs:element name="xPais" type="xPaisType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="xLgr" type="xLgrType"/>
+  <xs:simpleType name="xLgrType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="nro" type="nroType"/>
+  <xs:simpleType name="nroType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xCpl" type="xCplType"/>
+  <xs:simpleType name="xCplType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xBairro" type="xBairroType"/>
+  <xs:simpleType name="xBairroType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cMun" type="cMunType"/>
+  <xs:simpleType name="cMunType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xMun" type="xMunType"/>
+  <xs:simpleType name="xMunType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="CEP" type="CEPType"/>
+  <xs:simpleType name="CEPType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="UF" type="UFType"/>
+  <xs:simpleType name="UFType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cPais" type="cPaisType"/>
+  <xs:simpleType name="cPaisType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xPais" type="xPaisType"/>
+  <xs:simpleType name="xPaisType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="email" type="emailType"/>
+  <xs:simpleType name="emailType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="vPrest" type="vPrestType"/>
+  <xs:complexType name="vPrestType">
+    <xs:sequence>
+      <xs:element name="vTPrest" type="vTPrestType"/>
+      <xs:element name="vRec" type="vRecType"/>
+      <xs:element name="Comp" type="CompType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="vTPrest" type="vTPrestType"/>
+  <xs:simpleType name="vTPrestType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="vRec" type="vRecType"/>
+  <xs:simpleType name="vRecType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="Comp" type="CompType"/>
+  <xs:complexType name="CompType">
+    <xs:sequence>
+      <xs:element name="xNome" type="xNomeType"/>
+      <xs:element name="vComp" type="vCompType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="xNome" type="xNomeType"/>
+  <xs:simpleType name="xNomeType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="vComp" type="vCompType"/>
+  <xs:simpleType name="vCompType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="imp" type="impType"/>
+  <xs:complexType name="impType">
+    <xs:sequence>
+      <xs:element name="ICMS" type="ICMSType"/>
+      <xs:element name="infAdFisco" type="infAdFiscoType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ICMS" type="ICMSType"/>
+  <xs:complexType name="ICMSType">
+    <xs:sequence>
+      <xs:element name="ICMS00" type="ICMS00Type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ICMS00" type="ICMS00Type"/>
+  <xs:complexType name="ICMS00Type">
+    <xs:sequence>
+      <xs:element name="CST" type="CSTType"/>
+      <xs:element name="vBC" type="vBCType"/>
+      <xs:element name="pICMS" type="pICMSType"/>
+      <xs:element name="vICMS" type="vICMSType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CST" type="CSTType"/>
+  <xs:simpleType name="CSTType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="vBC" type="vBCType"/>
+  <xs:simpleType name="vBCType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="pICMS" type="pICMSType"/>
+  <xs:simpleType name="pICMSType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="vICMS" type="vICMSType"/>
+  <xs:simpleType name="vICMSType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="infAdFisco" type="infAdFiscoType"/>
+  <xs:simpleType name="infAdFiscoType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="infCTeNorm" type="infCTeNormType"/>
+  <xs:complexType name="infCTeNormType">
+    <xs:sequence>
+      <xs:element name="infCarga" type="infCargaType"/>
+      <xs:element name="infDoc" type="infDocType"/>
+      <xs:element name="infModal" type="infModalType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="infCarga" type="infCargaType"/>
+  <xs:complexType name="infCargaType">
+    <xs:sequence>
+      <xs:element name="vCarga" type="vCargaType"/>
+      <xs:element name="proPred" type="proPredType"/>
+      <xs:element name="infQ" type="infQType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="vCarga" type="vCargaType"/>
+  <xs:simpleType name="vCargaType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="proPred" type="proPredType"/>
+  <xs:simpleType name="proPredType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="infQ" type="infQType"/>
+  <xs:complexType name="infQType">
+    <xs:sequence>
+      <xs:element name="cUnid" type="cUnidType"/>
+      <xs:element name="tpMed" type="tpMedType"/>
+      <xs:element name="qCarga" type="qCargaType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cUnid" type="cUnidType"/>
+  <xs:simpleType name="cUnidType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="tpMed" type="tpMedType"/>
+  <xs:simpleType name="tpMedType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="qCarga" type="qCargaType"/>
+  <xs:simpleType name="qCargaType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="infDoc" type="infDocType"/>
+  <xs:complexType name="infDocType">
+    <xs:sequence>
+      <xs:element name="infNFe" type="infNFeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="infNFe" type="infNFeType"/>
+  <xs:complexType name="infNFeType">
+    <xs:sequence>
+      <xs:element name="chave" type="chaveType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="chave" type="chaveType"/>
+  <xs:simpleType name="chaveType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="infModal" type="infModalType"/>
+  <xs:complexType name="infModalType">
+    <xs:sequence>
+      <xs:element name="rodo" type="rodoType"/>
+    </xs:sequence>
+    <xs:attribute name="versaoModal" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="rodo" type="rodoType"/>
+  <xs:complexType name="rodoType">
+    <xs:sequence>
+      <xs:element name="RNTRC" type="RNTRCType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RNTRC" type="RNTRCType"/>
+  <xs:simpleType name="RNTRCType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="Signature" type="SignatureType"/>
+  <xs:complexType name="SignatureType">
+    <xs:sequence>
+      <xs:element name="SignedInfo" type="SignedInfoType"/>
+      <xs:element name="SignatureValue" type="SignatureValueType"/>
+      <xs:element name="KeyInfo" type="KeyInfoType"/>
+    </xs:sequence>
+    <xs:attribute name="xmlns" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="SignedInfo" type="SignedInfoType"/>
+  <xs:complexType name="SignedInfoType">
+    <xs:sequence>
+      <xs:element name="CanonicalizationMethod" type="CanonicalizationMethodType"/>
+      <xs:element name="SignatureMethod" type="SignatureMethodType"/>
+      <xs:element name="Reference" type="ReferenceType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CanonicalizationMethod" type="CanonicalizationMethodType"/>
+  <xs:complexType name="CanonicalizationMethodType">
+    <xs:sequence/>
+    <xs:attribute name="Algorithm" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="SignatureMethod" type="SignatureMethodType"/>
+  <xs:complexType name="SignatureMethodType">
+    <xs:sequence/>
+    <xs:attribute name="Algorithm" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="Reference" type="ReferenceType"/>
+  <xs:complexType name="ReferenceType">
+    <xs:sequence>
+      <xs:element name="Transforms" type="TransformsType"/>
+      <xs:element name="DigestMethod" type="DigestMethodType"/>
+      <xs:element name="DigestValue" type="DigestValueType"/>
+    </xs:sequence>
+    <xs:attribute name="URI" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="Transforms" type="TransformsType"/>
+  <xs:complexType name="TransformsType">
+    <xs:sequence>
+      <xs:element name="Transform" type="TransformType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Transform" type="TransformType"/>
+  <xs:complexType name="TransformType">
+    <xs:sequence/>
+    <xs:attribute name="Algorithm" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="DigestMethod" type="DigestMethodType"/>
+  <xs:complexType name="DigestMethodType">
+    <xs:sequence/>
+    <xs:attribute name="Algorithm" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="DigestValue" type="DigestValueType"/>
+  <xs:simpleType name="DigestValueType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="SignatureValue" type="SignatureValueType"/>
+  <xs:simpleType name="SignatureValueType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="KeyInfo" type="KeyInfoType"/>
+  <xs:complexType name="KeyInfoType">
+    <xs:sequence>
+      <xs:element name="X509Data" type="X509DataType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="X509Data" type="X509DataType"/>
+  <xs:complexType name="X509DataType">
+    <xs:sequence>
+      <xs:element name="X509Certificate" type="X509CertificateType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="X509Certificate" type="X509CertificateType"/>
+  <xs:simpleType name="X509CertificateType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="protCTe" type="protCTeType"/>
+  <xs:complexType name="protCTeType">
+    <xs:sequence>
+      <xs:element name="infProt" type="infProtType"/>
+    </xs:sequence>
+    <xs:attribute name="versao" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="infProt" type="infProtType"/>
+  <xs:complexType name="infProtType">
+    <xs:sequence>
+      <xs:element name="tpAmb" type="tpAmbType"/>
+      <xs:element name="verAplic" type="verAplicType"/>
+      <xs:element name="chCTe" type="chCTeType"/>
+      <xs:element name="dhRecbto" type="dhRecbtoType"/>
+      <xs:element name="nProt" type="nProtType"/>
+      <xs:element name="digVal" type="digValType"/>
+      <xs:element name="cStat" type="cStatType"/>
+      <xs:element name="xMotivo" type="xMotivoType"/>
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="tpAmb" type="tpAmbType"/>
+  <xs:simpleType name="tpAmbType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="verAplic" type="verAplicType"/>
+  <xs:simpleType name="verAplicType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="chCTe" type="chCTeType"/>
+  <xs:simpleType name="chCTeType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="dhRecbto" type="dhRecbtoType"/>
+  <xs:simpleType name="dhRecbtoType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="nProt" type="nProtType"/>
+  <xs:simpleType name="nProtType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="digVal" type="digValType"/>
+  <xs:simpleType name="digValType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="cStat" type="cStatType"/>
+  <xs:simpleType name="cStatType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:element name="xMotivo" type="xMotivoType"/>
+  <xs:simpleType name="xMotivoType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+</xs:schema>]]></XmlSchema><CdsSkeleton/><XslTransform/><Skeleton><![CDATA[<?xml version="1.0"?><DATAPACKET Version="2.0"><METADATA><FIELDS><FIELD attrname="Id" fieldtype="string" WIDTH="47"/><FIELD attrname="cUF" fieldtype="string" WIDTH="2"/><FIELD attrname="cCT" fieldtype="string" WIDTH="8"/><FIELD attrname="CFOP" fieldtype="string" WIDTH="4"/><FIELD attrname="natOp" fieldtype="string" WIDTH="60"/><FIELD attrname="mod" fieldtype="string" WIDTH="2"/><FIELD attrname="serie" fieldtype="string" WIDTH="1"/><FIELD attrname="nCT" fieldtype="string" WIDTH="5"/><FIELD attrname="dhEmi" fieldtype="string" WIDTH="25"/><FIELD attrname="tpImp" fieldtype="string" WIDTH="1"/><FIELD attrname="tpEmis" fieldtype="string" WIDTH="1"/><FIELD attrname="cDV" fieldtype="string" WIDTH="1"/><FIELD attrname="tpAmb" fieldtype="string" WIDTH="1"/><FIELD attrname="tpCTe" fieldtype="string" WIDTH="1"/><FIELD attrname="procEmi" fieldtype="string" WIDTH="1"/><FIELD attrname="verProc" fieldtype="string" WIDTH="17"/><FIELD attrname="cMunEnv" fieldtype="string" WIDTH="7"/><FIELD attrname="xMunEnv" fieldtype="string" WIDTH="3"/><FIELD attrname="UFEnv" fieldtype="string" WIDTH="2"/><FIELD attrname="modal" fieldtype="string" WIDTH="2"/><FIELD attrname="tpServ" fieldtype="string" WIDTH="1"/><FIELD attrname="cMunIni" fieldtype="string" WIDTH="7"/><FIELD attrname="xMunIni" fieldtype="string" WIDTH="22"/><FIELD attrname="UFIni" fieldtype="string" WIDTH="2"/><FIELD attrname="cMunFim" fieldtype="string" WIDTH="7"/><FIELD attrname="xMunFim" fieldtype="string" WIDTH="9"/><FIELD attrname="UFFim" fieldtype="string" WIDTH="2"/><FIELD attrname="retira" fieldtype="string" WIDTH="1"/><FIELD attrname="indIEToma" fieldtype="string" WIDTH="1"/><FIELD attrname="toma" fieldtype="string" WIDTH="1"/><FIELD attrname="CNPJ" fieldtype="string" WIDTH="14"/><FIELD attrname="IE" fieldtype="string" WIDTH="13"/><FIELD attrname="xNome" fieldtype="string" WIDTH="34"/><FIELD attrname="xFant" fieldtype="string" WIDTH="17"/><FIELD attrname="xLgr" fieldtype="string" WIDTH="26"/><FIELD attrname="nro" fieldtype="string" WIDTH="3"/><FIELD attrname="xBairro" fieldtype="string" WIDTH="16"/><FIELD attrname="cMun" fieldtype="string" WIDTH="7"/><FIELD attrname="xMun" fieldtype="string" WIDTH="3"/><FIELD attrname="CEP" fieldtype="string" WIDTH="8"/><FIELD attrname="UF" fieldtype="string" WIDTH="2"/><FIELD attrname="fone" fieldtype="string" WIDTH="10"/></FIELDS><PARAMS/></METADATA><ROWDATA/><METADATA><FIELDS><FIELD attrname="Id" fieldtype="string" WIDTH="47"/><FIELD attrname="cUF" fieldtype="string" WIDTH="2"/><FIELD attrname="cCT" fieldtype="string" WIDTH="8"/><FIELD attrname="CFOP" fieldtype="string" WIDTH="4"/><FIELD attrname="natOp" fieldtype="string" WIDTH="60"/><FIELD attrname="mod" fieldtype="string" WIDTH="2"/><FIELD attrname="serie" fieldtype="string" WIDTH="1"/><FIELD attrname="nCT" fieldtype="string" WIDTH="5"/><FIELD attrname="dhEmi" fieldtype="string" WIDTH="25"/><FIELD attrname="tpImp" fieldtype="string" WIDTH="1"/><FIELD attrname="tpEmis" fieldtype="string" WIDTH="1"/><FIELD attrname="cDV" fieldtype="string" WIDTH="1"/><FIELD attrname="tpAmb" fieldtype="string" WIDTH="1"/><FIELD attrname="tpCTe" fieldtype="string" WIDTH="1"/><FIELD attrname="procEmi" fieldtype="string" WIDTH="1"/><FIELD attrname="verProc" fieldtype="string" WIDTH="17"/><FIELD attrname="cMunEnv" fieldtype="string" WIDTH="7"/><FIELD attrname="xMunEnv" fieldtype="string" WIDTH="3"/><FIELD attrname="UFEnv" fieldtype="string" WIDTH="2"/><FIELD attrname="modal" fieldtype="string" WIDTH="2"/><FIELD attrname="tpServ" fieldtype="string" WIDTH="1"/><FIELD attrname="cMunIni" fieldtype="string" WIDTH="7"/><FIELD attrname="xMunIni" fieldtype="string" WIDTH="22"/><FIELD attrname="UFIni" fieldtype="string" WIDTH="2"/><FIELD attrname="cMunFim" fieldtype="string" WIDTH="7"/><FIELD attrname="xMunFim" fieldtype="string" WIDTH="9"/><FIELD attrname="UFFim" fieldtype="string" WIDTH="2"/><FIELD attrname="retira" fieldtype="string" WIDTH="1"/><FIELD attrname="indIEToma" fieldtype="string" WIDTH="1"/><FIELD attrname="toma" fieldtype="string" WIDTH="1"/><FIELD attrname="CNPJ" fieldtype="string" WIDTH="14"/><FIELD attrname="IE" fieldtype="string" WIDTH="13"/><FIELD attrname="xNome" fieldtype="string" WIDTH="34"/><FIELD attrname="xFant" fieldtype="string" WIDTH="17"/><FIELD attrname="xLgr" fieldtype="string" WIDTH="26"/><FIELD attrname="nro" fieldtype="string" WIDTH="3"/><FIELD attrname="xBairro" fieldtype="string" WIDTH="16"/><FIELD attrname="cMun" fieldtype="string" WIDTH="7"/><FIELD attrname="xMun" fieldtype="string" WIDTH="3"/><FIELD attrname="CEP" fieldtype="string" WIDTH="8"/><FIELD attrname="UF" fieldtype="string" WIDTH="2"/><FIELD attrname="fone" fieldtype="string" WIDTH="10"/></FIELDS><PARAMS/></METADATA><ROWDATA/></DATAPACKET>
+]]></Skeleton></XmlTransformation>

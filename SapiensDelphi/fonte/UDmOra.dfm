@@ -6205,8 +6205,8 @@ object DmOra: TDmOra
       'inner join e095for on e095for.codfor = e440nfc.codfor'
       '                           where e440nfc.CHVNEL = '#39' '#39' and'
       
-        '                                ( (e440nfc.codsnf = '#39'NFE'#39') or  (' +
-        'e440nfc.codsnf = '#39'CTE'#39')) and'
+        '                               ( (e440nfc.codsnf = '#39'NFE'#39') or  (e' +
+        '440nfc.codsnf = '#39'CTE'#39')) and'
       '                                 e440nfc.tipnfe not in (3,7)'
       
         '                                 order by e095for.codfor,e440nfc' +

@@ -565,11 +565,15 @@ type
     LQtdArq: TLabel;
     BLog: TBitBtn;
     BImprimir: TSpeedButton;
+    btnValidarCTe: TBitBtn;
+    xmlProviderCte: TXMLTransformProvider;
+    ClientDadosGeraisCte: TClientDataSet;
     procedure BValidaClick(Sender: TObject);
     procedure BPesquisarClick(Sender: TObject);
     procedure BValidarClick(Sender: TObject);
     procedure BLogClick(Sender: TObject);
     procedure BImprimirClick(Sender: TObject);
+    procedure btnValidarCTeClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -606,6 +610,146 @@ begin
     LTotal.Caption := IntToStr(ContaRegTOTAL.AsInteger);
     LTotal.Caption := LTotal.Caption + ' ';
 
+end;
+
+procedure TFValidaXmlNfc.btnValidarCTeClick(Sender: TObject);
+var
+SR : TSearchRec;
+ vaArquivo,vaPastaFor,vaPastaMes : string;
+ vaMes,vaAno : string;
+ vaOrigem,vaDestino : string;
+ vaId : string;
+ ArqLog : TextFile;
+ Cont,vnNumArq: integer;
+begin
+//conta quantos arquivos tem na pasta
+           Cont := 0;
+           if FindFirst('\\senior\senior\sapiens\XML_NFE\Temp\CTe\*.xml*',faAnyFile,SR) = 0 then
+              begin
+                repeat
+                inc(cont);
+                until FindNext(SR) <> 0;
+                 FindClose(SR);
+              end;
+
+          AssignFile ( ArqLog,'\\senior\senior\sapiens\XML_NFE\Log\Log.txt');
+          Rewrite ( ArqLog );
+          vnNumArq := 0;
+          //percorre os arquivos
+          if FindFirst('\\senior\senior\sapiens\XML_NFE\Temp\CTe\*.xml*',faAnyFile,SR) = 0 then
+             begin//2
+                repeat
+                   TRY
+                     ClientDadosGeraisCte.Close;
+                     vaArquivo := '\\senior\senior\sapiens\XML_NFE\Temp\CTe\'+SR.Name;
+                     XmlProviderCte.XMLDataFile := vaArquivo;
+                     ClientDadosGeraisCte.Open;
+                   EXCEPT
+                     ShowMessage(vaArquivo);
+                   END;
+               inc(vnNumArq);
+               LQtdArq.Caption := IntToStr(vnNumArq) + ' / '+ IntToStr(Cont) +' ';
+
+               Refresh;
+
+               //procura pela nf
+               BuscaE440Nfc.Close;
+               BuscaE440Nfc.Parameters.ParamByName('numnfc').Value := ClientDadosGeraisCte.FieldByName('nCT').Value;
+               BuscaE440Nfc.Parameters.ParamByName('cgccpf').Value := ClientDadosGeraisCte.FieldByName('CNPJ').Value;
+               BuscaE440Nfc.Parameters.ParamByName('codsnf').Value := 'CTE';
+               BuscaE440Nfc.Open;
+               if not BuscaE440Nfc.IsEmpty then
+                  begin//3
+
+                     //copia o arquivo para a pasta historico
+                     vaMes := formatdatetime('mm',BuscaE440NfcDATENT.Value);
+                     vaAno := formatdatetime('yyyy',BuscaE440NfcDATENT.Value);
+                     vaPastaMes := '\\senior\senior\sapiens\XML_NFE\Historico\'+vaAno + '-'+vaMes;
+                     if not DirectoryExists(vaPastaMes) then
+                        begin//4
+                          ForceDirectories(vaPastaMes);
+                        end;//4
+
+                     vaPastaFor := vaPastaMes +'\'+ CurrToStr(BuscaE440NfcCGCCPF.Value)+' - '+
+                                           trim(Copy(BuscaE440NfcNOMFOR.Value,0,10));
+                     if not DirectoryExists(vaPastaFor) then
+                        begin//5
+                          ForceDirectories(vaPastaFor);
+                        end;//5
+
+                     vaOrigem := vaArquivo;
+                     vaDestino := vaPastaFor + '\'+ SR.Name;
+
+                     if FileExists(vaDestino) then
+                        DeleteFile(vaDestino);
+
+                     if CopyFile(PChar(vaOrigem), PChar(vaDestino), true) then
+                        begin//6
+                          //atualiza a nota de entrada com a chave
+                          CadE440Nfc.Close;
+                          CadE440Nfc.Parameters.ParamByName('codemp').Value := BuscaE440NfcCODEMP.Value;
+                          CadE440Nfc.Parameters.ParamByName('codfil').Value := BuscaE440NfcCODFIL.Value;
+                          CadE440Nfc.Parameters.ParamByName('codfor').Value := BuscaE440NfcCODFOR.Value;
+                          CadE440Nfc.Parameters.ParamByName('numnfc').Value := BuscaE440NfcNUMNFC.Value;
+                          CadE440Nfc.Parameters.ParamByName('codsnf').Value := BuscaE440NfcCODSNF.Value;
+                          CadE440Nfc.Open;
+                          if not CadE440Nfc.IsEmpty then
+                             begin//7
+                               CadE440Nfc.Edit;
+                               vaId := ClientDadosGeraisCte.FieldByName('Id').Value;
+                               vaId := StringReplace(trim(vaId), 'CTe', '', [rfReplaceAll,rfIgnoreCase]);
+                               CadE440NfcCHVNEL.Value := vaId;
+                               CadE440Nfc.Post;
+                             end;//7
+
+                          ClientDadosGeraisCte.Close;
+                          XmlProviderCte.XMLDataFile := '';
+                          DeleteFile(vaArquivo);
+                        end;//6
+                  end//3
+               else  //se nao achou procurar o motivo e gerar um log
+                  begin//4
+
+                     BuscaE440Nfc2.Close;
+                     BuscaE440Nfc2.Parameters.ParamByName('numnfc').Value := ClientDadosGeraisCte.FieldByName('nCT').Value;
+                     BuscaE440Nfc2.Parameters.ParamByName('cgccpf').Value := ClientDadosGeraisCte.FieldByName('CNPJ').Value;
+                     BuscaE440Nfc2.Parameters.ParamByName('codsnf').Value := 'CTE';
+                     BuscaE440Nfc2.Open;
+                     if BuscaE440Nfc2.IsEmpty then
+                        begin//8
+                           //nao existe nota lançada
+                           Writeln(ArqLog,sr.Name +' Não localizada.');
+
+                        end//8
+                     else
+                        begin//9
+                          //ja existe nota lançada
+                          Writeln(ArqLog,SR.Name + ' NF já existente.');
+
+                        end;//9
+
+
+
+                  end;//4
+
+                until FindNext(SR) <> 0;
+                 FindClose(SR);
+             end;//2
+
+             //conta novamente quantos arquivos tem na pasta
+             Cont := 0;
+             if FindFirst('\\senior\senior\sapiens\XML_NFE\Temp\CTe\*.xml*',faAnyFile,SR) = 0 then
+                begin
+                  repeat
+                  inc(cont);
+                  until FindNext(SR) <> 0;
+                   FindClose(SR);
+                end;
+              LQtdArq.Caption :=  ' / '+ IntToStr(Cont) +' ';
+              Refresh;
+
+             CloseFile(ArqLog);
+             BPesquisar.Click;
 end;
 
 procedure TFValidaXmlNfc.BValidaClick(Sender: TObject);
@@ -713,7 +857,7 @@ SR : TSearchRec;
 begin
           //conta quantos arquivos tem na pasta
            Cont := 0;
-           if FindFirst('\\senior\senior\sapiens\XML_NFE\Temp\*.xml*',faAnyFile,SR) = 0 then
+           if FindFirst('\\senior\senior\sapiens\XML_NFE\Temp\NFe\*.xml*',faAnyFile,SR) = 0 then
               begin
                 repeat
                 inc(cont);
@@ -725,12 +869,12 @@ begin
           Rewrite ( ArqLog );
           vnNumArq := 0;
           //percorre os arquivos
-          if FindFirst('\\senior\senior\sapiens\XML_NFE\Temp\*.xml*',faAnyFile,SR) = 0 then
+          if FindFirst('\\senior\senior\sapiens\XML_NFE\Temp\NFe\*.xml*',faAnyFile,SR) = 0 then
              begin//2
                 repeat
                    TRY
                      ClientDadosGerais.Close;
-                     vaArquivo := '\\senior\senior\sapiens\XML_NFE\Temp\'+SR.Name;
+                     vaArquivo := '\\senior\senior\sapiens\XML_NFE\Temp\NFe\'+SR.Name;
                      XmlProvider.XMLDataFile := vaArquivo;
                      ClientDadosGerais.Open;
                    EXCEPT
@@ -745,6 +889,7 @@ begin
                BuscaE440Nfc.Close;
                BuscaE440Nfc.Parameters.ParamByName('numnfc').Value := ClientDadosGerais.FieldByName('nNF').Value;
                BuscaE440Nfc.Parameters.ParamByName('cgccpf').Value := ClientDadosGerais.FieldByName('CNPJ').Value;
+               BuscaE440Nfc.Parameters.ParamByName('codsnf').Value := 'NFE';
                BuscaE440Nfc.Open;
                if not BuscaE440Nfc.IsEmpty then
                   begin//3
@@ -801,6 +946,7 @@ begin
                      BuscaE440Nfc2.Close;
                      BuscaE440Nfc2.Parameters.ParamByName('numnfc').Value := ClientDadosGerais.FieldByName('nNF').Value;
                      BuscaE440Nfc2.Parameters.ParamByName('cgccpf').Value := ClientDadosGerais.FieldByName('CNPJ').Value;
+                     BuscaE440Nfc2.Parameters.ParamByName('codsnf').Value := 'NFE';
                      BuscaE440Nfc2.Open;
                      if BuscaE440Nfc2.IsEmpty then
                         begin//8
@@ -825,7 +971,7 @@ begin
 
              //conta novamente quantos arquivos tem na pasta
              Cont := 0;
-             if FindFirst('\\senior\senior\sapiens\XML_NFE\Temp\*.xml*',faAnyFile,SR) = 0 then
+             if FindFirst('\\senior\senior\sapiens\XML_NFE\Temp\NFe\*.xml*',faAnyFile,SR) = 0 then
                 begin
                   repeat
                   inc(cont);

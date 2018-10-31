@@ -2371,6 +2371,8 @@ type
     ClientConsumoMPUniMed: TStringField;
     ClientConsumoMPQtdUti: TFloatField;
     ConsE504CapAgruvnPerRepresenta: TFloatField;
+    CadE008RaiUSU_CODREP: TIntegerField;
+    CadE008RaiIMGLGT: TStringField;
     procedure ComparativoComprasCliAfterScroll(DataSet: TDataSet);
     procedure CadUsu_T097PenBeforePost(DataSet: TDataSet);
     procedure CadUsu_T097PpenAfterInsert(DataSet: TDataSet);

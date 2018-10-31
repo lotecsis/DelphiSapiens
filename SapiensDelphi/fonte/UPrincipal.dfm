@@ -4,8 +4,8 @@
   CustomHint = BalloonHint1
   Align = alClient
   Caption = 'Sapiens Lider'
-  ClientHeight = 554
-  ClientWidth = 796
+  ClientHeight = 583
+  ClientWidth = 960
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -152,8 +152,8 @@
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 530
-    Width = 796
+    Top = 559
+    Width = 960
     Height = 24
     CustomHint = BalloonHint1
     Panels = <
@@ -181,11 +181,12 @@
       end>
     ParentShowHint = False
     ShowHint = False
+    ExplicitTop = 539
   end
   object ToolBar1: TToolBar
     Left = 0
     Top = 0
-    Width = 796
+    Width = 960
     Height = 49
     CustomHint = BalloonHint1
     ButtonHeight = 45
@@ -360,7 +361,7 @@
     Left = 0
     Top = 49
     Width = 122
-    Height = 481
+    Height = 510
     CustomHint = BalloonHint1
     Align = alLeft
     AutoSize = True
@@ -372,6 +373,7 @@
     HideClippedButtons = True
     Images = ImageList2
     TabOrder = 2
+    ExplicitHeight = 490
     object BComparaComprasClientes: TToolButton
       Left = 0
       Top = 0
@@ -480,7 +482,7 @@
     Left = 122
     Top = 49
     Width = 62
-    Height = 481
+    Height = 510
     CustomHint = BalloonHint1
     Align = alLeft
     ButtonHeight = 45
@@ -490,6 +492,7 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 3
+    ExplicitHeight = 490
     object btnCorteTecEstof: TToolButton
       Left = 0
       Top = 0
@@ -686,6 +689,18 @@
     TabOrder = 14
     Visible = False
     OnClick = btnSelecionaPastaClick
+  end
+  object btn13: TBitBtn
+    Left = 264
+    Top = 248
+    Width = 201
+    Height = 25
+    CustomHint = BalloonHint1
+    Caption = 'frmCadRepresentante_Cidades'
+    DoubleBuffered = True
+    ParentDoubleBuffered = False
+    TabOrder = 15
+    OnClick = btn13Click
   end
   object Timer1: TTimer
     Enabled = False
@@ -1412,7 +1427,7 @@
     Left = 640
     Top = 328
     Bitmap = {
-      494C010125009C006C0223002300EBE9ED00FF10FFFFFFFFFFFFFFFF424D3600
+      494C010125009C00700223002300EBE9ED00FF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008C0000005E0100000100200000000000A0FD
       020000000000000000000000000000000000EDE9EB00EDE9EB00EDE9EB00EDE9
       EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9

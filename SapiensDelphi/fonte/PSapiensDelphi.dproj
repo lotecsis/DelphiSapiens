@@ -558,6 +558,9 @@
 			<DCCReference Include="UfrmDividirPedido.pas">
 				<Form>frmDividirPedido</Form>
 			</DCCReference>
+			<DCCReference Include="UfrmCadRepresentante_Cidades.pas">
+				<Form>frmCadRepresentante_Cidades</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

@@ -117,6 +117,7 @@ type
     procedure mnuAdicionarMon2Click(Sender: TObject);
     procedure mnuAdicionarMonClick(Sender: TObject);
     procedure mnuAddMonClick(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -485,6 +486,15 @@ begin
        btnMostrarResumoRep.Click;
      end;
 
+end;
+
+procedure TFGerenciamentoCidades.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+if key = #13 then
+    begin
+      key := #0;
+      Perform (Wm_NextDlgCtl,0,0);
+    end;
 end;
 
 procedure TFGerenciamentoCidades.FormShow(Sender: TObject);

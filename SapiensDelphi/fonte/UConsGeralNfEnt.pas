@@ -44,7 +44,7 @@ uses  UNfEntrada,UAddMtNfEnt, UPedido, UAddProdPed, UConsPedido,
   UConsCoresPorProdutos, UAltProdCargaCorteEstof, UConsMateriaPrimaMediaCons,
   UComposicaoMpProdutos, UDuplicaComposicaoMpProdutos, UGerenciamentoCidades,
   UAddCliMonitoramento, UMoniCliente, UApelidosProdSapiens, UDescontosPorRep,
-  UCadFormaCompraMP, UAjustaConsumoMateriaPrima;
+  UCadFormaCompraMP, UAjustaConsumoMateriaPrima, UfrmCadRepresentante_Cidades;
 
 {$R *.dfm}
 
@@ -393,6 +393,13 @@ begin
       begin
         FGerenciamentoCidades.edtCodRep.Value := DBGrid.DataSource.DataSet.FieldByName('CODREP').AsInteger;
         FGerenciamentoCidades.edtDesRep.Text := DBGrid.DataSource.DataSet.FieldByName('APEREP').AsString;
+        Close;
+      end
+     else
+     if (vaCampo = 'CodRep') and (vaTela = 'frmCadRepresentante_Cidades') then
+      begin
+        frmCadRepresentante_Cidades.edtCodRep.Value := DBGrid.DataSource.DataSet.FieldByName('CODREP').AsInteger;
+        frmCadRepresentante_Cidades.edtDesRep.Text := DBGrid.DataSource.DataSet.FieldByName('APEREP').AsString;
         Close;
       end
      else

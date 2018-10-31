@@ -303,6 +303,7 @@ type
     mnufrmDividirPedido: TMenuItem;
     actfrmDividirPedido: TAction;
     btnfrmDividirPedido: TToolButton;
+    btn13: TBitBtn;
     procedure Timer1Timer(Sender: TObject);
     procedure Formularios1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -430,6 +431,7 @@ type
     procedure mnufrmDividirPedidoClick(Sender: TObject);
     procedure btnDivisaoPedidosClick(Sender: TObject);
     procedure actfrmDividirPedidoExecute(Sender: TObject);
+    procedure btn13Click(Sender: TObject);
   private
     { Private declarations }
     vaSistemaEmUso : string;
@@ -493,7 +495,7 @@ uses UFormulario, {UCidade, UConsSimpCidade, UGrupoUsuario,
   UImpressoraPadrao, UAjustaConsumoMateriaPrima, UPreCargas,
   UAnalizeConsumoMPProduzir, UZeraEst3000, ULimpaCancelados, UEtiquetaCabeceira,
   UfrmValidaXmlEntrada, UfrmControleFaixa, UfrmPercentual, UfrmReplicarPedido,
-  UfrmDividirPedido;
+  UfrmDividirPedido, UfrmCadRepresentante_Cidades;
 
 {$R *.dfm}
 
@@ -1445,6 +1447,13 @@ begin
   FZeraEst3000 := TFZeraEst3000.Create(Self);
   FZeraEst3000.ShowModal;
   FreeAndNil(FZeraEst3000);
+end;
+
+procedure TFPrincipal.btn13Click(Sender: TObject);
+begin
+  frmCadRepresentante_Cidades := TfrmCadRepresentante_Cidades.Create(Self);
+  frmCadRepresentante_Cidades.ShowModal;
+  FreeAndNil(frmCadRepresentante_Cidades);
 end;
 
 procedure TFPrincipal.btn2Click(Sender: TObject);

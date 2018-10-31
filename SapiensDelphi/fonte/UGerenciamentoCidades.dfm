@@ -16,6 +16,7 @@ object FGerenciamentoCidades: TFGerenciamentoCidades
   OldCreateOrder = False
   Position = poScreenCenter
   OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -455,9 +456,9 @@ object FGerenciamentoCidades: TFGerenciamentoCidades
         TabOrder = 8
       end
       object btnMostrarCidadeSemCompra: TBitBtn
-        Left = 784
+        Left = 744
         Top = 536
-        Width = 113
+        Width = 201
         Height = 25
         Caption = 'btnMostrarCidadeSemCompra'
         DoubleBuffered = True

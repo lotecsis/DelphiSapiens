@@ -171,7 +171,8 @@ uses
   UfrmPercentual in 'UfrmPercentual.pas' {frmPercentual},
   UfrmReplicarPedido in 'UfrmReplicarPedido.pas' {frmReplicarPedido},
   UdmPrototipo in 'UdmPrototipo.pas' {dmPrototipo: TDataModule},
-  UfrmDividirPedido in 'UfrmDividirPedido.pas' {frmDividirPedido};
+  UfrmDividirPedido in 'UfrmDividirPedido.pas' {frmDividirPedido},
+  UfrmCadRepresentante_Cidades in 'UfrmCadRepresentante_Cidades.pas' {frmCadRepresentante_Cidades};
 
 {$R *.res}
 
@@ -292,6 +293,7 @@ begin
   Application.CreateForm(TfrmReplicarPedido, frmReplicarPedido);
   Application.CreateForm(TdmPrototipo, dmPrototipo);
   Application.CreateForm(TfrmDividirPedido, frmDividirPedido);
+  Application.CreateForm(TfrmCadRepresentante_Cidades, frmCadRepresentante_Cidades);
   //  Application.CreateForm(TFConsultaTecido, FConsultaTecido);
  // Application.CreateForm(TFControleConexao, FControleConexao);
   Application.Run;

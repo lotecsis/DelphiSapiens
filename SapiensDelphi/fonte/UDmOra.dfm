@@ -14057,6 +14057,13 @@ object DmOra: TDmOra
     object CadE008RaiUSU_AREAT: TIntegerField
       FieldName = 'USU_AREAT'
     end
+    object CadE008RaiUSU_CODREP: TIntegerField
+      FieldName = 'USU_CODREP'
+    end
+    object CadE008RaiIMGLGT: TStringField
+      FieldName = 'IMGLGT'
+      Size = 250
+    end
   end
   object ConsCidadesComCompra: TADOQuery
     Connection = ADOBanco

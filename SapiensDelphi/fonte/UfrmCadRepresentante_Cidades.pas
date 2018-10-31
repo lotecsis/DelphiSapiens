@@ -253,7 +253,7 @@ begin
   ConsCidadesDisp.Parameters.ParamByName('usu_codrep').Value := edtCodRep.AsInteger;
   ConsCidadesDisp.Open;
   ClientConsCidadesDisp.Open
-
+   //
 
 end;
 

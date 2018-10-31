@@ -690,18 +690,6 @@
     Visible = False
     OnClick = btnSelecionaPastaClick
   end
-  object btn13: TBitBtn
-    Left = 264
-    Top = 248
-    Width = 201
-    Height = 25
-    CustomHint = BalloonHint1
-    Caption = 'frmCadRepresentante_Cidades'
-    DoubleBuffered = True
-    ParentDoubleBuffered = False
-    TabOrder = 15
-    OnClick = btn13Click
-  end
   object Timer1: TTimer
     Enabled = False
     OnTimer = Timer1Timer
@@ -1223,6 +1211,10 @@
           end
           object mnuListaOnlineSERASA: TMenuItem
             Action = actListaOnlineSERASA
+          end
+          object mnufrmCadRepresentante_Cidades: TMenuItem
+            Caption = 'Cadastro de Representate X Cidades de Venda'
+            OnClick = mnufrmCadRepresentante_CidadesClick
           end
         end
         object mnuPercentual: TMenuItem

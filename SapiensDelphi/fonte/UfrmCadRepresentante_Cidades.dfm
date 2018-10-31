@@ -160,6 +160,14 @@ object frmCadRepresentante_Cidades: TfrmCadRepresentante_Cidades
       end
       item
         Expanded = False
+        FieldName = 'APEREP'
+        Title.Alignment = taCenter
+        Title.Caption = 'Representante'
+        Width = 120
+        Visible = True
+      end
+      item
+        Expanded = False
         FieldName = 'USU_GENTILICO'
         Title.Alignment = taCenter
         Title.Caption = 'Gent'#237'lico'
@@ -394,7 +402,10 @@ object frmCadRepresentante_Cidades: TfrmCadRepresentante_Cidades
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select e008rai.* from e008rai')
+      'select e008rai.*,'
+      '       e090rep.aperep'
+      '  from e008rai'
+      '  left join e090rep on e090rep.codrep = e008rai.usu_codrep')
     Left = 144
     Top = 192
     object ConsCidadesDispCODRAI: TIntegerField
@@ -452,6 +463,10 @@ object frmCadRepresentante_Cidades: TfrmCadRepresentante_Cidades
     object ConsCidadesDispIMGLGT: TStringField
       FieldName = 'IMGLGT'
       Size = 250
+    end
+    object ConsCidadesDispAPEREP: TStringField
+      FieldName = 'APEREP'
+      Size = 50
     end
   end
   object ProviderConsCidadesDisp: TDataSetProvider
@@ -537,6 +552,10 @@ object frmCadRepresentante_Cidades: TfrmCadRepresentante_Cidades
       Alignment = taCenter
       FieldName = 'IMGLGT'
       Size = 250
+    end
+    object ClientConsCidadesDispAPEREP: TStringField
+      FieldName = 'APEREP'
+      Size = 50
     end
     object ClientConsCidadesDispTQtdCid: TAggregateField
       Alignment = taCenter

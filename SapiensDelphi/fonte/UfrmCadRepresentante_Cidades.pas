@@ -100,6 +100,8 @@ type
     dbedtTQtdCid: TDBEdit;
     ClientConsCidadesDispTQtdCid: TAggregateField;
     dbedtTQtdCidDisp: TDBEdit;
+    ConsCidadesDispAPEREP: TStringField;
+    ClientConsCidadesDispAPEREP: TStringField;
     procedure edtCodRepExit(Sender: TObject);
     procedure btnConsRepClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -230,7 +232,10 @@ begin
   ClientConsCidadesDisp.Close;
   ConsCidadesDisp.Close;
   ConsCidadesDisp.SQL.Clear;
-  ConsCidadesDisp.SQL.Add('select e008rai.* from e008rai');
+  ConsCidadesDisp.SQL.Add('select e008rai.*, ');
+  ConsCidadesDisp.SQL.Add('       e090rep.aperep');
+  ConsCidadesDisp.SQL.Add(' from e008rai');
+  ConsCidadesDisp.SQL.Add(' left join e090rep on e090rep.codrep = e008rai.usu_codrep');
   ConsCidadesDisp.SQL.Add(' where ');
   ConsCidadesDisp.SQL.Add(' e008rai.usu_codrep <> :usu_codrep');
 

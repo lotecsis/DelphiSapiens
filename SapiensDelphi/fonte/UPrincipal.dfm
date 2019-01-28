@@ -181,7 +181,6 @@
       end>
     ParentShowHint = False
     ShowHint = False
-    ExplicitTop = 539
   end
   object ToolBar1: TToolBar
     Left = 0
@@ -273,17 +272,9 @@
       CustomHint = BalloonHint1
       Action = actControleConexaoTelas
     end
-    object BControleAcesso: TToolButton
+    object BAtualizaPreCus: TToolButton
       Left = 540
       Top = 0
-      CustomHint = BalloonHint1
-      Action = AcControleConexao
-      ImageIndex = 11
-      Wrap = True
-    end
-    object BAtualizaPreCus: TToolButton
-      Left = 0
-      Top = 45
       Hint = 'Atualiza Pre'#231'o de Custo'
       CustomHint = BalloonHint1
       Action = AcAtualizaPrecoCusto
@@ -292,43 +283,43 @@
       ShowHint = False
     end
     object btnCidades: TToolButton
-      Left = 60
-      Top = 45
+      Left = 600
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcCidades
       ImageIndex = 23
     end
     object btnConsMateriaPrimaMediaCons: TToolButton
-      Left = 120
-      Top = 45
+      Left = 660
+      Top = 0
       CustomHint = BalloonHint1
       Action = actConsMateriaPrimaMediaCons
       ImageIndex = 26
     end
     object btnPercentual: TToolButton
-      Left = 180
-      Top = 45
+      Left = 720
+      Top = 0
       CustomHint = BalloonHint1
       Action = actfrmPercentual
       ImageIndex = 21
     end
     object btnReplicarPedidos: TToolButton
-      Left = 240
-      Top = 45
+      Left = 780
+      Top = 0
       CustomHint = BalloonHint1
       Caption = 'btnReplicarPedidos'
       ImageIndex = 27
       OnClick = btnReplicarPedidosClick
     end
     object ToolButton2: TToolButton
-      Left = 300
-      Top = 45
+      Left = 840
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcGeraIni
     end
     object Bsair: TToolButton
-      Left = 360
-      Top = 45
+      Left = 900
+      Top = 0
       Hint = 'Fechar'
       CustomHint = BalloonHint1
       Caption = 'Bsair'
@@ -338,23 +329,31 @@
       OnClick = BsairClick
     end
     object ToolButton7: TToolButton
-      Left = 420
-      Top = 45
+      Left = 960
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcClientesPedidos10D
     end
     object btnAcCadUsuSysRep: TToolButton
-      Left = 480
-      Top = 45
+      Left = 1020
+      Top = 0
       CustomHint = BalloonHint1
       Action = AcCadUsuSysRep
     end
     object btn3: TToolButton
-      Left = 540
-      Top = 45
+      Left = 1080
+      Top = 0
       CustomHint = BalloonHint1
       Caption = 'btn3'
       OnClick = btn3Click
+    end
+    object BControleAcesso: TToolButton
+      Left = 1140
+      Top = 0
+      CustomHint = BalloonHint1
+      Action = AcControleConexao
+      ImageIndex = 11
+      Wrap = True
     end
   end
   object ToolBar2: TToolBar
@@ -373,7 +372,6 @@
     HideClippedButtons = True
     Images = ImageList2
     TabOrder = 2
-    ExplicitHeight = 490
     object BComparaComprasClientes: TToolButton
       Left = 0
       Top = 0
@@ -492,7 +490,6 @@
     EdgeOuter = esNone
     Images = ImageList2
     TabOrder = 3
-    ExplicitHeight = 490
     object btnCorteTecEstof: TToolButton
       Left = 0
       Top = 0
@@ -1419,7 +1416,7 @@
     Left = 640
     Top = 328
     Bitmap = {
-      494C010125009C00700223002300EBE9ED00FF10FFFFFFFFFFFFFFFF424D3600
+      494C010125009C00740223002300EBE9ED00FF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008C0000005E0100000100200000000000A0FD
       020000000000000000000000000000000000EDE9EB00EDE9EB00EDE9EB00EDE9
       EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9EB00EDE9

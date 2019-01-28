@@ -869,7 +869,7 @@ object Dm3: TDm3
       '      e210mvp.esteos = '#39'S'#39' and'
       '      e210mvp.codpro = e210est.codpro and'
       '      e210mvp.coddep = e210est.coddep and'
-      '      e210mvp.codtns in ('#39'90250'#39','#39'90251'#39')) as consumo,'
+      '      e210mvp.codtns in ('#39'90250'#39','#39'90251'#39','#39'90207'#39')) as consumo,'
       '(select sum(e420ipo.qtdabe) as qtdabe'
       '        from e420ipo'
       '        where'

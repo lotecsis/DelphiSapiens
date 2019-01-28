@@ -63,6 +63,7 @@ object FConsGeralNfEnt: TFConsGeralNfEnt
       Top = 51
       Width = 476
       Height = 21
+      CharCase = ecUpperCase
       TabOrder = 1
       OnChange = EdValorChange
     end

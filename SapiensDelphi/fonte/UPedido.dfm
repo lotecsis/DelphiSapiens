@@ -1342,12 +1342,10 @@ object FPedido: TFPedido
                 Visible = True
               end
               item
-                Alignment = taCenter
                 Expanded = False
-                FieldName = 'USU_TOTDSC'
-                Title.Alignment = taCenter
+                FieldName = 'PERDSC'
                 Title.Caption = 'Tot.Desc. %'
-                Width = 70
+                Width = 64
                 Visible = True
               end
               item
@@ -1419,6 +1417,15 @@ object FPedido: TFPedido
                 FieldName = 'SITIPD'
                 Title.Alignment = taCenter
                 Title.Caption = 'Situa'#231#227'o'
+                Visible = True
+              end
+              item
+                Alignment = taCenter
+                Expanded = False
+                FieldName = 'USU_TOTDSC'
+                Title.Alignment = taCenter
+                Title.Caption = 'Vlr. Desc'
+                Width = 70
                 Visible = True
               end
               item
@@ -1577,12 +1584,6 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'PREFIX'
-                Width = 64
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'PERDSC'
                 Width = 64
                 Visible = True
               end

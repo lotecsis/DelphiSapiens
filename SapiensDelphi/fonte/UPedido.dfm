@@ -1342,19 +1342,33 @@ object FPedido: TFPedido
                 Visible = True
               end
               item
-                Expanded = False
-                FieldName = 'PERDSC'
-                Title.Caption = 'Tot.Desc. %'
-                Width = 64
-                Visible = True
-              end
-              item
                 Alignment = taCenter
                 Expanded = False
                 FieldName = 'VLRBRU'
                 Title.Alignment = taCenter
                 Title.Caption = 'Vlr.Bruto'
                 Width = 80
+                Visible = True
+              end
+              item
+                Alignment = taCenter
+                Expanded = False
+                FieldName = 'USU_TOTDSC'
+                Title.Alignment = taCenter
+                Title.Caption = 'Vlr. Desc'
+                Width = 70
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'PERDSC'
+                Title.Caption = 'Tot.Desc. %'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'USU_PERDESC1'
+                Title.Caption = 'Tot.Desc. %'
                 Visible = True
               end
               item
@@ -1422,15 +1436,6 @@ object FPedido: TFPedido
               item
                 Alignment = taCenter
                 Expanded = False
-                FieldName = 'USU_TOTDSC'
-                Title.Alignment = taCenter
-                Title.Caption = 'Vlr. Desc'
-                Width = 70
-                Visible = True
-              end
-              item
-                Alignment = taCenter
-                Expanded = False
                 FieldName = 'VLRBIP'
                 Title.Alignment = taCenter
                 Title.Caption = 'Vlr. Base IPI'
@@ -1452,7 +1457,6 @@ object FPedido: TFPedido
                 FieldName = 'VLRBIC'
                 Title.Alignment = taCenter
                 Title.Caption = 'Vlr.Base ICMS'
-                Width = 64
                 Visible = True
               end
               item
@@ -1470,7 +1474,6 @@ object FPedido: TFPedido
                 FieldName = 'VLRBSI'
                 Title.Alignment = taCenter
                 Title.Caption = 'Vlr.Base ICMS Sub.'
-                Width = 64
                 Visible = True
               end
               item
@@ -1479,7 +1482,6 @@ object FPedido: TFPedido
                 FieldName = 'VLRICS'
                 Title.Alignment = taCenter
                 Title.Caption = 'Vlr. ICMS Sub'
-                Width = 64
                 Visible = True
               end
               item
@@ -1488,139 +1490,116 @@ object FPedido: TFPedido
                 FieldName = 'USU_VLRORI'
                 Title.Alignment = taCenter
                 Title.Caption = 'Vlr.Tabela'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'QTDRAE'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'QTDNLP'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'QTDRES'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'CODLOT'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'QTDPOC'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'UNIMED'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'QTDAEN'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'CODMCP'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'DATMFP'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'COTMFP'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'DATMOE'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'COTMOE'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'FECMOE'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PREBRU'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'CODMOE'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PREFIX'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PEROFE'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERACR'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'DATENT'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'DATANE'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'DATPOC'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'CODPVP'
-                Width = 64
                 Visible = True
               end
               item
@@ -1646,151 +1625,126 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'CODCCU'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRFRE'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRSEG'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLREMB'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRENC'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLROUT'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRDAR'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRFRD'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLROUD'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRDSC'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRDS1'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRDS2'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRDS3'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRDS4'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLROFE'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRDZF'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRBSP'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRSTP'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRBSC'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRSTC'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRBCO'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRCOM'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRLPR'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRLOU'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRFIN'
-                Width = 64
                 Visible = True
               end
               item
@@ -1801,7 +1755,6 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'OBSMOT'
-                Width = 64
                 Visible = True
               end
               item
@@ -1812,19 +1765,16 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'GERCGA'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'RESMAN'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'INDAED'
-                Width = 64
                 Visible = True
               end
               item
@@ -1835,7 +1785,6 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'DATCPT'
-                Width = 64
                 Visible = True
               end
               item
@@ -1846,13 +1795,11 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'USUGER'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'DATGER'
-                Width = 64
                 Visible = True
               end
               item
@@ -1863,13 +1810,11 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'QTDPPF'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'CMPKIT'
-                Width = 64
                 Visible = True
               end
               item
@@ -1890,19 +1835,16 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'UNIVEN'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'QTDVEN'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PREVEN'
-                Width = 64
                 Visible = True
               end
               item
@@ -1918,7 +1860,6 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'CPTCVS'
-                Width = 64
                 Visible = True
               end
               item
@@ -1934,13 +1875,11 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'CODFXA'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'CODPGR'
-                Width = 64
                 Visible = True
               end
               item
@@ -1961,25 +1900,21 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'PERDS1'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERDS2'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERDS3'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERDS4'
-                Width = 64
                 Visible = True
               end
               item
@@ -1990,109 +1925,91 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'VLRRIS'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'INDPCE'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'INDPCR'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERPIT'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRBPT'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRPIT'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERCRT'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRBCT'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRCRT'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERCSL'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRBCL'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRCSL'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PEROUR'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRBOR'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLROUR'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERIRF'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRBIR'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRIRF'
-                Width = 64
                 Visible = True
               end
               item
@@ -2113,7 +2030,6 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'SNFNFC'
-                Width = 64
                 Visible = True
               end
               item
@@ -2124,49 +2040,41 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'NCTLCL'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'NRECLI'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'NOSICL'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'NOSFCL'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'NOCCL1'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'NOCCL2'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'NOCCL3'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'CODAGC'
-                Width = 64
                 Visible = True
               end
               item
@@ -2177,7 +2085,6 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'CPTCVP'
-                Width = 64
                 Visible = True
               end
               item
@@ -2193,7 +2100,6 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'OBSIPD'
-                Width = 64
                 Visible = True
               end
               item
@@ -2209,157 +2115,126 @@ object FPedido: TFPedido
               item
                 Expanded = False
                 FieldName = 'VLRBPF'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERPIF'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRPIF'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRBCF'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERCFF'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRCFF'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PERDS5'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'VLRDS5'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_TIPCMB'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_CODTEC1'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_CODTEC2'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_QTDREP'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_QTDDIV'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_MEDLAR'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_MEDCOM'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_MEDALT'
-                Width = 64
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'USU_PERDESC1'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_PERDESC2'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_PERDESC3'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_PERDESC4'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_PERDESC5'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_PERDESC6'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_CANAPR'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'USU_TOTDSCORI'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'ORIRES'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'DESDER'
-                Width = 64
                 Visible = True
               end>
           end

@@ -18,7 +18,7 @@ object frmAlteraTipoIso: TfrmAlteraTipoIso
   object cbbTipo: TComboBox
     Left = 24
     Top = 43
-    Width = 241
+    Width = 246
     Height = 22
     Style = csOwnerDrawFixed
     Font.Charset = DEFAULT_CHARSET
@@ -37,7 +37,7 @@ object frmAlteraTipoIso: TfrmAlteraTipoIso
   object btnConfirmar: TBitBtn
     Left = 78
     Top = 104
-    Width = 137
+    Width = 139
     Height = 25
     Caption = 'Confirmar'
     DoubleBuffered = True

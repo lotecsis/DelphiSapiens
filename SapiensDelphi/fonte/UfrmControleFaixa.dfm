@@ -70,7 +70,7 @@ object frmControleFaixa: TfrmControleFaixa
       end
       object dbgrd1: TDBGrid
         Left = 0
-        Top = 43
+        Top = 45
         Width = 983
         Height = 526
         DataSource = dsClientConsE120Ipd

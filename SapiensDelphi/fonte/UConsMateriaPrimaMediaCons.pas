@@ -266,7 +266,7 @@ begin
   Dm3.MateriaPrimaMediaCons.SQL.Add('               e210mvp.esteos = ''S'' and');
   Dm3.MateriaPrimaMediaCons.SQL.Add('               e210mvp.codpro = e210est.codpro and');
   //Dm3.MateriaPrimaMediaCons.SQL.Add('               e210mvp.coddep = e210est.coddep and');
-  Dm3.MateriaPrimaMediaCons.SQL.Add('               e210mvp.codtns in (''90250'',''90251'',''90207'',''90257'')) as consumo,');
+  Dm3.MateriaPrimaMediaCons.SQL.Add('               e210mvp.codtns in (''90250'',''90251'')) as consumo,');
   //Dm3.MateriaPrimaMediaCons.SQL.Add('               e210mvp.codtns in (''90259'')) as consumo,');
   Dm3.MateriaPrimaMediaCons.SQL.Add(' (select sum(e420ipo.qtdabe) as qtdabe');
   Dm3.MateriaPrimaMediaCons.SQL.Add(' from e420ipo');
@@ -278,6 +278,7 @@ begin
   Dm3.MateriaPrimaMediaCons.SQL.Add('                       e075pro.codpro = e210est.codpro');
   Dm3.MateriaPrimaMediaCons.SQL.Add(' where');
   Dm3.MateriaPrimaMediaCons.SQL.Add(' e210est.coddep not in (''2000'',''01002'',''AST'',''TRC'',''101'',''1001.1'',''3000'') AND');
+  Dm3.MateriaPrimaMediaCons.SQL.Add(' e075pro.codori not in (''1'',''2'',''50'',''40'',''30'',''25'',''20'',''19'') AND');
   Dm3.MateriaPrimaMediaCons.SQL.Add(' e075pro.codori <> 01 and');
   Dm3.MateriaPrimaMediaCons.SQL.Add(' e075pro.sitpro = ''A''');
 
@@ -290,12 +291,12 @@ begin
   if cbbFiltro.Text = 'MEDIA CONSUMO' then
      begin
        Dm3.MateriaPrimaMediaCons.SQL.Add(' and (select sum(e210mvp.qtdmov) from e210mvp');
+       Dm3.MateriaPrimaMediaCons.SQL.Add('inner join e075pro on e075pro.codpro = e210mvp.codpro');
        Dm3.MateriaPrimaMediaCons.SQL.Add(' where e210mvp.datmov between :DatIniC and :DatFimC and');
        Dm3.MateriaPrimaMediaCons.SQL.Add('       e210mvp.esteos = ''S'' and');
-       Dm3.MateriaPrimaMediaCons.SQL.Add('       e210mvp.codtns in (''90250'',''90251'',''90207'',''90257'') and');
-       //Dm3.MateriaPrimaMediaCons.SQL.Add('       e210mvp.codtns in (''90259'') and');
-       Dm3.MateriaPrimaMediaCons.SQL.Add(' e210mvp.codpro = e210est.codpro and');
-       Dm3.MateriaPrimaMediaCons.SQL.Add(' e210mvp.coddep = e210est.coddep) > e210est.qtdest');
+       Dm3.MateriaPrimaMediaCons.SQL.Add('       e210mvp.codtns in (''90250'',''90251'') and');
+       Dm3.MateriaPrimaMediaCons.SQL.Add(' e075pro.codori not in (''1'',''2'',''50'',''40'',''30'',''25'',''20'') AND');
+       Dm3.MateriaPrimaMediaCons.SQL.Add(' e210mvp.codpro = e210est.codpro ) > e210est.qtdest');
        Dm3.MateriaPrimaMediaCons.Parameters.ParamByName('DatIniC').Value := EdDatIni.Date;
        Dm3.MateriaPrimaMediaCons.Parameters.ParamByName('DatFimC').Value := EdDatFim.Date;
      end
@@ -319,7 +320,7 @@ begin
        Dm3.MateriaPrimaMediaCons.SQL.Add(' and (select sum(e210mvp.qtdmov) from e210mvp');
        Dm3.MateriaPrimaMediaCons.SQL.Add(' where e210mvp.datmov between :DatIniC and :DatFimC and');
        Dm3.MateriaPrimaMediaCons.SQL.Add('       e210mvp.esteos = ''S'' and');
-       Dm3.MateriaPrimaMediaCons.SQL.Add('       e210mvp.codtns in (''90250'',''90251'',''90207'',''90257'') and');
+       Dm3.MateriaPrimaMediaCons.SQL.Add('       e210mvp.codtns in (''90250'',''90251'') and');
        Dm3.MateriaPrimaMediaCons.SQL.Add(' e210mvp.codpro = e210est.codpro and');
        Dm3.MateriaPrimaMediaCons.SQL.Add(' e210mvp.coddep = e210est.coddep) > e210est.qtdest');
        Dm3.MateriaPrimaMediaCons.Parameters.ParamByName('DatIniC').Value := EdDatIni.Date;
